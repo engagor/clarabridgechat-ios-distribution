@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>ClarabridgeChat Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">ClarabridgeChat </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">ClarabridgeChat</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/close">+ close</option>
+		
+		<option value="//api/name/conversation">+ conversation</option>
+		
+		<option value="//api/name/conversationById:completionHandler:">+ conversationById:completionHandler:</option>
+		
+		<option value="//api/name/destroy">+ destroy</option>
+		
+		<option value="//api/name/getConversations:">+ getConversations:</option>
+		
+		<option value="//api/name/handlePushNotification:">+ handlePushNotification:</option>
+		
+		<option value="//api/name/handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:">+ handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:</option>
+		
+		<option value="//api/name/handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:">+ handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:</option>
+		
+		<option value="//api/name/initWithSettings:completionHandler:">+ initWithSettings:completionHandler:</option>
+		
+		<option value="//api/name/loadConversation:completionHandler:">+ loadConversation:completionHandler:</option>
+		
+		<option value="//api/name/login:jwt:completionHandler:">+ login:jwt:completionHandler:</option>
+		
+		<option value="//api/name/logoutWithCompletionHandler:">+ logoutWithCompletionHandler:</option>
+		
+		<option value="//api/name/newConversationViewController">+ newConversationViewController</option>
+		
+		<option value="//api/name/newConversationViewControllerWithStartingText:">+ newConversationViewControllerWithStartingText:</option>
+		
+		<option value="//api/name/setConversationInputDisplayed:">+ setConversationInputDisplayed:</option>
+		
+		<option value="//api/name/setPushToken:">+ setPushToken:</option>
+		
+		<option value="//api/name/setUserFirstName:lastName:">+ setUserFirstName:lastName:</option>
+		
+		<option value="//api/name/settings">+ settings</option>
+		
+		<option value="//api/name/show">+ show</option>
+		
+		<option value="//api/name/showConversationFromViewController:">+ showConversationFromViewController:</option>
+		
+		<option value="//api/name/showConversationFromViewController:withStartingText:">+ showConversationFromViewController:withStartingText:</option>
+		
+		<option value="//api/name/showWithStartingText:">+ showWithStartingText:</option>
+		
+		<option value="//api/name/startConversationWithCompletionHandler:">+ startConversationWithCompletionHandler:</option>
+		
+		<option value="//api/name/updateConversationDelegate:">+ updateConversationDelegate:</option>
+		
+		<option value="//api/name/userNotificationCategories">+ userNotificationCategories</option>
+		
+		<option value="//api/name/userNotificationCenterDelegate">+ userNotificationCenterDelegate</option>
+		
+	</optgroup>
+	
+
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">ClarabridgeChat Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>ClarabridgeChat.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithSettings:completionHandler:" title="initWithSettings:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithSettings:completionHandler:">+&nbsp;initWithSettings:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialize the ClarabridgeChat SDK with the provided settings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)initWithSettings:(CLBSettings *)<em>settings</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>settings</code></th>
+						<td><p>The settings to use.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>An optional block to evaluate the result of the operation</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This may only be called once (preferably, in application:didFinishLaunchingWithOptions:).</p>
+
+<p>Use +settings to retrieve and modify the given settings object.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/settings" title="settings"></a>
+	<h3 class="method-title"><code><a href="#//api/name/settings">+&nbsp;settings</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Accessor method for the sdk settings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable CLBSettings *)settings</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Settings object passed in +initWithSettings:completionHandler:, or nil if +initWithSettings:completionHandler: hasn&rsquo;t been called yet.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Use this object to update settings at run time.</p>
+
+<p>Note: Some settings may only be configured at init time. See the CLBSettings class reference for more information.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/show" title="show"></a>
+	<h3 class="method-title"><code><a href="#//api/name/show">+&nbsp;show</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation screen.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)show</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Uses the top-most view controller of the <code>UIApplicationDelegate</code> as the presenting view controller.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showWithStartingText:" title="showWithStartingText:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showWithStartingText:">+&nbsp;showWithStartingText:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation screen with prefilled text in the message input.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showWithStartingText:(nullable NSString *)<em>startingText</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Uses the top-most view controller of the <code>UIApplicationDelegate</code> as the presenting view controller with prefilled text in the message input.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/close" title="close"></a>
+	<h3 class="method-title"><code><a href="#//api/name/close">+&nbsp;close</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Dismisses the ClarabridgeChat conversation, if shown.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)close</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Note: If a view controller was created and presented using <code>newConversationViewController</code>, calling this method will have no effect.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/destroy" title="destroy"></a>
+	<h3 class="method-title"><code><a href="#//api/name/destroy">+&nbsp;destroy</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Destroys the ClarabridgeChat SDK</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)destroy</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>ClarabridgeChat is automatically terminated when the application exits. This method does not need to be called manually</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationFromViewController:" title="showConversationFromViewController:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationFromViewController:">+&nbsp;showConversationFromViewController:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation screen, using the given view controller as presenting view controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationFromViewController:(UIViewController *)<em>viewController</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>In most cases, it is better to use +show. If you need more fine-grained control over which view controller is used as presenting view controller, use this method instead.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationFromViewController:withStartingText:" title="showConversationFromViewController:withStartingText:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationFromViewController:withStartingText:">+&nbsp;showConversationFromViewController:withStartingText:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation screen, using the given view controller as presenting view controller with prefilled text in the message input.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationFromViewController:(UIViewController *)<em>viewController</em> withStartingText:(nullable NSString *)<em>startingText</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>In most cases, it is better to use +show. If you need more fine-grained control over which view controller is used as presenting view controller, use this method instead.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/newConversationViewController" title="newConversationViewController"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newConversationViewController">+&nbsp;newConversationViewController</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a ClarabridgeChat conversation view controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable UIViewController *)newConversationViewController</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new instance of the ClarabridgeChat conversation view controller class. Returns nil if +initWithSettings:completionHandler: hasn&rsquo;t been called</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You may use this view controller to embed the conversation in a navigation controller, to change the modal presentation style, or display it in any way you choose.</p>
+
+<p>A view controller created in this way is tied to the current user&rsquo;s conversation at creation time. If the current user changes (i.e. by calling +login:jwt:completionHandler: or +logoutWithCompletionHandler:), the view controller is invalidated and must be recreated for the new user.</p>
+
+<p>Note: It is the responsibility of the caller to show, hide, and maintain a reference to this view controller. Calling <code>close</code> will not dismiss a view controller created in this way.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/newConversationViewControllerWithStartingText:" title="newConversationViewControllerWithStartingText:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newConversationViewControllerWithStartingText:">+&nbsp;newConversationViewControllerWithStartingText:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a ClarabridgeChat conversation view controller with prefilled text in the message input.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable UIViewController *)newConversationViewControllerWithStartingText:(nullable NSString *)<em>startingText</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new instance of the ClarabridgeChat conversation view controller class. Returns nil if +initWithSettings:completionHandler: hasn&rsquo;t been called</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You may use this view controller to embed the conversation in a navigation controller, to change the modal presentation style, or display it in any way you choose. The message input will be prefilled with the given <code>startingText</code></p>
+
+<p>A view controller created in this way is tied to the current user&rsquo;s conversation at creation time. If the current user changes (i.e. by calling +login:jwt:completionHandler: or +logoutWithCompletionHandler:), the view controller is invalidated and must be recreated for the new user.</p>
+
+<p>Note: It is the responsibility of the caller to show, hide, and maintain a reference to this view controller. Calling <code>close</code> will not dismiss a view controller created in this way.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setUserFirstName:lastName:" title="setUserFirstName:lastName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setUserFirstName:lastName:">+&nbsp;setUserFirstName:lastName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sets the current user&rsquo;s first and last name to be used as a display name when sending messages.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setUserFirstName:(nullable NSString *)<em>firstName</em> lastName:(nullable NSString *)<em>lastName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>firstName</code></th>
+						<td><p>The first name of the user</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>lastName</code></th>
+						<td><p>The last name of the user</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This is a shortcut for -setFirstName and -setLastName on <code>[CLBUser currentUser]</code></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBUser.html">CLBUser</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversation" title="conversation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversation">+&nbsp;conversation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Accessor method for the current conversation.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable CLBConversation *)conversation</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Current conversation, or nil if +initWithSettings:completionHandler: hasn&rsquo;t been called yet.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBConversation.html">CLBConversation</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversationById:completionHandler:" title="conversationById:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversationById:completionHandler:">+&nbsp;conversationById:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get a conversationById. This is an asynchronous call and requires a callback to retrieve the result.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)conversationById:(NSString *)<em>conversationId</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , CLBConversation *_Nullable conversation ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>the conversationId</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBConversation.html">CLBConversation</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/login:jwt:completionHandler:" title="login:jwt:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/login:jwt:completionHandler:">+&nbsp;login:jwt:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Logs in a new ClarabridgeChat user.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)login:(NSString *)<em>userId</em> jwt:(NSString *)<em>jwt</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userId</code></th>
+						<td><p>The distinct id of the user to login. Must not be nil.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>jwt</code></th>
+						<td><p>jwt used to prove the origin of the login request. Must not be nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You can either use this method to transition from logged out state to logged in, or to switch the currently logged in user to a different one.</p>
+
+<p>User login state is persisted across app launches. You must call +logoutWithCompletionHandler: to reset to anonymous mode.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+
+<p>You may not call login while the conversation screen is shown. Doing so will result in a no-op.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/logoutWithCompletionHandler:" title="logoutWithCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logoutWithCompletionHandler:">+&nbsp;logoutWithCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Logs out the current user.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)logoutWithCompletionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Calling this method while already in anonymous state has no effect.</p>
+
+<p>You may not call logout while the conversation screen is shown. Doing so will result in a no-op.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startConversationWithCompletionHandler:" title="startConversationWithCompletionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startConversationWithCompletionHandler:">+&nbsp;startConversationWithCompletionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Force-start a conversation for the current user</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)startConversationWithCompletionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates a user and conversation on the server, allowing the business to reach out proactively to the user via the public API.</p>
+
+<p>It is strongly recommended to only call this method in the case where a message is likely to be sent.</p>
+
+<p>This method is called automatically when starting a conversation via the -sendMessage: or -sendImage:withProgress:completion: methods, or when a user sends a message via the conversation view controller.</p>
+
+<p>If a conversation already exists for the current user, this call is a no-op.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setConversationInputDisplayed:" title="setConversationInputDisplayed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setConversationInputDisplayed:">+&nbsp;setConversationInputDisplayed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Toggles whether the input bar is displayed on the conversation view.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setConversationInputDisplayed:(BOOL)<em>displayed</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>For some use cases, it can be useful to remove the ability for the user to craft their own messages. For example, if your conversation flow relies solely on postback buttons or quick replies, you may not want to allow the user to send anything other than the presented options.</p>
+
+<p>Passing NO to this method will hide the input bar entirely, including the media button and the text area, thus preventing the user from sending messages themselves.</p>
+
+<p>This method may be called at any time, even when the conversation view is currently displayed.</p>
+
+<p>State is persisted across view controller launches.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setPushToken:" title="setPushToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setPushToken:">+&nbsp;setPushToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the push notification token for this device.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setPushToken:(NSData *)<em>token</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method is called automatically if CLBSettings.enableAppDelegateSwizzling is set to YES.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/handlePushNotification:" title="handlePushNotification:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/handlePushNotification:">+&nbsp;handlePushNotification:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Handle an incoming push notification.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)handlePushNotification:(NSDictionary *)<em>userInfo</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Call this method in your -application:didReceiveRemoteNotification: or -application:didReceiveRemoteNotification:fetchCompletionHandler: callback, passing the userInfo dictionary.</p>
+
+<p>If the push notification did not originate from ClarabridgeChat, this is a no-op.</p>
+
+<p>This method is called automatically if CLBSettings.enableAppDelegateSwizzling is set to YES.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userNotificationCenterDelegate" title="userNotificationCenterDelegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userNotificationCenterDelegate">+&nbsp;userNotificationCenterDelegate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>An object conforming to UNUserNotificationCenterDelegate protocol, used to handle notifications on iOS 10 and above.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable id&lt;UNUserNotificationCenterDelegate&gt;)userNotificationCenterDelegate</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An object conforming to UNUserNotificationCenterDelegate protocol, or nil if +initWithSettings:completionHandler: hasn&rsquo;t been called yet.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Implements both methods of UNUserNotificationCenterDelegate.</p>
+
+<p>By default this object will automatically be set as the UNUserNotificationCenter delegate at init time. ClarabridgeChat will maintain a reference to your app&rsquo;s existing delegate (if applicable), and automatically forward any calls for notifications that did not originate from ClarabridgeChat.</p>
+
+<p>To disable automatic overriding, you must set CLBSettings.enableUserNotificationCenterDelegateOverride to NO before calling +initWithSettings:completionHandler:. If you choose to do so, you must manually forward any relevant calls from your own delegate object. To check the origin of a notification, see the documentation for CLBPushNotificationIdentifier. For example:</p>
+
+<p>-(void)userNotificationCenter:(UNUserNotificationCenter <em>)center willPresentNotification:(UNNotification </em>)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+if(notification.request.content.userInfo[CLBPushNotificationIdentifier] != nil){
+[[ClarabridgeChat userNotificationCenterDelegate] userNotificationCenter:center willPresentNotification:notification withCompletionHandler:completionHandler];
+return;
+}
+}</p>
+
+<p>-(void)userNotificationCenter:(UNUserNotificationCenter <em>)center didReceiveNotificationResponse:(UNNotificationResponse </em>)response withCompletionHandler:(void (^)())completionHandler
+{
+if(response.notification.request.content.userInfo[CLBPushNotificationIdentifier] != nil){
+[[ClarabridgeChat userNotificationCenterDelegate] userNotificationCenter:center didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
+return;
+}
+}</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:" title="handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:">+&nbsp;handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Handle the user input from a reply type notification action.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)handleUserNotificationActionWithIdentifier:(NSString *)<em>identifier</em> forRemoteNotification:(NSDictionary *)<em>userInfo</em> withResponseInfo:(NSDictionary *)<em>responseInfo</em> completionHandler:(void ( ^ ) ( void ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Call this method in your -application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:, passing the action identifier, userInfo dictionary, responseInfo dictionary, and completionHandler callback.</p>
+
+<p>This method will post a message on behalf of the user, with the contents of their inline reply. When the message upload completes (either in success or failure), the completion handler will be called.</p>
+
+<p>If the action identifier does not match CLBUserNotificationReplyActionIdentifier, the completion handler will be called immediately and the notification will be ignored.</p>
+
+<p>This method is called automatically if CLBSettings.enableAppDelegateSwizzling is set to YES.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:" title="handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:">+&nbsp;handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Handle the user input from a reply type notification action. (<b class="deprecated">Deprecated:</b><span class="deprecated"> use +handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler: instead.</span>)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)handleUserNotificationActionWithIdentifier:(NSString *)<em>identifier</em> withResponseInfo:(NSDictionary *)<em>responseInfo</em> completionHandler:(void ( ^ ) ( void ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Call this method in your -application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:, passing the action identifier, responseInfo dictionary, and completionHandler callback.</p>
+
+<p>This method will post a message on behalf of the user, with the contents of their inline reply. When the message upload completes (either in success or failure), the completion handler will be called.</p>
+
+<p>If the action identifier does not match CLBUserNotificationReplyActionIdentifier, the completion handler will be called immediately and the notification will be ignored.</p>
+
+<p>This method is called automatically if CLBSettings.enableAppDelegateSwizzling is set to YES.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userNotificationCategories" title="userNotificationCategories"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userNotificationCategories">+&nbsp;userNotificationCategories</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A set of categories used for handling and displaying ClarabridgeChat user notification actions.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSSet *)userNotificationCategories</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>On iOS 8, returns an empty set.
+On iOS 9, returns a set of UIUserNotificationCategory objects, to be used with <code>UIUserNotificationSettings</code> +settingsForTypes:categories:
+On iOS 10, returns a set of UNNotificationCategory objects, to be used with <code>UNUserNotificationCenter</code> -setNotificationCategories:</p>
+
+<p>Categories are registered automatically if CLBSettings.requestPushPermissionOnFirstMessage is set to YES. If automatic registration is disabled, you must make sure to include the ClarabridgeChat categories in your calls to the above mentioned methods.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBSettings.html">CLBSettings</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/loadConversation:completionHandler:" title="loadConversation:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/loadConversation:completionHandler:">+&nbsp;loadConversation:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Loads a conversation by its ID and sets it as the active conversation for the current session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)loadConversation:(NSString *)<em>conversationId</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>When called, subscribes the current device for push notifications on the passed conversationId, and sets the SDK to send and receive messages for that conversation going forward. Does not unsubscribe for notification on previously loaded conversations.</p>
+
+<p>If the conversation is already set to the passed ID, this call is a no-op.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getConversations:" title="getConversations:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getConversations:">+&nbsp;getConversations:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Loads a list of conversations</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)getConversations:(void ( ^ ) ( NSError *_Nullable , NSArray *_Nullable ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>when called, returns an array of Conversation objects from storage</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateConversationDelegate:" title="updateConversationDelegate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateConversationDelegate:">+&nbsp;updateConversationDelegate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Updating the conversation delegate</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateConversationDelegate:(id&lt;CLBConversationDelegate&gt;)<em>delegate</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>when called, a new delegate is set</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 ClarabridgeChat. All rights reserved. Updated: 2020-09-17</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

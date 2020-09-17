@@ -1,0 +1,130 @@
+/*
+ ClarabridgeChatLocalizable.strings
+ ClarabridgeChat
+ 
+ Copyright (c) 2016 Smooch Technologies. All rights reserved.
+ */
+
+/* Nav bar button, action sheet cancel button */
+"Cancel" = "Відміна";
+
+/* Conversation title */
+"Messages" = "Повідомлення";
+
+/* Conversation header. Uses CFBundleDisplayName */
+"This is the start of your conversation with the %@ team. We'll stay in touch to help you get the most out of your app.\nFeel free to leave us a message about anything that’s on your mind. We’ll get back to your questions, suggestions or anything else as soon as we can." = "Це початок вашого діалогу з командою %@. Ми залишаємось на зв'язку, щоб допомогти вам отримати максимум користі від вашого додатку.\nНе соромтесь ділитись з нами будь-якими своїми ідеями. Ми в самий найближчий час розглянемо усі ваші запитання, зауваження або пропозиції.";
+
+/* Conversation header when there are previous messages */
+"Show more..." = "Показати більше...";
+
+/* Conversation header when fetching previous messages */
+"Retrieving history..." = "Завантаження історії...";
+
+/* Error message shown in conversation view */
+"No Internet connection" = "Немає підключення до Інтернету";
+
+/* Error message shown in conversation view */
+"Could not connect to server" = "Не вдалося підключитися до сервера";
+
+/* Error message shown in conversation view */
+"An error occurred while processing your action. Please try again." = "Виникла помилка при обробці запиту. Будь ласка, спробуйте пізніше.";
+
+/* Error message shown in conversation view */
+"Reconnecting..." = "Повторне підключення...";
+
+/* Fallback used by the in app notification when no message author name is found */
+"%@ Team" = "Команда %@";
+
+/* Conversation send button */
+"Send" = "Відправити";
+
+/* Conversation text input place holder */
+"Type a message..." = "Введіть повідомлення";
+
+/* Conversation nav bar left button */
+"Done" = "Готово";
+
+/* Failure text for chat messages that fail to upload */
+"Message not delivered. Tap to retry." = "Повідомлення не доставлено. Нажміть для повторної спроби.";
+
+/* Status text for chat messages */
+"Sending..." = "Відправка...";
+
+/* Action sheet button label */
+"Take Photo" = "Зробити фото";
+
+/* Action sheet button label */
+"Use Last Photo Taken" = "Використати саме недавнє фото";
+
+/* Action sheet button label */
+"Choose from Library" = "Вибрати з фотогалереї";
+
+/* Action sheet button label */
+"Resend" = "Відправити повторно";
+
+/* Action sheet button label */
+"View Image" = "Переглянути фото";
+
+/* Error displayed in message bubble if image failed to download */
+"Tap to reload image" = "Нажміть для посторноЇ спроби завантажити фото";
+
+/* Error title when user selects "use latest photo", but no photos exist */
+"No Photos Found" = "Не знайдено недавніх фото";
+
+/* Error description when user selects "use latest photo", but no photos exist */
+"Your photo library seems to be empty." = "Схоже, у фотогалереї немае жодного фото";
+
+/* Error title when user attempts to upload a photo but Photos access is denied */
+"Can't Access Photos" = "Немає доступу до фотогалереї";
+
+/* Error description when user attempts to upload a photo but Photos access is denied */
+"Make sure to allow photos access for this app in your privacy settings." = "Впевніться, що для цього додатку ви дозволили доступ до фотогалереї у налаштуваннях приватності.";
+
+/* Error title when user attempts to take a photo but camera access is denied */
+"Can't Access Camera" = "Немає доступу до камери";
+
+/* Error description when user attempts to take a photo but camera access is denied */
+"Make sure to allow camera access for this app in your privacy settings." = "Впевніться, що для цього додатку ви дозволили доступ до камери у налаштуваннях приватності.";
+
+/* Generic error title when user attempts to upload an image and it fails for an unknown reason */
+"Can't Retrieve Photo" = "Помилка при завантаженні фото";
+
+/* Generic error description when user attempts to upload an image and it fails for an unknown reason */
+"Please try again or select a new photo." = "Будь ласка, спробуйте ще раз, або виберіть інше фото.";
+
+/* UIAlertView button title to link to Settings app */
+"Settings" = "Налаштування";
+
+/* UIAlertView button title to dismiss */
+"Dismiss" = "Закрити";
+
+/* Title for payment button */
+"Pay Now" = "Заплатити зараз";
+
+/* Title for message action when payment completed */
+"Payment Completed" = "Оплата пройшла успішно";
+
+/*
+ Instructions for entering credit card info. Parameters are as follows:
+ 1. Amount (e.g. 50.45)
+ 2. Currency (e.g. USD)
+ 3. App name (Uses CFBundleDisplayName)
+ */
+"Enter your credit card to send $%@ %@ securely to %@" = "Введіть дані вашої кредитної карти, щоб перерахувати %@ %@ для %@";
+
+/* Error text when payment fails */
+"An error occurred while processing the card. Please try again or use a different card." = "При обробці карти виникла помилка. Будь ласка, спробуйте ще раз або скористайтеся іншою картою.";
+
+/* Button label for saved credit card view */
+"Change Credit Card" = "Змінити кредитну карту";
+
+/*
+ Information label for saved credit card view. Parameters are as follows:
+ 1. Amount (e.g. 50.45)
+ 2. Currency (e.g. USD)
+ 3. App name (Uses CFBundleDisplayName)
+ */
+"You're about to send $%@ %@ securely to %@" = "Ви збираєетесь перерахувати %@ %@ до %@";
+
+/* Title for user notification action */
+"Reply" = "Відповісти";

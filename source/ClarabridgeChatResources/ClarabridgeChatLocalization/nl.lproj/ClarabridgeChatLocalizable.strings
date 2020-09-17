@@ -1,0 +1,145 @@
+/*
+ ClarabridgeChatLocalizable.strings
+ ClarabridgeChat
+
+ Copyright (c) 2017 Smooch Technologies. All rights reserved.
+ */
+
+/* Nav bar button, action sheet cancel button */
+"Cancel" = "Annuleren";
+
+/* Conversation title */
+"Messages" = "Berichten";
+
+/* Conversation header. Uses CFBundleDisplayName */
+"This is the start of your conversation with the %@ team. We'll stay in touch to help you get the most out of your app.\nFeel free to leave us a message about anything that’s on your mind. We’ll get back to your questions, suggestions or anything else as soon as we can." = "Dit is het begin van uw gesprek met het %@ team. We houden contact om u te helpen het meest uit uw app te halen.\nVoel u vrij om ons een bericht te sturen. We proberen zo snel mogelijk te reageren op uw vragen, suggesties of andere opmerkingen.";
+
+/* Conversation header when there are previous messages */
+"Show more..." = "Laat meer zien...";
+
+/* Conversation header when fetching previous messages */
+"Retrieving history..." = "Geschiedenis ophalen...";
+
+/* Error message shown in conversation view */
+"No Internet connection" = "Geen internetverbinding";
+
+/* Error message shown in conversation view */
+"Could not connect to server" = "Kan niet verbinden met de server";
+
+/* Error message shown in conversation view */
+"An error occurred while processing your action. Please try again." = "Er trad een fout op tijdens het verwerken van uw actie. Probeer het opnieuw.";
+
+/* Error message shown in conversation view */
+"Reconnecting..." = "Opnieuw verbinden...";
+
+/* Fallback used by the in app notification when no message author name is found */
+"%@ Team" = "%@ team";
+
+/* Conversation send button */
+"Send" = "Verzenden";
+
+/* Conversation text input place holder */
+"Type a message..." = "Typ een bericht...";
+
+/* Conversation nav bar left button */
+"Done" = "Gereed";
+
+/* Failure text for chat messages that fail to upload */
+"Message not delivered. Tap to retry." = "Bericht niet geleverd. Tik om het nog eens te proberen";
+
+/* Status text for chat messages */
+"Sending..." = "Verzenden...";
+
+/* Action sheet button label */
+"Take Photo" = "Neem foto";
+
+/* Action sheet button label */
+"Use Last Photo Taken" = "Gebruik laatst gemaakte foto";
+
+/* Action sheet button label */
+"Choose from Library" = "Kies uit bibliotheek";
+
+/* Action sheet button label */
+"Resend" = "Opnieuw verzenden";
+
+/* Action sheet button label */
+"View Image" = "Bekijk afbeelding";
+
+/* Error displayed in message bubble if image failed to download */
+"Tap to reload image" = "Tik om de afbeelding te herladen";
+
+/* Error displayed as message if location sending fails */
+"Could not send location" = "Kon locatie niet versturen";
+
+/* Error title when user selects "use latest photo", but no photos exist */
+"No Photos Found" = "Geen foto's gevonden";
+
+/* Error description when user selects "use latest photo", but no photos exist */
+"Your photo library seems to be empty." = "Uw fotobibliotheek lijkt leeg te zijn.";
+
+/* Error title when user attempts to upload a photo but Photos access is denied */
+"Can't Access Photos" = "Geen toegang tot foto's";
+
+/* Error description when user attempts to upload a photo but Photos access is denied */
+"Make sure to allow photos access for this app in your privacy settings." = "Zorg ervoor dat de app toegang heeft tot foto's in de privacy-instellingen.";
+
+/* Error title when user attempts to take a photo but camera access is denied */
+"Can't Access Camera" = "Geen toegang tot de camera";
+
+/* Error description when user attempts to take a photo but camera access is denied */
+"Make sure to allow camera access for this app in your privacy settings." = "Zorg ervoor dat de app toegang heeft tot de camera in de pricacy-instellingen.";
+
+/* Generic error title when user attempts to upload an image and it fails for an unknown reason */
+"Can't Retrieve Photo" = "Kan foto niet ophalen";
+
+/* Generic error description when user attempts to upload an image and it fails for an unknown reason */
+"Please try again or select a new photo." = "Probeer het opnieuw of kies een nieuwe foto.";
+
+/* Error title when user attempts to send the current location but location access is denied */
+"Can't Access Location" = "Geen toegang tot locatie";
+
+/* Error description when user attempts to send the current location but location access is denied */
+"Make sure to allow location access for this app in your privacy settings." = "Zorg ervoor dat de app toegang heeft tot uw locatie in de privacy-instellingen.";
+
+/* UIAlertView button title to link to Settings app */
+"Settings" = "Instellingen";
+
+/* UIAlertView button title to dismiss */
+"Dismiss" = "Annuleren";
+
+/* Title for payment button */
+"Pay Now" = "Betaal nu";
+
+/* Title for message action when payment completed */
+"Payment Completed" = "Betaling voltooid";
+
+/*
+ Instructions for entering credit card info. Parameters are as follows:
+ 1. Amount (e.g. 50.45)
+ 2. Currency (e.g. USD)
+ 3. App name (Uses CFBundleDisplayName)
+*/
+"Enter your credit card to send $%@ %@ securely to %@" = "Voer uw credit card in om $%@ %@ veilig over te maken naar %@";
+
+/* Error text when payment fails */
+"An error occurred while processing the card. Please try again or use a different card." = "Er trad een fout op tijdens het verwerken van de kaart. Probeer het opnieuw of gebruik een andere kaart.";
+
+/* Button label for saved credit card view */
+"Change Credit Card" = "Wijzig credit card";
+
+/*
+ Information label for saved credit card view. Parameters are as follows:
+ 1. Amount (e.g. 50.45)
+ 2. Currency (e.g. USD)
+ 3. App name (Uses CFBundleDisplayName)
+ */
+"You're about to send $%@ %@ securely to %@" = "Je staat op het punt om $%@ %@ veilig over te maken naar %@";
+
+/* Title for user notification action */
+"Reply" = "Beantwoorden";
+
+/* Date format used for message grouping headers on the conversation screen */
+"MMMM d, h:mm a" = "MMMM d, h:mm a";
+
+/* Date format used for message timestamps on the conversation screen */
+"hh:mm a" = "hh:mm a";

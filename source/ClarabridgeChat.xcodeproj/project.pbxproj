@@ -1,0 +1,2126 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		277618A81C1364C100056B3D /* DynamicFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 277618A91C1364C100056B3D /* Build configuration list for PBXAggregateTarget "DynamicFramework" */;
+			buildPhases = (
+				277618AC1C1364C800056B3D /* Build Universal Library */,
+			);
+			dependencies = (
+				277618AE1C1364E200056B3D /* PBXTargetDependency */,
+			);
+			name = DynamicFramework;
+			productName = DynamicFramework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0F07EFA123D8A68D00D82697 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0F2F493D23E0813F0037AB29 /* CLBDependencyManager+Private.h in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F493C23E0813F0037AB29 /* CLBDependencyManager+Private.h */; };
+		0F78C01A23EADF2300CC3A0F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0F78C01C23EB003D00CC3A0F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0F8946B823F2C80500EF35D7 /* CLBHeaderFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F8946B623F2C80500EF35D7 /* CLBHeaderFactory.h */; };
+		0F8946B923F2C80500EF35D7 /* CLBHeaderFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8946B723F2C80500EF35D7 /* CLBHeaderFactory.m */; };
+		0F8946BC23F448EB00EF35D7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0F8946BE23F5623A00EF35D7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0F9336CC242E26D0002C30A0 /* CLBParticipant+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9336CB242E23ED002C30A0 /* CLBParticipant+Private.h */; };
+		0FA89AE724183F170009439D /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0FC45EA423E98DA400B76978 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0FC45EA623E9C09900B76978 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0FF3274823FFE00A0066DC9E /* CLBConfigFetchSchedulerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF3274723FFE00A0066DC9E /* CLBConfigFetchSchedulerDelegate.h */; };
+		0FF475A823CF66CA005DD175 /* CLBConversationList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF475A623CF66C9005DD175 /* CLBConversationList.h */; };
+		0FF475A923CF66CA005DD175 /* CLBConversationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF475A723CF66C9005DD175 /* CLBConversationList.m */; };
+		0FF475AC23CF7D76005DD175 /* CLBConversationListStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF475AA23CF7D76005DD175 /* CLBConversationListStorage.h */; };
+		0FF475AD23CF7D76005DD175 /* CLBConversationListStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF475AB23CF7D76005DD175 /* CLBConversationListStorage.m */; };
+		0FF7547123D70D4200D63DC8 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		0FF7547823D72C0000D63DC8 /* CLBConversationPersistence.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FF7547723D72C0000D63DC8 /* CLBConversationPersistence.h */; };
+		1C2728372396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C2728352396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.h */; };
+		1C2728382396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2728362396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.m */; };
+		1C38551423CDFA7D00C26ACD /* CLBEventTypeFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C38551223CDFA7D00C26ACD /* CLBEventTypeFactory.h */; };
+		1C38551523CDFA7D00C26ACD /* CLBEventTypeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C38551323CDFA7D00C26ACD /* CLBEventTypeFactory.m */; };
+		1C4A175C2387EB0700238AB3 /* CLBConversationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C4A175A2387EB0700238AB3 /* CLBConversationController.h */; };
+		1C4A175D2387EB0700238AB3 /* CLBConversationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4A175B2387EB0700238AB3 /* CLBConversationController.m */; };
+		1C580CD6241A7C7400C311BE /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C60C4DC238FEF53002AB459 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C68F6592425279200F658A2 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C77349E23CF24170036C74A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C7734A323D5B6D70036C74A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C7734A523D5B94E0036C74A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C7734A723D5B9980036C74A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C7734A923D611640036C74A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C7734AF23E087C90036C74A /* CLBConversationStorageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C7734AD23E087C90036C74A /* CLBConversationStorageManager.h */; };
+		1C7734B023E087C90036C74A /* CLBConversationStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7734AE23E087C90036C74A /* CLBConversationStorageManager.m */; };
+		1C9A66B623FAF92F007FD80D /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1C9A66B923FD895E007FD80D /* CLBParticipant.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9A66B723FD895E007FD80D /* CLBParticipant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C9A66BA23FD895E007FD80D /* CLBParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9A66B823FD895E007FD80D /* CLBParticipant.m */; };
+		1CAA4B4A23F2F57900B708B1 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1CAA4B4C23F2F6ED00B708B1 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1CAA4B4E23F2F71E00B708B1 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1CBE701D238830C000DBFE23 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1CF2D36023EDA9C200441064 /* CLBConversationSynchronizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CF2D35E23EDA9C200441064 /* CLBConversationSynchronizer.h */; };
+		1CF2D36123EDA9C200441064 /* CLBConversationSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF2D35F23EDA9C200441064 /* CLBConversationSynchronizer.m */; };
+		2705BD5822737952002A1506 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2709B9B419ABAAE900FDDE2B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27127BE61B165B3B004EAA60 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD301987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD331987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD341987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD3D1987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD3E1987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD421987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD431987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD491987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2717DD4A1987D816006F2698 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		271EBDFC1D92E4BC00075AEA /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2726476A1DFEED9900B21BC7 /* CLBRepliesView.h in Headers */ = {isa = PBXBuildFile; fileRef = 272647681DFEED9900B21BC7 /* CLBRepliesView.h */; };
+		2726476B1DFEED9900B21BC7 /* CLBRepliesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272647691DFEED9900B21BC7 /* CLBRepliesView.m */; };
+		2726DE411F9A394600A57F3F /* CLBPhotoConfirmationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2726DE3F1F9A394600A57F3F /* CLBPhotoConfirmationViewController.h */; };
+		2726DE421F9A394600A57F3F /* CLBPhotoConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2726DE401F9A394600A57F3F /* CLBPhotoConfirmationViewController.m */; };
+		2728F4601F349ABA0006C676 /* CLBUserSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 2728F45E1F349ABA0006C676 /* CLBUserSettings.h */; };
+		2728F4611F349ABA0006C676 /* CLBUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2728F45F1F349ABA0006C676 /* CLBUserSettings.m */; };
+		272DB28A1DDB4EE00070D43E /* CLBConversationActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 272DB2881DDB4EE00070D43E /* CLBConversationActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		272DB28B1DDB4EE00070D43E /* CLBConversationActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 272DB2891DDB4EE00070D43E /* CLBConversationActivity.m */; };
+		272DB28D1DDB546D0070D43E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27305C5F1976CD8C0044E238 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27327B101C13216700A54C65 /* CLBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD821987DDE4006F2698 /* CLBMessage.m */; };
+		27327B111C13216700A54C65 /* CLBConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD841987DDE4006F2698 /* CLBConversation.m */; };
+		27327B121C13216700A54C65 /* CLBConversationHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD861987DDE4006F2698 /* CLBConversationHeaderView.m */; };
+		27327B131C13216700A54C65 /* CLBConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD881987DDE4006F2698 /* CLBConversationViewController.m */; };
+		27327B141C13216700A54C65 /* CLBConversationFetchScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B9B619ABB02700FDDE2B /* CLBConversationFetchScheduler.m */; };
+		27327B151C13216700A54C65 /* CLBAvatarImageLoaderStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C7CBF1A09784B00DE2410 /* CLBAvatarImageLoaderStrategy.m */; };
+		27327B161C13216700A54C65 /* CLBTextViewVendingMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792D7311A2CB4A5000D6ECD /* CLBTextViewVendingMachine.m */; };
+		27327B171C13216700A54C65 /* CLBConversationMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EDD4291BEBD35400B03DEF /* CLBConversationMonitor.m */; };
+		27327B181C13217400A54C65 /* CLBMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD811987DDE4006F2698 /* CLBMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27327B191C13217400A54C65 /* CLBMessage+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D0CCE11AC9913200410E2A /* CLBMessage+Private.h */; };
+		27327B1A1C13217400A54C65 /* CLBConversation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD831987DDE4006F2698 /* CLBConversation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27327B1B1C13217400A54C65 /* CLBConversation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BEBFBF19F5438E0099E295 /* CLBConversation+Private.h */; };
+		27327B1C1C13217400A54C65 /* CLBConversationHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD851987DDE4006F2698 /* CLBConversationHeaderView.h */; };
+		27327B1D1C13217400A54C65 /* CLBConversationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD871987DDE4006F2698 /* CLBConversationViewController.h */; };
+		27327B1E1C13217400A54C65 /* CLBConversationFetchScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2709B9B519ABB02700FDDE2B /* CLBConversationFetchScheduler.h */; };
+		27327B1F1C13217400A54C65 /* CLBAvatarImageLoaderStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 276C7CBE1A09784B00DE2410 /* CLBAvatarImageLoaderStrategy.h */; };
+		27327B201C13217400A54C65 /* CLBTextViewVendingMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 2792D7301A2CB4A5000D6ECD /* CLBTextViewVendingMachine.h */; };
+		27327B211C13217400A54C65 /* CLBConversationMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EDD4281BEBD35400B03DEF /* CLBConversationMonitor.h */; };
+		27327B221C13217D00A54C65 /* CLBApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F62A0E19DB32670095390A /* CLBApiClient.h */; };
+		27327B231C13217D00A54C65 /* CLBJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F62A1019DB32670095390A /* CLBJSONSerializer.h */; };
+		27327B241C13217D00A54C65 /* CLBQueryStringSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F62A1219DB32670095390A /* CLBQueryStringSerializer.h */; };
+		27327B251C13218D00A54C65 /* CLBApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F62A0F19DB32670095390A /* CLBApiClient.m */; };
+		27327B261C13218D00A54C65 /* CLBJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F62A1119DB32670095390A /* CLBJSONSerializer.m */; };
+		27327B271C13218D00A54C65 /* CLBQueryStringSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F62A1319DB32670095390A /* CLBQueryStringSerializer.m */; };
+		27327B281C13219A00A54C65 /* CLBAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD8A1987DDE4006F2698 /* CLBAppDelegate.h */; };
+		27327B291C13219A00A54C65 /* CLBAppDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD8C1987DDE4006F2698 /* CLBAppDelegateProxy.h */; };
+		27327B2A1C13219A00A54C65 /* CLBInAppNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD8E1987DDE4006F2698 /* CLBInAppNotificationViewController.h */; };
+		27327B2B1C13219A00A54C65 /* CLBInAppNotificationWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD901987DDE4006F2698 /* CLBInAppNotificationWindow.h */; };
+		27327B2C1C13219A00A54C65 /* CLBPushNotificationFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD941987DDE4006F2698 /* CLBPushNotificationFilter.h */; };
+		27327B2D1C13219A00A54C65 /* CLBInAppNotificationHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DD961987DDE4006F2698 /* CLBInAppNotificationHandler.h */; };
+		27327B2E1C13219F00A54C65 /* CLBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD8B1987DDE4006F2698 /* CLBAppDelegate.m */; };
+		27327B301C13219F00A54C65 /* CLBAppDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD8D1987DDE4006F2698 /* CLBAppDelegateProxy.m */; };
+		27327B321C13219F00A54C65 /* CLBInAppNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD8F1987DDE4006F2698 /* CLBInAppNotificationViewController.m */; };
+		27327B341C13219F00A54C65 /* CLBInAppNotificationWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD911987DDE4006F2698 /* CLBInAppNotificationWindow.m */; };
+		27327B361C13219F00A54C65 /* CLBPushNotificationFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD951987DDE4006F2698 /* CLBPushNotificationFilter.m */; };
+		27327B381C13219F00A54C65 /* CLBInAppNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DD971987DDE4006F2698 /* CLBInAppNotificationHandler.m */; };
+		27327B391C1321BE00A54C65 /* CLBRemoteObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDA21987DDE4006F2698 /* CLBRemoteObject.h */; };
+		27327B3A1C1321BE00A54C65 /* CLBRemoteObjectSynchronizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDA31987DDE4006F2698 /* CLBRemoteObjectSynchronizer.h */; };
+		27327B3B1C1321BE00A54C65 /* CLBRemoteOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 279617E3199508300013E60B /* CLBRemoteOperation.h */; };
+		27327B3C1C1321BE00A54C65 /* CLBConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDA51987DDE4006F2698 /* CLBConfig.h */; };
+		27327B3D1C1321BE00A54C65 /* CLBRemotePushToken.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B1910A1BBB1417003FEC41 /* CLBRemotePushToken.h */; };
+		27327B3E1C1321BE00A54C65 /* CLBConfigFetchScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769BB9E19A7C7F20016FF2C /* CLBConfigFetchScheduler.h */; };
+		27327B3F1C1321BE00A54C65 /* CLBRemoteOperationScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2709B9AF19ABA66F00FDDE2B /* CLBRemoteOperationScheduler.h */; };
+		27327B401C1321BE00A54C65 /* CLBRemoteResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 27573C1719C9BB0000868657 /* CLBRemoteResponse.h */; };
+		27327B411C1321BE00A54C65 /* CLBUserSynchronizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CAF5CB1A9D1BEC003583CE /* CLBUserSynchronizer.h */; };
+		27327B421C1321C800A54C65 /* CLBRemoteObjectSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DDA41987DDE4006F2698 /* CLBRemoteObjectSynchronizer.m */; };
+		27327B431C1321C800A54C65 /* CLBRemoteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 279617E4199508300013E60B /* CLBRemoteOperation.m */; };
+		27327B441C1321C800A54C65 /* CLBConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DDA61987DDE4006F2698 /* CLBConfig.m */; };
+		27327B451C1321C800A54C65 /* CLBRemotePushToken.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B1910D1BBB14D5003FEC41 /* CLBRemotePushToken.m */; };
+		27327B461C1321C800A54C65 /* CLBConfigFetchScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769BB9F19A7C7F20016FF2C /* CLBConfigFetchScheduler.m */; };
+		27327B471C1321C800A54C65 /* CLBRemoteOperationScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B9B019ABA66F00FDDE2B /* CLBRemoteOperationScheduler.m */; };
+		27327B481C1321C800A54C65 /* CLBRemoteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 27573C1819C9BB0000868657 /* CLBRemoteResponse.m */; };
+		27327B491C1321C800A54C65 /* CLBUserSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CAF5CC1A9D1BEC003583CE /* CLBUserSynchronizer.m */; };
+		27327B501C1321F500A54C65 /* CLBLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDBE1987DDE4006F2698 /* CLBLocalization.h */; };
+		27327B511C1321F500A54C65 /* CLBViewAboveKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 279617DF1993FD500013E60B /* CLBViewAboveKeyboard.h */; };
+		27327B531C1321F500A54C65 /* CLBSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDCA1987DDE4006F2698 /* CLBSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27327B541C1321F500A54C65 /* CLBSettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDCC1987DDE4006F2698 /* CLBSettings+Private.h */; };
+		27327B551C1321F500A54C65 /* CLBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDD51987DDE4006F2698 /* CLBUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27327B561C1321F500A54C65 /* CLBUser+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 278F28A519A62A11007F9110 /* CLBUser+Private.h */; };
+		27327B571C1321F500A54C65 /* CLBInnerUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 278F28A919A6310C007F9110 /* CLBInnerUser.h */; };
+		27327B581C1321F500A54C65 /* CLBUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDD91987DDE4006F2698 /* CLBUtility.h */; };
+		27327B591C1321F500A54C65 /* ClarabridgeChat+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDE11987DDE4006F2698 /* ClarabridgeChat+Private.h */; };
+		27327B5A1C1321F500A54C65 /* CLBDependencyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C06F3C1AD56BB700650644 /* CLBDependencyManager.h */; };
+		27327B5B1C1321F500A54C65 /* CLBMessageAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 27127BE01B14BD50004EAA60 /* CLBMessageAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27327B5C1C1321F500A54C65 /* CLBMessageAction+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 27127BE41B1655D9004EAA60 /* CLBMessageAction+Private.h */; };
+		27327B5E1C1321F500A54C65 /* CLBUserLifecycleManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2786492F1B74E47D0071B524 /* CLBUserLifecycleManager.h */; };
+		27327B5F1C1321F500A54C65 /* CLBImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 27064B691BCA9C3C001D4718 /* CLBImageLoader.h */; };
+		27327B601C1321F500A54C65 /* CLBErrorMessageOverlay.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AB5B501BCAAFB3009E7C7C /* CLBErrorMessageOverlay.h */; };
+		27327B611C1321F500A54C65 /* CLBInAppNotificationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AB5B521BCAAFB3009E7C7C /* CLBInAppNotificationView.h */; };
+		27327B621C1321F500A54C65 /* CLBXCharacterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27AB5B541BCAAFB3009E7C7C /* CLBXCharacterView.h */; };
+		27327B631C1321F600A54C65 /* CLBImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A11B211BCC038C0031D31B /* CLBImagePickerController.h */; };
+		27327B651C13220E00A54C65 /* CLBLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DDBF1987DDE4006F2698 /* CLBLocalization.m */; };
+		27327B661C13220E00A54C65 /* CLBViewAboveKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 279617E01993FD500013E60B /* CLBViewAboveKeyboard.m */; };
+		27327B681C13220E00A54C65 /* CLBSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DDCB1987DDE4006F2698 /* CLBSettings.m */; };
+		27327B691C13220E00A54C65 /* CLBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DDD61987DDE4006F2698 /* CLBUser.m */; };
+		27327B6A1C13220E00A54C65 /* CLBInnerUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 278F28AA19A6310C007F9110 /* CLBInnerUser.m */; };
+		27327B6B1C13220E00A54C65 /* CLBUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DDDA1987DDE4006F2698 /* CLBUtility.m */; };
+		27327B6C1C13220E00A54C65 /* ClarabridgeChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2717DDE01987DDE4006F2698 /* ClarabridgeChat.m */; };
+		27327B6D1C13220E00A54C65 /* CLBDependencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C06F3D1AD56BB700650644 /* CLBDependencyManager.m */; };
+		27327B6E1C13220E00A54C65 /* CLBMessageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 27127BE11B14BD50004EAA60 /* CLBMessageAction.m */; };
+		27327B701C13220E00A54C65 /* CLBUserLifecycleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 278649301B74E47D0071B524 /* CLBUserLifecycleManager.m */; };
+		27327B711C13220E00A54C65 /* CLBImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27064B6A1BCA9C3C001D4718 /* CLBImageLoader.m */; };
+		27327B721C13220E00A54C65 /* CLBErrorMessageOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AB5B511BCAAFB3009E7C7C /* CLBErrorMessageOverlay.m */; };
+		27327B731C13220E00A54C65 /* CLBInAppNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AB5B531BCAAFB3009E7C7C /* CLBInAppNotificationView.m */; };
+		27327B741C13220E00A54C65 /* CLBXCharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AB5B551BCAAFB3009E7C7C /* CLBXCharacterView.m */; };
+		27327B751C13220E00A54C65 /* CLBImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A11B221BCC038C0031D31B /* CLBImagePickerController.m */; };
+		27327B761C13221A00A54C65 /* CLBBSMobileProvision.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C22F5E1B70099300087A1B /* CLBBSMobileProvision.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		27327B771C13221D00A54C65 /* CLBBSMobileProvision.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C22F5D1B70099300087A1B /* CLBBSMobileProvision.h */; };
+		27327B781C13222300A54C65 /* CLBMZFayeClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EDD4171BE8F68500B03DEF /* CLBMZFayeClient.h */; };
+		27327B791C13222300A54C65 /* CLBMZFayeMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EDD4191BE8F68500B03DEF /* CLBMZFayeMessage.h */; };
+		27327B7A1C13222A00A54C65 /* CLBMZFayeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EDD4181BE8F68500B03DEF /* CLBMZFayeClient.m */; };
+		27327B7B1C13222A00A54C65 /* CLBMZFayeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EDD41A1BE8F68500B03DEF /* CLBMZFayeMessage.m */; };
+		27327B7C1C13222D00A54C65 /* CLBAFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2745ECCB19D9F3DD00578B84 /* CLBAFNetworkReachabilityManager.m */; };
+		27327B7D1C13222F00A54C65 /* CLBAFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2745ECCA19D9F3DD00578B84 /* CLBAFNetworkReachabilityManager.h */; };
+		27327B7E1C13223300A54C65 /* CLBSRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 27EDD4201BE8F6F500B03DEF /* CLBSRWebSocket.h */; };
+		27327B7F1C13223600A54C65 /* CLBSRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EDD4211BE8F6F500B03DEF /* CLBSRWebSocket.m */; };
+		27327B801C13224600A54C65 /* CLBSOPhotoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272E04C919536CCD0071D0CA /* CLBSOPhotoMessageCell.m */; };
+		27327B811C13224600A54C65 /* CLBSOTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272E04CB19536CCD0071D0CA /* CLBSOTextMessageCell.m */; };
+		27327B821C13224600A54C65 /* CLBSOVideoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272E04CD19536CCD0071D0CA /* CLBSOVideoMessageCell.m */; };
+		27327B841C13224600A54C65 /* CLBSOImageBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277BCDFE1950AFD700413CF5 /* CLBSOImageBrowserView.m */; };
+		27327B851C13224600A54C65 /* CLBSOMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277BCE011950AFD700413CF5 /* CLBSOMessageCell.m */; };
+		27327B861C13224600A54C65 /* CLBSOMessageInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277BCE031950AFD700413CF5 /* CLBSOMessageInputView.m */; };
+		27327B871C13224600A54C65 /* CLBSOMessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277BCE081950AFD700413CF5 /* CLBSOMessagingViewController.m */; };
+		27327B881C13224600A54C65 /* CLBSOPlaceholderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277BCE0A1950AFD700413CF5 /* CLBSOPlaceholderedTextView.m */; };
+		27327B891C13225300A54C65 /* CLBSOPhotoMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 272E04C819536CCD0071D0CA /* CLBSOPhotoMessageCell.h */; };
+		27327B8A1C13225300A54C65 /* CLBSOTextMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 272E04CA19536CCD0071D0CA /* CLBSOTextMessageCell.h */; };
+		27327B8B1C13225300A54C65 /* CLBSOVideoMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 272E04CC19536CCD0071D0CA /* CLBSOVideoMessageCell.h */; };
+		27327B8D1C13225300A54C65 /* CLBSOImageBrowserView.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCDFD1950AFD700413CF5 /* CLBSOImageBrowserView.h */; };
+		27327B8E1C13225300A54C65 /* CLBSOMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCDFF1950AFD700413CF5 /* CLBSOMessage.h */; };
+		27327B8F1C13225300A54C65 /* CLBSOMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCE001950AFD700413CF5 /* CLBSOMessageCell.h */; };
+		27327B901C13225300A54C65 /* CLBSOMessageInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCE021950AFD700413CF5 /* CLBSOMessageInputView.h */; };
+		27327B911C13225300A54C65 /* CLBSOMessagingDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCE051950AFD700413CF5 /* CLBSOMessagingDataSource.h */; };
+		27327B921C13225300A54C65 /* CLBSOMessagingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCE061950AFD700413CF5 /* CLBSOMessagingDelegate.h */; };
+		27327B931C13225300A54C65 /* CLBSOMessagingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCE071950AFD700413CF5 /* CLBSOMessagingViewController.h */; };
+		27327B941C13225300A54C65 /* CLBSOPlaceholderedTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 277BCE091950AFD700413CF5 /* CLBSOPlaceholderedTextView.h */; };
+		27327B951C13225E00A54C65 /* CLBRTSpinKitThreeBounceAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = FED1FC9719D5FA7100E05A03 /* CLBRTSpinKitThreeBounceAnimation.h */; };
+		27327B961C13225E00A54C65 /* CLBRTSpinKitAnimating.h in Headers */ = {isa = PBXBuildFile; fileRef = FED1FC9F19D5FA7100E05A03 /* CLBRTSpinKitAnimating.h */; };
+		27327B971C13225E00A54C65 /* CLBRTSpinKitUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = FED1FCA019D5FA7100E05A03 /* CLBRTSpinKitUtils.h */; };
+		27327B981C13225E00A54C65 /* CLBRTSpinKitView.h in Headers */ = {isa = PBXBuildFile; fileRef = FED1FCA219D5FA7100E05A03 /* CLBRTSpinKitView.h */; };
+		27327B991C13226800A54C65 /* CLBRTSpinKitThreeBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = FED1FC9819D5FA7100E05A03 /* CLBRTSpinKitThreeBounceAnimation.m */; };
+		27327B9A1C13226800A54C65 /* CLBRTSpinKitUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FED1FCA119D5FA7100E05A03 /* CLBRTSpinKitUtils.m */; };
+		27327B9B1C13226800A54C65 /* CLBRTSpinKitView.m in Sources */ = {isa = PBXBuildFile; fileRef = FED1FCA319D5FA7100E05A03 /* CLBRTSpinKitView.m */; };
+		2739F935206C389100A6B07B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2745ECD419DAF74D00578B84 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2745ECD619DB08C000578B84 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27465E381E451345001F6C2D /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2748DB4E1F7A8FE80009A7B5 /* CLBNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 2748DB4C1F7A8FE80009A7B5 /* CLBNavigationBar.h */; };
+		2748DB4F1F7A8FE80009A7B5 /* CLBNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748DB4D1F7A8FE80009A7B5 /* CLBNavigationBar.m */; };
+		2748DB571F7C30F10009A7B5 /* CLBWebviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2748DB551F7C30F10009A7B5 /* CLBWebviewViewController.h */; };
+		2748DB581F7C30F10009A7B5 /* CLBWebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748DB561F7C30F10009A7B5 /* CLBWebviewViewController.m */; };
+		274A29142024F3EC0061DE71 /* CLBActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 274A29122024F3EC0061DE71 /* CLBActionButton.h */; };
+		274A29152024F3EC0061DE71 /* CLBActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A29132024F3EC0061DE71 /* CLBActionButton.m */; };
+		274D444B1D9C45B200E3FE0C /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		274EA9C21DDE11440029487C /* CLBSOActivityMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EA9BF1DDE0B330029487C /* CLBSOActivityMessageCell.h */; };
+		274EA9C31DDE11E90029487C /* CLBSOActivityMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274EA9C01DDE0B330029487C /* CLBSOActivityMessageCell.m */; };
+		274EA9C61DDF67EC0029487C /* CLBConversationActivity+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 274EA9C41DDF65BB0029487C /* CLBConversationActivity+Private.h */; };
+		27573C1C19C9BB9400868657 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2758F78A1F840D3D00D6E2B6 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2769BBA519AB78550016FF2C /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		276A497F2278E91D00A604F8 /* CLBAuthorInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 276A497D2278E91D00A604F8 /* CLBAuthorInfo.h */; };
+		276A49812278E91D00A604F8 /* CLBAuthorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 276A497E2278E91D00A604F8 /* CLBAuthorInfo.m */; };
+		276A49832278EAEE00A604F8 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		277618B21C13666700056B3D /* defaultAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 4960177D1A01999B0022969F /* defaultAvatar.png */; };
+		277618B31C13666700056B3D /* defaultAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4960177E1A01999B0022969F /* defaultAvatar@2x.png */; };
+		277618B41C13666700056B3D /* defaultAvatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D14BC31A091B3000D08BF5 /* defaultAvatar@3x.png */; };
+		277618B51C13666700056B3D /* ios7-icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC56AE06184E2CA30055F2FF /* ios7-icon.ttf */; };
+		277618B61C13666B00056B3D /* ClarabridgeChatLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FECF62919F859A8006741A9 /* ClarabridgeChatLocalizable.strings */; };
+		2778EF3019AD119C00602A9A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		277ECBE51E0095C10047DF1E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		277FE3B52051C4EE008B6ECC /* paperClip.png in Resources */ = {isa = PBXBuildFile; fileRef = 277FE3B22051C4ED008B6ECC /* paperClip.png */; };
+		277FE3B62051C4EE008B6ECC /* paperClip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277FE3B32051C4EE008B6ECC /* paperClip@2x.png */; };
+		277FE3B72051C4EE008B6ECC /* paperClip@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277FE3B42051C4EE008B6ECC /* paperClip@3x.png */; };
+		277FE3CA206046DC008B6ECC /* mediaButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277FE3C7206046DB008B6ECC /* mediaButton@3x.png */; };
+		277FE3CB206046DC008B6ECC /* mediaButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 277FE3C8206046DC008B6ECC /* mediaButton@2x.png */; };
+		277FE3CC206046DC008B6ECC /* mediaButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 277FE3C9206046DC008B6ECC /* mediaButton.png */; };
+		2780CCD92272528C001646C3 /* CLBClarabridgeChatApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2780CCD72272528C001646C3 /* CLBClarabridgeChatApiClient.h */; };
+		2780CCDA2272528C001646C3 /* CLBClarabridgeChatApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CCD82272528C001646C3 /* CLBClarabridgeChatApiClient.m */; };
+		2780CCDC227254DA001646C3 /* CLBAuthenticationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2780CCDB227254DA001646C3 /* CLBAuthenticationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2780CCDF2277794F001646C3 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		278649341B74EFA50071B524 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		278D5B601F30DFFB00F8468F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		279367E9230AE4B0007582CA /* ColorCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279367E8230AE4B0007582CA /* ColorCatalog.xcassets */; };
+		279617E8199512950013E60B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2796BD32197456B90096B60C /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2796BD35197457E60096B60C /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		2798707C1E047F930036F030 /* CLBReplyButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 2798707A1E047F930036F030 /* CLBReplyButton.h */; };
+		2798707D1E047F930036F030 /* CLBReplyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2798707B1E047F930036F030 /* CLBReplyButton.m */; };
+		279AF787201BB5D40067B054 /* CLBPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AF786201BB5D40067B054 /* CLBPersistence.m */; };
+		279AF789201BB6230067B054 /* CLBPersistence.h in Headers */ = {isa = PBXBuildFile; fileRef = 279AF785201BB5D30067B054 /* CLBPersistence.h */; };
+		27A46C051C50202E0082FCD9 /* CLBBuyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BD0DA81C0E329900F95F7C /* CLBBuyViewController.h */; };
+		27A46C061C5020310082FCD9 /* CLBBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BD0DA91C0E329900F95F7C /* CLBBuyViewController.m */; };
+		27A46C071C5020330082FCD9 /* CLBStripeApiClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 2766ADAF1C17761B00D7B514 /* CLBStripeApiClient.h */; };
+		27A46C081C5020350082FCD9 /* CLBStripeApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2766ADB01C17761B00D7B514 /* CLBStripeApiClient.m */; };
+		27A46C091C5020370082FCD9 /* CLBProgressButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FE772A1C1F0CB900A430E5 /* CLBProgressButton.h */; };
+		27A46C0A1C5020380082FCD9 /* CLBProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE772B1C1F0CB900A430E5 /* CLBProgressButton.m */; };
+		27A46C0B1C50203A0082FCD9 /* CLBCheckmarkView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E426341C21B1780052B62A /* CLBCheckmarkView.h */; };
+		27A46C0C1C50203B0082FCD9 /* CLBCheckmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E426351C21B1780052B62A /* CLBCheckmarkView.m */; };
+		27A46C0D1C50203D0082FCD9 /* CLBRoundedRectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27B27F651C3DAFBB00474E72 /* CLBRoundedRectView.h */; };
+		27A46C0E1C50203F0082FCD9 /* CLBRoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B27F661C3DAFBB00474E72 /* CLBRoundedRectView.m */; };
+		27A46C0F1C5020520082FCD9 /* stp_card_visa@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADFB1C18DE1C00D7B514 /* stp_card_visa@3x.png */; };
+		27A46C101C5020540082FCD9 /* stp_card_visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADFA1C18DE1C00D7B514 /* stp_card_visa@2x.png */; };
+		27A46C111C5020560082FCD9 /* stp_card_visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF91C18DE1C00D7B514 /* stp_card_visa.png */; };
+		27A46C121C5020580082FCD9 /* stp_card_placeholder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF81C18DE1C00D7B514 /* stp_card_placeholder@3x.png */; };
+		27A46C131C50205A0082FCD9 /* stp_card_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF71C18DE1C00D7B514 /* stp_card_placeholder@2x.png */; };
+		27A46C141C50205B0082FCD9 /* stp_card_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF61C18DE1C00D7B514 /* stp_card_placeholder.png */; };
+		27A46C151C50205D0082FCD9 /* stp_card_placeholder_template@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF51C18DE1C00D7B514 /* stp_card_placeholder_template@3x.png */; };
+		27A46C161C50205E0082FCD9 /* stp_card_placeholder_template@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF41C18DE1C00D7B514 /* stp_card_placeholder_template@2x.png */; };
+		27A46C171C5020600082FCD9 /* stp_card_placeholder_template.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF31C18DE1C00D7B514 /* stp_card_placeholder_template.png */; };
+		27A46C181C5020610082FCD9 /* stp_card_mastercard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF21C18DE1C00D7B514 /* stp_card_mastercard@3x.png */; };
+		27A46C191C5020630082FCD9 /* stp_card_mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF11C18DE1C00D7B514 /* stp_card_mastercard@2x.png */; };
+		27A46C1A1C5020650082FCD9 /* stp_card_mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADF01C18DE1C00D7B514 /* stp_card_mastercard.png */; };
+		27A46C1B1C5020670082FCD9 /* stp_card_jcb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADEE1C18DE1C00D7B514 /* stp_card_jcb@2x.png */; };
+		27A46C1C1C5020680082FCD9 /* stp_card_jcb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADEF1C18DE1C00D7B514 /* stp_card_jcb@3x.png */; };
+		27A46C1D1C50206A0082FCD9 /* stp_card_jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADED1C18DE1C00D7B514 /* stp_card_jcb.png */; };
+		27A46C1E1C50206D0082FCD9 /* stp_card_discover@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADEC1C18DE1C00D7B514 /* stp_card_discover@3x.png */; };
+		27A46C1F1C5020700082FCD9 /* stp_card_discover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADEB1C18DE1C00D7B514 /* stp_card_discover@2x.png */; };
+		27A46C201C5020720082FCD9 /* stp_card_discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADEA1C18DE1C00D7B514 /* stp_card_discover.png */; };
+		27A46C211C5020730082FCD9 /* stp_card_diners@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE91C18DE1C00D7B514 /* stp_card_diners@3x.png */; };
+		27A46C221C5020740082FCD9 /* stp_card_diners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE81C18DE1C00D7B514 /* stp_card_diners@2x.png */; };
+		27A46C231C5020760082FCD9 /* stp_card_diners.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE71C18DE1C00D7B514 /* stp_card_diners.png */; };
+		27A46C241C5020770082FCD9 /* stp_card_cvc@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE61C18DE1C00D7B514 /* stp_card_cvc@3x.png */; };
+		27A46C251C5020790082FCD9 /* stp_card_cvc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE51C18DE1C00D7B514 /* stp_card_cvc@2x.png */; };
+		27A46C261C50207B0082FCD9 /* stp_card_cvc.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE41C18DE1C00D7B514 /* stp_card_cvc.png */; };
+		27A46C271C50207D0082FCD9 /* stp_card_cvc_amex@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE31C18DE1C00D7B514 /* stp_card_cvc_amex@3x.png */; };
+		27A46C281C50207E0082FCD9 /* stp_card_cvc_amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE21C18DE1C00D7B514 /* stp_card_cvc_amex@2x.png */; };
+		27A46C291C5020800082FCD9 /* stp_card_cvc_amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE11C18DE1C00D7B514 /* stp_card_cvc_amex.png */; };
+		27A46C2A1C5020820082FCD9 /* stp_card_amex@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADE01C18DE1C00D7B514 /* stp_card_amex@3x.png */; };
+		27A46C2B1C5020850082FCD9 /* stp_card_amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADDF1C18DE1C00D7B514 /* stp_card_amex@2x.png */; };
+		27A46C2C1C5020860082FCD9 /* stp_card_amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 2766ADDE1C18DE1C00D7B514 /* stp_card_amex.png */; };
+		27A46C2D1C5020A30082FCD9 /* CLBUITextField+Shake.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FE772F1C1F1E6000A430E5 /* CLBUITextField+Shake.h */; };
+		27A46C2E1C5020A50082FCD9 /* CLBUITextField+Shake.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE77301C1F1E6000A430E5 /* CLBUITextField+Shake.m */; };
+		27A46C2F1C5020AA0082FCD9 /* CLBSTPCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E4260D1C2059FE0052B62A /* CLBSTPCard.h */; };
+		27A46C301C5020AA0082FCD9 /* CLBSTPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4260E1C2059FE0052B62A /* CLBSTPCard.m */; };
+		27A46C311C5020AA0082FCD9 /* CLBSTPCardBrand.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E4260F1C2059FE0052B62A /* CLBSTPCardBrand.h */; };
+		27A46C321C5020AA0082FCD9 /* CLBSTPCardParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E426101C2059FE0052B62A /* CLBSTPCardParams.h */; };
+		27A46C331C5020AA0082FCD9 /* CLBSTPCardParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E426111C2059FE0052B62A /* CLBSTPCardParams.m */; };
+		27A46C341C5020AA0082FCD9 /* CLBSTPCardValidationState.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E426121C2059FE0052B62A /* CLBSTPCardValidationState.h */; };
+		27A46C351C5020AA0082FCD9 /* CLBSTPCardValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E426131C2059FE0052B62A /* CLBSTPCardValidator.h */; };
+		27A46C361C5020AA0082FCD9 /* CLBSTPCardValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E426141C2059FE0052B62A /* CLBSTPCardValidator.m */; };
+		27A46C371C5020AA0082FCD9 /* CLBSTPFormEncodable.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E426151C2059FE0052B62A /* CLBSTPFormEncodable.h */; };
+		27A46C381C5020AA0082FCD9 /* CLBSTPFormEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E426161C2059FE0052B62A /* CLBSTPFormEncoder.h */; };
+		27A46C391C5020AA0082FCD9 /* CLBSTPFormEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E426171C2059FE0052B62A /* CLBSTPFormEncoder.m */; };
+		27A46C3A1C5020AA0082FCD9 /* CLBSTPFormTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E426181C2059FE0052B62A /* CLBSTPFormTextField.h */; };
+		27A46C3B1C5020AA0082FCD9 /* CLBSTPFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E426191C2059FE0052B62A /* CLBSTPFormTextField.m */; };
+		27A46C3C1C5020AA0082FCD9 /* CLBSTPPaymentCardTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E4261A1C2059FE0052B62A /* CLBSTPPaymentCardTextField.h */; };
+		27A46C3D1C5020AA0082FCD9 /* CLBSTPPaymentCardTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4261B1C2059FE0052B62A /* CLBSTPPaymentCardTextField.m */; };
+		27A46C3E1C5020AA0082FCD9 /* CLBSTPPaymentCardTextFieldViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E4261C1C2059FE0052B62A /* CLBSTPPaymentCardTextFieldViewModel.h */; };
+		27A46C3F1C5020AA0082FCD9 /* CLBSTPPaymentCardTextFieldViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4261D1C2059FE0052B62A /* CLBSTPPaymentCardTextFieldViewModel.m */; };
+		27A46C401C5020AA0082FCD9 /* CLBStripeError.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E4261E1C2059FE0052B62A /* CLBStripeError.h */; };
+		27A46C411C5020AA0082FCD9 /* CLBStripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4261F1C2059FE0052B62A /* CLBStripeError.m */; };
+		27A46C421C5020F10082FCD9 /* CLBPaymentTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A46BEA1C4D84F00082FCD9 /* CLBPaymentTextField.h */; };
+		27A46C431C5020F30082FCD9 /* CLBPaymentTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A46BEB1C4D84F00082FCD9 /* CLBPaymentTextField.m */; };
+		27A46C461C5021A50082FCD9 /* ClarabridgeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27327B081C13212F00A54C65 /* ClarabridgeChat.framework */; };
+		27B27FE21C4D23C400474E72 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27BA65D12007F11A005E9045 /* CLBDisplaySettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BA65CF2007F11A005E9045 /* CLBDisplaySettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27BA65D22007F11A005E9045 /* CLBDisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BA65D02007F11A005E9045 /* CLBDisplaySettings.m */; };
+		27BA65D42007F3F6005E9045 /* CLBDisplaySettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BA65D32007F3F6005E9045 /* CLBDisplaySettings+Private.h */; };
+		27BA65D62007FEF8005E9045 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27BA65DD20080725005E9045 /* CLBSOCarouselMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BA65DB20080725005E9045 /* CLBSOCarouselMessageCell.h */; };
+		27BA65DE20080725005E9045 /* CLBSOCarouselMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BA65DC20080725005E9045 /* CLBSOCarouselMessageCell.m */; };
+		27BB7B93206420A700BF9800 /* CLBFailedUpload.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BB7B91206420A700BF9800 /* CLBFailedUpload.h */; };
+		27BB7B94206420A700BF9800 /* CLBFailedUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BB7B92206420A700BF9800 /* CLBFailedUpload.m */; };
+		27BB7B9620642DA700BF9800 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27BF9C2220110077008BC898 /* CLBMessageItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF9C18200FE862008BC898 /* CLBMessageItemView.m */; };
+		27BF9C2320110077008BC898 /* CLBMessageItemViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BF9C1D2010FFD9008BC898 /* CLBMessageItemViewModel.m */; };
+		27BF9C24201100A5008BC898 /* CLBMessageItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BF9C17200FE862008BC898 /* CLBMessageItemView.h */; };
+		27C06F411AD6EBC700650644 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27C4B3EA1E89A37B005D9A97 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27CA8CBA1E3A34FA005A986F /* CLBLocationService.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA8CB81E3A34FA005A986F /* CLBLocationService.h */; };
+		27CA8CBB1E3A34FA005A986F /* CLBLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA8CB91E3A34FA005A986F /* CLBLocationService.m */; };
+		27CA8CBD1E3A4B36005A986F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27CA8CC11E3A516D005A986F /* CLBCoordinates.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CA8CBF1E3A516D005A986F /* CLBCoordinates.m */; };
+		27CA8CC31E3A9EEF005A986F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27CA8CC41E3AA61A005A986F /* CLBCoordinates.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CA8CBE1E3A516D005A986F /* CLBCoordinates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27CAF5D01A9E13ED003583CE /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27CC865E1C779C3400D3408B /* ClarabridgeChat.h in Headers */ = {isa = PBXBuildFile; fileRef = 2717DDDF1987DDE4006F2698 /* ClarabridgeChat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D10B8020090D4500DA4207 /* CLBSOCarouselCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D10B7E20090D4500DA4207 /* CLBSOCarouselCollectionViewCell.h */; };
+		27D10B8120090D4500DA4207 /* CLBSOCarouselCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D10B7F20090D4500DA4207 /* CLBSOCarouselCollectionViewCell.m */; };
+		27D19E6B2049953C007A3C66 /* CLBSOFileMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D19E692049953C007A3C66 /* CLBSOFileMessageCell.h */; };
+		27D19E6C2049953C007A3C66 /* CLBSOFileMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D19E6A2049953C007A3C66 /* CLBSOFileMessageCell.m */; };
+		27D19E6F20499904007A3C66 /* CLBFileUploadMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 27D19E6D20499904007A3C66 /* CLBFileUploadMessage.h */; };
+		27D19E7020499904007A3C66 /* CLBFileUploadMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D19E6E20499904007A3C66 /* CLBFileUploadMessage.m */; };
+		27D36A0A1C1327EA00F6322C /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D36A091C1327EA00F6322C /* libicucore.tbd */; };
+		27E023F92006839500B5944F /* CLBMessageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E023F72006839500B5944F /* CLBMessageItem.m */; };
+		27E024002006A1E400B5944F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27E024022006A6F800B5944F /* CLBMessageItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E023F62006839500B5944F /* CLBMessageItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27E024062006BEE800B5944F /* CLBMessageItem+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E024052006BEE800B5944F /* CLBMessageItem+Private.h */; };
+		27E4E1E01E4135B300DAFD65 /* CLBSOLocationMessageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E4E1DD1E4134AA00DAFD65 /* CLBSOLocationMessageCell.h */; };
+		27E4E1E11E4135FA00DAFD65 /* CLBSOLocationMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4E1DE1E4134AA00DAFD65 /* CLBSOLocationMessageCell.m */; };
+		27E4E1E51E43986500DAFD65 /* locationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E4E1E21E43986500DAFD65 /* locationIcon.png */; };
+		27E4E1E61E43986500DAFD65 /* locationIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E4E1E31E43986500DAFD65 /* locationIcon@2x.png */; };
+		27E4E1E71E43986500DAFD65 /* locationIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E4E1E41E43986500DAFD65 /* locationIcon@3x.png */; };
+		27E4E1EA1E43B5CD00DAFD65 /* CLBLocationRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E4E1E81E43B5CD00DAFD65 /* CLBLocationRequest.h */; };
+		27E4E1EB1E43B5CD00DAFD65 /* CLBLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4E1E91E43B5CD00DAFD65 /* CLBLocationRequest.m */; };
+		27E9A8F21BF3A3BF00CA6BFF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E9A8F11BF3A3BF00CA6BFF /* CFNetwork.framework */; };
+		27E9A8F51BF3C29700CA6BFF /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27F040431F04423B00DA49E1 /* CLBClientInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F040411F04423B00DA49E1 /* CLBClientInfo.h */; };
+		27F040441F04423B00DA49E1 /* CLBClientInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F040421F04423B00DA49E1 /* CLBClientInfo.m */; };
+		27F107251F9813B500785EC6 /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2708452F1F97F8B70020E71E /* backArrow.png */; };
+		27F107261F9813B500785EC6 /* backArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2708452D1F97F8B60020E71E /* backArrow@2x.png */; };
+		27F107271F9813B500785EC6 /* backArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2708452E1F97F8B60020E71E /* backArrow@3x.png */; };
+		27F3C032201277D000A397BB /* CLBMessageItemViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 27BF9C1C2010FFD9008BC898 /* CLBMessageItemViewModel.h */; };
+		27F62A0B19DB2AE20095390A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27F8C7341EEEDF090072C960 /* CLBRealtimeSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F8C7321EEEDF090072C960 /* CLBRealtimeSettings.h */; };
+		27F8C7351EEEDF090072C960 /* CLBRealtimeSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F8C7331EEEDF090072C960 /* CLBRealtimeSettings.m */; };
+		27F8C7371EEEE1590072C960 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		27FBF7641EEAFEAD00FA4009 /* CLBRetryConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FBF7621EEAFEAD00FA4009 /* CLBRetryConfiguration.h */; };
+		27FBF7651EEAFEAD00FA4009 /* CLBRetryConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7631EEAFEAD00FA4009 /* CLBRetryConfiguration.m */; };
+		48D8C03B238ED3A20010BF37 /* CLBScopeURLProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C024238ED3A00010BF37 /* CLBScopeURLProvider.h */; };
+		48D8C03C238ED3A20010BF37 /* CLBScopeURLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D8C025238ED3A00010BF37 /* CLBScopeURLFactory.m */; };
+		48D8C03D238ED3A20010BF37 /* CLBClarabridgeChatScopeURLProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C026238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.h */; };
+		48D8C03E238ED3A20010BF37 /* CLBScopeURLFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C027238ED3A00010BF37 /* CLBScopeURLFactory.h */; };
+		48D8C03F238ED3A20010BF37 /* CLBClarabridgeChatScopeURLProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D8C028238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.m */; };
+		48D8C042238ED3A20010BF37 /* CLBClarabridgeChatSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C02C238ED3A10010BF37 /* CLBClarabridgeChatSerializer.h */; };
+		48D8C043238ED3A20010BF37 /* CLBSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C02D238ED3A10010BF37 /* CLBSerializer.h */; };
+		48D8C044238ED3A20010BF37 /* CLBClarabridgeChatSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D8C02E238ED3A10010BF37 /* CLBClarabridgeChatSerializer.m */; };
+		48D8C045238ED3A20010BF37 /* CLBStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C030238ED3A10010BF37 /* CLBStorage.h */; };
+		48D8C046238ED3A20010BF37 /* CLBClarabridgeChatStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C031238ED3A10010BF37 /* CLBClarabridgeChatStorage.h */; };
+		48D8C047238ED3A20010BF37 /* CLBConversationStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C033238ED3A10010BF37 /* CLBConversationStorage.h */; };
+		48D8C048238ED3A20010BF37 /* CLBConversationStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D8C034238ED3A10010BF37 /* CLBConversationStorage.m */; };
+		48D8C049238ED3A20010BF37 /* CLBClarabridgeChatStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D8C035238ED3A10010BF37 /* CLBClarabridgeChatStorage.m */; };
+		48D8C04A238ED3A20010BF37 /* CLBFileIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C037238ED3A10010BF37 /* CLBFileIO.h */; };
+		48D8C04B238ED3A20010BF37 /* CLBClarabridgeChatFileIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C038238ED3A10010BF37 /* CLBClarabridgeChatFileIO.h */; };
+		48D8C04C238ED3A20010BF37 /* CLBClarabridgeChatFileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D8C039238ED3A10010BF37 /* CLBClarabridgeChatFileIO.m */; };
+		48D8C057238FEB170010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C058238FEB170010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C059238FEB170010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C05A238FEB170010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C05B238FEB170010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C068239000910010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C069239000910010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C06A239000910010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C06B239000910010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C06C239000910010BF37 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		48D8C06F23956DBC0010BF37 /* ClarabridgeChat-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C06D239530FD0010BF37 /* ClarabridgeChat-Prefix.pch */; };
+		48D8C07123956E170010BF37 /* CLBMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C07023956E170010BF37 /* CLBMacros.h */; };
+		49E8F9D01A7C35D5007F6332 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		5D5F69FD18A133DE00AA5FCD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5F69FC18A133DE00AA5FCD /* OpenGLES.framework */; };
+		DC1B39121912D40E002B03CB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		DC5D87E5184E3F2C00658168 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4FDF63183275A400C0512E /* CoreTelephony.framework */; };
+		DC5D87E7184E3F4100658168 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5D87E6184E3F4100658168 /* libxml2.dylib */; };
+		DCDED9A7183166530006F2FC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDED9A6183166530006F2FC /* XCTest.framework */; };
+		DCDED9A8183166530006F2FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDED998183166530006F2FC /* Foundation.framework */; };
+		DCDED9B3183166530006F2FC /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		DCEF379618BFD69900B5DD25 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEF379518BFD69900B5DD25 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		277618AD1C1364E200056B3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCDED98D183166530006F2FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27327B071C13212F00A54C65;
+			remoteInfo = ClarabridgeChat;
+		};
+		27A46C441C5021770082FCD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCDED98D183166530006F2FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27327B071C13212F00A54C65;
+			remoteInfo = ClarabridgeChat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F2F493C23E0813F0037AB29 /* CLBDependencyManager+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBDependencyManager+Private.h"; sourceTree = "<group>"; };
+		0F8946B623F2C80500EF35D7 /* CLBHeaderFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBHeaderFactory.h; sourceTree = "<group>"; };
+		0F8946B723F2C80500EF35D7 /* CLBHeaderFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBHeaderFactory.m; sourceTree = "<group>"; };
+		0F9336CB242E23ED002C30A0 /* CLBParticipant+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBParticipant+Private.h"; sourceTree = "<group>"; };
+		0FF3274723FFE00A0066DC9E /* CLBConfigFetchSchedulerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConfigFetchSchedulerDelegate.h; sourceTree = "<group>"; };
+		0FF475A623CF66C9005DD175 /* CLBConversationList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationList.h; sourceTree = "<group>"; };
+		0FF475A723CF66C9005DD175 /* CLBConversationList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationList.m; sourceTree = "<group>"; };
+		0FF475AA23CF7D76005DD175 /* CLBConversationListStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationListStorage.h; sourceTree = "<group>"; };
+		0FF475AB23CF7D76005DD175 /* CLBConversationListStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationListStorage.m; sourceTree = "<group>"; };
+		0FF7547723D72C0000D63DC8 /* CLBConversationPersistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationPersistence.h; sourceTree = "<group>"; };
+		1C2728342396C9EA00EC9D93 /* CLBUtilitySettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBUtilitySettings.h; sourceTree = "<group>"; };
+		1C2728352396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBClarabridgeChatUtilitySettings.h; sourceTree = "<group>"; };
+		1C2728362396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBClarabridgeChatUtilitySettings.m; sourceTree = "<group>"; };
+		1C38551223CDFA7D00C26ACD /* CLBEventTypeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBEventTypeFactory.h; sourceTree = "<group>"; };
+		1C38551323CDFA7D00C26ACD /* CLBEventTypeFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBEventTypeFactory.m; sourceTree = "<group>"; };
+		1C4A17552385597900238AB3 /* CLBConversationViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationViewControllerDelegate.h; sourceTree = "<group>"; };
+		1C4A175A2387EB0700238AB3 /* CLBConversationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationController.h; sourceTree = "<group>"; };
+		1C4A175B2387EB0700238AB3 /* CLBConversationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationController.m; sourceTree = "<group>"; };
+		1C77349C23CF23550036C74A /* CLBConversationFetchSchedulerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationFetchSchedulerProtocol.h; sourceTree = "<group>"; };
+		1C7734AD23E087C90036C74A /* CLBConversationStorageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationStorageManager.h; sourceTree = "<group>"; };
+		1C7734AE23E087C90036C74A /* CLBConversationStorageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationStorageManager.m; sourceTree = "<group>"; };
+		1C836CC723E097E500E2B892 /* CLBConversationStorageManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationStorageManagerDelegate.h; sourceTree = "<group>"; };
+		1C9A66B423FAD0D4007FD80D /* CLBEventTypeFactoryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBEventTypeFactoryDelegate.h; sourceTree = "<group>"; };
+		1C9A66B723FD895E007FD80D /* CLBParticipant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBParticipant.h; sourceTree = "<group>"; };
+		1C9A66B823FD895E007FD80D /* CLBParticipant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBParticipant.m; sourceTree = "<group>"; };
+		1CAA4B4623F1B8B100B708B1 /* CLBRemoteObjectSynchronizerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBRemoteObjectSynchronizerProtocol.h; sourceTree = "<group>"; };
+		1CAA4B4723F2A42B00B708B1 /* CLBAPIClientProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBAPIClientProtocol.h; sourceTree = "<group>"; };
+		1CF2D35E23EDA9C200441064 /* CLBConversationSynchronizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationSynchronizer.h; sourceTree = "<group>"; };
+		1CF2D35F23EDA9C200441064 /* CLBConversationSynchronizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationSynchronizer.m; sourceTree = "<group>"; };
+		27064B691BCA9C3C001D4718 /* CLBImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBImageLoader.h; sourceTree = "<group>"; };
+		27064B6A1BCA9C3C001D4718 /* CLBImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBImageLoader.m; sourceTree = "<group>"; };
+		2708452D1F97F8B60020E71E /* backArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@2x.png"; sourceTree = "<group>"; };
+		2708452E1F97F8B60020E71E /* backArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backArrow@3x.png"; sourceTree = "<group>"; };
+		2708452F1F97F8B70020E71E /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
+		2709B9AF19ABA66F00FDDE2B /* CLBRemoteOperationScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRemoteOperationScheduler.h; sourceTree = "<group>"; };
+		2709B9B019ABA66F00FDDE2B /* CLBRemoteOperationScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRemoteOperationScheduler.m; sourceTree = "<group>"; };
+		2709B9B519ABB02700FDDE2B /* CLBConversationFetchScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConversationFetchScheduler.h; sourceTree = "<group>"; };
+		2709B9B619ABB02700FDDE2B /* CLBConversationFetchScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConversationFetchScheduler.m; sourceTree = "<group>"; };
+		271246D8199BE44000DB2875 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		27127BE01B14BD50004EAA60 /* CLBMessageAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBMessageAction.h; sourceTree = "<group>"; };
+		27127BE11B14BD50004EAA60 /* CLBMessageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBMessageAction.m; sourceTree = "<group>"; };
+		27127BE41B1655D9004EAA60 /* CLBMessageAction+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBMessageAction+Private.h"; sourceTree = "<group>"; };
+		2717DD811987DDE4006F2698 /* CLBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBMessage.h; sourceTree = "<group>"; };
+		2717DD821987DDE4006F2698 /* CLBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBMessage.m; sourceTree = "<group>"; };
+		2717DD831987DDE4006F2698 /* CLBConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConversation.h; sourceTree = "<group>"; };
+		2717DD841987DDE4006F2698 /* CLBConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConversation.m; sourceTree = "<group>"; };
+		2717DD851987DDE4006F2698 /* CLBConversationHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConversationHeaderView.h; sourceTree = "<group>"; };
+		2717DD861987DDE4006F2698 /* CLBConversationHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConversationHeaderView.m; sourceTree = "<group>"; };
+		2717DD871987DDE4006F2698 /* CLBConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConversationViewController.h; sourceTree = "<group>"; };
+		2717DD881987DDE4006F2698 /* CLBConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConversationViewController.m; sourceTree = "<group>"; };
+		2717DD8A1987DDE4006F2698 /* CLBAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBAppDelegate.h; sourceTree = "<group>"; };
+		2717DD8B1987DDE4006F2698 /* CLBAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBAppDelegate.m; sourceTree = "<group>"; };
+		2717DD8C1987DDE4006F2698 /* CLBAppDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBAppDelegateProxy.h; sourceTree = "<group>"; };
+		2717DD8D1987DDE4006F2698 /* CLBAppDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBAppDelegateProxy.m; sourceTree = "<group>"; };
+		2717DD8E1987DDE4006F2698 /* CLBInAppNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBInAppNotificationViewController.h; sourceTree = "<group>"; };
+		2717DD8F1987DDE4006F2698 /* CLBInAppNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBInAppNotificationViewController.m; sourceTree = "<group>"; };
+		2717DD901987DDE4006F2698 /* CLBInAppNotificationWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBInAppNotificationWindow.h; sourceTree = "<group>"; };
+		2717DD911987DDE4006F2698 /* CLBInAppNotificationWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBInAppNotificationWindow.m; sourceTree = "<group>"; };
+		2717DD941987DDE4006F2698 /* CLBPushNotificationFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBPushNotificationFilter.h; sourceTree = "<group>"; };
+		2717DD951987DDE4006F2698 /* CLBPushNotificationFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBPushNotificationFilter.m; sourceTree = "<group>"; };
+		2717DD961987DDE4006F2698 /* CLBInAppNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBInAppNotificationHandler.h; sourceTree = "<group>"; };
+		2717DD971987DDE4006F2698 /* CLBInAppNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBInAppNotificationHandler.m; sourceTree = "<group>"; };
+		2717DDA21987DDE4006F2698 /* CLBRemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRemoteObject.h; sourceTree = "<group>"; };
+		2717DDA31987DDE4006F2698 /* CLBRemoteObjectSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRemoteObjectSynchronizer.h; sourceTree = "<group>"; };
+		2717DDA41987DDE4006F2698 /* CLBRemoteObjectSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRemoteObjectSynchronizer.m; sourceTree = "<group>"; };
+		2717DDA51987DDE4006F2698 /* CLBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConfig.h; sourceTree = "<group>"; };
+		2717DDA61987DDE4006F2698 /* CLBConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConfig.m; sourceTree = "<group>"; };
+		2717DDBE1987DDE4006F2698 /* CLBLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBLocalization.h; sourceTree = "<group>"; };
+		2717DDBF1987DDE4006F2698 /* CLBLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBLocalization.m; sourceTree = "<group>"; };
+		2717DDCA1987DDE4006F2698 /* CLBSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSettings.h; sourceTree = "<group>"; };
+		2717DDCB1987DDE4006F2698 /* CLBSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSettings.m; sourceTree = "<group>"; };
+		2717DDCC1987DDE4006F2698 /* CLBSettings+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLBSettings+Private.h"; sourceTree = "<group>"; };
+		2717DDD51987DDE4006F2698 /* CLBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBUser.h; sourceTree = "<group>"; };
+		2717DDD61987DDE4006F2698 /* CLBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBUser.m; sourceTree = "<group>"; };
+		2717DDD91987DDE4006F2698 /* CLBUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBUtility.h; sourceTree = "<group>"; };
+		2717DDDA1987DDE4006F2698 /* CLBUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBUtility.m; sourceTree = "<group>"; };
+		2717DDDF1987DDE4006F2698 /* ClarabridgeChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClarabridgeChat.h; sourceTree = "<group>"; };
+		2717DDE01987DDE4006F2698 /* ClarabridgeChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClarabridgeChat.m; sourceTree = "<group>"; };
+		2717DDE11987DDE4006F2698 /* ClarabridgeChat+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClarabridgeChat+Private.h"; sourceTree = "<group>"; };
+		272647681DFEED9900B21BC7 /* CLBRepliesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRepliesView.h; sourceTree = "<group>"; };
+		272647691DFEED9900B21BC7 /* CLBRepliesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRepliesView.m; sourceTree = "<group>"; };
+		2726DE3F1F9A394600A57F3F /* CLBPhotoConfirmationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBPhotoConfirmationViewController.h; sourceTree = "<group>"; };
+		2726DE401F9A394600A57F3F /* CLBPhotoConfirmationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBPhotoConfirmationViewController.m; sourceTree = "<group>"; };
+		2728F45E1F349ABA0006C676 /* CLBUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBUserSettings.h; sourceTree = "<group>"; };
+		2728F45F1F349ABA0006C676 /* CLBUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBUserSettings.m; sourceTree = "<group>"; };
+		272DB2881DDB4EE00070D43E /* CLBConversationActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConversationActivity.h; sourceTree = "<group>"; };
+		272DB2891DDB4EE00070D43E /* CLBConversationActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConversationActivity.m; sourceTree = "<group>"; };
+		272E04C819536CCD0071D0CA /* CLBSOPhotoMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOPhotoMessageCell.h; sourceTree = "<group>"; };
+		272E04C919536CCD0071D0CA /* CLBSOPhotoMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOPhotoMessageCell.m; sourceTree = "<group>"; };
+		272E04CA19536CCD0071D0CA /* CLBSOTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOTextMessageCell.h; sourceTree = "<group>"; };
+		272E04CB19536CCD0071D0CA /* CLBSOTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOTextMessageCell.m; sourceTree = "<group>"; };
+		272E04CC19536CCD0071D0CA /* CLBSOVideoMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOVideoMessageCell.h; sourceTree = "<group>"; };
+		272E04CD19536CCD0071D0CA /* CLBSOVideoMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOVideoMessageCell.m; sourceTree = "<group>"; };
+		27327B081C13212F00A54C65 /* ClarabridgeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ClarabridgeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2745ECCA19D9F3DD00578B84 /* CLBAFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLBAFNetworkReachabilityManager.h; path = ThirdParty/Networking/CLBAFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		2745ECCB19D9F3DD00578B84 /* CLBAFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLBAFNetworkReachabilityManager.m; path = ThirdParty/Networking/CLBAFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		2748DB4C1F7A8FE80009A7B5 /* CLBNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBNavigationBar.h; sourceTree = "<group>"; };
+		2748DB4D1F7A8FE80009A7B5 /* CLBNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBNavigationBar.m; sourceTree = "<group>"; };
+		2748DB551F7C30F10009A7B5 /* CLBWebviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBWebviewViewController.h; sourceTree = "<group>"; };
+		2748DB561F7C30F10009A7B5 /* CLBWebviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBWebviewViewController.m; sourceTree = "<group>"; };
+		274A29122024F3EC0061DE71 /* CLBActionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBActionButton.h; sourceTree = "<group>"; };
+		274A29132024F3EC0061DE71 /* CLBActionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBActionButton.m; sourceTree = "<group>"; };
+		274EA9BF1DDE0B330029487C /* CLBSOActivityMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOActivityMessageCell.h; sourceTree = "<group>"; };
+		274EA9C01DDE0B330029487C /* CLBSOActivityMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOActivityMessageCell.m; sourceTree = "<group>"; };
+		274EA9C41DDF65BB0029487C /* CLBConversationActivity+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBConversationActivity+Private.h"; sourceTree = "<group>"; };
+		27573C1719C9BB0000868657 /* CLBRemoteResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRemoteResponse.h; sourceTree = "<group>"; };
+		27573C1819C9BB0000868657 /* CLBRemoteResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRemoteResponse.m; sourceTree = "<group>"; };
+		2766ADAF1C17761B00D7B514 /* CLBStripeApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBStripeApiClient.h; sourceTree = "<group>"; };
+		2766ADB01C17761B00D7B514 /* CLBStripeApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBStripeApiClient.m; sourceTree = "<group>"; };
+		2766ADDE1C18DE1C00D7B514 /* stp_card_amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_amex.png; sourceTree = "<group>"; };
+		2766ADDF1C18DE1C00D7B514 /* stp_card_amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_amex@2x.png"; sourceTree = "<group>"; };
+		2766ADE01C18DE1C00D7B514 /* stp_card_amex@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_amex@3x.png"; sourceTree = "<group>"; };
+		2766ADE11C18DE1C00D7B514 /* stp_card_cvc_amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_cvc_amex.png; sourceTree = "<group>"; };
+		2766ADE21C18DE1C00D7B514 /* stp_card_cvc_amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_cvc_amex@2x.png"; sourceTree = "<group>"; };
+		2766ADE31C18DE1C00D7B514 /* stp_card_cvc_amex@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_cvc_amex@3x.png"; sourceTree = "<group>"; };
+		2766ADE41C18DE1C00D7B514 /* stp_card_cvc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_cvc.png; sourceTree = "<group>"; };
+		2766ADE51C18DE1C00D7B514 /* stp_card_cvc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_cvc@2x.png"; sourceTree = "<group>"; };
+		2766ADE61C18DE1C00D7B514 /* stp_card_cvc@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_cvc@3x.png"; sourceTree = "<group>"; };
+		2766ADE71C18DE1C00D7B514 /* stp_card_diners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_diners.png; sourceTree = "<group>"; };
+		2766ADE81C18DE1C00D7B514 /* stp_card_diners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_diners@2x.png"; sourceTree = "<group>"; };
+		2766ADE91C18DE1C00D7B514 /* stp_card_diners@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_diners@3x.png"; sourceTree = "<group>"; };
+		2766ADEA1C18DE1C00D7B514 /* stp_card_discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_discover.png; sourceTree = "<group>"; };
+		2766ADEB1C18DE1C00D7B514 /* stp_card_discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_discover@2x.png"; sourceTree = "<group>"; };
+		2766ADEC1C18DE1C00D7B514 /* stp_card_discover@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_discover@3x.png"; sourceTree = "<group>"; };
+		2766ADED1C18DE1C00D7B514 /* stp_card_jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_jcb.png; sourceTree = "<group>"; };
+		2766ADEE1C18DE1C00D7B514 /* stp_card_jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_jcb@2x.png"; sourceTree = "<group>"; };
+		2766ADEF1C18DE1C00D7B514 /* stp_card_jcb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_jcb@3x.png"; sourceTree = "<group>"; };
+		2766ADF01C18DE1C00D7B514 /* stp_card_mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_mastercard.png; sourceTree = "<group>"; };
+		2766ADF11C18DE1C00D7B514 /* stp_card_mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_mastercard@2x.png"; sourceTree = "<group>"; };
+		2766ADF21C18DE1C00D7B514 /* stp_card_mastercard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_mastercard@3x.png"; sourceTree = "<group>"; };
+		2766ADF31C18DE1C00D7B514 /* stp_card_placeholder_template.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_placeholder_template.png; sourceTree = "<group>"; };
+		2766ADF41C18DE1C00D7B514 /* stp_card_placeholder_template@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_placeholder_template@2x.png"; sourceTree = "<group>"; };
+		2766ADF51C18DE1C00D7B514 /* stp_card_placeholder_template@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_placeholder_template@3x.png"; sourceTree = "<group>"; };
+		2766ADF61C18DE1C00D7B514 /* stp_card_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_placeholder.png; sourceTree = "<group>"; };
+		2766ADF71C18DE1C00D7B514 /* stp_card_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_placeholder@2x.png"; sourceTree = "<group>"; };
+		2766ADF81C18DE1C00D7B514 /* stp_card_placeholder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_placeholder@3x.png"; sourceTree = "<group>"; };
+		2766ADF91C18DE1C00D7B514 /* stp_card_visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stp_card_visa.png; sourceTree = "<group>"; };
+		2766ADFA1C18DE1C00D7B514 /* stp_card_visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_visa@2x.png"; sourceTree = "<group>"; };
+		2766ADFB1C18DE1C00D7B514 /* stp_card_visa@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stp_card_visa@3x.png"; sourceTree = "<group>"; };
+		2767040A1E3B9212009D13D3 /* CLBCoordinates+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBCoordinates+Private.h"; sourceTree = "<group>"; };
+		2769BB9E19A7C7F20016FF2C /* CLBConfigFetchScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConfigFetchScheduler.h; sourceTree = "<group>"; };
+		2769BB9F19A7C7F20016FF2C /* CLBConfigFetchScheduler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConfigFetchScheduler.m; sourceTree = "<group>"; };
+		276A497D2278E91D00A604F8 /* CLBAuthorInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBAuthorInfo.h; sourceTree = "<group>"; };
+		276A497E2278E91D00A604F8 /* CLBAuthorInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBAuthorInfo.m; sourceTree = "<group>"; };
+		276C7CBE1A09784B00DE2410 /* CLBAvatarImageLoaderStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBAvatarImageLoaderStrategy.h; sourceTree = "<group>"; };
+		276C7CBF1A09784B00DE2410 /* CLBAvatarImageLoaderStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBAvatarImageLoaderStrategy.m; sourceTree = "<group>"; };
+		276C7CC61A0AC02900DE2410 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		276C7CCA1A0AC88300DE2410 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		276C7CCE1A0AC88900DE2410 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		276C7CD21A0AC89200DE2410 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		276C7CD41A0AC8AE00DE2410 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		277BCDFD1950AFD700413CF5 /* CLBSOImageBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOImageBrowserView.h; sourceTree = "<group>"; };
+		277BCDFE1950AFD700413CF5 /* CLBSOImageBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOImageBrowserView.m; sourceTree = "<group>"; };
+		277BCDFF1950AFD700413CF5 /* CLBSOMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOMessage.h; sourceTree = "<group>"; };
+		277BCE001950AFD700413CF5 /* CLBSOMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOMessageCell.h; sourceTree = "<group>"; };
+		277BCE011950AFD700413CF5 /* CLBSOMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOMessageCell.m; sourceTree = "<group>"; };
+		277BCE021950AFD700413CF5 /* CLBSOMessageInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOMessageInputView.h; sourceTree = "<group>"; };
+		277BCE031950AFD700413CF5 /* CLBSOMessageInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOMessageInputView.m; sourceTree = "<group>"; };
+		277BCE051950AFD700413CF5 /* CLBSOMessagingDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOMessagingDataSource.h; sourceTree = "<group>"; };
+		277BCE061950AFD700413CF5 /* CLBSOMessagingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOMessagingDelegate.h; sourceTree = "<group>"; };
+		277BCE071950AFD700413CF5 /* CLBSOMessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOMessagingViewController.h; sourceTree = "<group>"; };
+		277BCE081950AFD700413CF5 /* CLBSOMessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOMessagingViewController.m; sourceTree = "<group>"; };
+		277BCE091950AFD700413CF5 /* CLBSOPlaceholderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOPlaceholderedTextView.h; sourceTree = "<group>"; };
+		277BCE0A1950AFD700413CF5 /* CLBSOPlaceholderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOPlaceholderedTextView.m; sourceTree = "<group>"; };
+		277DBDCE1A0133DB00EA6D1B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ClarabridgeChatLocalizable.strings"; sourceTree = "<group>"; };
+		277FE3B22051C4ED008B6ECC /* paperClip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paperClip.png; sourceTree = "<group>"; };
+		277FE3B32051C4EE008B6ECC /* paperClip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paperClip@2x.png"; sourceTree = "<group>"; };
+		277FE3B42051C4EE008B6ECC /* paperClip@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paperClip@3x.png"; sourceTree = "<group>"; };
+		277FE3C7206046DB008B6ECC /* mediaButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mediaButton@3x.png"; sourceTree = "<group>"; };
+		277FE3C8206046DC008B6ECC /* mediaButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mediaButton@2x.png"; sourceTree = "<group>"; };
+		277FE3C9206046DC008B6ECC /* mediaButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mediaButton.png; sourceTree = "<group>"; };
+		2780CCD72272528C001646C3 /* CLBClarabridgeChatApiClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBClarabridgeChatApiClient.h; sourceTree = "<group>"; };
+		2780CCD82272528C001646C3 /* CLBClarabridgeChatApiClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBClarabridgeChatApiClient.m; sourceTree = "<group>"; };
+		2780CCDB227254DA001646C3 /* CLBAuthenticationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBAuthenticationDelegate.h; sourceTree = "<group>"; };
+		2786492F1B74E47D0071B524 /* CLBUserLifecycleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBUserLifecycleManager.h; sourceTree = "<group>"; };
+		278649301B74E47D0071B524 /* CLBUserLifecycleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBUserLifecycleManager.m; sourceTree = "<group>"; };
+		278F28A519A62A11007F9110 /* CLBUser+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLBUser+Private.h"; sourceTree = "<group>"; };
+		278F28A919A6310C007F9110 /* CLBInnerUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBInnerUser.h; sourceTree = "<group>"; };
+		278F28AA19A6310C007F9110 /* CLBInnerUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBInnerUser.m; sourceTree = "<group>"; };
+		2792D7301A2CB4A5000D6ECD /* CLBTextViewVendingMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBTextViewVendingMachine.h; sourceTree = "<group>"; };
+		2792D7311A2CB4A5000D6ECD /* CLBTextViewVendingMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBTextViewVendingMachine.m; sourceTree = "<group>"; };
+		279367E8230AE4B0007582CA /* ColorCatalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorCatalog.xcassets; sourceTree = "<group>"; };
+		279617DF1993FD500013E60B /* CLBViewAboveKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBViewAboveKeyboard.h; sourceTree = "<group>"; };
+		279617E01993FD500013E60B /* CLBViewAboveKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBViewAboveKeyboard.m; sourceTree = "<group>"; };
+		279617E3199508300013E60B /* CLBRemoteOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRemoteOperation.h; sourceTree = "<group>"; };
+		279617E4199508300013E60B /* CLBRemoteOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRemoteOperation.m; sourceTree = "<group>"; };
+		2798707A1E047F930036F030 /* CLBReplyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBReplyButton.h; sourceTree = "<group>"; };
+		2798707B1E047F930036F030 /* CLBReplyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBReplyButton.m; sourceTree = "<group>"; };
+		279AF785201BB5D30067B054 /* CLBPersistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBPersistence.h; sourceTree = "<group>"; };
+		279AF786201BB5D40067B054 /* CLBPersistence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBPersistence.m; sourceTree = "<group>"; };
+		27A11B211BCC038C0031D31B /* CLBImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBImagePickerController.h; sourceTree = "<group>"; };
+		27A11B221BCC038C0031D31B /* CLBImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBImagePickerController.m; sourceTree = "<group>"; };
+		27A46BEA1C4D84F00082FCD9 /* CLBPaymentTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLBPaymentTextField.h; path = ClarabridgeChat/CLBPaymentTextField.h; sourceTree = SOURCE_ROOT; };
+		27A46BEB1C4D84F00082FCD9 /* CLBPaymentTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLBPaymentTextField.m; path = ClarabridgeChat/CLBPaymentTextField.m; sourceTree = SOURCE_ROOT; };
+		27A811651E096657005CA412 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27AB5B501BCAAFB3009E7C7C /* CLBErrorMessageOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBErrorMessageOverlay.h; sourceTree = "<group>"; };
+		27AB5B511BCAAFB3009E7C7C /* CLBErrorMessageOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBErrorMessageOverlay.m; sourceTree = "<group>"; };
+		27AB5B521BCAAFB3009E7C7C /* CLBInAppNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBInAppNotificationView.h; sourceTree = "<group>"; };
+		27AB5B531BCAAFB3009E7C7C /* CLBInAppNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBInAppNotificationView.m; sourceTree = "<group>"; };
+		27AB5B541BCAAFB3009E7C7C /* CLBXCharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBXCharacterView.h; sourceTree = "<group>"; };
+		27AB5B551BCAAFB3009E7C7C /* CLBXCharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBXCharacterView.m; sourceTree = "<group>"; };
+		27B27F5F1C2ADF8E00474E72 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ClarabridgeChatLocalizable.strings"; sourceTree = "<group>"; };
+		27B27F651C3DAFBB00474E72 /* CLBRoundedRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRoundedRectView.h; sourceTree = "<group>"; };
+		27B27F661C3DAFBB00474E72 /* CLBRoundedRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRoundedRectView.m; sourceTree = "<group>"; };
+		27BA65CF2007F11A005E9045 /* CLBDisplaySettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBDisplaySettings.h; sourceTree = "<group>"; };
+		27BA65D02007F11A005E9045 /* CLBDisplaySettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBDisplaySettings.m; sourceTree = "<group>"; };
+		27BA65D32007F3F6005E9045 /* CLBDisplaySettings+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBDisplaySettings+Private.h"; sourceTree = "<group>"; };
+		27BA65DB20080725005E9045 /* CLBSOCarouselMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBSOCarouselMessageCell.h; sourceTree = "<group>"; };
+		27BA65DC20080725005E9045 /* CLBSOCarouselMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBSOCarouselMessageCell.m; sourceTree = "<group>"; };
+		27BB7B91206420A700BF9800 /* CLBFailedUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBFailedUpload.h; sourceTree = "<group>"; };
+		27BB7B92206420A700BF9800 /* CLBFailedUpload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBFailedUpload.m; sourceTree = "<group>"; };
+		27BD0DA81C0E329900F95F7C /* CLBBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBBuyViewController.h; sourceTree = "<group>"; };
+		27BD0DA91C0E329900F95F7C /* CLBBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBBuyViewController.m; sourceTree = "<group>"; };
+		27BEBFBF19F5438E0099E295 /* CLBConversation+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLBConversation+Private.h"; sourceTree = "<group>"; };
+		27BF9C17200FE862008BC898 /* CLBMessageItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBMessageItemView.h; sourceTree = "<group>"; };
+		27BF9C18200FE862008BC898 /* CLBMessageItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBMessageItemView.m; sourceTree = "<group>"; };
+		27BF9C1C2010FFD9008BC898 /* CLBMessageItemViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBMessageItemViewModel.h; sourceTree = "<group>"; };
+		27BF9C1D2010FFD9008BC898 /* CLBMessageItemViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBMessageItemViewModel.m; sourceTree = "<group>"; };
+		27C06F3C1AD56BB700650644 /* CLBDependencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBDependencyManager.h; sourceTree = "<group>"; };
+		27C06F3D1AD56BB700650644 /* CLBDependencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBDependencyManager.m; sourceTree = "<group>"; };
+		27CA8CB81E3A34FA005A986F /* CLBLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBLocationService.h; sourceTree = "<group>"; };
+		27CA8CB91E3A34FA005A986F /* CLBLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBLocationService.m; sourceTree = "<group>"; };
+		27CA8CBE1E3A516D005A986F /* CLBCoordinates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBCoordinates.h; sourceTree = "<group>"; };
+		27CA8CBF1E3A516D005A986F /* CLBCoordinates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBCoordinates.m; sourceTree = "<group>"; };
+		27CAF5CB1A9D1BEC003583CE /* CLBUserSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLBUserSynchronizer.h; path = ../CLBUserSynchronizer.h; sourceTree = "<group>"; };
+		27CAF5CC1A9D1BEC003583CE /* CLBUserSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLBUserSynchronizer.m; path = ../CLBUserSynchronizer.m; sourceTree = "<group>"; };
+		27CED98C1A11031C00287EF9 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27CF26AE1BEFEC8B008DD571 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27D0CCE11AC9913200410E2A /* CLBMessage+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBMessage+Private.h"; sourceTree = "<group>"; };
+		27D10B7E20090D4500DA4207 /* CLBSOCarouselCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBSOCarouselCollectionViewCell.h; sourceTree = "<group>"; };
+		27D10B7F20090D4500DA4207 /* CLBSOCarouselCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBSOCarouselCollectionViewCell.m; sourceTree = "<group>"; };
+		27D14BC31A091B3000D08BF5 /* defaultAvatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultAvatar@3x.png"; sourceTree = "<group>"; };
+		27D19E692049953C007A3C66 /* CLBSOFileMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBSOFileMessageCell.h; sourceTree = "<group>"; };
+		27D19E6A2049953C007A3C66 /* CLBSOFileMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBSOFileMessageCell.m; sourceTree = "<group>"; };
+		27D19E6D20499904007A3C66 /* CLBFileUploadMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBFileUploadMessage.h; sourceTree = "<group>"; };
+		27D19E6E20499904007A3C66 /* CLBFileUploadMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBFileUploadMessage.m; sourceTree = "<group>"; };
+		27D36A091C1327EA00F6322C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		27D815AB1ED729580032CD66 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27E023F62006839500B5944F /* CLBMessageItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBMessageItem.h; sourceTree = "<group>"; };
+		27E023F72006839500B5944F /* CLBMessageItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBMessageItem.m; sourceTree = "<group>"; };
+		27E024052006BEE800B5944F /* CLBMessageItem+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBMessageItem+Private.h"; sourceTree = "<group>"; };
+		27E4260D1C2059FE0052B62A /* CLBSTPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPCard.h; sourceTree = "<group>"; };
+		27E4260E1C2059FE0052B62A /* CLBSTPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSTPCard.m; sourceTree = "<group>"; };
+		27E4260F1C2059FE0052B62A /* CLBSTPCardBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPCardBrand.h; sourceTree = "<group>"; };
+		27E426101C2059FE0052B62A /* CLBSTPCardParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPCardParams.h; sourceTree = "<group>"; };
+		27E426111C2059FE0052B62A /* CLBSTPCardParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSTPCardParams.m; sourceTree = "<group>"; };
+		27E426121C2059FE0052B62A /* CLBSTPCardValidationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPCardValidationState.h; sourceTree = "<group>"; };
+		27E426131C2059FE0052B62A /* CLBSTPCardValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPCardValidator.h; sourceTree = "<group>"; };
+		27E426141C2059FE0052B62A /* CLBSTPCardValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSTPCardValidator.m; sourceTree = "<group>"; };
+		27E426151C2059FE0052B62A /* CLBSTPFormEncodable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPFormEncodable.h; sourceTree = "<group>"; };
+		27E426161C2059FE0052B62A /* CLBSTPFormEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPFormEncoder.h; sourceTree = "<group>"; };
+		27E426171C2059FE0052B62A /* CLBSTPFormEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSTPFormEncoder.m; sourceTree = "<group>"; };
+		27E426181C2059FE0052B62A /* CLBSTPFormTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPFormTextField.h; sourceTree = "<group>"; };
+		27E426191C2059FE0052B62A /* CLBSTPFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSTPFormTextField.m; sourceTree = "<group>"; };
+		27E4261A1C2059FE0052B62A /* CLBSTPPaymentCardTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPPaymentCardTextField.h; sourceTree = "<group>"; };
+		27E4261B1C2059FE0052B62A /* CLBSTPPaymentCardTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSTPPaymentCardTextField.m; sourceTree = "<group>"; };
+		27E4261C1C2059FE0052B62A /* CLBSTPPaymentCardTextFieldViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSTPPaymentCardTextFieldViewModel.h; sourceTree = "<group>"; };
+		27E4261D1C2059FE0052B62A /* CLBSTPPaymentCardTextFieldViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSTPPaymentCardTextFieldViewModel.m; sourceTree = "<group>"; };
+		27E4261E1C2059FE0052B62A /* CLBStripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBStripeError.h; sourceTree = "<group>"; };
+		27E4261F1C2059FE0052B62A /* CLBStripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBStripeError.m; sourceTree = "<group>"; };
+		27E426341C21B1780052B62A /* CLBCheckmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBCheckmarkView.h; sourceTree = "<group>"; };
+		27E426351C21B1780052B62A /* CLBCheckmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBCheckmarkView.m; sourceTree = "<group>"; };
+		27E4E1DD1E4134AA00DAFD65 /* CLBSOLocationMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSOLocationMessageCell.h; sourceTree = "<group>"; };
+		27E4E1DE1E4134AA00DAFD65 /* CLBSOLocationMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSOLocationMessageCell.m; sourceTree = "<group>"; };
+		27E4E1E21E43986500DAFD65 /* locationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationIcon.png; sourceTree = "<group>"; };
+		27E4E1E31E43986500DAFD65 /* locationIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locationIcon@2x.png"; sourceTree = "<group>"; };
+		27E4E1E41E43986500DAFD65 /* locationIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locationIcon@3x.png"; sourceTree = "<group>"; };
+		27E4E1E81E43B5CD00DAFD65 /* CLBLocationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBLocationRequest.h; sourceTree = "<group>"; };
+		27E4E1E91E43B5CD00DAFD65 /* CLBLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBLocationRequest.m; sourceTree = "<group>"; };
+		27E9A8F11BF3A3BF00CA6BFF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		27EDD4171BE8F68500B03DEF /* CLBMZFayeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBMZFayeClient.h; sourceTree = "<group>"; };
+		27EDD4181BE8F68500B03DEF /* CLBMZFayeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBMZFayeClient.m; sourceTree = "<group>"; };
+		27EDD4191BE8F68500B03DEF /* CLBMZFayeMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBMZFayeMessage.h; sourceTree = "<group>"; };
+		27EDD41A1BE8F68500B03DEF /* CLBMZFayeMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBMZFayeMessage.m; sourceTree = "<group>"; };
+		27EDD4201BE8F6F500B03DEF /* CLBSRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSRWebSocket.h; sourceTree = "<group>"; };
+		27EDD4211BE8F6F500B03DEF /* CLBSRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBSRWebSocket.m; sourceTree = "<group>"; };
+		27EDD4281BEBD35400B03DEF /* CLBConversationMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConversationMonitor.h; sourceTree = "<group>"; };
+		27EDD4291BEBD35400B03DEF /* CLBConversationMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConversationMonitor.m; sourceTree = "<group>"; };
+		27F040411F04423B00DA49E1 /* CLBClientInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBClientInfo.h; sourceTree = "<group>"; };
+		27F040421F04423B00DA49E1 /* CLBClientInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBClientInfo.m; sourceTree = "<group>"; };
+		27F0F7D01BFF9FEA00EA50B9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ClarabridgeChatLocalizable.strings"; sourceTree = "<group>"; };
+		27F0F7D11BFF9FF300EA50B9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27F0F7D21BFF9FFF00EA50B9 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27F0F7D31BFFA00700EA50B9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27F0F7D41BFFA02000EA50B9 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		27F62A0E19DB32670095390A /* CLBApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBApiClient.h; sourceTree = "<group>"; };
+		27F62A0F19DB32670095390A /* CLBApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBApiClient.m; sourceTree = "<group>"; };
+		27F62A1019DB32670095390A /* CLBJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBJSONSerializer.h; sourceTree = "<group>"; };
+		27F62A1119DB32670095390A /* CLBJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBJSONSerializer.m; sourceTree = "<group>"; };
+		27F62A1219DB32670095390A /* CLBQueryStringSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBQueryStringSerializer.h; sourceTree = "<group>"; };
+		27F62A1319DB32670095390A /* CLBQueryStringSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBQueryStringSerializer.m; sourceTree = "<group>"; };
+		27F8C7321EEEDF090072C960 /* CLBRealtimeSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBRealtimeSettings.h; sourceTree = "<group>"; };
+		27F8C7331EEEDF090072C960 /* CLBRealtimeSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBRealtimeSettings.m; sourceTree = "<group>"; };
+		27FBF7621EEAFEAD00FA4009 /* CLBRetryConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBRetryConfiguration.h; sourceTree = "<group>"; };
+		27FBF7631EEAFEAD00FA4009 /* CLBRetryConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBRetryConfiguration.m; sourceTree = "<group>"; };
+		27FE772A1C1F0CB900A430E5 /* CLBProgressButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBProgressButton.h; sourceTree = "<group>"; };
+		27FE772B1C1F0CB900A430E5 /* CLBProgressButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBProgressButton.m; sourceTree = "<group>"; };
+		27FE772F1C1F1E6000A430E5 /* CLBUITextField+Shake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLBUITextField+Shake.h"; path = "ThirdParty/UITextField+Shake/CLBUITextField+Shake.h"; sourceTree = "<group>"; };
+		27FE77301C1F1E6000A430E5 /* CLBUITextField+Shake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLBUITextField+Shake.m"; path = "ThirdParty/UITextField+Shake/CLBUITextField+Shake.m"; sourceTree = "<group>"; };
+		32C22F5D1B70099300087A1B /* CLBBSMobileProvision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBBSMobileProvision.h; sourceTree = "<group>"; };
+		32C22F5E1B70099300087A1B /* CLBBSMobileProvision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBBSMobileProvision.m; sourceTree = "<group>"; };
+		48D8C024238ED3A00010BF37 /* CLBScopeURLProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBScopeURLProvider.h; sourceTree = "<group>"; };
+		48D8C025238ED3A00010BF37 /* CLBScopeURLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBScopeURLFactory.m; sourceTree = "<group>"; };
+		48D8C026238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBClarabridgeChatScopeURLProvider.h; sourceTree = "<group>"; };
+		48D8C027238ED3A00010BF37 /* CLBScopeURLFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBScopeURLFactory.h; sourceTree = "<group>"; };
+		48D8C028238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBClarabridgeChatScopeURLProvider.m; sourceTree = "<group>"; };
+		48D8C02C238ED3A10010BF37 /* CLBClarabridgeChatSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBClarabridgeChatSerializer.h; sourceTree = "<group>"; };
+		48D8C02D238ED3A10010BF37 /* CLBSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBSerializer.h; sourceTree = "<group>"; };
+		48D8C02E238ED3A10010BF37 /* CLBClarabridgeChatSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBClarabridgeChatSerializer.m; sourceTree = "<group>"; };
+		48D8C030238ED3A10010BF37 /* CLBStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBStorage.h; sourceTree = "<group>"; };
+		48D8C031238ED3A10010BF37 /* CLBClarabridgeChatStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBClarabridgeChatStorage.h; sourceTree = "<group>"; };
+		48D8C033238ED3A10010BF37 /* CLBConversationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBConversationStorage.h; sourceTree = "<group>"; };
+		48D8C034238ED3A10010BF37 /* CLBConversationStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBConversationStorage.m; sourceTree = "<group>"; };
+		48D8C035238ED3A10010BF37 /* CLBClarabridgeChatStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBClarabridgeChatStorage.m; sourceTree = "<group>"; };
+		48D8C037238ED3A10010BF37 /* CLBFileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBFileIO.h; sourceTree = "<group>"; };
+		48D8C038238ED3A10010BF37 /* CLBClarabridgeChatFileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBClarabridgeChatFileIO.h; sourceTree = "<group>"; };
+		48D8C039238ED3A10010BF37 /* CLBClarabridgeChatFileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBClarabridgeChatFileIO.m; sourceTree = "<group>"; };
+		48D8C06D239530FD0010BF37 /* ClarabridgeChat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClarabridgeChat-Prefix.pch"; sourceTree = "<group>"; };
+		48D8C07023956E170010BF37 /* CLBMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBMacros.h; sourceTree = "<group>"; };
+		4960177D1A01999B0022969F /* defaultAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultAvatar.png; sourceTree = "<group>"; };
+		4960177E1A01999B0022969F /* defaultAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultAvatar@2x.png"; sourceTree = "<group>"; };
+		5D516D9F18A1543C00CBA70F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5D5F69FC18A133DE00AA5FCD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9FB4B8E91B13CD8300DD8A41 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		9FECF62A19F859A8006741A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		9FECF62B19F859A8006741A9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
+		B9B1910A1BBB1417003FEC41 /* CLBRemotePushToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRemotePushToken.h; sourceTree = "<group>"; };
+		B9B1910D1BBB14D5003FEC41 /* CLBRemotePushToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRemotePushToken.m; sourceTree = "<group>"; };
+		DC035F0C1846567B006D8E05 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		DC4FDF63183275A400C0512E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		DC4FDF67183275DA00C0512E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DC56AE06184E2CA30055F2FF /* ios7-icon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ios7-icon.ttf"; sourceTree = "<group>"; };
+		DC5D87E6184E3F4100658168 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		DCDED998183166530006F2FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DCDED9A5183166530006F2FC /* ClarabridgeChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClarabridgeChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCDED9A6183166530006F2FC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DCDED9A9183166530006F2FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DCEF379518BFD69900B5DD25 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DCEF379718BFD72200B5DD25 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FED1FC9719D5FA7100E05A03 /* CLBRTSpinKitThreeBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRTSpinKitThreeBounceAnimation.h; sourceTree = "<group>"; };
+		FED1FC9819D5FA7100E05A03 /* CLBRTSpinKitThreeBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRTSpinKitThreeBounceAnimation.m; sourceTree = "<group>"; };
+		FED1FC9F19D5FA7100E05A03 /* CLBRTSpinKitAnimating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRTSpinKitAnimating.h; sourceTree = "<group>"; };
+		FED1FCA019D5FA7100E05A03 /* CLBRTSpinKitUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRTSpinKitUtils.h; sourceTree = "<group>"; };
+		FED1FCA119D5FA7100E05A03 /* CLBRTSpinKitUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRTSpinKitUtils.m; sourceTree = "<group>"; };
+		FED1FCA219D5FA7100E05A03 /* CLBRTSpinKitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBRTSpinKitView.h; sourceTree = "<group>"; };
+		FED1FCA319D5FA7100E05A03 /* CLBRTSpinKitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBRTSpinKitView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27327B041C13212F00A54C65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D36A0A1C1327EA00F6322C /* libicucore.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F78C01D23EC2CE800CC3A0F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2717DDCA1987DDE4006F2698 /* CLBSettings.h */,
+				2717DDCB1987DDE4006F2698 /* CLBSettings.m */,
+				2717DDCC1987DDE4006F2698 /* CLBSettings+Private.h */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0FB2752F23F1647600FAB5F5 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				2717DDA51987DDE4006F2698 /* CLBConfig.h */,
+				2717DDA61987DDE4006F2698 /* CLBConfig.m */,
+				2769BB9E19A7C7F20016FF2C /* CLBConfigFetchScheduler.h */,
+				2769BB9F19A7C7F20016FF2C /* CLBConfigFetchScheduler.m */,
+				0FF3274723FFE00A0066DC9E /* CLBConfigFetchSchedulerDelegate.h */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		1C38551023CDDEEF00C26ACD /* EventType */ = {
+			isa = PBXGroup;
+			children = (
+				1C38551223CDFA7D00C26ACD /* CLBEventTypeFactory.h */,
+				1C38551323CDFA7D00C26ACD /* CLBEventTypeFactory.m */,
+				1C9A66B423FAD0D4007FD80D /* CLBEventTypeFactoryDelegate.h */,
+			);
+			path = EventType;
+			sourceTree = "<group>";
+		};
+		2717DD801987DDE4006F2698 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				1C38551023CDDEEF00C26ACD /* EventType */,
+				2717DD811987DDE4006F2698 /* CLBMessage.h */,
+				27D0CCE11AC9913200410E2A /* CLBMessage+Private.h */,
+				2717DD821987DDE4006F2698 /* CLBMessage.m */,
+				2717DD831987DDE4006F2698 /* CLBConversation.h */,
+				27BEBFBF19F5438E0099E295 /* CLBConversation+Private.h */,
+				2717DD841987DDE4006F2698 /* CLBConversation.m */,
+				0FF475A623CF66C9005DD175 /* CLBConversationList.h */,
+				0FF475A723CF66C9005DD175 /* CLBConversationList.m */,
+				2717DD851987DDE4006F2698 /* CLBConversationHeaderView.h */,
+				2717DD861987DDE4006F2698 /* CLBConversationHeaderView.m */,
+				2717DD871987DDE4006F2698 /* CLBConversationViewController.h */,
+				2717DD881987DDE4006F2698 /* CLBConversationViewController.m */,
+				2709B9B519ABB02700FDDE2B /* CLBConversationFetchScheduler.h */,
+				2709B9B619ABB02700FDDE2B /* CLBConversationFetchScheduler.m */,
+				276C7CBE1A09784B00DE2410 /* CLBAvatarImageLoaderStrategy.h */,
+				276C7CBF1A09784B00DE2410 /* CLBAvatarImageLoaderStrategy.m */,
+				2792D7301A2CB4A5000D6ECD /* CLBTextViewVendingMachine.h */,
+				2792D7311A2CB4A5000D6ECD /* CLBTextViewVendingMachine.m */,
+				27EDD4281BEBD35400B03DEF /* CLBConversationMonitor.h */,
+				27EDD4291BEBD35400B03DEF /* CLBConversationMonitor.m */,
+				272DB2881DDB4EE00070D43E /* CLBConversationActivity.h */,
+				274EA9C41DDF65BB0029487C /* CLBConversationActivity+Private.h */,
+				272DB2891DDB4EE00070D43E /* CLBConversationActivity.m */,
+				1C4A17552385597900238AB3 /* CLBConversationViewControllerDelegate.h */,
+				1C4A175A2387EB0700238AB3 /* CLBConversationController.h */,
+				1C4A175B2387EB0700238AB3 /* CLBConversationController.m */,
+				1C77349C23CF23550036C74A /* CLBConversationFetchSchedulerProtocol.h */,
+				1CF2D35E23EDA9C200441064 /* CLBConversationSynchronizer.h */,
+				1CF2D35F23EDA9C200441064 /* CLBConversationSynchronizer.m */,
+			);
+			path = Conversations;
+			sourceTree = "<group>";
+		};
+		2717DD891987DDE4006F2698 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				2717DD8A1987DDE4006F2698 /* CLBAppDelegate.h */,
+				2717DD8B1987DDE4006F2698 /* CLBAppDelegate.m */,
+				2717DD8C1987DDE4006F2698 /* CLBAppDelegateProxy.h */,
+				2717DD8D1987DDE4006F2698 /* CLBAppDelegateProxy.m */,
+				2717DD8E1987DDE4006F2698 /* CLBInAppNotificationViewController.h */,
+				2717DD8F1987DDE4006F2698 /* CLBInAppNotificationViewController.m */,
+				2717DD901987DDE4006F2698 /* CLBInAppNotificationWindow.h */,
+				2717DD911987DDE4006F2698 /* CLBInAppNotificationWindow.m */,
+				2717DD941987DDE4006F2698 /* CLBPushNotificationFilter.h */,
+				2717DD951987DDE4006F2698 /* CLBPushNotificationFilter.m */,
+				2717DD961987DDE4006F2698 /* CLBInAppNotificationHandler.h */,
+				2717DD971987DDE4006F2698 /* CLBInAppNotificationHandler.m */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		2717DDA11987DDE4006F2698 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				2717DDA21987DDE4006F2698 /* CLBRemoteObject.h */,
+				1CAA4B4623F1B8B100B708B1 /* CLBRemoteObjectSynchronizerProtocol.h */,
+				2717DDA31987DDE4006F2698 /* CLBRemoteObjectSynchronizer.h */,
+				2717DDA41987DDE4006F2698 /* CLBRemoteObjectSynchronizer.m */,
+				279617E3199508300013E60B /* CLBRemoteOperation.h */,
+				279617E4199508300013E60B /* CLBRemoteOperation.m */,
+				2709B9B019ABA66F00FDDE2B /* CLBRemoteOperationScheduler.m */,
+				B9B1910A1BBB1417003FEC41 /* CLBRemotePushToken.h */,
+				B9B1910D1BBB14D5003FEC41 /* CLBRemotePushToken.m */,
+				2709B9AF19ABA66F00FDDE2B /* CLBRemoteOperationScheduler.h */,
+				27573C1719C9BB0000868657 /* CLBRemoteResponse.h */,
+				27573C1819C9BB0000868657 /* CLBRemoteResponse.m */,
+				27CAF5CB1A9D1BEC003583CE /* CLBUserSynchronizer.h */,
+				27CAF5CC1A9D1BEC003583CE /* CLBUserSynchronizer.m */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		2745ECCE19D9F3E700578B84 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2745ECCA19D9F3DD00578B84 /* CLBAFNetworkReachabilityManager.h */,
+				2745ECCB19D9F3DD00578B84 /* CLBAFNetworkReachabilityManager.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		2766ADB31C18DC9300D7B514 /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				27E4260D1C2059FE0052B62A /* CLBSTPCard.h */,
+				27E4260E1C2059FE0052B62A /* CLBSTPCard.m */,
+				27E4260F1C2059FE0052B62A /* CLBSTPCardBrand.h */,
+				27E426101C2059FE0052B62A /* CLBSTPCardParams.h */,
+				27E426111C2059FE0052B62A /* CLBSTPCardParams.m */,
+				27E426121C2059FE0052B62A /* CLBSTPCardValidationState.h */,
+				27E426131C2059FE0052B62A /* CLBSTPCardValidator.h */,
+				27E426141C2059FE0052B62A /* CLBSTPCardValidator.m */,
+				27E426151C2059FE0052B62A /* CLBSTPFormEncodable.h */,
+				27E426161C2059FE0052B62A /* CLBSTPFormEncoder.h */,
+				27E426171C2059FE0052B62A /* CLBSTPFormEncoder.m */,
+				27E426181C2059FE0052B62A /* CLBSTPFormTextField.h */,
+				27E426191C2059FE0052B62A /* CLBSTPFormTextField.m */,
+				27E4261A1C2059FE0052B62A /* CLBSTPPaymentCardTextField.h */,
+				27E4261B1C2059FE0052B62A /* CLBSTPPaymentCardTextField.m */,
+				27E4261C1C2059FE0052B62A /* CLBSTPPaymentCardTextFieldViewModel.h */,
+				27E4261D1C2059FE0052B62A /* CLBSTPPaymentCardTextFieldViewModel.m */,
+				27E4261E1C2059FE0052B62A /* CLBStripeError.h */,
+				27E4261F1C2059FE0052B62A /* CLBStripeError.m */,
+			);
+			name = Stripe;
+			path = ThirdParty/Stripe;
+			sourceTree = "<group>";
+		};
+		277BCDEF1950AFD700413CF5 /* SOMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				272E04C819536CCD0071D0CA /* CLBSOPhotoMessageCell.h */,
+				272E04C919536CCD0071D0CA /* CLBSOPhotoMessageCell.m */,
+				272E04CA19536CCD0071D0CA /* CLBSOTextMessageCell.h */,
+				272E04CB19536CCD0071D0CA /* CLBSOTextMessageCell.m */,
+				272E04CC19536CCD0071D0CA /* CLBSOVideoMessageCell.h */,
+				272E04CD19536CCD0071D0CA /* CLBSOVideoMessageCell.m */,
+				277BCDFD1950AFD700413CF5 /* CLBSOImageBrowserView.h */,
+				277BCDFE1950AFD700413CF5 /* CLBSOImageBrowserView.m */,
+				277BCDFF1950AFD700413CF5 /* CLBSOMessage.h */,
+				277BCE001950AFD700413CF5 /* CLBSOMessageCell.h */,
+				277BCE011950AFD700413CF5 /* CLBSOMessageCell.m */,
+				277BCE021950AFD700413CF5 /* CLBSOMessageInputView.h */,
+				277BCE031950AFD700413CF5 /* CLBSOMessageInputView.m */,
+				277BCE051950AFD700413CF5 /* CLBSOMessagingDataSource.h */,
+				277BCE061950AFD700413CF5 /* CLBSOMessagingDelegate.h */,
+				277BCE071950AFD700413CF5 /* CLBSOMessagingViewController.h */,
+				277BCE081950AFD700413CF5 /* CLBSOMessagingViewController.m */,
+				277BCE091950AFD700413CF5 /* CLBSOPlaceholderedTextView.h */,
+				277BCE0A1950AFD700413CF5 /* CLBSOPlaceholderedTextView.m */,
+				274EA9BF1DDE0B330029487C /* CLBSOActivityMessageCell.h */,
+				27E4E1DE1E4134AA00DAFD65 /* CLBSOLocationMessageCell.m */,
+				274EA9C01DDE0B330029487C /* CLBSOActivityMessageCell.m */,
+				27E4E1DD1E4134AA00DAFD65 /* CLBSOLocationMessageCell.h */,
+				27BA65DB20080725005E9045 /* CLBSOCarouselMessageCell.h */,
+				27BA65DC20080725005E9045 /* CLBSOCarouselMessageCell.m */,
+				27D10B7E20090D4500DA4207 /* CLBSOCarouselCollectionViewCell.h */,
+				27D10B7F20090D4500DA4207 /* CLBSOCarouselCollectionViewCell.m */,
+				27D19E692049953C007A3C66 /* CLBSOFileMessageCell.h */,
+				27D19E6A2049953C007A3C66 /* CLBSOFileMessageCell.m */,
+			);
+			name = SOMessaging;
+			path = ThirdParty/SOMessaging;
+			sourceTree = "<group>";
+		};
+		27EDD4161BE8F68500B03DEF /* MZFayeClient */ = {
+			isa = PBXGroup;
+			children = (
+				27EDD4171BE8F68500B03DEF /* CLBMZFayeClient.h */,
+				27EDD4181BE8F68500B03DEF /* CLBMZFayeClient.m */,
+				27EDD4191BE8F68500B03DEF /* CLBMZFayeMessage.h */,
+				27EDD41A1BE8F68500B03DEF /* CLBMZFayeMessage.m */,
+			);
+			name = MZFayeClient;
+			path = ThirdParty/MZFayeClient;
+			sourceTree = "<group>";
+		};
+		27EDD41F1BE8F6F500B03DEF /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				27EDD4201BE8F6F500B03DEF /* CLBSRWebSocket.h */,
+				27EDD4211BE8F6F500B03DEF /* CLBSRWebSocket.m */,
+			);
+			name = SocketRocket;
+			path = ThirdParty/SocketRocket;
+			sourceTree = "<group>";
+		};
+		27F62A0D19DB32670095390A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1CAA4B4723F2A42B00B708B1 /* CLBAPIClientProtocol.h */,
+				27F62A0E19DB32670095390A /* CLBApiClient.h */,
+				27F62A0F19DB32670095390A /* CLBApiClient.m */,
+				27F62A1019DB32670095390A /* CLBJSONSerializer.h */,
+				27F62A1119DB32670095390A /* CLBJSONSerializer.m */,
+				27F62A1219DB32670095390A /* CLBQueryStringSerializer.h */,
+				27F62A1319DB32670095390A /* CLBQueryStringSerializer.m */,
+				0F8946B623F2C80500EF35D7 /* CLBHeaderFactory.h */,
+				0F8946B723F2C80500EF35D7 /* CLBHeaderFactory.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		27FE772E1C1F1E4E00A430E5 /* UITextField+Shake */ = {
+			isa = PBXGroup;
+			children = (
+				27FE772F1C1F1E6000A430E5 /* CLBUITextField+Shake.h */,
+				27FE77301C1F1E6000A430E5 /* CLBUITextField+Shake.m */,
+			);
+			name = "UITextField+Shake";
+			sourceTree = "<group>";
+		};
+		32C22F581B70099300087A1B /* BSMobileProvision */ = {
+			isa = PBXGroup;
+			children = (
+				32C22F5D1B70099300087A1B /* CLBBSMobileProvision.h */,
+				32C22F5E1B70099300087A1B /* CLBBSMobileProvision.m */,
+			);
+			name = BSMobileProvision;
+			path = ThirdParty/BSMobileProvision;
+			sourceTree = "<group>";
+		};
+		48D8C023238ED3A00010BF37 /* StorageScope */ = {
+			isa = PBXGroup;
+			children = (
+				48D8C024238ED3A00010BF37 /* CLBScopeURLProvider.h */,
+				48D8C027238ED3A00010BF37 /* CLBScopeURLFactory.h */,
+				48D8C025238ED3A00010BF37 /* CLBScopeURLFactory.m */,
+				48D8C026238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.h */,
+				48D8C028238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.m */,
+			);
+			path = StorageScope;
+			sourceTree = "<group>";
+		};
+		48D8C02A238ED3A10010BF37 /* Serializer */ = {
+			isa = PBXGroup;
+			children = (
+				48D8C02D238ED3A10010BF37 /* CLBSerializer.h */,
+				48D8C02C238ED3A10010BF37 /* CLBClarabridgeChatSerializer.h */,
+				48D8C02E238ED3A10010BF37 /* CLBClarabridgeChatSerializer.m */,
+			);
+			path = Serializer;
+			sourceTree = "<group>";
+		};
+		48D8C02F238ED3A10010BF37 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				48D8C032238ED3A10010BF37 /* ConversationStorage */,
+				48D8C030238ED3A10010BF37 /* CLBStorage.h */,
+				48D8C031238ED3A10010BF37 /* CLBClarabridgeChatStorage.h */,
+				48D8C035238ED3A10010BF37 /* CLBClarabridgeChatStorage.m */,
+				0FF7547723D72C0000D63DC8 /* CLBConversationPersistence.h */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		48D8C032238ED3A10010BF37 /* ConversationStorage */ = {
+			isa = PBXGroup;
+			children = (
+				48D8C033238ED3A10010BF37 /* CLBConversationStorage.h */,
+				48D8C034238ED3A10010BF37 /* CLBConversationStorage.m */,
+				0FF475AA23CF7D76005DD175 /* CLBConversationListStorage.h */,
+				0FF475AB23CF7D76005DD175 /* CLBConversationListStorage.m */,
+				1C7734AD23E087C90036C74A /* CLBConversationStorageManager.h */,
+				1C7734AE23E087C90036C74A /* CLBConversationStorageManager.m */,
+				1C836CC723E097E500E2B892 /* CLBConversationStorageManagerDelegate.h */,
+			);
+			path = ConversationStorage;
+			sourceTree = "<group>";
+		};
+		48D8C036238ED3A10010BF37 /* FileIO */ = {
+			isa = PBXGroup;
+			children = (
+				48D8C037238ED3A10010BF37 /* CLBFileIO.h */,
+				48D8C038238ED3A10010BF37 /* CLBClarabridgeChatFileIO.h */,
+				48D8C039238ED3A10010BF37 /* CLBClarabridgeChatFileIO.m */,
+			);
+			path = FileIO;
+			sourceTree = "<group>";
+		};
+		9FECF62819F859A8006741A9 /* ClarabridgeChatLocalization */ = {
+			isa = PBXGroup;
+			children = (
+				9FECF62919F859A8006741A9 /* ClarabridgeChatLocalizable.strings */,
+			);
+			path = ClarabridgeChatLocalization;
+			sourceTree = "<group>";
+		};
+		DC035F0E1846567B006D8E05 /* ClarabridgeChatResources */ = {
+			isa = PBXGroup;
+			children = (
+				9FECF62819F859A8006741A9 /* ClarabridgeChatLocalization */,
+				2766ADDE1C18DE1C00D7B514 /* stp_card_amex.png */,
+				2766ADDF1C18DE1C00D7B514 /* stp_card_amex@2x.png */,
+				2766ADE01C18DE1C00D7B514 /* stp_card_amex@3x.png */,
+				2766ADE11C18DE1C00D7B514 /* stp_card_cvc_amex.png */,
+				2766ADE21C18DE1C00D7B514 /* stp_card_cvc_amex@2x.png */,
+				2766ADE31C18DE1C00D7B514 /* stp_card_cvc_amex@3x.png */,
+				2766ADE41C18DE1C00D7B514 /* stp_card_cvc.png */,
+				2766ADE51C18DE1C00D7B514 /* stp_card_cvc@2x.png */,
+				2766ADE61C18DE1C00D7B514 /* stp_card_cvc@3x.png */,
+				2766ADE71C18DE1C00D7B514 /* stp_card_diners.png */,
+				2766ADE81C18DE1C00D7B514 /* stp_card_diners@2x.png */,
+				2766ADE91C18DE1C00D7B514 /* stp_card_diners@3x.png */,
+				2766ADEA1C18DE1C00D7B514 /* stp_card_discover.png */,
+				2766ADEB1C18DE1C00D7B514 /* stp_card_discover@2x.png */,
+				2766ADEC1C18DE1C00D7B514 /* stp_card_discover@3x.png */,
+				2766ADED1C18DE1C00D7B514 /* stp_card_jcb.png */,
+				2766ADEE1C18DE1C00D7B514 /* stp_card_jcb@2x.png */,
+				2766ADEF1C18DE1C00D7B514 /* stp_card_jcb@3x.png */,
+				2766ADF01C18DE1C00D7B514 /* stp_card_mastercard.png */,
+				2766ADF11C18DE1C00D7B514 /* stp_card_mastercard@2x.png */,
+				2766ADF21C18DE1C00D7B514 /* stp_card_mastercard@3x.png */,
+				2766ADF31C18DE1C00D7B514 /* stp_card_placeholder_template.png */,
+				2766ADF41C18DE1C00D7B514 /* stp_card_placeholder_template@2x.png */,
+				2766ADF51C18DE1C00D7B514 /* stp_card_placeholder_template@3x.png */,
+				2766ADF61C18DE1C00D7B514 /* stp_card_placeholder.png */,
+				2766ADF71C18DE1C00D7B514 /* stp_card_placeholder@2x.png */,
+				2766ADF81C18DE1C00D7B514 /* stp_card_placeholder@3x.png */,
+				2766ADF91C18DE1C00D7B514 /* stp_card_visa.png */,
+				2766ADFA1C18DE1C00D7B514 /* stp_card_visa@2x.png */,
+				2766ADFB1C18DE1C00D7B514 /* stp_card_visa@3x.png */,
+				4960177D1A01999B0022969F /* defaultAvatar.png */,
+				4960177E1A01999B0022969F /* defaultAvatar@2x.png */,
+				27D14BC31A091B3000D08BF5 /* defaultAvatar@3x.png */,
+				DC56AE06184E2CA30055F2FF /* ios7-icon.ttf */,
+				27E4E1E21E43986500DAFD65 /* locationIcon.png */,
+				27E4E1E31E43986500DAFD65 /* locationIcon@2x.png */,
+				27E4E1E41E43986500DAFD65 /* locationIcon@3x.png */,
+				2708452F1F97F8B70020E71E /* backArrow.png */,
+				2708452D1F97F8B60020E71E /* backArrow@2x.png */,
+				2708452E1F97F8B60020E71E /* backArrow@3x.png */,
+				277FE3B22051C4ED008B6ECC /* paperClip.png */,
+				277FE3B32051C4EE008B6ECC /* paperClip@2x.png */,
+				277FE3B42051C4EE008B6ECC /* paperClip@3x.png */,
+				277FE3C9206046DC008B6ECC /* mediaButton.png */,
+				277FE3C8206046DC008B6ECC /* mediaButton@2x.png */,
+				277FE3C7206046DB008B6ECC /* mediaButton@3x.png */,
+				279367E8230AE4B0007582CA /* ColorCatalog.xcassets */,
+			);
+			path = ClarabridgeChatResources;
+			sourceTree = "<group>";
+		};
+		DC16C0DC18318B5700FA3C4B /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				27FE772E1C1F1E4E00A430E5 /* UITextField+Shake */,
+				2766ADB31C18DC9300D7B514 /* Stripe */,
+				32C22F581B70099300087A1B /* BSMobileProvision */,
+				27EDD4161BE8F68500B03DEF /* MZFayeClient */,
+				2745ECCE19D9F3E700578B84 /* Networking */,
+				27EDD41F1BE8F6F500B03DEF /* SocketRocket */,
+				277BCDEF1950AFD700413CF5 /* SOMessaging */,
+				FED1FC7F19D5FA0400E05A03 /* SpinKit */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		DCDED98C183166530006F2FC = {
+			isa = PBXGroup;
+			children = (
+				DCDED997183166530006F2FC /* Frameworks */,
+				DCDED996183166530006F2FC /* Products */,
+				DCDED99A183166530006F2FC /* ClarabridgeChat */,
+				DC035F0E1846567B006D8E05 /* ClarabridgeChatResources */,
+				DC16C0DC18318B5700FA3C4B /* ThirdParty */,
+			);
+			sourceTree = "<group>";
+		};
+		DCDED996183166530006F2FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCDED9A5183166530006F2FC /* ClarabridgeChatTests.xctest */,
+				27327B081C13212F00A54C65 /* ClarabridgeChat.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DCDED997183166530006F2FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27D36A091C1327EA00F6322C /* libicucore.tbd */,
+				27E9A8F11BF3A3BF00CA6BFF /* CFNetwork.framework */,
+				271246D8199BE44000DB2875 /* MobileCoreServices.framework */,
+				DCEF379718BFD72200B5DD25 /* AVFoundation.framework */,
+				DCEF379518BFD69900B5DD25 /* UIKit.framework */,
+				5D516D9F18A1543C00CBA70F /* QuartzCore.framework */,
+				5D5F69FC18A133DE00AA5FCD /* OpenGLES.framework */,
+				DC5D87E6184E3F4100658168 /* libxml2.dylib */,
+				DC4FDF67183275DA00C0512E /* SystemConfiguration.framework */,
+				DC4FDF63183275A400C0512E /* CoreTelephony.framework */,
+				DCDED998183166530006F2FC /* Foundation.framework */,
+				DCDED9A6183166530006F2FC /* XCTest.framework */,
+				DCDED9A9183166530006F2FC /* UIKit.framework */,
+				DC035F0C1846567B006D8E05 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCDED99A183166530006F2FC /* ClarabridgeChat */ = {
+			isa = PBXGroup;
+			children = (
+				0FB2752F23F1647600FAB5F5 /* Config */,
+				0F78C01D23EC2CE800CC3A0F /* Settings */,
+				48D8C06D239530FD0010BF37 /* ClarabridgeChat-Prefix.pch */,
+				48D8C07023956E170010BF37 /* CLBMacros.h */,
+				48D8C036238ED3A10010BF37 /* FileIO */,
+				48D8C02A238ED3A10010BF37 /* Serializer */,
+				48D8C02F238ED3A10010BF37 /* Storage */,
+				48D8C023238ED3A00010BF37 /* StorageScope */,
+				2717DD801987DDE4006F2698 /* Conversations */,
+				27F62A0D19DB32670095390A /* Networking */,
+				2717DD891987DDE4006F2698 /* Notifications */,
+				2717DDA11987DDE4006F2698 /* Remote */,
+				2717DDBE1987DDE4006F2698 /* CLBLocalization.h */,
+				2717DDBF1987DDE4006F2698 /* CLBLocalization.m */,
+				279617DF1993FD500013E60B /* CLBViewAboveKeyboard.h */,
+				279617E01993FD500013E60B /* CLBViewAboveKeyboard.m */,
+				2717DDD51987DDE4006F2698 /* CLBUser.h */,
+				278F28A519A62A11007F9110 /* CLBUser+Private.h */,
+				2717DDD61987DDE4006F2698 /* CLBUser.m */,
+				278F28A919A6310C007F9110 /* CLBInnerUser.h */,
+				278F28AA19A6310C007F9110 /* CLBInnerUser.m */,
+				2717DDD91987DDE4006F2698 /* CLBUtility.h */,
+				2717DDDA1987DDE4006F2698 /* CLBUtility.m */,
+				2717DDDF1987DDE4006F2698 /* ClarabridgeChat.h */,
+				2717DDE01987DDE4006F2698 /* ClarabridgeChat.m */,
+				2717DDE11987DDE4006F2698 /* ClarabridgeChat+Private.h */,
+				27C06F3C1AD56BB700650644 /* CLBDependencyManager.h */,
+				0F2F493C23E0813F0037AB29 /* CLBDependencyManager+Private.h */,
+				27C06F3D1AD56BB700650644 /* CLBDependencyManager.m */,
+				27127BE01B14BD50004EAA60 /* CLBMessageAction.h */,
+				27127BE11B14BD50004EAA60 /* CLBMessageAction.m */,
+				27127BE41B1655D9004EAA60 /* CLBMessageAction+Private.h */,
+				27E023F62006839500B5944F /* CLBMessageItem.h */,
+				27E023F72006839500B5944F /* CLBMessageItem.m */,
+				27E024052006BEE800B5944F /* CLBMessageItem+Private.h */,
+				27D19E6D20499904007A3C66 /* CLBFileUploadMessage.h */,
+				27D19E6E20499904007A3C66 /* CLBFileUploadMessage.m */,
+				2786492F1B74E47D0071B524 /* CLBUserLifecycleManager.h */,
+				278649301B74E47D0071B524 /* CLBUserLifecycleManager.m */,
+				27064B691BCA9C3C001D4718 /* CLBImageLoader.h */,
+				27064B6A1BCA9C3C001D4718 /* CLBImageLoader.m */,
+				27AB5B501BCAAFB3009E7C7C /* CLBErrorMessageOverlay.h */,
+				27AB5B511BCAAFB3009E7C7C /* CLBErrorMessageOverlay.m */,
+				27AB5B521BCAAFB3009E7C7C /* CLBInAppNotificationView.h */,
+				27AB5B531BCAAFB3009E7C7C /* CLBInAppNotificationView.m */,
+				27AB5B541BCAAFB3009E7C7C /* CLBXCharacterView.h */,
+				27AB5B551BCAAFB3009E7C7C /* CLBXCharacterView.m */,
+				27A11B211BCC038C0031D31B /* CLBImagePickerController.h */,
+				27A11B221BCC038C0031D31B /* CLBImagePickerController.m */,
+				27BD0DA81C0E329900F95F7C /* CLBBuyViewController.h */,
+				27BD0DA91C0E329900F95F7C /* CLBBuyViewController.m */,
+				2766ADAF1C17761B00D7B514 /* CLBStripeApiClient.h */,
+				2766ADB01C17761B00D7B514 /* CLBStripeApiClient.m */,
+				27FE772A1C1F0CB900A430E5 /* CLBProgressButton.h */,
+				27FE772B1C1F0CB900A430E5 /* CLBProgressButton.m */,
+				27E426341C21B1780052B62A /* CLBCheckmarkView.h */,
+				27E426351C21B1780052B62A /* CLBCheckmarkView.m */,
+				27B27F651C3DAFBB00474E72 /* CLBRoundedRectView.h */,
+				27B27F661C3DAFBB00474E72 /* CLBRoundedRectView.m */,
+				27A46BEA1C4D84F00082FCD9 /* CLBPaymentTextField.h */,
+				27A46BEB1C4D84F00082FCD9 /* CLBPaymentTextField.m */,
+				279AF785201BB5D30067B054 /* CLBPersistence.h */,
+				279AF786201BB5D40067B054 /* CLBPersistence.m */,
+				272647681DFEED9900B21BC7 /* CLBRepliesView.h */,
+				272647691DFEED9900B21BC7 /* CLBRepliesView.m */,
+				2798707A1E047F930036F030 /* CLBReplyButton.h */,
+				2798707B1E047F930036F030 /* CLBReplyButton.m */,
+				27CA8CB81E3A34FA005A986F /* CLBLocationService.h */,
+				27CA8CB91E3A34FA005A986F /* CLBLocationService.m */,
+				27CA8CBE1E3A516D005A986F /* CLBCoordinates.h */,
+				27CA8CBF1E3A516D005A986F /* CLBCoordinates.m */,
+				2767040A1E3B9212009D13D3 /* CLBCoordinates+Private.h */,
+				27E4E1E81E43B5CD00DAFD65 /* CLBLocationRequest.h */,
+				27E4E1E91E43B5CD00DAFD65 /* CLBLocationRequest.m */,
+				27FBF7621EEAFEAD00FA4009 /* CLBRetryConfiguration.h */,
+				27FBF7631EEAFEAD00FA4009 /* CLBRetryConfiguration.m */,
+				27F8C7321EEEDF090072C960 /* CLBRealtimeSettings.h */,
+				27F8C7331EEEDF090072C960 /* CLBRealtimeSettings.m */,
+				276A497D2278E91D00A604F8 /* CLBAuthorInfo.h */,
+				276A497E2278E91D00A604F8 /* CLBAuthorInfo.m */,
+				27F040411F04423B00DA49E1 /* CLBClientInfo.h */,
+				27F040421F04423B00DA49E1 /* CLBClientInfo.m */,
+				2728F45E1F349ABA0006C676 /* CLBUserSettings.h */,
+				2728F45F1F349ABA0006C676 /* CLBUserSettings.m */,
+				2748DB4C1F7A8FE80009A7B5 /* CLBNavigationBar.h */,
+				2748DB4D1F7A8FE80009A7B5 /* CLBNavigationBar.m */,
+				2748DB551F7C30F10009A7B5 /* CLBWebviewViewController.h */,
+				2748DB561F7C30F10009A7B5 /* CLBWebviewViewController.m */,
+				2726DE3F1F9A394600A57F3F /* CLBPhotoConfirmationViewController.h */,
+				2726DE401F9A394600A57F3F /* CLBPhotoConfirmationViewController.m */,
+				27BA65CF2007F11A005E9045 /* CLBDisplaySettings.h */,
+				27BA65D02007F11A005E9045 /* CLBDisplaySettings.m */,
+				27BA65D32007F3F6005E9045 /* CLBDisplaySettings+Private.h */,
+				27BF9C17200FE862008BC898 /* CLBMessageItemView.h */,
+				27BF9C18200FE862008BC898 /* CLBMessageItemView.m */,
+				27BF9C1C2010FFD9008BC898 /* CLBMessageItemViewModel.h */,
+				27BF9C1D2010FFD9008BC898 /* CLBMessageItemViewModel.m */,
+				274A29122024F3EC0061DE71 /* CLBActionButton.h */,
+				274A29132024F3EC0061DE71 /* CLBActionButton.m */,
+				27BB7B91206420A700BF9800 /* CLBFailedUpload.h */,
+				27BB7B92206420A700BF9800 /* CLBFailedUpload.m */,
+				2780CCD72272528C001646C3 /* CLBClarabridgeChatApiClient.h */,
+				2780CCD82272528C001646C3 /* CLBClarabridgeChatApiClient.m */,
+				2780CCDB227254DA001646C3 /* CLBAuthenticationDelegate.h */,
+				1C2728342396C9EA00EC9D93 /* CLBUtilitySettings.h */,
+				1C2728352396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.h */,
+				1C2728362396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.m */,
+				1C9A66B723FD895E007FD80D /* CLBParticipant.h */,
+				0F9336CB242E23ED002C30A0 /* CLBParticipant+Private.h */,
+				1C9A66B823FD895E007FD80D /* CLBParticipant.m */,
+			);
+			path = ClarabridgeChat;
+			sourceTree = "<group>";
+		};
+		FED1FC7F19D5FA0400E05A03 /* SpinKit */ = {
+			isa = PBXGroup;
+			children = (
+				FED1FC8019D5FA7100E05A03 /* Animations */,
+				FED1FC9F19D5FA7100E05A03 /* CLBRTSpinKitAnimating.h */,
+				FED1FCA019D5FA7100E05A03 /* CLBRTSpinKitUtils.h */,
+				FED1FCA119D5FA7100E05A03 /* CLBRTSpinKitUtils.m */,
+				FED1FCA219D5FA7100E05A03 /* CLBRTSpinKitView.h */,
+				FED1FCA319D5FA7100E05A03 /* CLBRTSpinKitView.m */,
+			);
+			name = SpinKit;
+			path = ThirdParty/SpinKit;
+			sourceTree = "<group>";
+		};
+		FED1FC8019D5FA7100E05A03 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				FED1FC9719D5FA7100E05A03 /* CLBRTSpinKitThreeBounceAnimation.h */,
+				FED1FC9819D5FA7100E05A03 /* CLBRTSpinKitThreeBounceAnimation.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		27327B051C13212F00A54C65 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27BA65D12007F11A005E9045 /* CLBDisplaySettings.h in Headers */,
+				27E024022006A6F800B5944F /* CLBMessageItem.h in Headers */,
+				27A46C091C5020370082FCD9 /* CLBProgressButton.h in Headers */,
+				27327B951C13225E00A54C65 /* CLBRTSpinKitThreeBounceAnimation.h in Headers */,
+				27327B961C13225E00A54C65 /* CLBRTSpinKitAnimating.h in Headers */,
+				27327B971C13225E00A54C65 /* CLBRTSpinKitUtils.h in Headers */,
+				48D8C07123956E170010BF37 /* CLBMacros.h in Headers */,
+				1C9A66B923FD895E007FD80D /* CLBParticipant.h in Headers */,
+				27327B981C13225E00A54C65 /* CLBRTSpinKitView.h in Headers */,
+				27327B891C13225300A54C65 /* CLBSOPhotoMessageCell.h in Headers */,
+				2780CCDC227254DA001646C3 /* CLBAuthenticationDelegate.h in Headers */,
+				1C7734AF23E087C90036C74A /* CLBConversationStorageManager.h in Headers */,
+				0F8946B823F2C80500EF35D7 /* CLBHeaderFactory.h in Headers */,
+				272DB28A1DDB4EE00070D43E /* CLBConversationActivity.h in Headers */,
+				27CA8CC41E3AA61A005A986F /* CLBCoordinates.h in Headers */,
+				48D8C046238ED3A20010BF37 /* CLBClarabridgeChatStorage.h in Headers */,
+				27E4E1E01E4135B300DAFD65 /* CLBSOLocationMessageCell.h in Headers */,
+				274A29142024F3EC0061DE71 /* CLBActionButton.h in Headers */,
+				27E024062006BEE800B5944F /* CLBMessageItem+Private.h in Headers */,
+				274EA9C61DDF67EC0029487C /* CLBConversationActivity+Private.h in Headers */,
+				274EA9C21DDE11440029487C /* CLBSOActivityMessageCell.h in Headers */,
+				27327B8A1C13225300A54C65 /* CLBSOTextMessageCell.h in Headers */,
+				27327B8B1C13225300A54C65 /* CLBSOVideoMessageCell.h in Headers */,
+				27327B8D1C13225300A54C65 /* CLBSOImageBrowserView.h in Headers */,
+				27A46C381C5020AA0082FCD9 /* CLBSTPFormEncoder.h in Headers */,
+				279AF789201BB6230067B054 /* CLBPersistence.h in Headers */,
+				27F3C032201277D000A397BB /* CLBMessageItemViewModel.h in Headers */,
+				0FF7547823D72C0000D63DC8 /* CLBConversationPersistence.h in Headers */,
+				27327B8E1C13225300A54C65 /* CLBSOMessage.h in Headers */,
+				2780CCD92272528C001646C3 /* CLBClarabridgeChatApiClient.h in Headers */,
+				27327B8F1C13225300A54C65 /* CLBSOMessageCell.h in Headers */,
+				27327B901C13225300A54C65 /* CLBSOMessageInputView.h in Headers */,
+				27A46C3C1C5020AA0082FCD9 /* CLBSTPPaymentCardTextField.h in Headers */,
+				48D8C045238ED3A20010BF37 /* CLBStorage.h in Headers */,
+				48D8C03D238ED3A20010BF37 /* CLBClarabridgeChatScopeURLProvider.h in Headers */,
+				27327B911C13225300A54C65 /* CLBSOMessagingDataSource.h in Headers */,
+				27FBF7641EEAFEAD00FA4009 /* CLBRetryConfiguration.h in Headers */,
+				27327B921C13225300A54C65 /* CLBSOMessagingDelegate.h in Headers */,
+				27A46C321C5020AA0082FCD9 /* CLBSTPCardParams.h in Headers */,
+				2748DB4E1F7A8FE80009A7B5 /* CLBNavigationBar.h in Headers */,
+				2726476A1DFEED9900B21BC7 /* CLBRepliesView.h in Headers */,
+				48D8C042238ED3A20010BF37 /* CLBClarabridgeChatSerializer.h in Headers */,
+				27D10B8020090D4500DA4207 /* CLBSOCarouselCollectionViewCell.h in Headers */,
+				27A46C351C5020AA0082FCD9 /* CLBSTPCardValidator.h in Headers */,
+				27327B931C13225300A54C65 /* CLBSOMessagingViewController.h in Headers */,
+				27327B941C13225300A54C65 /* CLBSOPlaceholderedTextView.h in Headers */,
+				48D8C04A238ED3A20010BF37 /* CLBFileIO.h in Headers */,
+				27327B7E1C13223300A54C65 /* CLBSRWebSocket.h in Headers */,
+				27327B7D1C13222F00A54C65 /* CLBAFNetworkReachabilityManager.h in Headers */,
+				27A46C2F1C5020AA0082FCD9 /* CLBSTPCard.h in Headers */,
+				27A46C341C5020AA0082FCD9 /* CLBSTPCardValidationState.h in Headers */,
+				27327B781C13222300A54C65 /* CLBMZFayeClient.h in Headers */,
+				27327B791C13222300A54C65 /* CLBMZFayeMessage.h in Headers */,
+				27327B771C13221D00A54C65 /* CLBBSMobileProvision.h in Headers */,
+				27327B501C1321F500A54C65 /* CLBLocalization.h in Headers */,
+				48D8C047238ED3A20010BF37 /* CLBConversationStorage.h in Headers */,
+				27327B511C1321F500A54C65 /* CLBViewAboveKeyboard.h in Headers */,
+				27BA65D42007F3F6005E9045 /* CLBDisplaySettings+Private.h in Headers */,
+				27327B531C1321F500A54C65 /* CLBSettings.h in Headers */,
+				27327B541C1321F500A54C65 /* CLBSettings+Private.h in Headers */,
+				27327B551C1321F500A54C65 /* CLBUser.h in Headers */,
+				27327B561C1321F500A54C65 /* CLBUser+Private.h in Headers */,
+				27327B571C1321F500A54C65 /* CLBInnerUser.h in Headers */,
+				1C2728372396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.h in Headers */,
+				0FF475A823CF66CA005DD175 /* CLBConversationList.h in Headers */,
+				27D19E6B2049953C007A3C66 /* CLBSOFileMessageCell.h in Headers */,
+				0FF475AC23CF7D76005DD175 /* CLBConversationListStorage.h in Headers */,
+				48D8C043238ED3A20010BF37 /* CLBSerializer.h in Headers */,
+				27327B581C1321F500A54C65 /* CLBUtility.h in Headers */,
+				27327B591C1321F500A54C65 /* ClarabridgeChat+Private.h in Headers */,
+				27327B5A1C1321F500A54C65 /* CLBDependencyManager.h in Headers */,
+				48D8C03E238ED3A20010BF37 /* CLBScopeURLFactory.h in Headers */,
+				27327B5B1C1321F500A54C65 /* CLBMessageAction.h in Headers */,
+				27327B5C1C1321F500A54C65 /* CLBMessageAction+Private.h in Headers */,
+				27327B5E1C1321F500A54C65 /* CLBUserLifecycleManager.h in Headers */,
+				276A497F2278E91D00A604F8 /* CLBAuthorInfo.h in Headers */,
+				2748DB571F7C30F10009A7B5 /* CLBWebviewViewController.h in Headers */,
+				0FF3274823FFE00A0066DC9E /* CLBConfigFetchSchedulerDelegate.h in Headers */,
+				27327B5F1C1321F500A54C65 /* CLBImageLoader.h in Headers */,
+				27327B601C1321F500A54C65 /* CLBErrorMessageOverlay.h in Headers */,
+				27A46C3E1C5020AA0082FCD9 /* CLBSTPPaymentCardTextFieldViewModel.h in Headers */,
+				27E4E1EA1E43B5CD00DAFD65 /* CLBLocationRequest.h in Headers */,
+				27CC865E1C779C3400D3408B /* ClarabridgeChat.h in Headers */,
+				27327B611C1321F500A54C65 /* CLBInAppNotificationView.h in Headers */,
+				27327B621C1321F500A54C65 /* CLBXCharacterView.h in Headers */,
+				27327B631C1321F600A54C65 /* CLBImagePickerController.h in Headers */,
+				2726DE411F9A394600A57F3F /* CLBPhotoConfirmationViewController.h in Headers */,
+				27327B391C1321BE00A54C65 /* CLBRemoteObject.h in Headers */,
+				0F9336CC242E26D0002C30A0 /* CLBParticipant+Private.h in Headers */,
+				27A46C071C5020330082FCD9 /* CLBStripeApiClient.h in Headers */,
+				1C4A175C2387EB0700238AB3 /* CLBConversationController.h in Headers */,
+				2798707C1E047F930036F030 /* CLBReplyButton.h in Headers */,
+				27A46C421C5020F10082FCD9 /* CLBPaymentTextField.h in Headers */,
+				27A46C311C5020AA0082FCD9 /* CLBSTPCardBrand.h in Headers */,
+				27327B3A1C1321BE00A54C65 /* CLBRemoteObjectSynchronizer.h in Headers */,
+				27BB7B93206420A700BF9800 /* CLBFailedUpload.h in Headers */,
+				27A46C2D1C5020A30082FCD9 /* CLBUITextField+Shake.h in Headers */,
+				27A46C051C50202E0082FCD9 /* CLBBuyViewController.h in Headers */,
+				27A46C401C5020AA0082FCD9 /* CLBStripeError.h in Headers */,
+				27327B3B1C1321BE00A54C65 /* CLBRemoteOperation.h in Headers */,
+				27327B3C1C1321BE00A54C65 /* CLBConfig.h in Headers */,
+				27327B3D1C1321BE00A54C65 /* CLBRemotePushToken.h in Headers */,
+				27327B3E1C1321BE00A54C65 /* CLBConfigFetchScheduler.h in Headers */,
+				1CF2D36023EDA9C200441064 /* CLBConversationSynchronizer.h in Headers */,
+				27327B3F1C1321BE00A54C65 /* CLBRemoteOperationScheduler.h in Headers */,
+				27327B401C1321BE00A54C65 /* CLBRemoteResponse.h in Headers */,
+				27327B411C1321BE00A54C65 /* CLBUserSynchronizer.h in Headers */,
+				2728F4601F349ABA0006C676 /* CLBUserSettings.h in Headers */,
+				27327B281C13219A00A54C65 /* CLBAppDelegate.h in Headers */,
+				27327B291C13219A00A54C65 /* CLBAppDelegateProxy.h in Headers */,
+				27327B2A1C13219A00A54C65 /* CLBInAppNotificationViewController.h in Headers */,
+				27327B2B1C13219A00A54C65 /* CLBInAppNotificationWindow.h in Headers */,
+				27327B2C1C13219A00A54C65 /* CLBPushNotificationFilter.h in Headers */,
+				27327B2D1C13219A00A54C65 /* CLBInAppNotificationHandler.h in Headers */,
+				27F8C7341EEEDF090072C960 /* CLBRealtimeSettings.h in Headers */,
+				27F040431F04423B00DA49E1 /* CLBClientInfo.h in Headers */,
+				27327B181C13217400A54C65 /* CLBMessage.h in Headers */,
+				27A46C0D1C50203D0082FCD9 /* CLBRoundedRectView.h in Headers */,
+				27A46C0B1C50203A0082FCD9 /* CLBCheckmarkView.h in Headers */,
+				27327B191C13217400A54C65 /* CLBMessage+Private.h in Headers */,
+				27327B1A1C13217400A54C65 /* CLBConversation.h in Headers */,
+				27327B1B1C13217400A54C65 /* CLBConversation+Private.h in Headers */,
+				27327B1C1C13217400A54C65 /* CLBConversationHeaderView.h in Headers */,
+				48D8C04B238ED3A20010BF37 /* CLBClarabridgeChatFileIO.h in Headers */,
+				27327B1D1C13217400A54C65 /* CLBConversationViewController.h in Headers */,
+				48D8C03B238ED3A20010BF37 /* CLBScopeURLProvider.h in Headers */,
+				27327B1E1C13217400A54C65 /* CLBConversationFetchScheduler.h in Headers */,
+				27327B1F1C13217400A54C65 /* CLBAvatarImageLoaderStrategy.h in Headers */,
+				27CA8CBA1E3A34FA005A986F /* CLBLocationService.h in Headers */,
+				27D19E6F20499904007A3C66 /* CLBFileUploadMessage.h in Headers */,
+				27A46C371C5020AA0082FCD9 /* CLBSTPFormEncodable.h in Headers */,
+				27327B201C13217400A54C65 /* CLBTextViewVendingMachine.h in Headers */,
+				27327B211C13217400A54C65 /* CLBConversationMonitor.h in Headers */,
+				27327B221C13217D00A54C65 /* CLBApiClient.h in Headers */,
+				27BF9C24201100A5008BC898 /* CLBMessageItemView.h in Headers */,
+				27327B231C13217D00A54C65 /* CLBJSONSerializer.h in Headers */,
+				27A46C3A1C5020AA0082FCD9 /* CLBSTPFormTextField.h in Headers */,
+				27327B241C13217D00A54C65 /* CLBQueryStringSerializer.h in Headers */,
+				1C38551423CDFA7D00C26ACD /* CLBEventTypeFactory.h in Headers */,
+				48D8C06F23956DBC0010BF37 /* ClarabridgeChat-Prefix.pch in Headers */,
+				27BA65DD20080725005E9045 /* CLBSOCarouselMessageCell.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		27327B071C13212F00A54C65 /* ClarabridgeChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27327B0D1C13212F00A54C65 /* Build configuration list for PBXNativeTarget "ClarabridgeChat" */;
+			buildPhases = (
+				27327B031C13212F00A54C65 /* Sources */,
+				27327B041C13212F00A54C65 /* Frameworks */,
+				27327B051C13212F00A54C65 /* Headers */,
+				27327B061C13212F00A54C65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClarabridgeChat;
+			productName = ClarabridgeChat;
+			productReference = 27327B081C13212F00A54C65 /* ClarabridgeChat.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DCDED98D183166530006F2FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CLB;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Smooch Technologies";
+				TargetAttributes = {
+					27327B071C13212F00A54C65 = {
+						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 1100;
+					};
+					277618A81C1364C100056B3D = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					DCDED9A4183166530006F2FC = {
+						LastSwiftMigration = 1100;
+					};
+				};
+			};
+			buildConfigurationList = DCDED990183166530006F2FC /* Build configuration list for PBXProject "ClarabridgeChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				fr,
+				"zh-Hant",
+				de,
+				ja,
+				es,
+				ar,
+				fa,
+				fi,
+				sv,
+				sl,
+				"zh-Hans",
+				ko,
+				pt,
+				ru,
+				it,
+				"pt-BR",
+				uk,
+				nl,
+			);
+			mainGroup = DCDED98C183166530006F2FC;
+			productRefGroup = DCDED996183166530006F2FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27327B071C13212F00A54C65 /* ClarabridgeChat */,
+				277618A81C1364C100056B3D /* DynamicFramework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27327B061C13212F00A54C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27F107251F9813B500785EC6 /* backArrow.png in Resources */,
+				27F107261F9813B500785EC6 /* backArrow@2x.png in Resources */,
+				277FE3CC206046DC008B6ECC /* mediaButton.png in Resources */,
+				27F107271F9813B500785EC6 /* backArrow@3x.png in Resources */,
+				277618B61C13666B00056B3D /* ClarabridgeChatLocalizable.strings in Resources */,
+				27A46C1C1C5020680082FCD9 /* stp_card_jcb@3x.png in Resources */,
+				27A46C181C5020610082FCD9 /* stp_card_mastercard@3x.png in Resources */,
+				27A46C121C5020580082FCD9 /* stp_card_placeholder@3x.png in Resources */,
+				27A46C2C1C5020860082FCD9 /* stp_card_amex.png in Resources */,
+				27A46C111C5020560082FCD9 /* stp_card_visa.png in Resources */,
+				27A46C101C5020540082FCD9 /* stp_card_visa@2x.png in Resources */,
+				279367E9230AE4B0007582CA /* ColorCatalog.xcassets in Resources */,
+				27A46C251C5020790082FCD9 /* stp_card_cvc@2x.png in Resources */,
+				277618B21C13666700056B3D /* defaultAvatar.png in Resources */,
+				277FE3CA206046DC008B6ECC /* mediaButton@3x.png in Resources */,
+				27A46C131C50205A0082FCD9 /* stp_card_placeholder@2x.png in Resources */,
+				27A46C2B1C5020850082FCD9 /* stp_card_amex@2x.png in Resources */,
+				277FE3CB206046DC008B6ECC /* mediaButton@2x.png in Resources */,
+				277FE3B72051C4EE008B6ECC /* paperClip@3x.png in Resources */,
+				27A46C2A1C5020820082FCD9 /* stp_card_amex@3x.png in Resources */,
+				277618B31C13666700056B3D /* defaultAvatar@2x.png in Resources */,
+				27A46C1A1C5020650082FCD9 /* stp_card_mastercard.png in Resources */,
+				27A46C261C50207B0082FCD9 /* stp_card_cvc.png in Resources */,
+				27A46C291C5020800082FCD9 /* stp_card_cvc_amex.png in Resources */,
+				27A46C211C5020730082FCD9 /* stp_card_diners@3x.png in Resources */,
+				27A46C1D1C50206A0082FCD9 /* stp_card_jcb.png in Resources */,
+				27A46C151C50205D0082FCD9 /* stp_card_placeholder_template@3x.png in Resources */,
+				277618B41C13666700056B3D /* defaultAvatar@3x.png in Resources */,
+				27A46C231C5020760082FCD9 /* stp_card_diners.png in Resources */,
+				277FE3B62051C4EE008B6ECC /* paperClip@2x.png in Resources */,
+				27E4E1E51E43986500DAFD65 /* locationIcon.png in Resources */,
+				27A46C0F1C5020520082FCD9 /* stp_card_visa@3x.png in Resources */,
+				27A46C191C5020630082FCD9 /* stp_card_mastercard@2x.png in Resources */,
+				27A46C1F1C5020700082FCD9 /* stp_card_discover@2x.png in Resources */,
+				27E4E1E61E43986500DAFD65 /* locationIcon@2x.png in Resources */,
+				27A46C1B1C5020670082FCD9 /* stp_card_jcb@2x.png in Resources */,
+				277618B51C13666700056B3D /* ios7-icon.ttf in Resources */,
+				27A46C1E1C50206D0082FCD9 /* stp_card_discover@3x.png in Resources */,
+				27E4E1E71E43986500DAFD65 /* locationIcon@3x.png in Resources */,
+				27A46C281C50207E0082FCD9 /* stp_card_cvc_amex@2x.png in Resources */,
+				27A46C171C5020600082FCD9 /* stp_card_placeholder_template.png in Resources */,
+				27A46C161C50205E0082FCD9 /* stp_card_placeholder_template@2x.png in Resources */,
+				277FE3B52051C4EE008B6ECC /* paperClip.png in Resources */,
+				27A46C241C5020770082FCD9 /* stp_card_cvc@3x.png in Resources */,
+				27A46C201C5020720082FCD9 /* stp_card_discover.png in Resources */,
+				27A46C141C50205B0082FCD9 /* stp_card_placeholder.png in Resources */,
+				27A46C221C5020740082FCD9 /* stp_card_diners@2x.png in Resources */,
+				27A46C271C50207D0082FCD9 /* stp_card_cvc_amex@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		277618AC1C1364C800056B3D /* Build Universal Library */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Universal Library";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nunset TOOLCHAINS\n\n# Constants\nSF_TARGET_NAME=${PROJECT_NAME}\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\nTMP_DIR=${BUILD_DIR}/tmp\n\n# Take build target\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\necho \"Please choose iPhone simulator as the build target.\"\nexit 1\nfi\n\nIPHONE_DEVICE_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos\n\n# Build the other (non-simulator) platform\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" CONFIGURATION_BUILD_DIR=\"${IPHONE_DEVICE_BUILD_DIR}/arm64\" SYMROOT=\"${SYMROOT}\" ARCHS='arm64' VALID_ARCHS='arm64' $ACTION\n\n# Copy the framework to a temporary directory because xcodebuild will clean stale files from the previous build\nrm -rf \"${TMP_DIR}\"\nmkdir -p \"${TMP_DIR}\"\n\nmkdir -p \"${TMP_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework\"\n\ncp -r \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework/\" \"${TMP_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework\"\ncp -r \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework.dSYM\" \"${TMP_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework.dSYM\"\n\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk iphoneos BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\"  CONFIGURATION_BUILD_DIR=\"${IPHONE_DEVICE_BUILD_DIR}/armv7\" SYMROOT=\"${SYMROOT}\" ARCHS='armv7 armv7s' VALID_ARCHS='armv7 armv7s' $ACTION\n\n# Copy the framework structure to the universal folder (clean it first)\nrm -rf \"${UNIVERSAL_OUTPUTFOLDER}\"\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\"\n\ncp \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework/Info.plist\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Info.plist\"\n\n# Copy the compiled assets to the universal folder\ncp \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework/Assets.car\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Assets.car\"\n\n# Smash them together to combine all architectures\nlipo -create  \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${TMP_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework/${PROJECT_NAME}\" -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n# Smash dSYMs together to combine all architectures\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework.dSYM/Contents/Resources/DWARF\"\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework.dSYM/Contents/Resources/DWARF/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework.dSYM/Contents/Resources/DWARF/${PROJECT_NAME}\" \"${TMP_DIR}/${CONFIGURATION}-iphoneos/arm64/${PROJECT_NAME}.framework.dSYM/Contents/Resources/DWARF/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/armv7/${PROJECT_NAME}.framework.dSYM/Contents/Resources/DWARF/${PROJECT_NAME}\" || exit 1 \n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27327B031C13212F00A54C65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E4E1E11E4135FA00DAFD65 /* CLBSOLocationMessageCell.m in Sources */,
+				274EA9C31DDE11E90029487C /* CLBSOActivityMessageCell.m in Sources */,
+				27327B991C13226800A54C65 /* CLBRTSpinKitThreeBounceAnimation.m in Sources */,
+				2748DB4F1F7A8FE80009A7B5 /* CLBNavigationBar.m in Sources */,
+				27327B9A1C13226800A54C65 /* CLBRTSpinKitUtils.m in Sources */,
+				27327B9B1C13226800A54C65 /* CLBRTSpinKitView.m in Sources */,
+				27CA8CC11E3A516D005A986F /* CLBCoordinates.m in Sources */,
+				27A46C0C1C50203B0082FCD9 /* CLBCheckmarkView.m in Sources */,
+				27327B7A1C13222A00A54C65 /* CLBMZFayeClient.m in Sources */,
+				27A46C2E1C5020A50082FCD9 /* CLBUITextField+Shake.m in Sources */,
+				1C7734B023E087C90036C74A /* CLBConversationStorageManager.m in Sources */,
+				27327B7B1C13222A00A54C65 /* CLBMZFayeMessage.m in Sources */,
+				27BF9C2320110077008BC898 /* CLBMessageItemViewModel.m in Sources */,
+				27327B801C13224600A54C65 /* CLBSOPhotoMessageCell.m in Sources */,
+				27327B811C13224600A54C65 /* CLBSOTextMessageCell.m in Sources */,
+				27327B821C13224600A54C65 /* CLBSOVideoMessageCell.m in Sources */,
+				27327B841C13224600A54C65 /* CLBSOImageBrowserView.m in Sources */,
+				27327B851C13224600A54C65 /* CLBSOMessageCell.m in Sources */,
+				27327B861C13224600A54C65 /* CLBSOMessageInputView.m in Sources */,
+				27327B871C13224600A54C65 /* CLBSOMessagingViewController.m in Sources */,
+				27A46C061C5020310082FCD9 /* CLBBuyViewController.m in Sources */,
+				27327B881C13224600A54C65 /* CLBSOPlaceholderedTextView.m in Sources */,
+				27327B7F1C13223600A54C65 /* CLBSRWebSocket.m in Sources */,
+				27327B7C1C13222D00A54C65 /* CLBAFNetworkReachabilityManager.m in Sources */,
+				2726DE421F9A394600A57F3F /* CLBPhotoConfirmationViewController.m in Sources */,
+				27A46C081C5020350082FCD9 /* CLBStripeApiClient.m in Sources */,
+				1C9A66BA23FD895E007FD80D /* CLBParticipant.m in Sources */,
+				27F040441F04423B00DA49E1 /* CLBClientInfo.m in Sources */,
+				27327B651C13220E00A54C65 /* CLBLocalization.m in Sources */,
+				27327B661C13220E00A54C65 /* CLBViewAboveKeyboard.m in Sources */,
+				27327B761C13221A00A54C65 /* CLBBSMobileProvision.m in Sources */,
+				27BB7B94206420A700BF9800 /* CLBFailedUpload.m in Sources */,
+				27327B681C13220E00A54C65 /* CLBSettings.m in Sources */,
+				274A29152024F3EC0061DE71 /* CLBActionButton.m in Sources */,
+				27327B691C13220E00A54C65 /* CLBUser.m in Sources */,
+				27A46C431C5020F30082FCD9 /* CLBPaymentTextField.m in Sources */,
+				27E4E1EB1E43B5CD00DAFD65 /* CLBLocationRequest.m in Sources */,
+				27327B6A1C13220E00A54C65 /* CLBInnerUser.m in Sources */,
+				27327B6B1C13220E00A54C65 /* CLBUtility.m in Sources */,
+				27327B6C1C13220E00A54C65 /* ClarabridgeChat.m in Sources */,
+				27BA65D22007F11A005E9045 /* CLBDisplaySettings.m in Sources */,
+				2726476B1DFEED9900B21BC7 /* CLBRepliesView.m in Sources */,
+				27A46C0A1C5020380082FCD9 /* CLBProgressButton.m in Sources */,
+				0F2F493D23E0813F0037AB29 /* CLBDependencyManager+Private.h in Sources */,
+				27327B6D1C13220E00A54C65 /* CLBDependencyManager.m in Sources */,
+				1C38551523CDFA7D00C26ACD /* CLBEventTypeFactory.m in Sources */,
+				48D8C049238ED3A20010BF37 /* CLBClarabridgeChatStorage.m in Sources */,
+				27327B6E1C13220E00A54C65 /* CLBMessageAction.m in Sources */,
+				2780CCDA2272528C001646C3 /* CLBClarabridgeChatApiClient.m in Sources */,
+				2748DB581F7C30F10009A7B5 /* CLBWebviewViewController.m in Sources */,
+				27A46C361C5020AA0082FCD9 /* CLBSTPCardValidator.m in Sources */,
+				272DB28B1DDB4EE00070D43E /* CLBConversationActivity.m in Sources */,
+				27CA8CBB1E3A34FA005A986F /* CLBLocationService.m in Sources */,
+				48D8C03F238ED3A20010BF37 /* CLBClarabridgeChatScopeURLProvider.m in Sources */,
+				27327B701C13220E00A54C65 /* CLBUserLifecycleManager.m in Sources */,
+				2728F4611F349ABA0006C676 /* CLBUserSettings.m in Sources */,
+				27327B711C13220E00A54C65 /* CLBImageLoader.m in Sources */,
+				27327B721C13220E00A54C65 /* CLBErrorMessageOverlay.m in Sources */,
+				1CF2D36123EDA9C200441064 /* CLBConversationSynchronizer.m in Sources */,
+				27327B731C13220E00A54C65 /* CLBInAppNotificationView.m in Sources */,
+				27327B741C13220E00A54C65 /* CLBXCharacterView.m in Sources */,
+				27327B751C13220E00A54C65 /* CLBImagePickerController.m in Sources */,
+				27BA65DE20080725005E9045 /* CLBSOCarouselMessageCell.m in Sources */,
+				27A46C331C5020AA0082FCD9 /* CLBSTPCardParams.m in Sources */,
+				27A46C301C5020AA0082FCD9 /* CLBSTPCard.m in Sources */,
+				48D8C04C238ED3A20010BF37 /* CLBClarabridgeChatFileIO.m in Sources */,
+				27A46C0E1C50203F0082FCD9 /* CLBRoundedRectView.m in Sources */,
+				48D8C048238ED3A20010BF37 /* CLBConversationStorage.m in Sources */,
+				27A46C411C5020AA0082FCD9 /* CLBStripeError.m in Sources */,
+				27327B421C1321C800A54C65 /* CLBRemoteObjectSynchronizer.m in Sources */,
+				27327B431C1321C800A54C65 /* CLBRemoteOperation.m in Sources */,
+				27327B441C1321C800A54C65 /* CLBConfig.m in Sources */,
+				279AF787201BB5D40067B054 /* CLBPersistence.m in Sources */,
+				2798707D1E047F930036F030 /* CLBReplyButton.m in Sources */,
+				27327B451C1321C800A54C65 /* CLBRemotePushToken.m in Sources */,
+				48D8C03C238ED3A20010BF37 /* CLBScopeURLFactory.m in Sources */,
+				27327B461C1321C800A54C65 /* CLBConfigFetchScheduler.m in Sources */,
+				27327B471C1321C800A54C65 /* CLBRemoteOperationScheduler.m in Sources */,
+				27D19E7020499904007A3C66 /* CLBFileUploadMessage.m in Sources */,
+				27327B481C1321C800A54C65 /* CLBRemoteResponse.m in Sources */,
+				27A46C3D1C5020AA0082FCD9 /* CLBSTPPaymentCardTextField.m in Sources */,
+				0FF475AD23CF7D76005DD175 /* CLBConversationListStorage.m in Sources */,
+				0F8946B923F2C80500EF35D7 /* CLBHeaderFactory.m in Sources */,
+				27327B491C1321C800A54C65 /* CLBUserSynchronizer.m in Sources */,
+				27E023F92006839500B5944F /* CLBMessageItem.m in Sources */,
+				27327B2E1C13219F00A54C65 /* CLBAppDelegate.m in Sources */,
+				48D8C044238ED3A20010BF37 /* CLBClarabridgeChatSerializer.m in Sources */,
+				27327B301C13219F00A54C65 /* CLBAppDelegateProxy.m in Sources */,
+				27327B321C13219F00A54C65 /* CLBInAppNotificationViewController.m in Sources */,
+				27D19E6C2049953C007A3C66 /* CLBSOFileMessageCell.m in Sources */,
+				27FBF7651EEAFEAD00FA4009 /* CLBRetryConfiguration.m in Sources */,
+				276A49812278E91D00A604F8 /* CLBAuthorInfo.m in Sources */,
+				27327B341C13219F00A54C65 /* CLBInAppNotificationWindow.m in Sources */,
+				27327B361C13219F00A54C65 /* CLBPushNotificationFilter.m in Sources */,
+				27327B381C13219F00A54C65 /* CLBInAppNotificationHandler.m in Sources */,
+				27A46C3F1C5020AA0082FCD9 /* CLBSTPPaymentCardTextFieldViewModel.m in Sources */,
+				27327B251C13218D00A54C65 /* CLBApiClient.m in Sources */,
+				27327B261C13218D00A54C65 /* CLBJSONSerializer.m in Sources */,
+				27327B271C13218D00A54C65 /* CLBQueryStringSerializer.m in Sources */,
+				27327B101C13216700A54C65 /* CLBMessage.m in Sources */,
+				0FF475A923CF66CA005DD175 /* CLBConversationList.m in Sources */,
+				27327B111C13216700A54C65 /* CLBConversation.m in Sources */,
+				27BF9C2220110077008BC898 /* CLBMessageItemView.m in Sources */,
+				27D10B8120090D4500DA4207 /* CLBSOCarouselCollectionViewCell.m in Sources */,
+				1C2728382396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.m in Sources */,
+				27A46C3B1C5020AA0082FCD9 /* CLBSTPFormTextField.m in Sources */,
+				1C4A175D2387EB0700238AB3 /* CLBConversationController.m in Sources */,
+				27327B121C13216700A54C65 /* CLBConversationHeaderView.m in Sources */,
+				27327B131C13216700A54C65 /* CLBConversationViewController.m in Sources */,
+				27A46C391C5020AA0082FCD9 /* CLBSTPFormEncoder.m in Sources */,
+				27327B141C13216700A54C65 /* CLBConversationFetchScheduler.m in Sources */,
+				27F8C7351EEEDF090072C960 /* CLBRealtimeSettings.m in Sources */,
+				27327B151C13216700A54C65 /* CLBAvatarImageLoaderStrategy.m in Sources */,
+				27327B161C13216700A54C65 /* CLBTextViewVendingMachine.m in Sources */,
+				27327B171C13216700A54C65 /* CLBConversationMonitor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		277618AE1C1364E200056B3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27327B071C13212F00A54C65 /* ClarabridgeChat */;
+			targetProxy = 277618AD1C1364E200056B3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9FECF62919F859A8006741A9 /* ClarabridgeChatLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FECF62A19F859A8006741A9 /* en */,
+				9FECF62B19F859A8006741A9 /* fr */,
+				277DBDCE1A0133DB00EA6D1B /* zh-Hant */,
+				276C7CC61A0AC02900DE2410 /* de */,
+				276C7CCA1A0AC88300DE2410 /* ja */,
+				276C7CCE1A0AC88900DE2410 /* es */,
+				276C7CD21A0AC89200DE2410 /* ar */,
+				276C7CD41A0AC8AE00DE2410 /* fa */,
+				27CED98C1A11031C00287EF9 /* fi */,
+				9FB4B8E91B13CD8300DD8A41 /* sv */,
+				27CF26AE1BEFEC8B008DD571 /* sl */,
+				27F0F7D01BFF9FEA00EA50B9 /* zh-Hans */,
+				27F0F7D11BFF9FF300EA50B9 /* ko */,
+				27F0F7D21BFF9FFF00EA50B9 /* pt */,
+				27F0F7D31BFFA00700EA50B9 /* ru */,
+				27F0F7D41BFFA02000EA50B9 /* it */,
+				27B27F5F1C2ADF8E00474E72 /* pt-BR */,
+				27A811651E096657005CA412 /* uk */,
+				27D815AB1ED729580032CD66 /* nl */,
+			);
+			name = ClarabridgeChatLocalizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27327B0E1C13212F00A54C65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CURRENT_PROJECT_VERSION = 85;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0;
+				DYLIB_CURRENT_VERSION = 0;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = 1;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClarabridgeChat/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clarabridge.ClarabridgeChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		27327B0F1C13212F00A54C65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 85;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0;
+				DYLIB_CURRENT_VERSION = 0;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = 1;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = ClarabridgeChat/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clarabridge.ClarabridgeChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		277618AA1C1364C100056B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OBJROOT = "$(SYMROOT)/intermediates";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		277618AB1C1364C100056B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OBJROOT = "$(SYMROOT)/intermediates";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DCDED9B6183166530006F2FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BITCODE_GENERATION_MODE = marker;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DCDED9B7183166530006F2FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				BITCODE_GENERATION_MODE = bitcode;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				"OTHER_CFLAGS[sdk=iphoneos*]" = "-fembed-bitcode";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DCDED9BC183166530006F2FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/ClarabridgeChatTests/OCMock/**",
+				);
+				INFOPLIST_FILE = "ClarabridgeChatTests/ClarabridgeChatTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/ClarabridgeChatTests/OCMock",
+					"$(PROJECT_DIR)/ClarabridgeChatTests/OCMock",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/ClarabridgeChatTests/OCMock/libOCMock.a\"",
+					"$(inherited)",
+					"-ObjC",
+					"-licucore",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rp.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClarabridgeChatTests/ClarabridgeChatTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DCDED9BD183166530006F2FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/ClarabridgeChatTests/OCMock/**",
+				);
+				INFOPLIST_FILE = "ClarabridgeChatTests/ClarabridgeChatTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/ClarabridgeChatTests/OCMock",
+					"$(PROJECT_DIR)/ClarabridgeChatTests/OCMock",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"\"$(SRCROOT)/ClarabridgeChatTests/OCMock/libOCMock.a\"",
+					"$(inherited)",
+					"-ObjC",
+					"-licucore",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rp.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClarabridgeChatTests/ClarabridgeChatTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27327B0D1C13212F00A54C65 /* Build configuration list for PBXNativeTarget "ClarabridgeChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27327B0E1C13212F00A54C65 /* Debug */,
+				27327B0F1C13212F00A54C65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		277618A91C1364C100056B3D /* Build configuration list for PBXAggregateTarget "DynamicFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				277618AA1C1364C100056B3D /* Debug */,
+				277618AB1C1364C100056B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCDED990183166530006F2FC /* Build configuration list for PBXProject "ClarabridgeChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCDED9B6183166530006F2FC /* Debug */,
+				DCDED9B7183166530006F2FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DCDED98D183166530006F2FC /* Project object */;
+}

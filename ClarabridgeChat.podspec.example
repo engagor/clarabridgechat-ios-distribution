@@ -1,0 +1,19 @@
+Pod::Spec.new do |s|
+  s.name                  = "ClarabridgeChat"
+#  s.version               = "YOUR_VERSION"
+#  s.summary               = "YOUR_SUMMARY"
+#  s.homepage              = "YOUR_HOMEPAGE"
+#  s.author                = { "YOU" => "YOUR_EMAIL" }
+#  s.source 	              = { :git => "YOUR_FRAMEWORK_GIT_SOURCE, :tag =>"1.0.0" }
+  s.license               = { :type => "Commercial", :text => "https://app.engagor.com/privacy-policy" }
+  s.source_files          = "ClarabridgeChat.framework/Headers/ClarabridgeChat.h", "ClarabridgeChat.framework/Headers/CLBSettings.h", "ClarabridgeChat.framework/Headers/CLBUser.h", "ClarabridgeChat.framework/Headers/CLBConversation.h", "ClarabridgeChat.framework/Headers/CLBMessage.h", "ClarabridgeChat.framework/Headers/CLBMessageAction.h", "ClarabridgeChat.framework/Headers/CLBConversationActivity.h", "ClarabridgeChat.framework/Headers/CLBCoordinates.h"
+  s.preserve_paths        = "ClarabridgeChat.framework/*"
+  s.module_map            = "ClarabridgeChat.framework/Modules/module.modulemap"
+  s.frameworks            = "ClarabridgeChat", "CoreText", "SystemConfiguration", "CoreTelephony", "Foundation", "CoreGraphics", "UIKit", "QuartzCore", "AssetsLibrary", "Photos", "AVFoundation", "CFNetwork"
+  s.library               = "icucore"
+  s.xcconfig              = { "FRAMEWORK_SEARCH_PATHS" => "$(PODS_ROOT)/ClarabridgeChat" }
+  s.vendored_frameworks   = "ClarabridgeChat.framework"
+  s.requires_arc          = true
+  s.platform              = :ios
+  s.ios.deployment_target = '8.0'
+end

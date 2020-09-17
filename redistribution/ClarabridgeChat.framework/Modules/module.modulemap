@@ -1,0 +1,6 @@
+framework module ClarabridgeChat {
+  umbrella header "ClarabridgeChat.h"
+
+  export *
+  module * { export * }
+}
