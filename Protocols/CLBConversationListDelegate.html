@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>CLBAuthenticationDelegate Protocol Reference</title>
+	<title>CLBConversationListDelegate Protocol Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -60,7 +60,9 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/onInvalidToken:handler:">- onInvalidToken:handler:</option>
+		<option value="//api/name/conversationListDidSelectCreateConversation">- conversationListDidSelectCreateConversation</option>
+		
+		<option value="//api/name/shouldCreateCustomConversationFlow">- shouldCreateCustomConversationFlow</option>
 		
 	</optgroup>
 	
@@ -77,7 +79,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">CLBAuthenticationDelegate Protocol Reference</h1>
+					<h1 class="title">CLBConversationListDelegate Protocol Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -86,7 +88,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>CLBAuthenticationDelegate.h</td>
+	<td>CLBConversationListDelegate.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -96,9 +98,9 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Delegate protocol for events related to authentication.</p>
+						<p>Delegate protocol for events related to the conversation list and create conversation</p>
 
-<p>Creating a delegate is optional, and may be used to receive callbacks for important authentication events.</p>
+<p>Creating a delegate is optional, and may be used to receive callbacks.</p>
 					</div>
 					
 					
@@ -114,9 +116,9 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/onInvalidToken:handler:" title="onInvalidToken:handler:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/onInvalidToken:handler:">&ndash;&nbsp;onInvalidToken:handler:</a></code>
-</h3>
+	<a name="//api/name/shouldCreateCustomConversationFlow" title="shouldCreateCustomConversationFlow"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldCreateCustomConversationFlow">&ndash;&nbsp;shouldCreateCustomConversationFlow</a></code>
+<span class="task-item-suffix">required method</span></h3>
 
 	<div class="method-info">
 		<div class="pointy-thing"></div>
@@ -125,33 +127,21 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Notifies the delegate that the current jwt used to authenticate requests is invalid.</p>
+				<p>Asks the delegate if it wants to create it&rsquo;s own create conversation flow.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)onInvalidToken:(NSError *)<em>error</em> handler:(CLBAuthenticationCompletionBlock)<em>completionHandler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)shouldCreateCustomConversationFlow</code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>error</code></th>
-						<td><p>Error object for the request</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>Block to call with the updated jwt</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES/TRUE indicates that the SDK should NOT create a conversation.</p>
+			</div>
 			
 
 			
@@ -159,7 +149,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Called when a request fails due to an invalid jwt. Use <code>completionHandler</code> to update the token and automatically retry the failed request. If the updated jwt is also invalid, this method is called again, with a maximum of 5 retry attempts per request.</p>
+				<p>Called when a user taps the &lsquo;New Conversation&rsquo; button on the SDK Conversation List screen.</p>
 			</div>
 			
 
@@ -170,7 +160,53 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">CLBAuthenticationDelegate.h</code></p>
+				<p><code class="declared-in-ref">CLBConversationListDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversationListDidSelectCreateConversation" title="conversationListDidSelectCreateConversation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversationListDidSelectCreateConversation">&ndash;&nbsp;conversationListDidSelectCreateConversation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Notifies the delegate that a user has tapped the &lsquo;New Conversation&rsquo; button on the SDK Conversation List screen.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)conversationListDidSelectCreateConversation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called from the main thread when a user taps the &lsquo;New Conversation&rsquo; button on the SDK Conversation List screen.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLBConversationListDelegate.h</code></p>
 			</div>
 			
 			
