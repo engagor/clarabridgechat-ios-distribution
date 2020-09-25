@@ -10,17 +10,17 @@
 #import "ClarabridgeChat/CLBParticipant.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface CLBParticipant (Private) < NSSecureCoding >
+@interface CLBParticipant (Private) < NSSecureCoding, NSCopying >
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (void)deserialize:(NSDictionary *)object;
 
 + (NSDate *)getLastReadDateFromParticipants:(NSArray *)participants
-                           currentAppUserId:(NSString *)appUserId
-                           appMakerLastRead:(NSDate *)appMakerLastRead;
+                           currentUserId:(NSString *)userId
+                           businessLastRead:(NSDate *)businessLastRead;
 
 + (NSUInteger)getUnreadCountFromParticipants:(NSArray *)participants
-                            currentAppUserId:(NSString *)appUserId;
+                            currentUserId:(NSString *)userId;
 
 @end
 NS_ASSUME_NONNULL_END

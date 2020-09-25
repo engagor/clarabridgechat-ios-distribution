@@ -143,8 +143,8 @@ static const int HISTORY_SIZE = 5;
         text = @"";
     }
 
-    if(message.name && message.name.length > 0){
-        return [NSString stringWithFormat:@"%@: %@", message.name, text];
+    if(message.displayName && message.displayName.length > 0){
+        return [NSString stringWithFormat:@"%@: %@", message.displayName, text];
     }
     return text;
 }

@@ -22,9 +22,11 @@ typedef NS_ENUM(NSUInteger, CLBAppValidityStatus){
 @property (copy, nonatomic) NSString *appId;
 @property (copy, nonatomic) NSString *appStatus;
 @property (copy, nonatomic) NSString *appName;
+@property (copy, nonatomic) NSString *appIconUrlString;
 @property (copy, nonatomic) NSString *acceptedSdkVersion;
 @property BOOL pushEnabled;
 @property BOOL multiConvoEnabled;
+@property BOOL canUserCreateMoreConversations;
 @property CLBAppValidityStatus validityStatus;
 
 @property (strong, nonatomic) CLBRetryConfiguration *retryConfiguration;

@@ -15,7 +15,7 @@
 +(NSDictionary*)authorFieldForUser:(CLBUser*)user {
     return @{
              @"role": @"appUser",
-             @"appUserId": user.appUserId,
+             @"appUserId": user.userId,
              @"client": [CLBClientInfo serializedClientInfo]
              };
 }

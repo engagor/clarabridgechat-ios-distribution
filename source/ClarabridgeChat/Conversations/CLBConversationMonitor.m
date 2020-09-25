@@ -13,6 +13,7 @@
 #import "CLBUtility.h"
 #import "CLBRealtimeSettings.h"
 #import "CLBSettings+Private.h"
+#import "CLBUserLifecycleManager.h"
 
 NSString* const CLBConversationMonitorDidChangeConnectionStatusNotification = @"CLBConversationMonitorDidChangeConnectionStatusNotification";
 
@@ -23,18 +24,22 @@ NSString* const CLBConversationMonitorDidChangeConnectionStatusNotification = @"
 @property int retryNumber;
 @property CLBUser *user;
 @property CLBConfig *config;
+@property(weak, nullable) id<CLBAuthenticationDelegate> authenticationDelegate;
 
 @end
 
 @implementation CLBConversationMonitor
 
--(instancetype)initWithUser:(CLBUser *)user config:(CLBConfig *)config {
+ -(instancetype)initWithUser:(CLBUser *)user config:(CLBConfig *)config
+ authenticationDelegate:(_Nullable id<CLBAuthenticationDelegate>)authenticationDelegate
+{
     self = [super init];
 
     if (self) {
         _retryNumber = 0;
         _user = user;
         _config = config;
+        _authenticationDelegate = authenticationDelegate;
     }
 
     return self;
@@ -72,7 +77,7 @@ NSString* const CLBConversationMonitorDidChangeConnectionStatusNotification = @"
 }
 
 - (BOOL)shouldStart {
-    BOOL userExists = self.user.appUserId != nil;
+    BOOL userExists = self.user.userId != nil;
     BOOL isRealTimeEnabled = self.user.settings != nil && self.user.settings.realtime != nil && self.user.settings.realtime.enabled;
     BOOL isMultiConversationEnabled = self.config.appId != nil && self.config.multiConvoEnabled;
     return userExists && isRealTimeEnabled && (isMultiConversationEnabled || self.user.conversationStarted);
@@ -178,17 +183,17 @@ NSString* const CLBConversationMonitorDidChangeConnectionStatusNotification = @"
 
     CLBSettings* settings = [ClarabridgeChat settings];
     authInfo[@"appId"] = settings.appId ?: [NSNull null];
-    authInfo[@"appUserId"] = self.user.appUserId ?: [NSNull null];
+    authInfo[@"appUserId"] = self.user.userId ?: [NSNull null];
     
-    BOOL hasUserId = settings.userId && settings.userId.length > 0;
+    BOOL hasExternalId = settings.externalId && settings.externalId.length > 0;
     
-    if(hasUserId && settings.jwt){
+    if(hasExternalId && settings.jwt){
         authInfo[@"jwt"] = settings.jwt;
     } else if (settings.sessionToken) {
         authInfo[@"sessionToken"] = settings.sessionToken;
     }
 
-    NSString *endpoint = [NSString stringWithFormat:@"/sdk/apps/%@/appusers/%@", settings.appId, self.user.appUserId];
+    NSString *endpoint = [NSString stringWithFormat:@"/sdk/apps/%@/appusers/%@", settings.appId, self.user.userId];
 
     [client setExtension:authInfo forChannel:endpoint];
     [client subscribeToChannel:endpoint success:nil failure:nil receivedMessage:nil];
@@ -207,6 +212,27 @@ NSString* const CLBConversationMonitorDidChangeConnectionStatusNotification = @"
 
     if ([errorString rangeOfString:unknownClientError].location != NSNotFound && CLBIsNetworkAvailable()) {
         [self reconnect];
+    }
+    
+    /*
+     If websocket failed due to Invalid JWT, check if an CLBAuthenticationDelegate provides a new JWT Token
+     If an CLBAuthenticationDelegate provides a new token, attempt to reconnect
+    */
+    if (errorString && [errorString rangeOfString:@"401::invalid_auth"].location != NSNotFound) {
+        if (self.authenticationDelegate && [self.authenticationDelegate respondsToSelector:@selector(onInvalidToken:handler:)]) {
+            
+            __weak CLBConversationMonitor *weakSelf = self;
+
+            CLBEnsureMainThread(^{
+                [weakSelf.authenticationDelegate onInvalidToken:error handler:^(NSString * _Nonnull newJWT) {
+                    
+                    [CLBUserLifecycleManager setLastKnownJwt:newJWT forAppId:[ClarabridgeChat settings].appId];
+                    [ClarabridgeChat settings].jwt = newJWT;
+                    
+                    [weakSelf reconnect];
+                }];
+            });
+        }
     }
 
     [self notifyConnectionStatusChanged];

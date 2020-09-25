@@ -15,7 +15,7 @@ static NSString* const kSignedUpAtKey = @"signedUpAt";
 
 @interface CLBInnerUser()
 
-@property NSMutableDictionary* innerProperties;
+@property NSMutableDictionary* innerMetadata;
 
 @end
 
@@ -24,25 +24,25 @@ static NSString* const kSignedUpAtKey = @"signedUpAt";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _innerProperties = [NSMutableDictionary dictionary];
+        _innerMetadata = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
--(NSDictionary*)properties {
-    return [self.innerProperties copy];
+-(NSDictionary*)metadata {
+    return [self.innerMetadata copy];
 }
 
--(void)setProperties:(NSDictionary *)properties {
-    self.innerProperties = [properties mutableCopy];
+-(void)setMetadata:(NSDictionary *)metadata {
+    self.innerMetadata = [metadata mutableCopy];
 }
 
--(void)addProperties:(NSDictionary *)properties {
-    [self.innerProperties addEntriesFromDictionary:properties];
+-(void)addMetadata:(NSDictionary *)metadata {
+    [self.innerMetadata addEntriesFromDictionary:metadata];
 }
 
 -(NSDictionary*)serialize {
-    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:@{ @"properties" : [self.innerProperties copy] }];
+    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:@{ @"properties" : [self.innerMetadata copy] }];
 
     if(self.firstName){
         dict[kFirstNameKey] = self.firstName;
@@ -65,11 +65,11 @@ static NSString* const kSignedUpAtKey = @"signedUpAt";
     self.lastName = object[kLastNameKey];
     self.email = object[kEmailKey];
     self.signedUpAt = object[kSignedUpAtKey];
-    self.innerProperties = [object[@"properties"] mutableCopy] ?: [NSMutableDictionary dictionary];
+    self.innerMetadata = [object[@"properties"] mutableCopy] ?: [NSMutableDictionary dictionary];
 }
 
--(void)clearProperties {
-    [self.innerProperties removeAllObjects];
+-(void)clearMetadata {
+    [self.innerMetadata removeAllObjects];
 }
 
 @end

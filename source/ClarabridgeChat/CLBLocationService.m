@@ -7,8 +7,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CLBCoordinates.h"
 #import "CLBLocationRequest.h"
+#import "NSError+ClarabridgeChat.h"
 
-NSString * const CLBClarabridgeChatErrorDomain = @"com.clarabridge";
 NSInteger const CLBMissingLocationUsageDescriptionError = -5000;
 
 @interface CLBLocationService() <CLLocationManagerDelegate>

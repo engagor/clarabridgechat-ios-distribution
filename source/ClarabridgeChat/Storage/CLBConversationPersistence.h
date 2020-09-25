@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)storeConversation:(CLBConversation *)conversation;
 - (CLBConversation * _Nullable)readConversation:(NSString *)conversationId;
-- (void)removeConversation:(NSString *)conversationId;
+- (void)removeConversation:(CLBConversation *)conversation;
 - (void)conversationHasChanged:(CLBConversation *)conversation;
 
 @end

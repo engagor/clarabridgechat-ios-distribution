@@ -244,7 +244,7 @@ static NSDateFormatter* dateFormatter;
         return;
     }
     self.nameLabel.hidden = NO;
-    self.nameLabel.text = self.message.name;
+    self.nameLabel.text = self.message.displayName;
     self.nameLabel.frame = self.containerView.frame;
     [self.nameLabel sizeToFit];
     

@@ -21,8 +21,8 @@ const int CLBMaxUserPropertyValueBytes = 800;
 
 @property CLBInnerUser* localCopy;
 @property CLBInnerUser* remoteCopy;
-@property NSString* appUserId;
 @property NSString* userId;
+@property NSString* externalId;
 @property BOOL conversationStarted;
 @property BOOL hasPaymentInfo;
 @property BOOL credentialRequired;
@@ -55,13 +55,13 @@ static CLBUser* SharedInstance = nil;
     return self;
 }
 
--(NSDictionary*)validateProperties:(NSDictionary*)properties {
-    NSMutableDictionary* mutableProperties = [properties mutableCopy];
+-(NSDictionary*)validateMetadata:(NSDictionary*)metadata {
+    NSMutableDictionary* mutableMetadata = [metadata mutableCopy];
 
-    for (id k in properties) {
-        id value = properties[k];
+    for (id k in metadata) {
+        id value = metadata[k];
         if(![k isKindOfClass: [NSString class]]){
-            [mutableProperties removeObjectForKey:k];
+            [mutableMetadata removeObjectForKey:k];
             NSLog(@"<CLARABRIDGECHAT::WARNING> Property keys must be of type NSString, got: \"%@\". Object will be removed : %@", [k class], k);
 
         } else if (!([value isKindOfClass:[NSString class]] ||
@@ -69,7 +69,7 @@ static CLBUser* SharedInstance = nil;
                     [value isKindOfClass:[NSDate class]])){
             NSLog(@"<CLARABRIDGECHAT::WARNING> Property values must be of type NSString, NSNumber, or NSDate, got \"%@\". Will use the object's description instead : %@", [value class], value);
 
-            mutableProperties[k] = [value description];
+            mutableMetadata[k] = [value description];
         } else {
             if([(NSString *)k lengthOfBytesUsingEncoding:NSUTF8StringEncoding] > CLBMaxUserPropertyKeyBytes) {
                 NSLog(@"<CLARABRIDGECHAT::WARNING> Property key \"%@\" exceeds max size, keys larger than %d bytes will be truncated", k, CLBMaxUserPropertyKeyBytes);
@@ -82,28 +82,28 @@ static CLBUser* SharedInstance = nil;
         }
     }
 
-    return [mutableProperties copy];
+    return [mutableMetadata copy];
 }
 
--(void)addProperties:(NSDictionary *)properties {
-    NSDictionary* remoteProperties = self.remoteCopy.properties;
-    properties = [self validateProperties:properties];
+-(void)addMetadata:(NSDictionary *)metadata {
+    NSDictionary* remoteMetadata = self.remoteCopy.metadata;
+    metadata = [self validateMetadata:metadata];
 
-    NSMutableDictionary* propertiesToAdd = [NSMutableDictionary dictionary];
-    for(NSString* key in properties){
-        id value = properties[key];
+    NSMutableDictionary* metadataToAdd = [NSMutableDictionary dictionary];
+    for(NSString* key in metadata){
+        id value = metadata[key];
 
         if([value isKindOfClass:[NSDate class]]){
             value = CLBISOStringFromDate(value);
         }
 
-        if(![value isEqual:remoteProperties[key]]){
-            propertiesToAdd[key] = value;
+        if(![value isEqual:remoteMetadata[key]]){
+            metadataToAdd[key] = value;
         }
     }
 
-    [self.localCopy addProperties:propertiesToAdd];
-    [self storeLocalProperties];
+    [self.localCopy addMetadata:metadataToAdd];
+    [self storeLocalMetadata];
 }
 
 -(NSString*)firstName {
@@ -113,14 +113,14 @@ static CLBUser* SharedInstance = nil;
 -(void)setFirstName:(NSString *)firstName {
     if(![firstName isEqualToString:self.remoteCopy.firstName]){
         self.localCopy.firstName = [firstName copy];
-        [self storeLocalProperties];
+        [self storeLocalMetadata];
     }
 }
 
--(NSDictionary*)properties {
-    NSMutableDictionary *mergedProperties = [[NSMutableDictionary alloc] initWithDictionary:self.localCopy.properties];
-    [mergedProperties addEntriesFromDictionary:self.remoteCopy.properties];
-    return mergedProperties;
+-(NSDictionary*)metadata {
+    NSMutableDictionary *mergedMetadata = [[NSMutableDictionary alloc] initWithDictionary:self.localCopy.metadata];
+    [mergedMetadata addEntriesFromDictionary:self.remoteCopy.metadata];
+    return mergedMetadata;
 }
 
 -(NSString*)lastName {
@@ -130,7 +130,7 @@ static CLBUser* SharedInstance = nil;
 -(void)setLastName:(NSString *)lastName {
     if(![lastName isEqualToString:self.remoteCopy.lastName]){
         self.localCopy.lastName = [lastName copy];
-        [self storeLocalProperties];
+        [self storeLocalMetadata];
     }
 }
 
@@ -141,7 +141,7 @@ static CLBUser* SharedInstance = nil;
 -(void)setEmail:(NSString *)email {
     if(![email isEqualToString:self.remoteCopy.email]){
         self.localCopy.email = [email copy];
-        [self storeLocalProperties];
+        [self storeLocalMetadata];
     }
 }
 
@@ -154,7 +154,7 @@ static CLBUser* SharedInstance = nil;
     NSString* dateString = CLBISOStringFromDate(signedUpAt);
     if(![dateString isEqualToString:self.remoteCopy.signedUpAt]){
         self.localCopy.signedUpAt = [dateString copy];
-        [self storeLocalProperties];
+        [self storeLocalMetadata];
     }
 }
 
@@ -177,7 +177,7 @@ static CLBUser* SharedInstance = nil;
     return [fullName copy];
 }
 
--(void)consolidateProperties {
+-(void)consolidateMetadata {
     if(self.localCopy.firstName != nil){
         self.remoteCopy.firstName = self.localCopy.firstName;
     }
@@ -194,14 +194,14 @@ static CLBUser* SharedInstance = nil;
         self.remoteCopy.signedUpAt = self.localCopy.signedUpAt;
     }
 
-    [self.remoteCopy addProperties:self.localCopy.properties];
+    [self.remoteCopy addMetadata:self.localCopy.metadata];
 
     self.localCopy = [[CLBInnerUser alloc] init];
 
-    [self storeLocalProperties];
+    [self storeLocalMetadata];
 }
 
--(void)readLocalProperties {
+-(void)readLocalMetadata {
     [[CLBPersistence sharedPersistence] ensureProtectedDataAvailable:^{
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSDictionary* props = [defaults objectForKey:CLBUserNSUserDefaultsKey];
@@ -210,7 +210,7 @@ static CLBUser* SharedInstance = nil;
     }];
 }
 
--(void)storeLocalProperties {
+-(void)storeLocalMetadata {
     [[CLBPersistence sharedPersistence] ensureProtectedDataAvailable:^{
         NSDictionary* props = [self.localCopy serialize];
         
@@ -225,18 +225,18 @@ static CLBUser* SharedInstance = nil;
     BOOL lastNameChanged = self.localCopy.lastName && ![self.localCopy.lastName isEqualToString:self.remoteCopy.lastName];
     BOOL emailChanged = self.localCopy.email && ![self.localCopy.email isEqualToString:self.remoteCopy.email];
     BOOL signedUpChanged = self.localCopy.signedUpAt && ![self.localCopy.signedUpAt isEqualToString:self.remoteCopy.signedUpAt];
-    BOOL propertiesChanged = NO;
-    for(id key in self.localCopy.properties){
-        NSObject* remoteValue = self.remoteCopy.properties[key];
-        NSObject* localValue = self.localCopy.properties[key];
+    BOOL metadataChanged = NO;
+    for(id key in self.localCopy.metadata){
+        NSObject* remoteValue = self.remoteCopy.metadata[key];
+        NSObject* localValue = self.localCopy.metadata[key];
 
         if(!remoteValue || ![localValue isEqual:remoteValue]){
-            propertiesChanged = YES;
+            metadataChanged = YES;
             break;
         }
     }
 
-    return firstNameChanged || lastNameChanged || emailChanged || propertiesChanged || signedUpChanged;
+    return firstNameChanged || lastNameChanged || emailChanged || metadataChanged || signedUpChanged;
 }
 
 -(void)removeRedundancyFromLocalObject {
@@ -256,20 +256,20 @@ static CLBUser* SharedInstance = nil;
         self.localCopy.signedUpAt = nil;
     }
 
-    NSMutableDictionary* mutableLocalProps = [self.localCopy.properties mutableCopy];
-    for(id key in self.localCopy.properties){
-        NSObject* remoteValue = self.remoteCopy.properties[key];
-        NSObject* localValue = self.localCopy.properties[key];
+    NSMutableDictionary* mutableLocalProps = [self.localCopy.metadata mutableCopy];
+    for(id key in self.localCopy.metadata){
+        NSObject* remoteValue = self.remoteCopy.metadata[key];
+        NSObject* localValue = self.localCopy.metadata[key];
 
         if(remoteValue && [localValue isEqual:remoteValue]){
             [mutableLocalProps removeObjectForKey:key];
         }
     }
-    self.localCopy.properties = mutableLocalProps;
+    self.localCopy.metadata = mutableLocalProps;
 }
 
--(void)clearLocalProperties {
-    [self.localCopy clearProperties];
+-(void)clearLocalMetadata {
+    [self.localCopy clearMetadata];
 }
 
 #pragma mark - CLBRemoteObject
@@ -277,8 +277,8 @@ static CLBUser* SharedInstance = nil;
 -(id)serialize {
     NSMutableDictionary *serialized = [[NSMutableDictionary alloc] initWithDictionary:[self.localCopy serialize]];
 
-    if (!self.appUserId) {
-        serialized[@"userId"] = self.userId;
+    if (!self.userId) {
+        serialized[@"userId"] = self.externalId;
         // We're creating a new user, add device info
         serialized[@"client"] = [CLBClientInfo serializedClientInfo];
     }
@@ -292,8 +292,8 @@ static CLBUser* SharedInstance = nil;
         return;
     }
 
-    self.appUserId = appUser[@"_id"] ?: self.appUserId;
-    self.userId = appUser[@"userId"] ?: self.userId;
+    self.userId = appUser[@"_id"] ?: self.userId;
+    self.externalId = appUser[@"userId"] ?: self.externalId;
     self.conversationStarted = [appUser[@"conversationStarted"] boolValue];
     self.hasPaymentInfo = [appUser[@"hasPaymentInfo"] boolValue];
     self.credentialRequired = [appUser[@"credentialRequired"] boolValue];
@@ -305,7 +305,7 @@ static CLBUser* SharedInstance = nil;
 }
 
 -(NSString*)remotePath {
-    return [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@", self.appId, self.appUserId];
+    return [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@", self.appId, self.userId];
 }
 
 -(NSString*)synchronizeMethod {

@@ -560,17 +560,17 @@ static NSDateFormatter* dateFormatter;
                 andSecondSOMessage:(id<CLBSOMessage>)second
                            forType:(CLBSOMessageType)type {
 
-    BOOL sameName = [self isValidIsEqual:first.name secondValue:second.name];
+    BOOL sameName = [self isValidIsEqual:first.displayName secondValue:second.displayName];
     BOOL sameAvatar = [self valuesAreEqual:first.avatarUrl secondValue:second.avatarUrl];
 
     switch (type) {
         case CLBSOMessageTypeMessage: {
-            BOOL sameAuthorId = [self isValidIsEqual:first.authorId secondValue:second.authorId];
-            return sameAuthorId && sameName && sameAvatar;
+            BOOL sameUserId = [self isValidIsEqual:first.userId secondValue:second.userId];
+            return sameUserId && sameName && sameAvatar;
             break;
         }
         case CLBSOMessageTypeConversationActivity: {
-            BOOL sameUserId = [self isValidIsEqual:first.appUserId secondValue:second.authorId];
+            BOOL sameUserId = [self isValidIsEqual:first.userId secondValue:second.userId];
             return sameUserId && sameName && sameAvatar;
             break;
         }

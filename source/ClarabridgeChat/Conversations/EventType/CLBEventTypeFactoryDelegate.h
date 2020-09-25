@@ -17,12 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)currentConversationNeedsRefresh:(CLBConversation *)conversation;
 - (void)currentConversationListNeedsRefresh;
 - (void)showInAppNotificationForMessage:(CLBMessage *)message conversationId:(NSString *)conversationId;
-- (void)updateParticipantListForConversationId:(NSString *)conversationId
-                                     withEvent:(NSDictionary *)event
-                          isActiveConversation:(BOOL)isForActiveConversation;
-- (CLBConversation *)conversationById:(NSString *)conversationId;
-- (void)conversationRemoved:(NSString *)conversationId;
+- (void)updateLastUpdatedAtAndUnreadCountForMessage:(CLBMessage *)message conversationId:(NSString *)conversationId;
+- (nullable CLBConversation *)conversationById:(NSString *)conversationId;
+- (void)conversationRemoved:(CLBConversation *)conversation;
 - (void)handleActivity:(CLBConversationActivity *)activity forConversation:(CLBConversation *)conversation;
+- (void)currentConversationListNeedsRefreshWithPendingNotificationMessage:(CLBMessage *)pendingNotificationMessage
+                                                pendingNotificationConversationId:(NSString *)pendingNotificationConversationId;
 
 @end
 

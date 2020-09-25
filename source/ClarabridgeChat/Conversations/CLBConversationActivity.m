@@ -28,13 +28,13 @@ NSString *const CLBConversationActivityDataKey = @"data";
 
 @interface CLBConversationActivity ()
 
-@property NSString *name;
+@property NSString *displayName;
 @property NSString *conversationId;
 @property NSString *avatarUrl;
 @property NSDate *date;
 @property BOOL isFromCurrentUser;
-@property NSDate *appMakerLastRead;
-@property NSString *appUserId;
+@property NSDate *businessLastRead;
+@property NSString *userId;
 @property NSString *type;
 
 @end
@@ -51,7 +51,7 @@ NSString *const CLBConversationActivityDataKey = @"data";
         _role = role;
         _type = type;
         _data = data;
-        _name = data[CLBConversationActivityDataNameKey];
+        _displayName = data[CLBConversationActivityDataNameKey];
         _avatarUrl = data[CLBConversationActivityDataAvatarUrlKey];
         _conversationId = conversation[CLBConversationActivityIdKey];
         _date = [NSDate date];

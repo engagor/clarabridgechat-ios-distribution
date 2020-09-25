@@ -18,6 +18,7 @@ typedef void (^CLBImageLoaderCompletionBlock)(UIImage* image);
 -(void)cacheImage:(UIImage*)image forUrl:(NSString*)urlString;
 -(UIImage*)cachedImageForUrl:(NSString*)urlString;
 -(void)clearImageCache;
+-(void)cancelRequestForURL:(NSString *)urlString;
 
 @property id<CLBImageLoaderStrategy> strategy;
 

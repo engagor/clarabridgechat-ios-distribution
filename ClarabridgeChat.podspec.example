@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 #  s.summary               = "YOUR_SUMMARY"
 #  s.homepage              = "YOUR_HOMEPAGE"
 #  s.author                = { "YOU" => "YOUR_EMAIL" }
-#  s.source 	              = { :git => "YOUR_FRAMEWORK_GIT_SOURCE, :tag =>"1.0.0" }
+#  s.source 	              = { :git => "YOUR_FRAMEWORK_GIT_SOURCE, :tag =>"2.0.0" }
   s.license               = { :type => "Commercial", :text => "https://app.engagor.com/privacy-policy" }
   s.source_files          = "ClarabridgeChat.framework/Headers/ClarabridgeChat.h", "ClarabridgeChat.framework/Headers/CLBSettings.h", "ClarabridgeChat.framework/Headers/CLBUser.h", "ClarabridgeChat.framework/Headers/CLBConversation.h", "ClarabridgeChat.framework/Headers/CLBMessage.h", "ClarabridgeChat.framework/Headers/CLBMessageAction.h", "ClarabridgeChat.framework/Headers/CLBConversationActivity.h", "ClarabridgeChat.framework/Headers/CLBCoordinates.h"
   s.preserve_paths        = "ClarabridgeChat.framework/*"

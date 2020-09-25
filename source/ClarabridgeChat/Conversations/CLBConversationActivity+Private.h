@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLBConversationActivity (Private) <CLBSOMessage>
 
-@property(readwrite, nullable) NSDate *appMakerLastRead;
+@property(readwrite, nullable) NSDate *businessLastRead;
 @property(readwrite, nullable) NSString *conversationId;
-@property(readwrite, nullable) NSString *appUserId;
+@property(readwrite, nullable) NSString *userId;
 @property(readwrite) NSString *type;
 
 -(instancetype)initWithRole:(NSString *)role

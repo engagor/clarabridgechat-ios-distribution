@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)getConversationListWithCompletionHandler:(void (^)(NSError * _Nullable, NSDictionary * _Nullable))handler;
 
+- (void)getConversationListWithOffset:(NSUInteger)offset completionHandler:(void (^)(NSError * _Nullable, NSDictionary * _Nullable))handler;
 - (void)getConversationById:(NSString *)conversationId withCompletionHandler:(void (^)(NSError * _Nullable, NSDictionary * _Nullable))handler;
 @end
 

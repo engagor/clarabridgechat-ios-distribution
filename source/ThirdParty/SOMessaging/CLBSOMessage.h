@@ -27,7 +27,7 @@
 @protocol CLBSOMessage
 
 @property NSString *messageId;
-@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *displayName;
 @property (nonatomic) NSString *text;
 @property (nonatomic) NSString *textFallback;
 @property (nonatomic) NSDate *date;
@@ -45,7 +45,7 @@
 @property (nonatomic) double progress;
 @property (nonatomic) BOOL isRead;
 @property (nonatomic) NSDate *lastRead;
-@property NSString *authorId;
+@property NSString *userId;
 @property NSString *appUserId;
 
 @end

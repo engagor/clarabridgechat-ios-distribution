@@ -23,8 +23,8 @@ NSString *const CLBMenuItemLocation = @"shareLocation";
 
 @property(nonatomic, copy) NSString *configBaseUrl;
 @property(nonatomic, copy) NSString *sessionToken;
-@property(nonatomic, copy) NSString *appUserId;
 @property(nonatomic, copy) NSString *userId;
+@property(nonatomic, copy) NSString *externalId;
 @property(nonatomic, copy) NSString *jwt;
 
 @end
@@ -48,15 +48,16 @@ NSString *const CLBMenuItemLocation = @"shareLocation";
     if (self) {
         _integrationId = [integrationId copy];
         _conversationAccentColor = CLBDefaultAccentColor();
+        _conversationListAccentColor = CLBDefaultAccentColor();
         _conversationStatusBarStyle = UIStatusBarStyleDefault;
         _notificationDisplayTime = kDefaultNotificationTimeout;
         _enableAppDelegateSwizzling = YES;
         _enableUserNotificationCenterDelegateOverride = YES;
         _requestPushPermissionOnFirstMessage = YES;
         _userMessageTextColor = CLBDefaultUserMessageTextColor();
-        _userId = kValuePlaceholderReadFromPersistence;
+        _externalId = kValuePlaceholderReadFromPersistence;
         _jwt = kValuePlaceholderReadFromPersistence;
-        _appUserId = kValuePlaceholderReadFromPersistence;
+        _userId = kValuePlaceholderReadFromPersistence;
         _sessionToken = kValuePlaceholderReadFromPersistence;
         _allowedMenuItems = @[CLBMenuItemCamera, CLBMenuItemGallery, CLBMenuItemDocument, CLBMenuItemLocation];
     }
@@ -87,12 +88,12 @@ NSString *const CLBMenuItemLocation = @"shareLocation";
     }
 }
 
-- (NSString *)appUserId {
-    if ([_appUserId isEqualToString:kValuePlaceholderReadFromPersistence]) {
-        _appUserId = [CLBUserLifecycleManager lastKnownAppUserIdForAppId:self.appId];
+- (NSString *)userId {
+    if ([_userId isEqualToString:kValuePlaceholderReadFromPersistence]) {
+        _userId = [CLBUserLifecycleManager lastKnownUserIdForAppId:self.appId];
     }
     
-    return _appUserId;
+    return _userId;
 }
 
 - (NSString *)sessionToken {
@@ -103,12 +104,12 @@ NSString *const CLBMenuItemLocation = @"shareLocation";
     return _sessionToken;
 }
 
-- (NSString *)userId {
-    if ([_userId isEqualToString:kValuePlaceholderReadFromPersistence]) {
-        _userId = [CLBUserLifecycleManager lastKnownUserIdForAppId:self.appId];
+- (NSString *)externalId {
+    if ([_externalId isEqualToString:kValuePlaceholderReadFromPersistence]) {
+        _externalId = [CLBUserLifecycleManager lastKnownExternalIdForAppId:self.appId];
     }
     
-    return _userId;
+    return _externalId;
 }
 
 - (NSString *)jwt {
@@ -120,7 +121,7 @@ NSString *const CLBMenuItemLocation = @"shareLocation";
 }
 
 - (BOOL)isAuthenticatedUser {
-    return self.userId && self.jwt;
+    return self.externalId && self.jwt;
 }
 
 @end

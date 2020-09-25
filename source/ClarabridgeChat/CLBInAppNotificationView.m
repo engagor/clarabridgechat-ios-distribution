@@ -57,7 +57,7 @@ static const CGFloat nameAndContentPadding = 5;//# of pixels to move content lab
         self.textContainer = [UIView new];
         [self addSubview:self.textContainer];
 
-        [self initName:message.name];
+        [self initName:message.displayName];
 
         NSString *displayString =  message.text;
         NSString *trimmed = [displayString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];

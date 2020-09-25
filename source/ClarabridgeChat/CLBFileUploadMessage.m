@@ -21,7 +21,7 @@ date = _date,
 failed = _failed;
 
 @synthesize appUserId;
-@synthesize authorId;
+@synthesize userId;
 
 -(instancetype)init {
     self = [super init];
@@ -61,8 +61,8 @@ failed = _failed;
     return nil;
 }
 
--(void)setName:(NSString *)text{}
--(NSString*)name {
+-(void)setDisplayName:(NSString *)text{}
+-(NSString*)displayName {
     return nil;
 }
 

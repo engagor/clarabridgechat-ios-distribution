@@ -23,11 +23,22 @@
 #import "CLBAuthorInfo.h"
 #import "CLBConversationList.h"
 #import "CLBConversationStorageManager.h"
+#import "CLBMessage+Private.h"
 
 NSString *const CLBCreateUserCompletedNotification = @"CLBCreateUserCompletedNotification";
 NSString *const CLBCreateUserFailedNotification = @"CLBCreateUserFailedNotification";
 NSString *const CLBConversationLoadDidStartNotification = @"CLBConversationLoadDidStartNotification";
 NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoadDidFinishNotification";
+NSString *const kRequestConversation = @"conversation";
+NSString *const kRequestClient = @"client";
+NSString *const kRequestIntent = @"intent";
+NSString *const kRequestDisplayName = @"displayName";
+NSString *const kRequestDescription = @"description";
+NSString *const kRequestIconUrl = @"iconUrl";
+NSString *const kRequestMetadata = @"metadata";
+NSString *const kRequestType = @"type";
+NSString *const kConversationTypePersonal = @"personal";
+NSString *const kRequestMessages = @"messages";
 
 @interface CLBUserSynchronizer ()
 
@@ -79,13 +90,13 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
 
 - (void)operationCompleted:(CLBRemoteResponse *)response {
     if (response.error) {
-        if ([self shouldClearUserProperties:response]) {
-            NSLog(@"<CLARABRIDGECHAT::WARNING> Invalid user properties. Removing them");
+        if ([self shouldClearUserMetadata:response]) {
+            NSLog(@"<CLARABRIDGECHAT::WARNING> Invalid user metadata. Removing them");
             // Something is wrong with the local user props. Remove them
-            [self.user clearLocalProperties];
+            [self.user clearLocalMetadata];
         }
     } else {
-        [self.user consolidateProperties];
+        [self.user consolidateMetadata];
     }
 }
 
@@ -118,18 +129,22 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
 - (void)handleConversationsResponse:(NSDictionary *)responseObject {
     CLBConversationList *conversationList = [[CLBConversationList alloc] initWithAppId:self.appId user:self.user];
     [conversationList deserialize:responseObject];
-    [self.conversationStorageManager storeConversationList:conversationList];
+    [self.conversationStorageManager storeConversationList:conversationList activeConversationId:self.conversation.conversationId];
 
     CLBConversation *latestConversation = conversationList.conversations.firstObject;
-    BOOL hasConversationId = self.conversation.conversationId != nil;
+    if (!latestConversation) {
+        return;
+    }
 
-    if (!hasConversationId && latestConversation) {
+    BOOL isActiveConversationUpToDate = NO;
+    BOOL isActiveConversationLoaded = self.conversation.conversationId != nil;
+    if (isActiveConversationLoaded) {
+        isActiveConversationUpToDate = [self.conversationStorageManager messagesAreInSyncInStorageForConversationId:self.conversation.conversationId];
+    } else {
         [self.conversation deserialize:responseObject[@"conversations"][0]];
     }
 
-    BOOL activeConversationIsUpToDate = [self.conversationStorageManager activeConversationIsUpToDate:conversationList];
-
-    if ((!activeConversationIsUpToDate) && latestConversation) {
+    if (!isActiveConversationUpToDate) {
         [self loadConversation:latestConversation.conversationId completionHandler:^(NSError *error, NSDictionary *response) {
             [self operationDidSucceedWithResponse:response];
         }];
@@ -160,21 +175,21 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
 }
 
 - (BOOL)shouldIgnoreRequest {
-    return !self.user.appUserId || !self.user.isModified;
+    return !self.user.userId || !self.user.isModified;
 }
 
-- (BOOL)shouldClearUserProperties:(CLBRemoteResponse *)response {
+- (BOOL)shouldClearUserMetadata:(CLBRemoteResponse *)response {
     return response.statusCode >= 400 && response.statusCode < 500 && response.statusCode != 429;
 }
 
 - (void)updateAuthenticationWithSessionToken:(NSString *)sessionToken {
     [CLBUserLifecycleManager setLastKnownSessionToken:sessionToken forAppId:self.appId];
     self.settings.sessionToken = sessionToken;
-    self.settings.appUserId = self.user.appUserId;
+    self.settings.userId = self.user.userId;
 }
 
 - (void)logInWithCompletionHandler:(void (^)(NSError *, NSDictionary *))handler {
-    if (!self.settings.userId) {
+    if (!self.settings.externalId) {
         return;
     }
 
@@ -183,14 +198,14 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
     NSMutableDictionary *serializedData = [[NSMutableDictionary alloc] init];
 
     NSString *sessionToken = self.settings.sessionToken;
-    NSString *appUserId = self.settings.appUserId;
+    NSString *userId = self.settings.userId;
 
-    if (sessionToken && appUserId) {
+    if (sessionToken && userId) {
         serializedData[@"sessionToken"] = sessionToken;
-        serializedData[@"appUserId"] = appUserId;
+        serializedData[@"appUserId"] = userId;
     }
 
-    serializedData[@"userId"] = self.settings.userId;
+    serializedData[@"userId"] = self.settings.externalId;
     serializedData[@"client"] = [CLBClientInfo serializedClientInfo];
 
     [self.synchronizer.apiClient requestWithMethod:@"POST" url:url parameters:serializedData completion:^(NSURLSessionDataTask *task, NSError *error, id responseObject) {
@@ -198,21 +213,21 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
             CLBDebug(@"POST succeeded at : %@\nResponse: %@", url, responseObject);
             self.retryCount = 0;
             self.settings.sessionToken = nil;
-            self.settings.appUserId = nil;
+            self.settings.userId = nil;
             self.lastLoginResult = CLBLastLoginResultSuccess;
             
             if (responseObject) {
                 [self.user deserialize:responseObject];
             } else {
-                // Credentials are valid but user doesn't exist yet, set userId to value from settings
-                self.user.userId = self.settings.userId;
+                // Credentials are valid but user doesn't exist yet, set externalId to value from settings
+                self.user.externalId = self.settings.externalId;
             }
             
             [self operationDidSucceedWithResponse:responseObject];
 
             [CLBUserLifecycleManager setLastKnownJwt:self.settings.jwt forAppId:self.appId];
-            [CLBUserLifecycleManager setLastKnownUserId:self.settings.userId forAppId:self.appId];
-            [CLBUserLifecycleManager clearAppUserIdForAppId:self.appId];
+            [CLBUserLifecycleManager setLastKnownExternalId:self.settings.externalId forAppId:self.appId];
+            [CLBUserLifecycleManager clearUserIdForAppId:self.appId];
             [CLBUserLifecycleManager clearSessionTokenForAppId:self.appId];
 
             if (handler) {
@@ -240,7 +255,7 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
 }
 
 - (void)logOutWithCompletionHandler:(void (^)(NSError *, NSDictionary *))handler {
-    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/logout", self.appId, self.user.appUserId];
+    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/logout", self.appId, self.user.userId];
 
     NSDictionary *serializedData = @{
                                      @"client": @{
@@ -271,6 +286,11 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
         return;
     }
     
+    [self createConversationOrUserWithName:nil description:nil iconUrl:nil metadata:nil messages:nil intent:intent completionHandler:completionHandler];
+}
+
+- (void)createConversationOrUserWithName:(nullable NSString *)name description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl metadata:(nullable NSDictionary *)metadata messages:(nullable NSArray<CLBMessage *> *)messages intent:(nullable NSString *)intent completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
+
     @synchronized (self.userCreationCallbacks) {
         if (completionHandler) {
             [self.userCreationCallbacks addObject:completionHandler];
@@ -293,21 +313,86 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
                     strongSelf.creationCompletedBlock = nil;
                 }
             };
+
+            NSMutableDictionary *parameters = @{kRequestType: kConversationTypePersonal }.mutableCopy;
+
+            if(name) {
+                parameters[kRequestDisplayName] = name;
+            }
+
+            if(description) {
+                parameters[kRequestDescription] = description;
+            }
+
+            if(iconUrl) {
+                parameters[kRequestIconUrl] = iconUrl;
+            }
+
+            if(metadata) {
+                parameters[kRequestMetadata] = metadata;
+            }
             
-            BOOL userExists = self.user.appUserId != nil;
+            if(messages) {
+                NSMutableArray *messageArray = NSMutableArray.new;
+
+                for (CLBMessage *message in messages) {
+                    [messageArray addObject:[message serializeTextForConversation]];
+                }
+
+                parameters[kRequestMessages] = messageArray;
+            }
+
+            BOOL userExists = self.user.userId != nil;
             if (userExists) {
-                [self startConversationWithIntent:intent completionHandler:self.creationCompletedBlock];
+                [self createConversationWithParameters:parameters intent:intent completionHandler:self.creationCompletedBlock];
             } else {
-                [self createUserWithIntent:intent completionHandler:self.creationCompletedBlock];
+                [self createUserWithParameters:parameters intent:intent completionHandler:self.creationCompletedBlock];
             }
         }
     }
 }
 
-- (void)createUserWithIntent:(NSString *)intent completionHandler:(void (^)(NSError *, NSDictionary *))handler {
+- (void)createConversationWithParameters:(NSDictionary *)parameters intent:(NSString *)intent completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
+
+    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/conversations", self.appId, self.user.userId];
+    NSMutableDictionary *mutableParameters = @{
+        kRequestClient:[CLBClientInfo serializedClientInfo],
+        kRequestIntent: intent,
+    }.mutableCopy;
+
+    [mutableParameters addEntriesFromDictionary:parameters];
+
+    [self.synchronizer.apiClient requestWithMethod:@"POST" url:url parameters:mutableParameters completion:^(NSURLSessionDataTask *task, NSError *error, id responseObject) {
+        NSDictionary* userInfo;
+        if (error) {
+            CLBDebug(@"POST failed at : %@, %@", url, error);
+            userInfo = [self errorUserInfoForTask:task response:responseObject];
+        }else{
+            CLBDebug(@"POST succeeded at : %@\nResponse: %@", url, responseObject);
+            self.user.conversationStarted = YES;
+            [self operationDidSucceedWithResponse:responseObject];
+
+            userInfo = @{
+                         CLBConversationIdentifier: self.conversation
+                         };
+        }
+
+        if (completionHandler) {
+            completionHandler(error, userInfo);
+        }
+    }];
+}
+
+- (void)createUserWithParameters:(nullable NSDictionary *)parameters intent:(NSString *)intent completionHandler:(void (^)(NSError *, NSDictionary *))handler {
     NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers", self.appId];
     NSMutableDictionary* serializedData = [[self.user serialize] mutableCopy];
     [serializedData setObject:intent forKey:@"intent"];
+
+
+    if (parameters != NULL) {
+        NSDictionary *conversationParameters = @{kRequestConversation:parameters};
+        [serializedData addEntriesFromDictionary:conversationParameters];
+    }
 
     [self.synchronizer.apiClient requestWithMethod:@"POST" url:url parameters:serializedData completion:^(NSURLSessionDataTask *task, NSError *error, id responseObject) {
         NSDictionary* userInfo;
@@ -320,52 +405,70 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
             [self.user deserialize:responseObject];
             [self operationDidSucceedWithResponse:responseObject];
             
-            [CLBUserLifecycleManager setLastKnownAppUserId:self.user.appUserId forAppId:self.appId];
+            [CLBUserLifecycleManager setLastKnownUserId:self.user.userId forAppId:self.appId];
             
             userInfo = @{
                          CLBConversationIdentifier: self.conversation
                          };
         }
-
         if (handler) {
             handler(error, userInfo);
         }
     }];
 }
 
-- (void)startConversationWithIntent:(NSString *)intent completionHandler:(void (^)(NSError *, NSDictionary *))handler {
-    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/conversation", self.appId, self.user.appUserId];
-    NSDictionary *mutableParameters = @{@"client":[CLBClientInfo serializedClientInfo], @"intent": intent};
+- (void)updateConversationById:(NSString *)conversationId withName:(nullable NSString *)name description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl metadata:(nullable NSDictionary *)metadata completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
 
-    [self.synchronizer.apiClient requestWithMethod:@"POST" url:url parameters:mutableParameters completion:^(NSURLSessionDataTask *task, NSError *error, id responseObject) {
+    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/conversations/%@", self.appId, conversationId];
+
+    NSMutableDictionary *parameters = @{kRequestClient:[CLBClientInfo serializedClientInfo]}.mutableCopy;
+
+    if(name) {
+        parameters[kRequestDisplayName] = name;
+    }
+
+    if(description) {
+        parameters[kRequestDescription] = description;
+    }
+
+    if(iconUrl) {
+        parameters[kRequestIconUrl] = iconUrl;
+    }
+
+    if(metadata) {
+        parameters[kRequestMetadata] = metadata;
+    }
+
+    [self.synchronizer.apiClient requestWithMethod:@"PUT" url:url parameters:parameters completion:^(NSURLSessionDataTask *task, NSError *error, id responseObject) {
         NSDictionary* userInfo;
         if (error) {
             CLBDebug(@"POST failed at : %@, %@", url, error);
             userInfo = [self errorUserInfoForTask:task response:responseObject];
         }else{
             CLBDebug(@"POST succeeded at : %@\nResponse: %@", url, responseObject);
-            self.user.conversationStarted = YES;
-            [self operationDidSucceedWithResponse:responseObject];
-            
-            userInfo = @{
-                         CLBConversationIdentifier: self.conversation
-                         };
+            userInfo = @{CLBConversationIdentifier: self.conversation};
         }
 
-        if (handler) {
-            handler(error, userInfo);
+        if (completionHandler) {
+            completionHandler(error, userInfo);
         }
     }];
+
 }
 
-- (void)loadConversations: (void (^)(NSError *, NSArray *)) handler {
+- (void)loadConversations: (void (^)(NSError *, NSArray * _Nonnull)) handler {
     CLBConversationList *conversationList = [self.conversationStorageManager getConversationList];
     handler(nil, conversationList.conversations);
 }
 
+- (void)loadConversationListWithCompletionHandler: (void (^)(NSError *, CLBConversationList * _Nullable)) handler {
+   CLBConversationList *conversationList = [self.conversationStorageManager getConversationList];
+   handler(nil, conversationList);
+}
+
 - (void)loadConversation:(NSString *)conversationId completionHandler:(void (^)(NSError *, NSDictionary *))handler {
     void (^loadConversationHandler)(NSError *, NSDictionary *) = ^(NSError *error, NSDictionary *userInfo){
-        if (!self.user.appUserId) {
+        if (!self.user.userId) {
             [self handleNoUserIdInRequest:handler];
             return;
         }
@@ -394,8 +497,8 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
     
     [[NSNotificationCenter defaultCenter] postNotificationName:CLBConversationLoadDidStartNotification object:nil];
     
-    // Force a last user sync if they still don't have an appUserId but logged in with valid creds
-    BOOL shouldRefreshAuthenticatedUser = self.user.userId && !self.user.appUserId;
+    // Force a last user sync if they still don't have an userId but logged in with valid creds
+    BOOL shouldRefreshAuthenticatedUser = self.user.externalId && !self.user.userId;
     
     if (shouldRefreshAuthenticatedUser) {
         [self logInWithCompletionHandler:loadConversationHandler];
@@ -477,15 +580,15 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
             self.retryCount = 0;
             CLBDebug(@"POST succeeded at : %@\nResponse: %@", url, responseObject);
 
-            self.user.appUserId = responseObject[@"appUser"][@"_id"];
-            self.user.userId = nil;
-            self.settings.appUserId = self.user.appUserId;
-            self.settings.userId = nil;
+            self.user.userId = responseObject[@"appUser"][@"_id"];
+            self.user.externalId = nil;
+            self.settings.userId = self.user.userId;
+            self.settings.externalId = nil;
             self.settings.jwt = nil;
 
-            [CLBUserLifecycleManager clearUserIdForAppId:self.appId];
+            [CLBUserLifecycleManager clearExternalIdForAppId:self.appId];
             [CLBUserLifecycleManager clearJwtForAppId:self.appId];
-            [CLBUserLifecycleManager setLastKnownAppUserId:self.user.appUserId forAppId:self.appId];
+            [CLBUserLifecycleManager setLastKnownUserId:self.user.userId forAppId:self.appId];
             [self updateAuthenticationWithSessionToken:responseObject[@"appUser"][@"sessionToken"]];
 
             if (completionHandler) {
@@ -514,9 +617,9 @@ NSString *const CLBConversationLoadDidFinishNotification = @"CLBConversationLoad
         } else {
             self.retryCount = 0;
             CLBDebug(@"POST succeeded at : %@\nResponse: %@", url, responseObject);
-            self.user.appUserId = responseObject[@"appUser"][@"_id"];
+            self.user.userId = responseObject[@"appUser"][@"_id"];
 
-            [CLBUserLifecycleManager setLastKnownAppUserId:self.user.appUserId forAppId:self.appId];
+            [CLBUserLifecycleManager setLastKnownUserId:self.user.userId forAppId:self.appId];
             [self updateAuthenticationWithSessionToken:responseObject[@"appUser"][@"sessionToken"]];
         }
 

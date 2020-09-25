@@ -17,8 +17,8 @@ extern NSString* const CLBUserNSUserDefaultsKey;
 @property(readonly) BOOL isModified;
 @property CLBInnerUser* localCopy;
 @property CLBInnerUser* remoteCopy;
-@property NSString* appUserId;
 @property NSString* userId;
+@property NSString* externalId;
 @property BOOL conversationStarted;
 @property(readonly) NSString* fullName;
 @property BOOL hasPaymentInfo;
@@ -31,9 +31,9 @@ extern NSString* const CLBUserNSUserDefaultsKey;
 +(void)setCurrentUser:(CLBUser*)user;
 
 -(void)removeRedundancyFromLocalObject;
--(void)consolidateProperties;
--(void)storeLocalProperties;
--(void)readLocalProperties;
--(void)clearLocalProperties;
+-(void)consolidateMetadata;
+-(void)storeLocalMetadata;
+-(void)readLocalMetadata;
+-(void)clearLocalMetadata;
 
 @end

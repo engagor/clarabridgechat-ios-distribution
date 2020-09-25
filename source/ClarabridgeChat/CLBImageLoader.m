@@ -145,4 +145,15 @@
     [self clearImageCache];
 }
 
+-(void)cancelRequestForURL:(NSString *)urlString {
+    if (urlString && urlString.length > 0 && self.queuedRequests) {
+        for (CLBImageLoadRequest *request in self.queuedRequests) {
+            if ([request.url isEqualToString:urlString] && [request.completionBlocks count] == 1) {
+                [self.queuedRequests removeObject:request];
+                return;
+            }
+        }
+    }
+}
+
 @end

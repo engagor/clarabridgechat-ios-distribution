@@ -34,9 +34,9 @@ NSString *const CLBEventSource = @"source";
 NSString *const CLBEventSourceId = @"id";
 NSString *const CLBEventTypeString = @"type";
 NSString *const CLBEventAppUserId = @"appUserId";
-NSString *const CLBEventAppMakerString = @"appMaker";
-NSString *const CLBEventAppMakerLastRead = @"appMakerLastRead";
-NSString *const CLBEventAuthorId = @"authorId";
+NSString *const CLBEventBusinessString = @"appMaker";
+NSString *const CLBEventBusinessLastRead = @"appMakerLastRead";
+NSString *const CLBEventUserId = @"authorId";
 
 @interface CLBEventTypeFactory()
 
@@ -113,19 +113,18 @@ NSString *const CLBEventAuthorId = @"authorId";
         return;
     }
 
+    CLBConversation *conversation = [self.delegate conversationById:conversationId];
+    [self.delegate conversationRemoved:conversation];
+
     if (isEventForCurrentConversation) {
-        [self.delegate conversationRemoved:conversationId];
         [self.delegate handleActivity:conversationActivity forConversation:self.conversation];
     } else {
         if (self.delegate && [self.delegate respondsToSelector:@selector(conversationById:)]) {
-            CLBConversation *conversation = [self.delegate conversationById:conversationId];
             if (self.conversation.delegate && [self.conversation.delegate respondsToSelector:@selector(conversation:didReceiveActivity:)]) {
                 [self.conversation.delegate conversation:conversation didReceiveActivity:conversationActivity];
             }
         }
     }
-
-    [self.delegate currentConversationListNeedsRefresh];
 }
 
 - (void)handleParticipantsModified:(NSDictionary *)event {
@@ -135,7 +134,7 @@ NSString *const CLBEventAuthorId = @"authorId";
 
     CLBConversationActivity *activity = [[CLBConversationActivity alloc] init];
     activity.conversationId = conversationId;
-    activity.appUserId = event[CLBEventParticipant][CLBEventAppUserId];
+    activity.userId = event[CLBEventParticipant][CLBEventAppUserId];
     activity.type = event[CLBEventTypeString];
 
     if(![self isValidActivity:activity]) {
@@ -160,54 +159,54 @@ NSString *const CLBEventAuthorId = @"authorId";
     BOOL isEventForCurrentConversation = [self isEventConversationId:conversationId forCurrentConversation:self.conversation];
 
     NSDictionary *messagePayload = event[CLBEventMessage];
-    NSString *authorId = messagePayload[CLBEventAuthorId];
-    BOOL isFromCurrentUser = [self.conversation.user.appUserId isEqualToString:authorId];
-
+    NSString *userId = messagePayload[CLBEventUserId];
+    BOOL isFromCurrentUser = [self.conversation.user.userId isEqualToString:userId];
     CLBMessage *message = [[CLBMessage alloc] initWithDictionary:messagePayload setIsFromCurrentUser:isFromCurrentUser];
-    message.conversation = self.conversation;
 
     if (isEventForCurrentConversation) {
-        [self addMessageOrHandleSuccessfulUploadEvent:event message:message];
-    } else if (!isEventForCurrentConversation) {
-        [self showInAppNotificationForEvent:event message:message conversationId:conversationId];
+        if ([self isEventFromCurrentDevice:event]) {
+            if ([self isMessageMediaType:message]) {
+                [self.conversation handleSuccessfulUpload:message];
+            }
+            [self.delegate updateLastUpdatedAtAndUnreadCountForMessage:message conversationId:conversationId];
+
+            return;
+        }
+
+        if (![self.delegate messagesAreInSyncInStorageForConversationId:conversationId]) {
+            [self.delegate currentConversationNeedsRefresh:self.conversation];
+
+            return;
+        }
+
+        [self.conversation addMessage:message];
+        [self.delegate updateLastUpdatedAtAndUnreadCountForMessage:message conversationId:conversationId];
+        if (!message.isFromCurrentUser) {
+            [self.conversation notifyMessagesReceived:@[message]];
+        }
+    } else {
+        CLBConversation *conversation = [self.delegate conversationById:conversationId];
+        if (!conversation) {
+            [self.delegate currentConversationListNeedsRefreshWithPendingNotificationMessage:message
+                                                                   pendingNotificationConversationId:conversationId];
+            return;
+        }
+
+        [conversation addMessage:message];
+        [self.delegate updateLastUpdatedAtAndUnreadCountForMessage:message conversationId:conversationId];
+        if (message.conversation) {
+            [self.delegate showInAppNotificationForMessage:message conversationId:conversation.conversationId];
+        }
     }
 }
 
-- (BOOL)sourceIdMatchesIdentifier:(NSString *)sourceId {
+- (BOOL)isEventFromCurrentDevice:(NSDictionary *)event {
+    NSString *sourceId = event[CLBEventMessage][CLBEventSource][CLBEventSourceId];
     return [sourceId isEqualToString:[self.utilitySettings getUniqueDeviceIdentifier]];
 }
 
-- (BOOL)isMediaType:(CLBMessage *)message {
+- (BOOL)isMessageMediaType:(CLBMessage *)message {
     return [@[CLBMessageTypeFile, CLBMessageTypeImage] containsObject:message.type];
-}
-
-- (void)addMessageOrHandleSuccessfulUploadEvent:(NSDictionary *)event message:(CLBMessage *)message {
-    NSDictionary *messagePayload = event[CLBEventMessage];
-    NSString *sourceId = messagePayload[CLBEventSource][CLBEventSourceId];
-
-    if (sourceId != nil && [self sourceIdMatchesIdentifier:sourceId]) {
-        if ([self isMediaType:message]) {
-            [self.conversation handleSuccessfulUpload:message];
-        }
-        [self.delegate updateParticipantListForConversationId:self.conversation.conversationId withEvent:event isActiveConversation:YES];
-    } else {
-        [self handleMessageEvent:event message:message];
-    }
-}
-
-- (void)handleMessageEvent:(NSDictionary *)event message:(CLBMessage *)message {
-    if ([self.delegate messagesAreInSyncInStorageForConversationId:self.conversation.conversationId]) {
-        [self.conversation addMessage:message];
-        [self.delegate updateParticipantListForConversationId:self.conversation.conversationId withEvent:event isActiveConversation:YES];
-    } else {
-        [self.delegate currentConversationNeedsRefresh:self.conversation];
-    }
-}
-
-- (void)showInAppNotificationForEvent:(NSDictionary *)event message:(CLBMessage *)message conversationId:(NSString *)conversationId {
-    [self.delegate showInAppNotificationForMessage:message conversationId:conversationId];
-    [self.delegate updateParticipantListForConversationId:conversationId withEvent:event isActiveConversation:NO];
-
 }
 
 - (void)handleUploadFailedEvent:(NSDictionary *)event {
@@ -228,23 +227,26 @@ NSString *const CLBEventAuthorId = @"authorId";
     BOOL isEventForCurrentConversation = [self isEventConversationId:conversationId forCurrentConversation:self.conversation];
     CLBConversationActivity *conversationActivity = [[CLBConversationActivity alloc] initWithDictionary:event[CLBEventTypeActivityString]];
     conversationActivity.conversationId = conversationId;
-    conversationActivity.appUserId = event[CLBEventTypeActivityString][CLBEventAppUserId];
+    conversationActivity.userId = event[CLBEventTypeActivityString][CLBEventAppUserId];
 
     if(![self isValidActivity:conversationActivity]) {
         return;
     }
 
     if ([CLBConversationActivityTypeConversationRead isEqualToString:conversationActivity.type]) {
-        if ([conversationActivity.role isEqualToString:CLBEventAppMakerString]) {
-            conversationActivity.appMakerLastRead = [NSDate dateWithTimeIntervalSince1970:[event[CLBEventConversation][CLBEventAppMakerLastRead] doubleValue]];
+        if ([conversationActivity.role isEqualToString:CLBEventBusinessString]) {
+            conversationActivity.businessLastRead = [NSDate dateWithTimeIntervalSince1970:[event[CLBEventConversation][CLBEventBusinessLastRead] doubleValue]];
         }
     }
 
     if (isEventForCurrentConversation) {
         [self.delegate handleActivity:conversationActivity forConversation:self.conversation];
+        [self.conversation notifyActivity:conversationActivity];
     } else {
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(conversationById:)]) {
             CLBConversation *conversation = [self.delegate conversationById:conversationId];
+
+            [self.delegate handleActivity:conversationActivity forConversation:conversation];
 
             if (self.conversation.delegate != nil && [self.conversation.delegate respondsToSelector:@selector(conversation:didReceiveActivity:)]) {
                 [self.conversation.delegate conversation:conversation didReceiveActivity:conversationActivity];

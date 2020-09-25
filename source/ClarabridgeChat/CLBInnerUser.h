@@ -14,12 +14,12 @@
 @property NSString* email;
 @property NSString* signedUpAt;
 
-@property NSDictionary* properties;
--(void)addProperties:(NSDictionary*)properties;
+@property NSDictionary* metadata;
+-(void)addMetadata:(NSDictionary*)metadata;
 
 -(void)deserialize:(NSDictionary*)dict;
 -(NSDictionary*)serialize;
 
--(void)clearProperties;
+-(void)clearMetadata;
 
 @end

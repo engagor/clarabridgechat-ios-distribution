@@ -22,6 +22,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		044CE3EE24A9F5E200FC747F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		04AE37DA24775B7E00E5FB9E /* NSDate+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 04AE37D824775B7E00E5FB9E /* NSDate+Helper.h */; };
+		04AE37DB24775B7E00E5FB9E /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AE37D924775B7E00E5FB9E /* NSDate+Helper.m */; };
+		04D3A7FD24757E800047D4B3 /* CLBConversationListTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D3A7FB24757E800047D4B3 /* CLBConversationListTableViewCell.h */; };
+		04D3A7FE24757E800047D4B3 /* CLBConversationListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3A7FC24757E800047D4B3 /* CLBConversationListTableViewCell.m */; };
+		04D3A80024757F230047D4B3 /* CLBConversationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3A7FF24757F230047D4B3 /* CLBConversationViewModel.m */; };
 		0F07EFA123D8A68D00D82697 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		0F2F493D23E0813F0037AB29 /* CLBDependencyManager+Private.h in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F493C23E0813F0037AB29 /* CLBDependencyManager+Private.h */; };
 		0F78C01A23EADF2300CC3A0F /* BuildFile in Sources */ = {isa = PBXBuildFile; };
@@ -377,6 +383,12 @@
 		27F8C7371EEEE1590072C960 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		27FBF7641EEAFEAD00FA4009 /* CLBRetryConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FBF7621EEAFEAD00FA4009 /* CLBRetryConfiguration.h */; };
 		27FBF7651EEAFEAD00FA4009 /* CLBRetryConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FBF7631EEAFEAD00FA4009 /* CLBRetryConfiguration.m */; };
+		465F02F124F5558100A988CC /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		46B264E024F68E9100AA94CB /* NSError+ClarabridgeChat.h in Headers */ = {isa = PBXBuildFile; fileRef = 46B264DE24F68E9100AA94CB /* NSError+ClarabridgeChat.h */; };
+		46B264E124F68E9100AA94CB /* NSError+ClarabridgeChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B264DF24F68E9100AA94CB /* NSError+ClarabridgeChat.m */; };
+		46F5F20024EEA68800FC7FBF /* CLBConversationListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F5F1FF24EEA68800FC7FBF /* CLBConversationListDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46F5F20324EEA93400FC7FBF /* CLBCreateConversationButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F5F20124EEA93400FC7FBF /* CLBCreateConversationButton.h */; };
+		46F5F20424EEA93400FC7FBF /* CLBCreateConversationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F5F20224EEA93400FC7FBF /* CLBCreateConversationButton.m */; };
 		48D8C03B238ED3A20010BF37 /* CLBScopeURLProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C024238ED3A00010BF37 /* CLBScopeURLProvider.h */; };
 		48D8C03C238ED3A20010BF37 /* CLBScopeURLFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D8C025238ED3A00010BF37 /* CLBScopeURLFactory.m */; };
 		48D8C03D238ED3A20010BF37 /* CLBClarabridgeChatScopeURLProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C026238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.h */; };
@@ -407,6 +419,21 @@
 		48D8C07123956E170010BF37 /* CLBMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 48D8C07023956E170010BF37 /* CLBMacros.h */; };
 		49E8F9D01A7C35D5007F6332 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		5D5F69FD18A133DE00AA5FCD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5F69FC18A133DE00AA5FCD /* OpenGLES.framework */; };
+		7E274EDA24E2B65E00D120BB /* CLBConversationListViewController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E274ED824E2B65E00D120BB /* CLBConversationListViewController+Private.h */; };
+		7E308C81247BFA640008B49E /* CLBConversationListViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E308C7F247BFA640008B49E /* CLBConversationListViewModel.h */; };
+		7E308C82247BFA640008B49E /* CLBConversationListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E308C80247BFA640008B49E /* CLBConversationListViewModel.m */; };
+		7E308C85247C19D20008B49E /* CLBEmptyListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E308C83247C19D20008B49E /* CLBEmptyListView.h */; };
+		7E308C86247C19D20008B49E /* CLBEmptyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E308C84247C19D20008B49E /* CLBEmptyListView.m */; };
+		7E308C88247D0E2B0008B49E /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7E422A7924D302C1000E3414 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7E64909D247567D60075227A /* CLBConversationListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E64909B247567D60075227A /* CLBConversationListViewController.h */; };
+		7E64909E247567D60075227A /* CLBConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E64909C247567D60075227A /* CLBConversationListViewController.m */; };
+		7E6B9B1424AF60690097656D /* CLBConversationNavigationItemTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6B9B1224AF60690097656D /* CLBConversationNavigationItemTitleView.h */; };
+		7E6B9B1524AF60690097656D /* CLBConversationNavigationItemTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B9B1324AF60690097656D /* CLBConversationNavigationItemTitleView.m */; };
+		7E9CF4982489ACBD00345D13 /* CLBConversation+Mapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9CF4962489ACBD00345D13 /* CLBConversation+Mapper.h */; };
+		7E9CF4992489ACBD00345D13 /* CLBConversation+Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9CF4972489ACBD00345D13 /* CLBConversation+Mapper.m */; };
+		7E9CF4A0248F7FBD00345D13 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		B0005F1C2476AA6D00805692 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		DC1B39121912D40E002B03CB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		DC5D87E5184E3F2C00658168 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4FDF63183275A400C0512E /* CoreTelephony.framework */; };
 		DC5D87E7184E3F4100658168 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5D87E6184E3F4100658168 /* libxml2.dylib */; };
@@ -434,6 +461,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04AE37D824775B7E00E5FB9E /* NSDate+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		04AE37D924775B7E00E5FB9E /* NSDate+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		04D3A7FB24757E800047D4B3 /* CLBConversationListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationListTableViewCell.h; sourceTree = "<group>"; };
+		04D3A7FC24757E800047D4B3 /* CLBConversationListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationListTableViewCell.m; sourceTree = "<group>"; };
+		04D3A7FF24757F230047D4B3 /* CLBConversationViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationViewModel.m; sourceTree = "<group>"; };
+		04D3A80124757F3A0047D4B3 /* CLBConversationViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationViewModel.h; sourceTree = "<group>"; };
 		0F2F493C23E0813F0037AB29 /* CLBDependencyManager+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBDependencyManager+Private.h"; sourceTree = "<group>"; };
 		0F8946B623F2C80500EF35D7 /* CLBHeaderFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBHeaderFactory.h; sourceTree = "<group>"; };
 		0F8946B723F2C80500EF35D7 /* CLBHeaderFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBHeaderFactory.m; sourceTree = "<group>"; };
@@ -735,6 +768,11 @@
 		27FE77301C1F1E6000A430E5 /* CLBUITextField+Shake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLBUITextField+Shake.m"; path = "ThirdParty/UITextField+Shake/CLBUITextField+Shake.m"; sourceTree = "<group>"; };
 		32C22F5D1B70099300087A1B /* CLBBSMobileProvision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBBSMobileProvision.h; sourceTree = "<group>"; };
 		32C22F5E1B70099300087A1B /* CLBBSMobileProvision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBBSMobileProvision.m; sourceTree = "<group>"; };
+		46B264DE24F68E9100AA94CB /* NSError+ClarabridgeChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+ClarabridgeChat.h"; sourceTree = "<group>"; };
+		46B264DF24F68E9100AA94CB /* NSError+ClarabridgeChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+ClarabridgeChat.m"; sourceTree = "<group>"; };
+		46F5F1FF24EEA68800FC7FBF /* CLBConversationListDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationListDelegate.h; sourceTree = "<group>"; };
+		46F5F20124EEA93400FC7FBF /* CLBCreateConversationButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBCreateConversationButton.h; sourceTree = "<group>"; };
+		46F5F20224EEA93400FC7FBF /* CLBCreateConversationButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBCreateConversationButton.m; sourceTree = "<group>"; };
 		48D8C024238ED3A00010BF37 /* CLBScopeURLProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBScopeURLProvider.h; sourceTree = "<group>"; };
 		48D8C025238ED3A00010BF37 /* CLBScopeURLFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBScopeURLFactory.m; sourceTree = "<group>"; };
 		48D8C026238ED3A00010BF37 /* CLBClarabridgeChatScopeURLProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBClarabridgeChatScopeURLProvider.h; sourceTree = "<group>"; };
@@ -757,6 +795,18 @@
 		4960177E1A01999B0022969F /* defaultAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultAvatar@2x.png"; sourceTree = "<group>"; };
 		5D516D9F18A1543C00CBA70F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5D5F69FC18A133DE00AA5FCD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		7E274ED824E2B65E00D120BB /* CLBConversationListViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBConversationListViewController+Private.h"; sourceTree = "<group>"; };
+		7E308C7F247BFA640008B49E /* CLBConversationListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationListViewModel.h; sourceTree = "<group>"; };
+		7E308C80247BFA640008B49E /* CLBConversationListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationListViewModel.m; sourceTree = "<group>"; };
+		7E308C83247C19D20008B49E /* CLBEmptyListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBEmptyListView.h; sourceTree = "<group>"; };
+		7E308C84247C19D20008B49E /* CLBEmptyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBEmptyListView.m; sourceTree = "<group>"; };
+		7E64909B247567D60075227A /* CLBConversationListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationListViewController.h; sourceTree = "<group>"; };
+		7E64909C247567D60075227A /* CLBConversationListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationListViewController.m; sourceTree = "<group>"; };
+		7E6B9B1224AF60690097656D /* CLBConversationNavigationItemTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBConversationNavigationItemTitleView.h; sourceTree = "<group>"; };
+		7E6B9B1324AF60690097656D /* CLBConversationNavigationItemTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLBConversationNavigationItemTitleView.m; sourceTree = "<group>"; };
+		7E9CF4962489ACBD00345D13 /* CLBConversation+Mapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLBConversation+Mapper.h"; sourceTree = "<group>"; };
+		7E9CF4972489ACBD00345D13 /* CLBConversation+Mapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CLBConversation+Mapper.m"; sourceTree = "<group>"; };
+		7E9CF49D248E731500345D13 /* CLBUserSynchronizerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLBUserSynchronizerProtocol.h; sourceTree = "<group>"; };
 		9FB4B8E91B13CD8300DD8A41 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
 		9FECF62A19F859A8006741A9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
 		9FECF62B19F859A8006741A9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ClarabridgeChatLocalizable.strings; sourceTree = "<group>"; };
@@ -794,6 +844,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042729BA24A0C11D00556FA7 /* ConversationListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				04D3A7FB24757E800047D4B3 /* CLBConversationListTableViewCell.h */,
+				04D3A7FC24757E800047D4B3 /* CLBConversationListTableViewCell.m */,
+				04D3A80124757F3A0047D4B3 /* CLBConversationViewModel.h */,
+				04D3A7FF24757F230047D4B3 /* CLBConversationViewModel.m */,
+			);
+			path = ConversationListTableViewCell;
+			sourceTree = "<group>";
+		};
 		0F78C01D23EC2CE800CC3A0F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -829,6 +890,7 @@
 		2717DD801987DDE4006F2698 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
+				7E64909A247567680075227A /* ConversationList */,
 				1C38551023CDDEEF00C26ACD /* EventType */,
 				2717DD811987DDE4006F2698 /* CLBMessage.h */,
 				27D0CCE11AC9913200410E2A /* CLBMessage+Private.h */,
@@ -859,6 +921,8 @@
 				1C77349C23CF23550036C74A /* CLBConversationFetchSchedulerProtocol.h */,
 				1CF2D35E23EDA9C200441064 /* CLBConversationSynchronizer.h */,
 				1CF2D35F23EDA9C200441064 /* CLBConversationSynchronizer.m */,
+				7E9CF4962489ACBD00345D13 /* CLBConversation+Mapper.h */,
+				7E9CF4972489ACBD00345D13 /* CLBConversation+Mapper.m */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";
@@ -897,6 +961,7 @@
 				2709B9AF19ABA66F00FDDE2B /* CLBRemoteOperationScheduler.h */,
 				27573C1719C9BB0000868657 /* CLBRemoteResponse.h */,
 				27573C1819C9BB0000868657 /* CLBRemoteResponse.m */,
+				7E9CF49D248E731500345D13 /* CLBUserSynchronizerProtocol.h */,
 				27CAF5CB1A9D1BEC003583CE /* CLBUserSynchronizer.h */,
 				27CAF5CC1A9D1BEC003583CE /* CLBUserSynchronizer.m */,
 			);
@@ -1091,6 +1156,24 @@
 			path = FileIO;
 			sourceTree = "<group>";
 		};
+		7E64909A247567680075227A /* ConversationList */ = {
+			isa = PBXGroup;
+			children = (
+				042729BA24A0C11D00556FA7 /* ConversationListTableViewCell */,
+				7E64909B247567D60075227A /* CLBConversationListViewController.h */,
+				7E64909C247567D60075227A /* CLBConversationListViewController.m */,
+				7E274ED824E2B65E00D120BB /* CLBConversationListViewController+Private.h */,
+				7E308C7F247BFA640008B49E /* CLBConversationListViewModel.h */,
+				7E308C80247BFA640008B49E /* CLBConversationListViewModel.m */,
+				7E308C83247C19D20008B49E /* CLBEmptyListView.h */,
+				7E308C84247C19D20008B49E /* CLBEmptyListView.m */,
+				46F5F1FF24EEA68800FC7FBF /* CLBConversationListDelegate.h */,
+				46F5F20124EEA93400FC7FBF /* CLBCreateConversationButton.h */,
+				46F5F20224EEA93400FC7FBF /* CLBCreateConversationButton.m */,
+			);
+			path = ConversationList;
+			sourceTree = "<group>";
+		};
 		9FECF62819F859A8006741A9 /* ClarabridgeChatLocalization */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,6 +1322,8 @@
 				2717DDDF1987DDE4006F2698 /* ClarabridgeChat.h */,
 				2717DDE01987DDE4006F2698 /* ClarabridgeChat.m */,
 				2717DDE11987DDE4006F2698 /* ClarabridgeChat+Private.h */,
+				04AE37D824775B7E00E5FB9E /* NSDate+Helper.h */,
+				04AE37D924775B7E00E5FB9E /* NSDate+Helper.m */,
 				27C06F3C1AD56BB700650644 /* CLBDependencyManager.h */,
 				0F2F493C23E0813F0037AB29 /* CLBDependencyManager+Private.h */,
 				27C06F3D1AD56BB700650644 /* CLBDependencyManager.m */,
@@ -1323,6 +1408,10 @@
 				1C9A66B723FD895E007FD80D /* CLBParticipant.h */,
 				0F9336CB242E23ED002C30A0 /* CLBParticipant+Private.h */,
 				1C9A66B823FD895E007FD80D /* CLBParticipant.m */,
+				7E6B9B1224AF60690097656D /* CLBConversationNavigationItemTitleView.h */,
+				7E6B9B1324AF60690097656D /* CLBConversationNavigationItemTitleView.m */,
+				46B264DE24F68E9100AA94CB /* NSError+ClarabridgeChat.h */,
+				46B264DF24F68E9100AA94CB /* NSError+ClarabridgeChat.m */,
 			);
 			path = ClarabridgeChat;
 			sourceTree = "<group>";
@@ -1382,10 +1471,12 @@
 				27327B8B1C13225300A54C65 /* CLBSOVideoMessageCell.h in Headers */,
 				27327B8D1C13225300A54C65 /* CLBSOImageBrowserView.h in Headers */,
 				27A46C381C5020AA0082FCD9 /* CLBSTPFormEncoder.h in Headers */,
+				46F5F20324EEA93400FC7FBF /* CLBCreateConversationButton.h in Headers */,
 				279AF789201BB6230067B054 /* CLBPersistence.h in Headers */,
 				27F3C032201277D000A397BB /* CLBMessageItemViewModel.h in Headers */,
 				0FF7547823D72C0000D63DC8 /* CLBConversationPersistence.h in Headers */,
 				27327B8E1C13225300A54C65 /* CLBSOMessage.h in Headers */,
+				7E64909D247567D60075227A /* CLBConversationListViewController.h in Headers */,
 				2780CCD92272528C001646C3 /* CLBClarabridgeChatApiClient.h in Headers */,
 				27327B8F1C13225300A54C65 /* CLBSOMessageCell.h in Headers */,
 				27327B901C13225300A54C65 /* CLBSOMessageInputView.h in Headers */,
@@ -1397,6 +1488,7 @@
 				27327B921C13225300A54C65 /* CLBSOMessagingDelegate.h in Headers */,
 				27A46C321C5020AA0082FCD9 /* CLBSTPCardParams.h in Headers */,
 				2748DB4E1F7A8FE80009A7B5 /* CLBNavigationBar.h in Headers */,
+				7E308C81247BFA640008B49E /* CLBConversationListViewModel.h in Headers */,
 				2726476A1DFEED9900B21BC7 /* CLBRepliesView.h in Headers */,
 				48D8C042238ED3A20010BF37 /* CLBClarabridgeChatSerializer.h in Headers */,
 				27D10B8020090D4500DA4207 /* CLBSOCarouselCollectionViewCell.h in Headers */,
@@ -1407,10 +1499,12 @@
 				27327B7E1C13223300A54C65 /* CLBSRWebSocket.h in Headers */,
 				27327B7D1C13222F00A54C65 /* CLBAFNetworkReachabilityManager.h in Headers */,
 				27A46C2F1C5020AA0082FCD9 /* CLBSTPCard.h in Headers */,
+				7E274EDA24E2B65E00D120BB /* CLBConversationListViewController+Private.h in Headers */,
 				27A46C341C5020AA0082FCD9 /* CLBSTPCardValidationState.h in Headers */,
 				27327B781C13222300A54C65 /* CLBMZFayeClient.h in Headers */,
 				27327B791C13222300A54C65 /* CLBMZFayeMessage.h in Headers */,
 				27327B771C13221D00A54C65 /* CLBBSMobileProvision.h in Headers */,
+				04D3A7FD24757E800047D4B3 /* CLBConversationListTableViewCell.h in Headers */,
 				27327B501C1321F500A54C65 /* CLBLocalization.h in Headers */,
 				48D8C047238ED3A20010BF37 /* CLBConversationStorage.h in Headers */,
 				27327B511C1321F500A54C65 /* CLBViewAboveKeyboard.h in Headers */,
@@ -1422,6 +1516,7 @@
 				27327B571C1321F500A54C65 /* CLBInnerUser.h in Headers */,
 				1C2728372396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.h in Headers */,
 				0FF475A823CF66CA005DD175 /* CLBConversationList.h in Headers */,
+				7E9CF4982489ACBD00345D13 /* CLBConversation+Mapper.h in Headers */,
 				27D19E6B2049953C007A3C66 /* CLBSOFileMessageCell.h in Headers */,
 				0FF475AC23CF7D76005DD175 /* CLBConversationListStorage.h in Headers */,
 				48D8C043238ED3A20010BF37 /* CLBSerializer.h in Headers */,
@@ -1438,6 +1533,7 @@
 				27327B5F1C1321F500A54C65 /* CLBImageLoader.h in Headers */,
 				27327B601C1321F500A54C65 /* CLBErrorMessageOverlay.h in Headers */,
 				27A46C3E1C5020AA0082FCD9 /* CLBSTPPaymentCardTextFieldViewModel.h in Headers */,
+				04AE37DA24775B7E00E5FB9E /* NSDate+Helper.h in Headers */,
 				27E4E1EA1E43B5CD00DAFD65 /* CLBLocationRequest.h in Headers */,
 				27CC865E1C779C3400D3408B /* ClarabridgeChat.h in Headers */,
 				27327B611C1321F500A54C65 /* CLBInAppNotificationView.h in Headers */,
@@ -1448,6 +1544,7 @@
 				0F9336CC242E26D0002C30A0 /* CLBParticipant+Private.h in Headers */,
 				27A46C071C5020330082FCD9 /* CLBStripeApiClient.h in Headers */,
 				1C4A175C2387EB0700238AB3 /* CLBConversationController.h in Headers */,
+				46F5F20024EEA68800FC7FBF /* CLBConversationListDelegate.h in Headers */,
 				2798707C1E047F930036F030 /* CLBReplyButton.h in Headers */,
 				27A46C421C5020F10082FCD9 /* CLBPaymentTextField.h in Headers */,
 				27A46C311C5020AA0082FCD9 /* CLBSTPCardBrand.h in Headers */,
@@ -1462,9 +1559,11 @@
 				27327B3E1C1321BE00A54C65 /* CLBConfigFetchScheduler.h in Headers */,
 				1CF2D36023EDA9C200441064 /* CLBConversationSynchronizer.h in Headers */,
 				27327B3F1C1321BE00A54C65 /* CLBRemoteOperationScheduler.h in Headers */,
+				7E6B9B1424AF60690097656D /* CLBConversationNavigationItemTitleView.h in Headers */,
 				27327B401C1321BE00A54C65 /* CLBRemoteResponse.h in Headers */,
 				27327B411C1321BE00A54C65 /* CLBUserSynchronizer.h in Headers */,
 				2728F4601F349ABA0006C676 /* CLBUserSettings.h in Headers */,
+				46B264E024F68E9100AA94CB /* NSError+ClarabridgeChat.h in Headers */,
 				27327B281C13219A00A54C65 /* CLBAppDelegate.h in Headers */,
 				27327B291C13219A00A54C65 /* CLBAppDelegateProxy.h in Headers */,
 				27327B2A1C13219A00A54C65 /* CLBInAppNotificationViewController.h in Headers */,
@@ -1483,6 +1582,7 @@
 				48D8C04B238ED3A20010BF37 /* CLBClarabridgeChatFileIO.h in Headers */,
 				27327B1D1C13217400A54C65 /* CLBConversationViewController.h in Headers */,
 				48D8C03B238ED3A20010BF37 /* CLBScopeURLProvider.h in Headers */,
+				7E308C85247C19D20008B49E /* CLBEmptyListView.h in Headers */,
 				27327B1E1C13217400A54C65 /* CLBConversationFetchScheduler.h in Headers */,
 				27327B1F1C13217400A54C65 /* CLBAvatarImageLoaderStrategy.h in Headers */,
 				27CA8CBA1E3A34FA005A986F /* CLBLocationService.h in Headers */,
@@ -1673,7 +1773,9 @@
 				27A46C2E1C5020A50082FCD9 /* CLBUITextField+Shake.m in Sources */,
 				1C7734B023E087C90036C74A /* CLBConversationStorageManager.m in Sources */,
 				27327B7B1C13222A00A54C65 /* CLBMZFayeMessage.m in Sources */,
+				7E6B9B1524AF60690097656D /* CLBConversationNavigationItemTitleView.m in Sources */,
 				27BF9C2320110077008BC898 /* CLBMessageItemViewModel.m in Sources */,
+				7E308C86247C19D20008B49E /* CLBEmptyListView.m in Sources */,
 				27327B801C13224600A54C65 /* CLBSOPhotoMessageCell.m in Sources */,
 				27327B811C13224600A54C65 /* CLBSOTextMessageCell.m in Sources */,
 				27327B821C13224600A54C65 /* CLBSOVideoMessageCell.m in Sources */,
@@ -1686,9 +1788,11 @@
 				27327B7F1C13223600A54C65 /* CLBSRWebSocket.m in Sources */,
 				27327B7C1C13222D00A54C65 /* CLBAFNetworkReachabilityManager.m in Sources */,
 				2726DE421F9A394600A57F3F /* CLBPhotoConfirmationViewController.m in Sources */,
+				04D3A80024757F230047D4B3 /* CLBConversationViewModel.m in Sources */,
 				27A46C081C5020350082FCD9 /* CLBStripeApiClient.m in Sources */,
 				1C9A66BA23FD895E007FD80D /* CLBParticipant.m in Sources */,
 				27F040441F04423B00DA49E1 /* CLBClientInfo.m in Sources */,
+				7E308C82247BFA640008B49E /* CLBConversationListViewModel.m in Sources */,
 				27327B651C13220E00A54C65 /* CLBLocalization.m in Sources */,
 				27327B661C13220E00A54C65 /* CLBViewAboveKeyboard.m in Sources */,
 				27327B761C13221A00A54C65 /* CLBBSMobileProvision.m in Sources */,
@@ -1710,6 +1814,7 @@
 				48D8C049238ED3A20010BF37 /* CLBClarabridgeChatStorage.m in Sources */,
 				27327B6E1C13220E00A54C65 /* CLBMessageAction.m in Sources */,
 				2780CCDA2272528C001646C3 /* CLBClarabridgeChatApiClient.m in Sources */,
+				46F5F20424EEA93400FC7FBF /* CLBCreateConversationButton.m in Sources */,
 				2748DB581F7C30F10009A7B5 /* CLBWebviewViewController.m in Sources */,
 				27A46C361C5020AA0082FCD9 /* CLBSTPCardValidator.m in Sources */,
 				272DB28B1DDB4EE00070D43E /* CLBConversationActivity.m in Sources */,
@@ -1760,17 +1865,22 @@
 				27327B251C13218D00A54C65 /* CLBApiClient.m in Sources */,
 				27327B261C13218D00A54C65 /* CLBJSONSerializer.m in Sources */,
 				27327B271C13218D00A54C65 /* CLBQueryStringSerializer.m in Sources */,
+				7E9CF4992489ACBD00345D13 /* CLBConversation+Mapper.m in Sources */,
+				46B264E124F68E9100AA94CB /* NSError+ClarabridgeChat.m in Sources */,
 				27327B101C13216700A54C65 /* CLBMessage.m in Sources */,
 				0FF475A923CF66CA005DD175 /* CLBConversationList.m in Sources */,
+				04D3A7FE24757E800047D4B3 /* CLBConversationListTableViewCell.m in Sources */,
 				27327B111C13216700A54C65 /* CLBConversation.m in Sources */,
 				27BF9C2220110077008BC898 /* CLBMessageItemView.m in Sources */,
 				27D10B8120090D4500DA4207 /* CLBSOCarouselCollectionViewCell.m in Sources */,
 				1C2728382396CD9500EC9D93 /* CLBClarabridgeChatUtilitySettings.m in Sources */,
 				27A46C3B1C5020AA0082FCD9 /* CLBSTPFormTextField.m in Sources */,
 				1C4A175D2387EB0700238AB3 /* CLBConversationController.m in Sources */,
+				04AE37DB24775B7E00E5FB9E /* NSDate+Helper.m in Sources */,
 				27327B121C13216700A54C65 /* CLBConversationHeaderView.m in Sources */,
 				27327B131C13216700A54C65 /* CLBConversationViewController.m in Sources */,
 				27A46C391C5020AA0082FCD9 /* CLBSTPFormEncoder.m in Sources */,
+				7E64909E247567D60075227A /* CLBConversationListViewController.m in Sources */,
 				27327B141C13216700A54C65 /* CLBConversationFetchScheduler.m in Sources */,
 				27F8C7351EEEDF090072C960 /* CLBRealtimeSettings.m in Sources */,
 				27327B151C13216700A54C65 /* CLBAvatarImageLoaderStrategy.m in Sources */,
@@ -1826,21 +1936,21 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 85;
+				CURRENT_PROJECT_VERSION = 86;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = 0;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1;
+				FRAMEWORK_VERSION = 2;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClarabridgeChat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 2.0.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clarabridge.ClarabridgeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1860,21 +1970,21 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 85;
+				CURRENT_PROJECT_VERSION = 86;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 0;
 				DYLIB_CURRENT_VERSION = 0;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = 1;
+				FRAMEWORK_VERSION = 2;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = ClarabridgeChat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 2.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clarabridge.ClarabridgeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";

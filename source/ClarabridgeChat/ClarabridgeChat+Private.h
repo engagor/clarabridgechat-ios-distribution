@@ -53,4 +53,7 @@ extern NSString* const CLBReachabilityStatusChangedNotification;
 +(void)startConversationWithIntent:(NSString*)intent completionHandler:(void (^)(NSError *error, NSDictionary *userInfo))completionHandler;
 +(void)updateConversationId:(NSString *)conversationId;
 
++(BOOL)shouldShowConversationFromViewController;
++(BOOL)messagesAreTextOnly:(NSArray<CLBMessage *> *)messages;
+
 @end

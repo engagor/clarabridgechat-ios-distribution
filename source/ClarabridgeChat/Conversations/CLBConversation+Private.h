@@ -22,10 +22,11 @@ extern NSString * const CLBConversationDidRequestPreviousMessagesNotification;
 extern NSString * const CLBConversationTypingDidStartNotification;
 extern NSString * const CLBConversationTypingDidStopNotification;
 
-@interface CLBConversation (Private) <CLBRemoteObject>
+@interface CLBConversation (Private) <CLBRemoteObject, NSCopying>
 
 + (instancetype)conversationWithAppId:(NSString *)appId user:(CLBUser *)user settings:(CLBSettings *)settings;
 - (instancetype)initWithAppId:(NSString *)appId user:(CLBUser *)user;
+- (instancetype)readOrCreateConversationForId:(NSString *)conversationId;
 
 - (void)saveToDisk;
 - (void)removeFromDisk;
@@ -36,6 +37,7 @@ extern NSString * const CLBConversationTypingDidStopNotification;
 - (void)handleSuccessfulUpload:(CLBMessage *)message;
 - (void)handleFailedUpload:(CLBFailedUpload *)failedUpload;
 - (void)notifyActivity:(CLBConversationActivity *)activity;
+- (void)notifyMessagesReceived:(NSArray*)messages;
 
 - (NSString *)messagesRemotePath;
 
@@ -46,9 +48,12 @@ extern NSString * const CLBConversationTypingDidStopNotification;
 @property(readonly) BOOL conversationStarted;
 @property CLBUser *user;
 @property NSUInteger unreadCount;
-@property NSDate *appMakerLastRead;
+@property NSDate *businessLastRead;
 @property NSString *appId;
 @property NSString *displayName;
+@property NSString *conversationDescription;
+@property NSString *iconUrl;
+@property NSDate *lastUpdatedAt;
 
 @property (nonatomic, weak) id<CLBConversationPersistence> persistence;
 

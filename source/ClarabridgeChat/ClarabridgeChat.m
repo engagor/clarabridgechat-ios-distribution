@@ -38,6 +38,8 @@
 #import "CLBDependencyManager+Private.h"
 #import "CLBConversationStorageManager.h"
 #import "CLBConversationController.h"
+#import "CLBConversationListViewController.h"
+#import "NSError+ClarabridgeChat.h"
 
 NSString *const CLBInitializationDidCompleteNotification = @"CLBInitializationDidCompleteNotification";
 NSString *const CLBInitializationDidFailNotification = @"CLBInitializationDidFailNotification";
@@ -55,6 +57,7 @@ NSString *const CLBErrorDomainIdentifier = @"CLBErrorDomainIdentifier";
 NSString *const CLBStatusCodeIdentifier = @"CLBStatusCodeIdentifier";
 NSString *const CLBUserNotificationReplyActionIdentifier = @"CLBPushNotificationReplyActionIdentifier";
 NSString *const CLBUserNotificationReplyCategoryIdentifier = @"SmoochReplyableNotification";
+NSString *const CLBIntentConversationStart = @"conversation:start";
 
 @interface ClarabridgeChat ()
 + (void)setupDependencyManager;
@@ -76,6 +79,7 @@ static NSString *userFirstName;
 static NSString *userLastName;
 
 __weak static id<CLBConversationDelegate> conversationDelegate;
+__weak static id<CLBConversationListDelegate> conversationListDelegate;
 
 static void(^initCompletionHandler)(NSError *, NSDictionary *);
 
@@ -98,6 +102,7 @@ static void(^configFetchSchedulerCompletionHandler)(NSError *, NSDictionary *) =
 };
 
 __weak static CLBConversationViewController *conversationVC;
+__weak static CLBConversationListViewController *conversationListVC;
 
 @implementation ClarabridgeChat
 
@@ -224,20 +229,22 @@ __weak static CLBConversationViewController *conversationVC;
     [self failWithError:errorMessage level:@"WARNING" completionHandler:handler];
 }
 
-+ (void)login:(NSString *)userId jwt:(NSString *)jwt completionHandler:(nullable void (^)(NSError  *_Nullable, NSDictionary  *_Nullable))handler {
++ (void)login:(NSString *)externalId jwt:(NSString *)jwt completionHandler:(nullable void (^)(NSError  *_Nullable, NSDictionary  *_Nullable))handler {
     CLBSettings *currentSettings = depManager.sdkSettings;
 
-    BOOL sameUser = [userId isEqualToString:currentSettings.userId];
+    BOOL sameUser = [externalId isEqualToString:currentSettings.externalId];
     BOOL sameJWT = jwt == currentSettings.jwt || [jwt isEqualToString:currentSettings.jwt];
 
-    if(userId.length == 0){
-        [self failWithError:@"Login called with nil or empty userId. Call logout instead!" completionHandler:handler];
+    if(externalId.length == 0){
+        [self failWithError:@"Login called with nil or empty externalId. Call logout instead!" completionHandler:handler];
     } else if (!jwt || jwt.length == 0) {
         [self failWithError:@"Login called with nil or empty jwt. Ignoring!" completionHandler:handler];
     }else if(!currentSettings){
         [self failWithError:@"Login called before settings have been initialized. Ignoring!" completionHandler:handler];
     }else if([self isConversationShown] && !sameUser){
         [self failWithError:@"Tried to switch users while on the conversation screen. Ignoring!" completionHandler:handler];
+    }else if([self isConversationListShown] && !sameUser){
+        [self failWithError:@"Tried to switch users while on the conversation list screen. Ignoring!" completionHandler:handler];
     }else if(sameUser && sameJWT){
         if (depManager.userSynchronizer.lastLoginResult == CLBLastLoginResultSuccess) {
             if (handler) {
@@ -248,7 +255,7 @@ __weak static CLBConversationViewController *conversationVC;
                 });
             }
         } else {
-            [self failWithError:[NSString stringWithFormat:@"User %@ is already logged in. Ignoring!", userId] completionHandler:handler];
+            [self failWithError:[NSString stringWithFormat:@"User %@ is already logged in. Ignoring!", externalId] completionHandler:handler];
         }
     }else{
         void (^login)(void) = ^{
@@ -257,7 +264,7 @@ __weak static CLBConversationViewController *conversationVC;
                 [depManager.conversation removeFromDisk];
             }
             
-            [userLifecycleManager login:userId jwt:jwt completionHandler:^(NSError *error, NSDictionary *userInfo) {
+            [userLifecycleManager login:externalId jwt:jwt completionHandler:^(NSError *error, NSDictionary *userInfo) {
                 if (handler) {
                     handler(error, userInfo);
                 }
@@ -279,6 +286,8 @@ __weak static CLBConversationViewController *conversationVC;
         [self failWithError:@"Logout called before settings have been initialized. Ignoring!" completionHandler:completionHandler];
     }else if([self isConversationShown]){
         [self failWithError:@"Tried to switch users while on the conversation screen. Ignoring!" completionHandler:completionHandler];
+    }else if([self isConversationListShown]){
+        [self failWithError:@"Tried to switch users while on the conversation list screen. Ignoring!" completionHandler:completionHandler];
     }else if(!userLifecycleManager.isLoggedIn){
         [self failWithError:@"Logout called, but no user was logged in. Ignoring!" level:@"INFO" completionHandler:completionHandler];
     }else{
@@ -312,6 +321,11 @@ __weak static CLBConversationViewController *conversationVC;
 
     if ([self isConversationShown]) {
         NSLog(@"<CLARABRIDGECHAT::WARNING> Tried to destroy while on the conversation screen. Ignoring!");
+        return;
+    }
+
+    if ([self isConversationListShown]) {
+        NSLog(@"<CLARABRIDGECHAT::WARNING> Tried to destroy while on the conversation list screen. Ignoring!");
         return;
     }
 
@@ -363,6 +377,10 @@ __weak static CLBConversationViewController *conversationVC;
     return [[self class] newConversationViewControllerWithStartingText:nil];
 }
 
++(void)newConversationViewControllerWithId:(NSString *)conversationId completionHandler:(nullable void(^)(NSError * _Nullable error, UIViewController * _Nullable viewController))handler {
+    [self newConversationViewControllerWithId:conversationId startingText:nil completionHandler:handler];
+}
+
 + (UIViewController *)newConversationViewControllerWithStartingText:(NSString *)startingText {
     if(!depManager.sdkSettings){
         NSLog(@"<CLARABRIDGECHAT::ERROR> newConversationViewController called before settings have been initialized!");
@@ -374,13 +392,49 @@ __weak static CLBConversationViewController *conversationVC;
     return viewController;
 }
 
++(void)newConversationViewControllerWithId:(NSString *)conversationId startingText:(nullable NSString *)startingText completionHandler:(nullable void(^)(NSError * _Nullable error, UIViewController * _Nullable viewController))handler {
+
+    [self loadConversation:conversationId completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+
+        if (!error) {
+            if(!depManager.sdkSettings){
+                NSLog(@"<CLARABRIDGECHAT::ERROR> newConversationViewController called before settings have been initialized!");
+                return;
+            }
+            CLBConversationViewController *viewController = [depManager startConversationViewControllerWithStartingText:startingText];
+            viewController.modalPresentationStyle = UIModalPresentationFullScreen;
+            conversationVC = viewController;
+
+            handler(nil, viewController);
+        } else {
+            handler(error, nil);
+        }
+    }];
+}
+
 + (void)show {
     [self showWithStartingText:nil];
+}
+
++(void)showConversationWithId:(NSString *)conversationId {
+    [self showConversationWithId:conversationId andStartingText:nil];
 }
 
 + (void)showWithStartingText:(NSString *)startingText {
     if ([self isPreparedToShow] && !isPresenting) {
         [self showConversationFromViewController:CLBGetTopMostViewControllerOfRootWindow() withStartingText:startingText];
+    }
+}
+
++(void)showConversationWithId:(NSString *)conversationId andStartingText:(nullable NSString *)startingText {
+    if ([self isPreparedToShow] && !isPresenting) {
+        [self loadConversation:conversationId completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+                if (error) {
+                    NSLog(@"<CLARABRIDGECHAT::ERROR> load conversation failed with the specified ID!");
+                } else {
+                    [self showWithStartingText:startingText];
+                }
+        }];
     }
 }
 
@@ -411,12 +465,31 @@ __weak static CLBConversationViewController *conversationVC;
     [self showConversationFromViewController:viewController withStartingText:nil];
 }
 
-+ (void)showConversationFromViewController:(UIViewController *)viewController withStartingText:(NSString *)startingText {
-    if([self isConversationShown] || ![self isPreparedToShow] || isPresenting){
-        return;
-    }
++(void)showConversationWithId:(NSString *)conversationId fromViewController:(UIViewController*)viewController {
+    [self showConversationWithId:conversationId fromViewController:viewController andStartingText:nil];
+}
 
-    [self createAndPresentConversation:viewController withStartingText:startingText];
++ (void)showConversationFromViewController:(UIViewController *)viewController withStartingText:(NSString *)startingText {
+     if([self shouldShowConversationFromViewController]) {
+         [self createAndPresentConversation:viewController withStartingText:startingText];
+     }
+}
+
++(void)showConversationWithId:(NSString *)conversationId fromViewController:(UIViewController*)viewController andStartingText:(nullable NSString *)startingText {
+
+    if([self shouldShowConversationFromViewController]) {
+        [self loadConversation:conversationId completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+                if (error) {
+                    NSLog(@"<CLARABRIDGECHAT::ERROR> load conversation failed with the specified ID!");
+                } else {
+                    [self showConversationFromViewController:viewController withStartingText:startingText];
+                }
+        }];
+    }
+}
+
++(BOOL)shouldShowConversationFromViewController {
+    return ![self isConversationShown] && [self isPreparedToShow] && !isPresenting;
 }
 
 + (void)createAndPresentConversation:(UIViewController*)presentingViewController withStartingText:(NSString *)startingText {
@@ -432,6 +505,85 @@ __weak static CLBConversationViewController *conversationVC;
 
 + (void)setConversationInputDisplayed:(BOOL)displayed {
     [CLBSOMessagingViewController setInputDisplayed:displayed];
+}
+
+#pragma mark - Conversation List
+
++ (void)showConversationList {
+    [self showConversationListFromViewController:CLBGetTopMostViewControllerOfRootWindow()];
+}
+
++(void)showConversationListWithoutCreateConversationButton {
+    [ClarabridgeChat showConversationListFromViewControllerWithoutCreateConversationButton:CLBGetTopMostViewControllerOfRootWindow()];
+}
+
++ (void)closeConversationList {
+    if(!depManager.sdkSettings){
+        NSLog(@"<CLARABRIDGECHAT::ERROR> Close called before settings have been initialized!");
+        return;
+    }
+    if(conversationListVC != nil){
+        [conversationListVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
++ (void)showConversationListFromViewController:(UIViewController *)viewController {
+    [self createAndPresentConversationListWithCreateConversationButton:YES from:viewController];
+}
+
++(void)showConversationListFromViewControllerWithoutCreateConversationButton:(UIViewController *)viewController {
+    [self createAndPresentConversationListWithCreateConversationButton:NO from:viewController];
+}
+
++ (void)createAndPresentConversationListWithCreateConversationButton:(BOOL)showCreateConversationButton from:(UIViewController*)presentingViewController {
+    if(![self shouldShowConversationList]){
+        return;
+    }
+
+    CLBConversationListViewController *newConversationListViewController = [depManager startConversationListViewControllerWithCreateConversationButton:showCreateConversationButton];
+    conversationListVC = newConversationListViewController;
+    conversationListVC.delegate = conversationListDelegate;
+
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newConversationListViewController];
+    navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
+    isPresenting = YES;
+    suppressInAppNotifs = YES;
+    [presentingViewController presentViewController:navigationController animated:YES completion:^{
+        suppressInAppNotifs = NO;
+        isPresenting = NO;
+    }];
+}
+
++ (BOOL)shouldShowConversationList {
+    return ![self isConversationListShown] && ![self isConversationShown] && [self isPreparedToShow] && !isPresenting;
+}
+
++ (BOOL)isConversationListShown {
+    return [CLBConversationListViewController isConversationListShown];
+}
+
++ (UIViewController *)newConversationListViewController {
+    return [ClarabridgeChat newConversationListViewControllerWithCreateConversationButton:YES];
+}
+
++(nullable UIViewController *)newConversationListViewControllerWithoutCreateConversationButton {
+    return [ClarabridgeChat newConversationListViewControllerWithCreateConversationButton:NO];
+}
+
++ (UIViewController *)newConversationListViewControllerWithCreateConversationButton:(BOOL)showCreateConversationButton {
+    if(!depManager.sdkSettings) {
+        NSLog(@"<CLARABRIDGECHAT::ERROR> newConversationListViewController called before settings have been initialized!");
+        return nil;
+    }
+    CLBConversationListViewController *viewController = [depManager startConversationListViewControllerWithCreateConversationButton:showCreateConversationButton];
+    conversationListVC = viewController;
+    conversationListVC.delegate = conversationListDelegate;
+    return viewController;
+}
+
++(void)setConversationListDelegate:(nullable id<CLBConversationListDelegate>)delegate {
+    conversationListDelegate = delegate;
+    conversationListVC.delegate = delegate;
 }
 
 + (NSBundle *)getResourceBundle {
@@ -624,7 +776,7 @@ __weak static CLBConversationViewController *conversationVC;
     if (newToken && ![newToken isEqualToString:savedDeviceToken]) {
         CLBSetPushNotificationDeviceToken(newToken);
 
-        BOOL userExists = depManager.userSynchronizer.user.appUserId != nil;
+        BOOL userExists = depManager.userSynchronizer.user.userId != nil;
 
         if (userExists) {
             [self uploadPushToken:newToken];
@@ -638,7 +790,7 @@ __weak static CLBConversationViewController *conversationVC;
     pushToken.appId = depManager.config.appId;
     pushToken.pushToken = newToken;
     pushToken.clientId = CLBGetUniqueDeviceIdentifier();
-    pushToken.appUserId = depManager.userSynchronizer.user.appUserId;
+    pushToken.userId = depManager.userSynchronizer.user.userId;
 
     [depManager.synchronizer synchronize:pushToken completion:^(CLBRemoteResponse *response) {
         if(response.error){
@@ -786,11 +938,53 @@ __weak static CLBConversationViewController *conversationVC;
 }
 
 + (void)startConversationWithCompletionHandler:(void (^)(NSError *error, NSDictionary *userInfo))completionHandler {
-    [self startConversationWithIntent:@"conversation:start" completionHandler:completionHandler];
+    [self startConversationWithIntent:CLBIntentConversationStart completionHandler:completionHandler];
 }
 
 + (void)startConversationWithIntent:(NSString*)intent completionHandler:(void (^)(NSError *error, NSDictionary *userInfo))completionHandler {
     [depManager.userSynchronizer startConversationOrCreateUserWithIntent:intent completionHandler:completionHandler];
+}
+
++ (void)createConversationWithName:(nullable NSString *)displayName description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl metadata:(nullable NSDictionary *)metadata message:(nullable NSArray<CLBMessage *> *)message completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
+
+    if (message && ![self messagesAreTextOnly:message]) {
+        if (completionHandler) {
+
+            CLBEnsureMainThread(^{
+                completionHandler(NSError.createConversationMultipartMessageError, nil);
+            });
+        }
+
+        return;
+    }
+
+    [depManager.userSynchronizer createConversationOrUserWithName:displayName description:description iconUrl:iconUrl metadata:metadata messages:message intent:CLBIntentConversationStart completionHandler:completionHandler];
+}
+
++(BOOL)messagesAreTextOnly:(NSArray<CLBMessage *> *)messages {
+
+    for (CLBMessage *message in messages) {
+        if (![message.type isEqualToString:CLBMessageTypeText]) {
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
++(void)updateConversationById:(NSString *)conversationId withName:(nullable NSString *)displayName description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl metadata:(nullable NSDictionary *)metadata completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
+
+    if (!displayName && !description && !iconUrl && !metadata) {
+        if (completionHandler) {
+            CLBEnsureMainThread(^{
+                completionHandler(nil, nil);
+            });
+        }
+
+        return;
+    }
+
+    [depManager.userSynchronizer updateConversationById:conversationId withName:displayName description:description iconUrl:iconUrl metadata:metadata completionHandler:completionHandler];
 }
 
 + (void)fetchConfig {
@@ -817,9 +1011,15 @@ __weak static CLBConversationViewController *conversationVC;
 }
 
 + (void)getConversations:(void (^)(NSError  *_Nullable, NSArray  *_Nullable))completionHandler {
-    [depManager.userSynchronizer loadConversations:^(NSError *error, NSArray *conversations) {
-        completionHandler(error, conversations);
-    }];
+    [depManager.userSynchronizer loadConversations:completionHandler];
+}
+
++ (void)getMoreConversations:(void (^)(NSError * _Nullable))completionHandler {
+    [depManager.conversationController getMoreConversations:completionHandler];
+}
+
++ (BOOL)hasMoreConversations {
+    return [depManager.conversationController hasMoreConversations];
 }
 
 +(id<CLBConversationDelegate>)conversationDelegate {

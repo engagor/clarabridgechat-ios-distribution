@@ -28,13 +28,13 @@ NSString* const CLBMessageTypeList = @"list";
 long long const CLBMessageFileSizeLimit = 25 * 1000 * 1000;
 
 static NSString* const kAppUserRole = @"appUser";
-static NSString* const kAppMakerRole = @"appMaker";
+static NSString* const kBusinessRole = @"appMaker";
 
 @interface CLBMessage()
 
 @property CLBMessageUploadStatus uploadStatus;
 @property NSString* messageId;
-@property NSString* authorId;
+@property NSString* userId;
 @property NSString* role;
 @property(weak, nonatomic) CLBConversation* conversation;
 @property NSArray* actions;
@@ -116,10 +116,10 @@ static NSString* const kAppMakerRole = @"appMaker";
     self = [super init];
     if(self){
         _messageId = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"messageId"]);
-        _authorId = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"authorId"]) ?: CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"userId"]);
+        _userId = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"authorId"]) ?: CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"userId"]);
         _text = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"text"]);
         _textFallback = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"textFallback"]);
-        _name = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"name"]);
+        _displayName = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSString class] forKey:@"name"]);
         _date = CLBSanitizeNSNull([decoder decodeObjectOfClass:[NSDate class] forKey:@"date"]);
 
         NSSet *classes = [NSSet setWithArray:@[[NSArray class], [CLBMessageAction class]]];
@@ -144,7 +144,7 @@ static NSString* const kAppMakerRole = @"appMaker";
             if(userId == nil || [decoder decodeBoolForKey:@"fromMe"]){
                 _role = kAppUserRole;
             }else{
-                _role = kAppMakerRole;
+                _role = kBusinessRole;
             }
         }
 
@@ -175,14 +175,14 @@ static NSString* const kAppMakerRole = @"appMaker";
 
 - (BOOL)isRead {
     return (self.isFromCurrentUser &&
-            (self.date && self.conversation.appMakerLastRead) &&
+            (self.date && self.conversation.businessLastRead) &&
             [[self lastRead] timeIntervalSinceDate:self.date] >= 0);
 }
 
 - (NSDate *)lastRead {
     return [CLBParticipant getLastReadDateFromParticipants:self.conversation.participants
-                                          currentAppUserId:self.conversation.user.appUserId
-                                          appMakerLastRead:self.conversation.appMakerLastRead];
+                                          currentUserId:self.conversation.user.userId
+                                          businessLastRead:self.conversation.businessLastRead];
 }
 
 - (NSString*)avatarUrl {
@@ -202,7 +202,7 @@ static NSString* const kAppMakerRole = @"appMaker";
 }
 
 - (id)serialize {
-    NSMutableDictionary *serialized = [kAppMakerRole isEqualToString:self.role] ? [self serializeAppMakerMessage] : [self serializeAppUserMessage];
+    NSMutableDictionary *serialized = [kBusinessRole isEqualToString:self.role] ? [self serializeBusinessMessage] : [self serializeAppUserMessage];
 
     NSMutableDictionary *serializedMessage = serialized[@"message"];
 
@@ -233,21 +233,36 @@ static NSString* const kAppMakerRole = @"appMaker";
     return serialized;
 }
 
-- (id)serializeAppMakerMessage {
+- (nullable id)serializeTextForConversation {
+
+    if (!self.type || !self.text) {
+        return nil;
+    }
+
+    NSMutableDictionary *serializedMessage = NSMutableDictionary.new;
+
+    [serializedMessage setObject:self.type forKey:@"type"];
+
+    [serializedMessage setObject:self.text forKey:@"text"];
+
+    return serializedMessage;
+}
+
+- (id)serializeBusinessMessage {
     NSMutableDictionary *serializedMessage = [[NSMutableDictionary alloc] init];
 
-    [serializedMessage setObject:kAppMakerRole forKey:@"role"];
+    [serializedMessage setObject:kBusinessRole forKey:@"role"];
 
     if (self.messageId) {
         [serializedMessage setObject:self.messageId forKey:@"_id"];
     }
 
-    if (self.authorId) {
-        [serializedMessage setObject:self.authorId forKey:@"authorId"];
+    if (self.userId) {
+        [serializedMessage setObject:self.userId forKey:@"authorId"];
     }
 
-    if (self.name) {
-        [serializedMessage setObject:self.name forKey:@"name"];
+    if (self.displayName) {
+        [serializedMessage setObject:self.displayName forKey:@"name"];
     }
 
     if (self.avatarUrl) {
@@ -316,8 +331,8 @@ static NSString* const kAppMakerRole = @"appMaker";
     _mediaSize = [NSNumber numberWithLongLong:[CLBSanitizeNSNull(object[@"mediaSize"]) longLongValue]];
     _text = [self deserializeText:object];
     _textFallback = CLBSanitizeNSNull(object[@"textFallback"]);
-    _authorId = CLBSanitizeNSNull(object[@"authorId"]);
-    _name = CLBSanitizeNSNull(object[@"name"]);
+    _userId = CLBSanitizeNSNull(object[@"authorId"]);
+    _displayName = CLBSanitizeNSNull(object[@"name"]);
     _avatarUrl = CLBSanitizeNSNull(object[@"avatarUrl"]);
     _actions = [CLBMessageAction deserializeActions:CLBSanitizeNSNull(object[@"actions"])];
     _items = [self deserializeItems:CLBSanitizeNSNull(object[@"items"])];
@@ -399,10 +414,10 @@ static NSString* const kAppMakerRole = @"appMaker";
     BOOL haveSameText = self.text == message.text || [self.text isEqualToString:message.text];
     BOOL haveSameAuthor;
 
-    if(self.authorId == nil || message.authorId == nil){
+    if(self.userId == nil || message.userId == nil){
         haveSameAuthor = self.isFromCurrentUser == message.isFromCurrentUser;
     }else{
-        haveSameAuthor = [self.authorId isEqualToString:message.authorId];
+        haveSameAuthor = [self.userId isEqualToString:message.userId];
     }
 
     BOOL haveSameDate = self.date == message.date || ABS([self.date timeIntervalSinceDate:message.date]) < 0.001;
@@ -468,17 +483,17 @@ static NSString* const kAppMakerRole = @"appMaker";
 }
 
 - (NSUInteger)hash {
-    return [self.text hash] ^ [self.authorId hash] ^ [self.date hash];
+    return [self.text hash] ^ [self.userId hash] ^ [self.date hash];
 }
 
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.messageId forKey:@"messageId"];
-    [coder encodeObject:self.authorId forKey:@"authorId"];
+    [coder encodeObject:self.userId forKey:@"authorId"];
     [coder encodeObject:self.text forKey:@"text"];
     [coder encodeObject:self.textFallback forKey:@"textFallback"];
-    [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.displayName forKey:@"name"];
     [coder encodeObject:self.date forKey:@"date"];
     [coder encodeObject:self.actions forKey:@"actions"];
     [coder encodeObject:self.items forKey:@"items"];
@@ -499,10 +514,10 @@ static NSString* const kAppMakerRole = @"appMaker";
     CLBMessage *message = [[CLBMessage allocWithZone:zone] init];
 
     message.messageId = [self.messageId copy];
-    message.authorId = [self.authorId copy];
+    message.userId = [self.userId copy];
     message.text = [self.text copy];
     message.textFallback = [self.textFallback copy];
-    message.name = [self.name copy];
+    message.displayName = [self.displayName copy];
     message.date = [self.date copy];
     message.actions = [[NSArray alloc] initWithArray:self.actions copyItems:YES];
     message.items = [[NSArray alloc] initWithArray:self.items copyItems:YES];

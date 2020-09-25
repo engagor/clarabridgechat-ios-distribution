@@ -40,6 +40,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <SafariServices/SafariServices.h>
 #import "CLBConversationViewControllerDelegate.h"
+#import "CLBConversationNavigationItemTitleView.h"
 
 static BOOL didRegisterForRemoteNotifications = NO;
 static BOOL conversationShown = NO;
@@ -59,6 +60,7 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 @interface CLBConversationViewController() < UIActionSheetDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, CLBBuyViewControllerDelegate, CLBRepliesViewDelegate, CLBLocationServiceDelegate, CLBPhotoConfirmationDelegate >
 
 @property UINavigationBar* navBar;
+@property CLBConversationNavigationItemTitleView *conversationNavigationItemTitleView;
 @property NSString* convId;
 @property CLBErrorMessageOverlay* errorMessageOverlay;
 @property CLBConversationHeaderView* headerLabel;
@@ -141,9 +143,9 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 -(void)viewDidLoad {
     [super viewDidLoad];
 
+    if (@available(iOS 11.0, *)) self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
     self.view.backgroundColor = CLBSystemBackgroundColor();
 
-    [self initNavBar];
     [self initErrorMessageOverlay];
     [self initProgressIndicator];
 
@@ -165,6 +167,11 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     self.locationService.delegate = self;
 
     [self registerKVO];
+    
+    [self initNavBarWithTitle:self.displayName
+                     subtitle:self.conversationObject.conversationDescription
+                      iconUrl:self.iconUrl
+                  imageLoader:ClarabridgeChat.avatarImageLoader];
 }
 
 -(void)registerNotificationCenterObservers {
@@ -285,6 +292,7 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     [self.conversationMessages removeAllObjects];
 
     CLBEnsureMainThread(^{
+        [self.conversationNavigationItemTitleView configWithTitle:nil subtitle:nil avatar:nil];
         self.tableView.alpha = 0.0f;
         self.progressIndicatorView.center = self.view.center;
         self.progressIndicatorView.alpha = 1.0;
@@ -299,6 +307,13 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
         [self.progressIndicatorView removeFromSuperview];
         [self reloadConversationMessages];
         [self refreshMessagesAndKeepOffset:NO animateScrollToBottom:NO];
+        [self initNavBarWithTitle:self.displayName
+                         subtitle:self.conversationObject.conversationDescription
+                          iconUrl:self.iconUrl
+                      imageLoader:ClarabridgeChat.avatarImageLoader];
+        if ([self.delegate respondsToSelector:@selector(conversationViewController:didMarkAllAsReadInConversation:)]) {
+            [self.delegate conversationViewController:self didMarkAllAsReadInConversation:self.conversationObject.conversationId];
+        }
         [UIView animateWithDuration:0.3 animations:^{
             self.tableView.alpha = 1.0f;
         }];
@@ -431,8 +446,8 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
           initialSpringVelocity:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         view.transform = CGAffineTransformIdentity;
-                     } completion:nil];
+        view.transform = CGAffineTransformIdentity;
+    } completion:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -466,10 +481,6 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 
     [super viewWillAppear:animated];
 
-    if (self.isBeingPresented){
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[CLBLocalization localizedStringForKey:@"Done"] style:UIBarButtonItemStylePlain target:self action:@selector(close)];
-    }
-
     if(self.isBeingPresented || self.isMovingToParentViewController){
         if(CLBIsNetworkAvailable() && [self isAppValid] && !self.conversationObject.conversationStarted && !self.tabBarController && [CLBSOMessagingViewController isInputDisplayed]){
             self.chatInputView.cancelAnimations = YES;
@@ -487,6 +498,96 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
             [self.conversationObject.delegate conversation:self.conversationObject willShowViewController:self];
         }
     }
+}
+
+-(NSString *)displayName {
+    NSString *displayName;
+    if ([self conversationObject].displayName && [self conversationObject].displayName.length > 0) {
+        displayName = [self conversationObject].displayName;
+    } else if (self.dependencies.config.appName && self.dependencies.config.appName.length > 0) {
+        displayName = self.dependencies.config.appName;
+    } else {
+        displayName = [CLBLocalization localizedStringForKey:@"Messages"];
+    }
+    
+    return displayName;
+}
+
+-(NSString *)iconUrl {
+    NSString *iconUrl = [self conversationObject].iconUrl;
+    if (!iconUrl || iconUrl.length == 0) {
+        iconUrl = self.dependencies.config.appIconUrlString;
+    }
+
+    return iconUrl;
+}
+
+-(void)initNavBarWithTitle:(NSString *)title subtitle:(NSString *)subtitle iconUrl:(NSString * _Nullable)iconUrl imageLoader:(CLBImageLoader *)imageLoader {
+    // Create navigation bar if needed
+    if(!self.navigationController) {
+        self.navBar = [[CLBNavigationBar alloc] init];
+        self.navBar.translucent = YES;
+        
+        if([UINavigationBar appearance].tintColor == nil){
+            self.navBar.tintColor = CLBNavBarItemTextColor();
+        }
+        
+        [self.navBar pushNavigationItem:self.navigationItem animated:NO];
+        [self.view addSubview:self.navBar];
+    }
+
+    BOOL needsBackButton = self.navigationController && ![self isRootViewController];
+
+    // Handle navigation bar button items
+    if([self isModal] && !needsBackButton) {
+        if (@available(iOS 13.0, *)) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemClose target:self action:@selector(close)];
+        } else {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[CLBLocalization localizedStringForKey:@"Done"] style:UIBarButtonItemStylePlain target:self action:@selector(close)];
+        }
+    }
+
+    NSMutableArray<UIBarButtonItem *> *leftBarButtonItems = [NSMutableArray new];
+    if (needsBackButton) {
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[ClarabridgeChat getImageFromResourceBundle:@"backArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(navigateBack)];
+        [leftBarButtonItems addObject:backButton];
+    }
+    self.conversationNavigationItemTitleView = [[CLBConversationNavigationItemTitleView alloc] initWithTitleTextAttributes: [[UINavigationBar appearance] titleTextAttributes]];
+    // Add title view as left button item to align to the left
+    [leftBarButtonItems addObject:[[UIBarButtonItem alloc] initWithCustomView:self.conversationNavigationItemTitleView]];
+    self.navigationItem.leftBarButtonItems = leftBarButtonItems;
+
+    // Configure title view
+    UIImage *avatar = self.defaultAvatar;
+    if (iconUrl && iconUrl.length > 0) {
+        UIImage* cachedAvatar = [imageLoader cachedImageForUrl:iconUrl];
+        if (cachedAvatar) {
+            avatar = cachedAvatar;
+        } else {
+            [imageLoader loadImageForUrl:iconUrl withCompletion:^(UIImage *avatar) {
+                CLBEnsureMainThread(^{
+                    if (avatar) {
+                        [self.conversationNavigationItemTitleView updateAvatar:avatar];
+                    }
+                });
+            }];
+        }
+    }
+
+    [self.conversationNavigationItemTitleView configWithTitle:title subtitle:subtitle avatar:avatar];
+}
+
+- (BOOL)isModal {
+     if([self presentingViewController])
+         return YES;
+     if([[[self navigationController] presentingViewController] presentedViewController] == [self navigationController])
+         return YES;
+    return NO;
+ }
+
+- (BOOL)isRootViewController {
+    UIViewController *vc = [[self.navigationController viewControllers] firstObject];
+    return [vc isEqual:self];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -516,30 +617,6 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
         }
         [self clearTypingActivityTimer];
         [self clearCurrentTypingActivity];
-    }
-}
-
--(void)initNavBar {
-    NSString* navBarTitle = [CLBLocalization localizedStringForKey:@"Messages"];
-
-    if(self.navigationController){
-        self.navigationItem.title = navBarTitle;
-    }else{
-        self.navBar = [[CLBNavigationBar alloc] init];
-
-        if([UINavigationBar appearance].tintColor == nil){
-            self.navBar.tintColor = CLBNavBarItemTextColor();
-        }
-
-        self.navigationItem.title = navBarTitle;
-
-        [self.navBar pushNavigationItem:self.navigationItem animated:NO];
-
-        [self.view addSubview:self.navBar];
-
-        UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.chatInputView.textView action:@selector(resignFirstResponder)];
-        tapGesture.cancelsTouchesInView = NO;
-        [self.navBar addGestureRecognizer:tapGesture];
     }
 }
 
@@ -620,6 +697,10 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)navigateBack {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(UIStatusBarStyle)preferredStatusBarStyle {
     return self.statusBarStyle;
 }
@@ -692,9 +773,9 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 
     if (self.conversationMessages && self.conversationMessages.count > 0) {
         CLBMessage *lastMessage = [self.conversationMessages lastObject];
-        BOOL isFromAppMaker = !lastMessage.isFromCurrentUser;
+        BOOL isFromBusiness = !lastMessage.isFromCurrentUser;
 
-        return isFromAppMaker && ([lastMessage hasReplies] || [lastMessage hasLocationRequest]);
+        return isFromBusiness && ([lastMessage hasReplies] || [lastMessage hasLocationRequest]);
     }
 
     return NO;
@@ -1143,19 +1224,19 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
                           delay:0
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
-                         self.errorMessageOverlay.textLabel.transform = CGAffineTransformMakeTranslation(0, 3);
-                     }
+        self.errorMessageOverlay.textLabel.transform = CGAffineTransformMakeTranslation(0, 3);
+    }
                      completion:^(BOOL finished) {
-                         if(finished){
-                             [UIView animateWithDuration:0.1
-                                                   delay:0
-                                                 options:UIViewAnimationOptionBeginFromCurrentState
-                                              animations:^{
-                                                  self.errorMessageOverlay.textLabel.transform = CGAffineTransformIdentity;
-                                              }
-                                              completion:nil];
-                         }
-                     }];
+        if(finished){
+            [UIView animateWithDuration:0.1
+                                  delay:0
+                                options:UIViewAnimationOptionBeginFromCurrentState
+                             animations:^{
+                self.errorMessageOverlay.textLabel.transform = CGAffineTransformIdentity;
+            }
+                             completion:nil];
+        }
+    }];
 }
 
 -(void)retryMessage:(NSObject<CLBSOMessage>*)message forCell:(CLBSOMessageCell *)cell {
@@ -1669,14 +1750,14 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
                                                       contentMode:PHImageContentModeAspectFill
                                                           options:options
                                                     resultHandler:^(UIImage *result, NSDictionary *info) {
-                                                        if([info[PHImageResultIsDegradedKey] integerValue] == 0){
-                                                            if (showConfirmation) {
-                                                                [self showConfirmationAlertForImage:result];
-                                                            } else {
-                                                                [self sendImage:result];
-                                                            }
-                                                        }
-                                                    }];
+                if([info[PHImageResultIsDegradedKey] integerValue] == 0){
+                    if (showConfirmation) {
+                        [self showConfirmationAlertForImage:result];
+                    } else {
+                        [self sendImage:result];
+                    }
+                }
+            }];
         });
     }];
 }
@@ -1707,6 +1788,17 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 // For iOS 8 - 10
 -(void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentAtURL:(NSURL *)url {
     [self sendFile:url];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+
+    if(size.width > self.view.frame.size.width){
+        [self.conversationNavigationItemTitleView adjustAvatarSizeToSize:24];
+    }
+    else{
+        [self.conversationNavigationItemTitleView adjustAvatarSizeToSize:40];
+    }
 }
 
 -(void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {

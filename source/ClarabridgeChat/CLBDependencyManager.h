@@ -21,6 +21,7 @@
 @class CLBConversationViewController;
 @class CLBConversationStorageManager;
 @class CLBUser;
+@class CLBConversationListViewController;
 
 @interface CLBDependencyManager : NSObject <CLBConversationStorageManagerDelegate, CLBConfigFetchSchedulerDelegate>
 
@@ -31,6 +32,7 @@
 
 - (CLBConversation *)readConversation:(NSString *)conversationId;
 - (CLBConversationViewController *)startConversationViewControllerWithStartingText:(NSString *)startingText;
+- (CLBConversationListViewController *)startConversationListViewControllerWithCreateConversationButton:(BOOL)showCreateConversationButton;
 
 @property (readonly) CLBSettings *sdkSettings;
 @property CLBRemoteObjectSynchronizer* synchronizer;

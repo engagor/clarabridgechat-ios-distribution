@@ -50,10 +50,10 @@ static NSString *const CLBAcceptHeaderValue = @"application/json";
 
     // Check IDs before credentials, because IDs can be wiped if the app is installed
     // In that case, ignore the stored credentials, because the app should be in a fresh state
-    BOOL hasUserId = settings.userId && settings.userId.length > 0;
-    BOOL hasAppUserId = settings.appUserId && settings.appUserId.length > 0;
+    BOOL hasExternalId = settings.externalId && settings.externalId.length > 0;
+    BOOL hasAppUserId = settings.userId && settings.userId.length > 0;
 
-    if (hasUserId) {
+    if (hasExternalId) {
         BOOL hasJwt = settings.jwt && settings.jwt.length > 0;
 
         if (hasJwt) {
@@ -63,7 +63,7 @@ static NSString *const CLBAcceptHeaderValue = @"application/json";
         BOOL hasSessionToken = settings.sessionToken && settings.sessionToken.length > 0;
 
         if (hasSessionToken) {
-            headerFields[CLBAuthorizationKey] = [NSString stringWithFormat:@"Basic %@", CLBEncodeSessionToken(settings.appUserId, settings.sessionToken)];
+            headerFields[CLBAuthorizationKey] = [NSString stringWithFormat:@"Basic %@", CLBEncodeSessionToken(settings.userId, settings.sessionToken)];
         }
     }
 

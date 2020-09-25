@@ -15,8 +15,8 @@
 #import "CLBUtilitySettings.h"
 
 NSString *const CLBDataSessionTokenString = @"sessionToken";
-NSString *const CLBDataAppUserIdString = @"appUserId";
-NSString *const CLBDataUserIdString = @"userId";
+NSString *const CLBDataUserIdString = @"appUserId";
+NSString *const CLBDataExternalIdString = @"userId";
 NSString *const CLBDataClientString = @"client";
 
 @interface CLBConversationSynchronizer()
@@ -46,7 +46,7 @@ NSString *const CLBDataClientString = @"client";
 }
 
 - (void)getConversationById:(NSString *)conversationId withCompletionHandler:(void (^)(NSError * _Nullable, NSDictionary * _Nullable))handler {
-    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/conversations/%@", self.settings.appId, self.user.appUserId, conversationId];
+    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/conversations/%@", self.settings.appId, self.user.userId, conversationId];
 
     [self.synchronizer.apiClient GET:url
                           parameters:nil
@@ -59,10 +59,16 @@ NSString *const CLBDataClientString = @"client";
 
 
 - (void)getConversationListWithCompletionHandler:(void (^)(NSError * _Nullable, NSDictionary * _Nullable))handler {
-    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/conversations", self.settings.appId, self.user.appUserId];
+    [self getConversationListWithOffset:0 completionHandler:handler];
+}
+
+- (void)getConversationListWithOffset:(NSUInteger)offset completionHandler:(void (^)(NSError * _Nullable, NSDictionary * _Nullable))handler {
+    NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/conversations", self.settings.appId, self.user.userId];
+
+    NSString *offsetString = [NSString stringWithFormat:@"%lu", offset];
 
     [self.synchronizer.apiClient GET:url
-                          parameters:nil
+                          parameters:@{@"offset": offsetString}
                           completion:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error, id  _Nullable responseObject) {
         if (handler) {
             handler(error, responseObject);

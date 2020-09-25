@@ -27,13 +27,16 @@
 #import "CLBConversationSynchronizer.h"
 #import "CLBUser.h"
 #import "CLBParticipant.h"
+#import "ClarabridgeChat+Private.h"
 
 NSString *const CLBEventsKey = @"events";
 NSString *const CLBTypeKey = @"type";
 NSString *const CLBMessageKey = @"message";
-NSString *const CLBAuthorIdKey = @"authorId";
+NSString *const CLBUserIdKey = @"authorId";
 NSString *const CLBReceivedKey = @"received";
 NSString *const CLBLastReadKey = @"lastRead";
+
+#define CHECK_NULL_EXEC_BLOCK(RELOADCONVERSATIONLIST) if (RELOADCONVERSATIONLIST != nil) RELOADCONVERSATIONLIST()
 
 @interface CLBConversationController()
 
@@ -251,10 +254,54 @@ NSString *const CLBLastReadKey = @"lastRead";
 }
 
 - (void)onConnectionRefresh {
-    [self updateConversationList];
+    [self refreshConversationListWithShouldOverrideExistingList:YES pendingNotificationMessage:nil pendingNotificationConversationId:nil];
+}
+
+- (BOOL)hasMoreConversations {
+    CLBConversationList *existingConversationList = [self.storage getConversationList];
+    if (!existingConversationList) {
+        return NO;
+    }
+    return existingConversationList.hasMore;
+}
+
+- (void)getMoreConversations:(void (^)(NSError * _Nullable))completionHandler {
+    CLBConversationSynchronizer *conversationSynchronizer = [[CLBConversationSynchronizer alloc] initWithUser:self.user
+                                                                                                 synchronizer:self.synchronizer
+                                                                                                     settings:self.settings
+                                                                                              utilitySettings:self.utilitySettings];
+
+    CLBConversationList *existingConversationList = [self.storage getConversationList];
+    NSUInteger offset = existingConversationList ? [existingConversationList.conversations count] : 0;
+
+    [conversationSynchronizer getConversationListWithOffset:offset completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable responseObject) {
+
+        if (error) {
+            if (completionHandler != nil) completionHandler(error);
+            return;
+        }
+
+        CLBConversationList *conversationList = [[CLBConversationList alloc] initWithAppId:self.settings.appId user:self.user];
+        [conversationList deserialize:responseObject];
+
+        if (conversationList == nil) {
+            return;
+        }
+
+        [self.storage mergeConversationListWith:conversationList activeConversationId:self.conversation.conversationId];
+
+        CHECK_NULL_EXEC_BLOCK(self.reloadConversationList);
+        if (completionHandler != nil) completionHandler(nil);
+    }];
 }
 
 - (void)updateConversationList {
+    [self refreshConversationListWithShouldOverrideExistingList:NO pendingNotificationMessage:nil pendingNotificationConversationId:nil];
+}
+
+- (void)refreshConversationListWithShouldOverrideExistingList:(BOOL)shouldOverrideExistingList
+                                   pendingNotificationMessage:(CLBMessage *)pendingNotificationMessage
+                                    pendingNotificationConversationId:(NSString *)pendingNotificationConversationId {
     CLBConversationSynchronizer *conversationSynchronizer = [[CLBConversationSynchronizer alloc] initWithUser:self.user
                                                                                                  synchronizer:self.synchronizer
                                                                                                      settings:self.settings
@@ -272,16 +319,39 @@ NSString *const CLBLastReadKey = @"lastRead";
             return;
         }
 
+        if (self.conversation.conversationId != nil) {
+            [self.synchronizer fetch:self.conversation completion:nil];
+        }
+
+        if (shouldOverrideExistingList) {
+            [self.storage storeConversationList:conversationList activeConversationId:self.conversation.conversationId];
+        } else {
+            [self.storage mergeConversationListWith:conversationList activeConversationId:self.conversation.conversationId];
+        }
+
         if (self.conversation.delegate && [self.conversation.delegate respondsToSelector:@selector(conversationListDidRefresh:)]) {
             [self.conversation.delegate conversationListDidRefresh:conversationList.conversations];
         }
 
-        [self.storage clearStorage];
-        [self.storage storeConversationList:conversationList];
-
-        if (self.conversation.conversationId != nil) {
-            [self.synchronizer fetch:self.conversation completion:nil];
+        if (pendingNotificationMessage && pendingNotificationConversationId) {
+            NSUInteger conversantionIndex = [conversationList.conversations
+                                              indexOfObjectPassingTest:^BOOL(CLBConversation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                return [obj.conversationId isEqualToString:pendingNotificationConversationId];
+            }];
+            if (conversantionIndex != NSNotFound) {
+                CLBConversation *conversation = [conversationList.conversations objectAtIndex:conversantionIndex];
+                NSUInteger messageIndex = [conversation.messages
+                                                  indexOfObjectPassingTest:^BOOL(CLBMessage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    return [obj.messageId isEqualToString:pendingNotificationMessage.messageId];
+                }];
+                if (messageIndex != NSNotFound) {
+                    CLBMessage *message = [conversation.messages objectAtIndex:messageIndex];
+                    [self showInAppNotificationForMessage:message conversationId:pendingNotificationConversationId];
+                }
+            }
         }
+
+        CHECK_NULL_EXEC_BLOCK(self.reloadConversationList);
     }];
 }
 
@@ -300,14 +370,17 @@ NSString *const CLBLastReadKey = @"lastRead";
         [conversation deserialize:responseObject];
 
         [self.storage storeConversation:conversation];
+        CHECK_NULL_EXEC_BLOCK(self.reloadConversationList);
+        
         handler(nil, conversation);
     }];
 }
 
 //MARK: - CLBEventTypeFactoryDelegate
 
-- (void)conversationRemoved:(NSString *)conversationId {
-    [self.storage removeConversation:conversationId];
+- (void)conversationRemoved:(CLBConversation *)conversation {
+    [self.storage removeConversation:conversation];
+    CHECK_NULL_EXEC_BLOCK(self.reloadConversationList);
 }
 
 - (CLBConversation *)conversationById:(NSString *)conversationId {
@@ -319,52 +392,59 @@ NSString *const CLBLastReadKey = @"lastRead";
 }
 
 - (void)currentConversationNeedsRefresh:(CLBConversation *)conversation {
-    [self.synchronizer fetch:conversation completion:nil];
+    [self.synchronizer fetch:conversation completion:^(CLBRemoteResponse * _Nonnull response) {
+        CHECK_NULL_EXEC_BLOCK(self.reloadConversationList);
+    }];
 }
 
 - (void)currentConversationListNeedsRefresh {
-    [self updateConversationList];
+    [self refreshConversationListWithShouldOverrideExistingList:NO pendingNotificationMessage:nil pendingNotificationConversationId:nil];
+}
+
+- (void)currentConversationListNeedsRefreshWithPendingNotificationMessage:(CLBMessage *)pendingNotificationMessage
+                                                pendingNotificationConversationId:(NSString *)pendingNotificationConversationId {
+    [self refreshConversationListWithShouldOverrideExistingList:NO
+                                     pendingNotificationMessage:pendingNotificationMessage
+                                      pendingNotificationConversationId:pendingNotificationConversationId];
 }
 
 - (void)showInAppNotificationForMessage:(CLBMessage *)message conversationId:(NSString *)conversationId {
-    CLBConversation *otherConversation = [self.storage readConversation:conversationId];
-
-    if (otherConversation != nil) {
-        [self appendMessage:message toConversation:otherConversation];
-        [self.conversationFetchScheduler showInAppNotificationForMessage:message conversation:otherConversation];
+    CLBConversation *conversation = [self.storage readConversation:conversationId];
+    if (conversation) {
+        [self.conversationFetchScheduler showInAppNotificationForMessage:message conversation:conversation];
     }
 }
 
-- (void)appendMessage:(CLBMessage *)message toConversation:(CLBConversation *)conversation {
-    NSMutableArray *messages = [conversation.messages mutableCopy];
-    [messages addObject:message];
-    conversation.messages = messages;
-    [self.storage storeConversation:conversation];
-}
-
-- (void)updateParticipantListForConversationId:(NSString *)conversationId
-                                     withEvent:(NSDictionary *)event
-                          isActiveConversation:(BOOL)isForActiveConversation {
+- (void)updateLastUpdatedAtAndUnreadCountForMessage:(CLBMessage *)message conversationId:(NSString *)conversationId {
     CLBConversation *conversation = [self conversation:conversationId];
-
-    if (conversation == nil) {
-        return;
+    if (conversation) {
+        [self updateLastUpdatedAtAndUnreadCountForConversation:conversation messageUserId:message.userId messageDate:message.date];
     }
+}
+
+- (void)updateLastUpdatedAtAndUnreadCountForConversation:(CLBConversation *)conversation
+                                         messageUserId:(NSString *)userId
+                                             messageDate: (NSDate *)date {
+    conversation.lastUpdatedAt = date;
 
     for (CLBParticipant *participant in conversation.participants) {
-        BOOL isAuthor = [participant.appUserId isEqualToString:event[CLBMessageKey][CLBAuthorIdKey]];
-        BOOL isCurrentUser = [participant.appUserId isEqualToString:[CLBUser currentUser].appUserId];
-
-        if (isAuthor || (isCurrentUser && isForActiveConversation)) {
-            participant.lastRead = [NSDate dateWithTimeIntervalSince1970:[event[CLBMessageKey][CLBReceivedKey] doubleValue]];
+        if ([participant.userId isEqualToString:userId]) {
+            participant.lastRead = date;
+            participant.unreadCount = [NSNumber numberWithInt:0];
         } else {
             participant.unreadCount = [NSNumber numberWithInt:([participant.unreadCount intValue] + 1)];
+        }
+
+        if ([participant.userId isEqualToString:CLBUser.currentUser.userId]) {
+            conversation.unreadCount = participant.unreadCount.intValue;
         }
     }
 
     [self.storage storeConversation:conversation];
+    
+    CHECK_NULL_EXEC_BLOCK(self.reloadConversationList);
+    
     CLBConversationList *conversationList = [self.storage getConversationList];
-
     if (self.conversation.delegate && [self.conversation.delegate respondsToSelector:@selector(conversationListDidRefresh:)]) {
         [self.conversation.delegate conversationListDidRefresh:conversationList.conversations];
     }
@@ -372,17 +452,21 @@ NSString *const CLBLastReadKey = @"lastRead";
 
 -(void)handleActivity:(CLBConversationActivity *)activity forConversation:(CLBConversation *)conversation {
     if ([CLBConversationActivityTypeConversationRead isEqualToString:activity.type]) {
-        conversation.appMakerLastRead = activity.appMakerLastRead;
+        conversation.businessLastRead = activity.businessLastRead;
 
         for (CLBParticipant *participant in conversation.participants) {
-            if ([participant.appUserId isEqualToString:activity.appUserId]) {
+            if ([participant.userId isEqualToString:activity.userId]) {
                 participant.lastRead = [NSDate dateWithTimeIntervalSince1970:[activity.data[CLBLastReadKey] doubleValue]];
                 participant.unreadCount = [NSNumber numberWithInt:0];
+
+                if ([participant.userId isEqualToString:CLBUser.currentUser.userId]) {
+                    conversation.unreadCount = 0;
+                }
             }
         }
         [self.storage storeConversation:conversation];
+        CHECK_NULL_EXEC_BLOCK(self.reloadConversationList);
     }
-    [conversation notifyActivity:activity];
 }
 
 @end

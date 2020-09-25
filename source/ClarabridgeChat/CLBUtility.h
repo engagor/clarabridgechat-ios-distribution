@@ -63,9 +63,11 @@ UIColor* CLBSaturatedColorForColor(UIColor *color);
 UIColor* CLBSystemBackgroundColor(void);
 UIColor* CLBNavBarItemTextColor(void);
 UIColor* CLBWebviewBackgroundColor(void);
+UIColor* CLBLabelColor(void);
+UIColor* CLBSecondaryLabelColor(void);
 UIBlurEffectStyle CLBBlurEffectStyle(void);
 
-NSString* CLBEncodeSessionToken(NSString *appUserId, NSString *sessionToken);
+NSString* CLBEncodeSessionToken(NSString *userId, NSString *sessionToken);
 
 CGRect CLBSafeBoundsForView(UIView *view);
 UIEdgeInsets CLBSafeAreaInsetsForView(UIView *view);

@@ -31,6 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (CLBConversation *)conversation:(NSString *)conversationId;
 
 - (void)getConversationById:(NSString *)conversationId withCompletionHandler:(void (^)(NSError * _Nullable, CLBConversation * _Nullable))handler;
+- (void)updateConversationList;
+- (void)getMoreConversations:(void (^)(NSError * _Nullable))completionHandler;
+- (BOOL)hasMoreConversations;
+
+@property (nonatomic, copy, nullable) void (^reloadConversationList)(void);
 
 @end
 

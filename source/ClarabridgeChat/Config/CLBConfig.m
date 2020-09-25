@@ -49,9 +49,11 @@
     self.appId = config[@"app"][@"_id"];
     self.appStatus = config[@"app"][@"status"];
     self.appName = config[@"app"][@"name"];
+    self.appIconUrlString = config[@"app"][@"iconUrl"];
     self.acceptedSdkVersion = object[@"acceptedSdkVersion"][@"ios"];
 
     self.multiConvoEnabled = [config[@"app"][@"settings"][@"multiConvoEnabled"] boolValue];
+     self.canUserCreateMoreConversations = [config[@"integration"][@"canUserCreateMoreConversations"] boolValue];
     
     [self deserializeIntegrations:config[@"integrations"]];
 }

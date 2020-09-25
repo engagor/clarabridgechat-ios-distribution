@@ -3,7 +3,7 @@
 @implementation CLBRemotePushToken
 
 -(NSString *)remotePath {
-    return [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/clients/%@", self.appId, self.appUserId, self.clientId];
+    return [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/clients/%@", self.appId, self.userId, self.clientId];
 }
 
 -(NSString *)synchronizeMethod {

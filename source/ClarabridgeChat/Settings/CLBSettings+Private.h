@@ -12,8 +12,8 @@
 
 @property NSString *configBaseUrl;
 @property NSString *sessionToken;
-@property NSString *appUserId;
 @property NSString *userId;
+@property NSString *externalId;
 @property NSString *jwt;
 
 - (BOOL)isAuthenticatedUser;

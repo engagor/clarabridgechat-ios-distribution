@@ -18,6 +18,10 @@ extern long long const CLBMessageFileSizeLimit;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary setIsFromCurrentUser:(BOOL)isFromCurrentUser;
 
+// Serializes a message of type text, intended to be sent as part of create user/conversation requests
+/// Only serializes the type and text properties, and returns nil if either of these are nil
+- (nullable id)serializeTextForConversation;
+
 - (BOOL)isEqualWithoutDate:(CLBMessage*)message;
 - (BOOL)hasReplies;
 - (BOOL)hasLocationRequest;
@@ -27,7 +31,7 @@ extern long long const CLBMessageFileSizeLimit;
 
 @property CLBMessageUploadStatus uploadStatus;
 @property NSString *messageId;
-@property NSString *authorId;
+@property NSString *userId;
 @property NSString *role;
 @property CLBCoordinates *coordinates;
 @property CLBDisplaySettings *displaySettings;

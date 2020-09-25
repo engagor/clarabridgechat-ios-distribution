@@ -60,19 +60,27 @@
 		
 		<option value="//api/name/close">+ close</option>
 		
+		<option value="//api/name/closeConversationList">+ closeConversationList</option>
+		
 		<option value="//api/name/conversation">+ conversation</option>
 		
 		<option value="//api/name/conversationById:completionHandler:">+ conversationById:completionHandler:</option>
 		
+		<option value="//api/name/createConversationWithName:description:iconUrl:metadata:message:completionHandler:">+ createConversationWithName:description:iconUrl:metadata:message:completionHandler:</option>
+		
 		<option value="//api/name/destroy">+ destroy</option>
 		
 		<option value="//api/name/getConversations:">+ getConversations:</option>
+		
+		<option value="//api/name/getMoreConversations:">+ getMoreConversations:</option>
 		
 		<option value="//api/name/handlePushNotification:">+ handlePushNotification:</option>
 		
 		<option value="//api/name/handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:">+ handleUserNotificationActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:</option>
 		
 		<option value="//api/name/handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:">+ handleUserNotificationActionWithIdentifier:withResponseInfo:completionHandler:</option>
+		
+		<option value="//api/name/hasMoreConversations">+ hasMoreConversations</option>
 		
 		<option value="//api/name/initWithSettings:completionHandler:">+ initWithSettings:completionHandler:</option>
 		
@@ -82,11 +90,21 @@
 		
 		<option value="//api/name/logoutWithCompletionHandler:">+ logoutWithCompletionHandler:</option>
 		
+		<option value="//api/name/newConversationListViewController">+ newConversationListViewController</option>
+		
+		<option value="//api/name/newConversationListViewControllerWithoutCreateConversationButton">+ newConversationListViewControllerWithoutCreateConversationButton</option>
+		
 		<option value="//api/name/newConversationViewController">+ newConversationViewController</option>
+		
+		<option value="//api/name/newConversationViewControllerWithId:completionHandler:">+ newConversationViewControllerWithId:completionHandler:</option>
+		
+		<option value="//api/name/newConversationViewControllerWithId:startingText:completionHandler:">+ newConversationViewControllerWithId:startingText:completionHandler:</option>
 		
 		<option value="//api/name/newConversationViewControllerWithStartingText:">+ newConversationViewControllerWithStartingText:</option>
 		
 		<option value="//api/name/setConversationInputDisplayed:">+ setConversationInputDisplayed:</option>
+		
+		<option value="//api/name/setConversationListDelegate:">+ setConversationListDelegate:</option>
 		
 		<option value="//api/name/setPushToken:">+ setPushToken:</option>
 		
@@ -100,9 +118,27 @@
 		
 		<option value="//api/name/showConversationFromViewController:withStartingText:">+ showConversationFromViewController:withStartingText:</option>
 		
+		<option value="//api/name/showConversationList">+ showConversationList</option>
+		
+		<option value="//api/name/showConversationListFromViewController:">+ showConversationListFromViewController:</option>
+		
+		<option value="//api/name/showConversationListFromViewControllerWithoutCreateConversationButton:">+ showConversationListFromViewControllerWithoutCreateConversationButton:</option>
+		
+		<option value="//api/name/showConversationListWithoutCreateConversationButton">+ showConversationListWithoutCreateConversationButton</option>
+		
+		<option value="//api/name/showConversationWithId:">+ showConversationWithId:</option>
+		
+		<option value="//api/name/showConversationWithId:andStartingText:">+ showConversationWithId:andStartingText:</option>
+		
+		<option value="//api/name/showConversationWithId:fromViewController:">+ showConversationWithId:fromViewController:</option>
+		
+		<option value="//api/name/showConversationWithId:fromViewController:andStartingText:">+ showConversationWithId:fromViewController:andStartingText:</option>
+		
 		<option value="//api/name/showWithStartingText:">+ showWithStartingText:</option>
 		
 		<option value="//api/name/startConversationWithCompletionHandler:">+ startConversationWithCompletionHandler:</option>
+		
+		<option value="//api/name/updateConversationById:withName:description:iconUrl:metadata:completionHandler:">+ updateConversationById:withName:description:iconUrl:metadata:completionHandler:</option>
 		
 		<option value="//api/name/updateConversationDelegate:">+ updateConversationDelegate:</option>
 		
@@ -340,6 +376,66 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/showConversationWithId:" title="showConversationWithId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationWithId:">+&nbsp;showConversationWithId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Loads the conversation specified by the ID, and presents the ClarabridgeChat conversation screen</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationWithId:(NSString *)<em>conversationId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>The ID of the conversation to load</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Uses the top-most view controller of the <code>UIApplicationDelegate</code> as the presenting view controller.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/showWithStartingText:" title="showWithStartingText:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/showWithStartingText:">+&nbsp;showWithStartingText:</a></code>
 </h3>
@@ -359,6 +455,71 @@
 			<div class="method-subsection method-declaration"><code>+ (void)showWithStartingText:(nullable NSString *)<em>startingText</em></code></div>
 
 		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Uses the top-most view controller of the <code>UIApplicationDelegate</code> as the presenting view controller with prefilled text in the message input.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationWithId:andStartingText:" title="showConversationWithId:andStartingText:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationWithId:andStartingText:">+&nbsp;showConversationWithId:andStartingText:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Loads the conversation specified by the ID, and presents the ClarabridgeChat conversation screen with prefilled text in the message input.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationWithId:(NSString *)<em>conversationId</em> andStartingText:(nullable NSString *)<em>startingText</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>The ID of the conversation to load</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>startingText</code></th>
+						<td><p>The text to prefill in the message input</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -530,6 +691,71 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/showConversationWithId:fromViewController:" title="showConversationWithId:fromViewController:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationWithId:fromViewController:">+&nbsp;showConversationWithId:fromViewController:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Loads the conversation specified by the ID, and presents the ClarabridgeChat conversation screen, using the given view controller as presenting view controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationWithId:(NSString *)<em>conversationId</em> fromViewController:(UIViewController *)<em>viewController</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>The ID of the conversation to load</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>viewController</code></th>
+						<td><p>The view controller to use as the presenting view controller</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>In most cases, it is better to use +show. If you need more fine-grained control over which view controller is used as presenting view controller, use this method instead.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/showConversationFromViewController:withStartingText:" title="showConversationFromViewController:withStartingText:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/showConversationFromViewController:withStartingText:">+&nbsp;showConversationFromViewController:withStartingText:</a></code>
 </h3>
@@ -549,6 +775,76 @@
 			<div class="method-subsection method-declaration"><code>+ (void)showConversationFromViewController:(UIViewController *)<em>viewController</em> withStartingText:(nullable NSString *)<em>startingText</em></code></div>
 
 		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>In most cases, it is better to use +show. If you need more fine-grained control over which view controller is used as presenting view controller, use this method instead.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationWithId:fromViewController:andStartingText:" title="showConversationWithId:fromViewController:andStartingText:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationWithId:fromViewController:andStartingText:">+&nbsp;showConversationWithId:fromViewController:andStartingText:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Loads the conversation specified by the ID, and presents the ClarabridgeChat conversation screen, using the given view controller as presenting view controller with prefilled text in the message input.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationWithId:(NSString *)<em>conversationId</em> fromViewController:(UIViewController *)<em>viewController</em> andStartingText:(nullable NSString *)<em>startingText</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>The ID of the conversation to load</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>viewController</code></th>
+						<td><p>The view controller to use as the presenting view controller</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>startingText</code></th>
+						<td><p>The text to prefill in the message input</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -633,6 +929,71 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/newConversationViewControllerWithId:completionHandler:" title="newConversationViewControllerWithId:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newConversationViewControllerWithId:completionHandler:">+&nbsp;newConversationViewControllerWithId:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a ClarabridgeChat conversation view controller, loading the conversation specified by the ID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)newConversationViewControllerWithId:(NSString *)<em>conversationId</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , UIViewController *_Nullable viewController ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>The ID of the conversation to load</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>Completion handler which provides a UIViewController with the conversation loaded by the specified ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You may use this view controller to embed the conversation in a navigation controller, to change the modal presentation style, or display it in any way you choose.</p>
+
+<p>Note: It is the responsibility of the caller to show, hide, and maintain a reference to this view controller. Calling <code>close</code> will not dismiss a view controller created in this way.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/newConversationViewControllerWithStartingText:" title="newConversationViewControllerWithStartingText:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/newConversationViewControllerWithStartingText:">+&nbsp;newConversationViewControllerWithStartingText:</a></code>
 </h3>
@@ -676,6 +1037,493 @@
 
 			
 
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/newConversationViewControllerWithId:startingText:completionHandler:" title="newConversationViewControllerWithId:startingText:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newConversationViewControllerWithId:startingText:completionHandler:">+&nbsp;newConversationViewControllerWithId:startingText:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a ClarabridgeChat conversation view controller with prefilled text in the message input, loading the conversation specified by the ID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)newConversationViewControllerWithId:(NSString *)<em>conversationId</em> startingText:(nullable NSString *)<em>startingText</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , UIViewController *_Nullable viewController ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>The ID of the conversation to load</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>startingText</code></th>
+						<td><p>The text to prefill in the message input</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>Completion handler which provides a UIViewController with the conversation loaded by the specified ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You may use this view controller to embed the conversation in a navigation controller, to change the modal presentation style, or display it in any way you choose. The message input will be prefilled with the given <code>startingText</code></p>
+
+<p>Note: It is the responsibility of the caller to show, hide, and maintain a reference to this view controller. Calling <code>close</code> will not dismiss a view controller created in this way.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationList" title="showConversationList"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationList">+&nbsp;showConversationList</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation list screen.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationList</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Uses the top-most view controller of the <code>UIApplicationDelegate</code> as the presenting view controller.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationListWithoutCreateConversationButton" title="showConversationListWithoutCreateConversationButton"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationListWithoutCreateConversationButton">+&nbsp;showConversationListWithoutCreateConversationButton</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation list screen without a create conversation button</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationListWithoutCreateConversationButton</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Uses the top-most view controller of the <code>UIApplicationDelegate</code> as the presenting view controller.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/closeConversationList" title="closeConversationList"></a>
+	<h3 class="method-title"><code><a href="#//api/name/closeConversationList">+&nbsp;closeConversationList</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Dismisses the ClarabridgeChat conversation list, if shown.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)closeConversationList</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Note: If a view controller was created and presented using <code>newConversationViewController</code>, calling this method will have no effect.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationListFromViewController:" title="showConversationListFromViewController:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationListFromViewController:">+&nbsp;showConversationListFromViewController:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation list screen, using the given view controller as presenting view controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationListFromViewController:(UIViewController *)<em>viewController</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>In most cases, it is better to use +show. If you need more fine-grained control over which view controller is used as presenting view controller, use this method instead.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showConversationListFromViewControllerWithoutCreateConversationButton:" title="showConversationListFromViewControllerWithoutCreateConversationButton:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showConversationListFromViewControllerWithoutCreateConversationButton:">+&nbsp;showConversationListFromViewControllerWithoutCreateConversationButton:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Presents the ClarabridgeChat conversation list screen without a create conversation button, using the given view controller as presenting view controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)showConversationListFromViewControllerWithoutCreateConversationButton:(UIViewController *)<em>viewController</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>In most cases, it is better to use +show. If you need more fine-grained control over which view controller is used as presenting view controller, use this method instead.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/newConversationListViewController" title="newConversationListViewController"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newConversationListViewController">+&nbsp;newConversationListViewController</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a ClarabridgeChat conversation list view controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable UIViewController *)newConversationListViewController</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new instance of the ClarabridgeChat conversation view controller class. Returns nil if +initWithSettings:completionHandler: hasn&rsquo;t been called</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You may use this view controller to embed the conversation in a navigation controller, to change the modal presentation style, or display it in any way you choose.</p>
+
+<p>A view controller created in this way is tied to the current user&rsquo;s conversation at creation time. If the current user changes (i.e. by calling +login:jwt:completionHandler: or +logoutWithCompletionHandler:), the view controller is invalidated and must be recreated for the new user.</p>
+
+<p>Note: It is the responsibility of the caller to show, hide, and maintain a reference to this view controller. Calling <code>close</code> will not dismiss a view controller created in this way.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/newConversationListViewControllerWithoutCreateConversationButton" title="newConversationListViewControllerWithoutCreateConversationButton"></a>
+	<h3 class="method-title"><code><a href="#//api/name/newConversationListViewControllerWithoutCreateConversationButton">+&nbsp;newConversationListViewControllerWithoutCreateConversationButton</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a ClarabridgeChat conversation list view controller without a create conversation button.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable UIViewController *)newConversationListViewControllerWithoutCreateConversationButton</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new instance of the ClarabridgeChat conversation view controller class. Returns nil if +initWithSettings:completionHandler: hasn&rsquo;t been called</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You may use this view controller to embed the conversation in a navigation controller, to change the modal presentation style, or display it in any way you choose.</p>
+
+<p>A view controller created in this way is tied to the current user&rsquo;s conversation at creation time. If the current user changes (i.e. by calling +login:jwt:completionHandler: or +logoutWithCompletionHandler:), the view controller is invalidated and must be recreated for the new user.</p>
+
+<p>Note: It is the responsibility of the caller to show, hide, and maintain a reference to this view controller. Calling <code>close</code> will not dismiss a view controller created in this way.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setConversationListDelegate:" title="setConversationListDelegate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setConversationListDelegate:">+&nbsp;setConversationListDelegate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sets the conversation list delegate</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setConversationListDelegate:(nullable id&lt;CLBConversationListDelegate&gt;)<em>delegate</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delegate</code></th>
+						<td><p>Can we an object conforming to CLBConversationListDelegate, or NULL, which would remove any existing delegate</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The conversation list delegate is used to respond to events relating to the conversation list</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Protocols/CLBConversationListDelegate.html">CLBConversationListDelegate</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -895,7 +1743,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)login:(NSString *)<em>userId</em> jwt:(NSString *)<em>jwt</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)login:(NSString *)<em>externalId</em> jwt:(NSString *)<em>jwt</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>handler</em></code></div>
 
 		    
 			
@@ -904,7 +1752,7 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>userId</code></th>
+						<th scope="row" class="argument-name"><code>externalId</code></th>
 						<td><p>The distinct id of the user to login. Must not be nil.</p></td>
 					</tr>
 				
@@ -1007,7 +1855,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Force-start a conversation for the current user</p>
+				<p>Force-start a conversation for the current user (<b class="deprecated">Deprecated:</b><span class="deprecated"> use + createConversationWithName:description:iconUrl:metadata:completionHandler instead</span>)</p>
 			</div>
 			
 		    
@@ -1029,13 +1877,191 @@
 <p>It is strongly recommended to only call this method in the case where a message is likely to be sent.</p>
 
 <p>This method is called automatically when starting a conversation via the -sendMessage: or -sendImage:withProgress:completion: methods, or when a user sends a message via the conversation view controller.</p>
-
-<p>If a conversation already exists for the current user, this call is a no-op.</p>
 			</div>
 			
 
 			
 
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createConversationWithName:description:iconUrl:metadata:message:completionHandler:" title="createConversationWithName:description:iconUrl:metadata:message:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createConversationWithName:description:iconUrl:metadata:message:completionHandler:">+&nbsp;createConversationWithName:description:iconUrl:metadata:message:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Create a conversation for the current user, optionally sending a message of type text as part of the conversation creation</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)createConversationWithName:(nullable NSString *)<em>displayName</em> description:(nullable NSString *)<em>description</em> iconUrl:(nullable NSString *)<em>iconUrl</em> metadata:(nullable NSDictionary *)<em>metadata</em> message:(nullable NSArray&lt;CLBMessage*&gt; *)<em>message</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>displayName</code></th>
+						<td><p>A user-friendly name to label the conversation in the list (max length 100 characters)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>description</code></th>
+						<td><p>A string describing the purpose of the conversation (max length 100 characters)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>iconUrl</code></th>
+						<td><p>An iconUrl to display in the conversation list</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>metadata</code></th>
+						<td><p>A flat JSON Object that can only contain the following value types: string, number, boolean and null</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>An array containing a single CLBMessage type, to be sent as part of conversation creation. Only a message of type text can be sent as part of conversation creation. Multiple messages, or other types (e.g files, attachments) will cause this method to return an error.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>An optional block to evaluate the result of the operation</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates a user and conversation on the server, allowing the business to reach out proactively to the user via the public API.</p>
+
+<p>It is strongly recommended to only call this method in the case where a message is likely to be sent.</p>
+
+<p>This method is called automatically when starting a conversation via the -sendMessage: or -sendImage:withProgress:completion: methods, or when a user sends a message via the conversation view controller.</p>
+
+<p>Note: Only a single message of type text can be sent as part of conversation creation. Multiple messages, or other types (e.g files, attachments) will cause this method to return an error.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateConversationById:withName:description:iconUrl:metadata:completionHandler:" title="updateConversationById:withName:description:iconUrl:metadata:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateConversationById:withName:description:iconUrl:metadata:completionHandler:">+&nbsp;updateConversationById:withName:description:iconUrl:metadata:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Updates the specified conversation for the current user.</p>
+
+<p>+initWithSettings:completionHandler: must have been called prior to calling this method.</p>
+
+<p>If the displayName, description, iconUrl, and metadata parameters are all nil, this is a no-op.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateConversationById:(NSString *)<em>conversationId</em> withName:(nullable NSString *)<em>displayName</em> description:(nullable NSString *)<em>description</em> iconUrl:(nullable NSString *)<em>iconUrl</em> metadata:(nullable NSDictionary *)<em>metadata</em> completionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>conversationId</code></th>
+						<td><p>the conversationId</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>displayName</code></th>
+						<td><p>A user-friendly name to label the conversation (max length 100 characters)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>description</code></th>
+						<td><p>A string describing the purpose of the conversation (max length 100 characters)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>iconUrl</code></th>
+						<td><p>An iconUrl to display in the conversation list</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>metadata</code></th>
+						<td><p>A flat JSON Object that can only contain the following value types: string, number, boolean and null</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>An optional block to evaluate the result of the operation</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/CLBConversation.html">CLBConversation</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -1534,7 +2560,7 @@ On iOS 10, returns a set of UNNotificationCategory objects, to be used with <cod
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Loads a list of conversations</p>
+				<p>Returns a list of conversations from storage.</p>
 			</div>
 			
 		    
@@ -1551,7 +2577,7 @@ On iOS 10, returns a set of UNNotificationCategory objects, to be used with <cod
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>when called, returns an array of Conversation objects from storage</p>
+				<p>Returns a list of CLBConversation objects from storage.</p>
 			</div>
 			
 
@@ -1614,6 +2640,98 @@ On iOS 10, returns a set of UNNotificationCategory objects, to be used with <cod
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/getMoreConversations:" title="getMoreConversations:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getMoreConversations:">+&nbsp;getMoreConversations:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Loads a list of conversations</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)getMoreConversations:(void ( ^ ) ( NSError *_Nullable ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrives the next 10 conversations from the server, and stores them.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hasMoreConversations" title="hasMoreConversations"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hasMoreConversations">+&nbsp;hasMoreConversations</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A boolean representing if the server has more conversations to load for the user, to support pagination.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)hasMoreConversations</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>When called, returns a boolean indicating if the server has more conversations to load for the user.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ClarabridgeChat.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1629,7 +2747,7 @@ On iOS 10, returns a set of UNNotificationCategory objects, to be used with <cod
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 ClarabridgeChat. All rights reserved. Updated: 2020-09-17</p>
+						<p class="copyright">Copyright &copy; 2020 ClarabridgeChat. All rights reserved. Updated: 2020-09-25</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

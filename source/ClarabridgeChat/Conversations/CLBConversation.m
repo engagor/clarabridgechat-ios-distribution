@@ -67,13 +67,15 @@ static const int kTypingStopBufferSeconds = 1;
 @property NSDate *lastTypingStartEvent;
 @property NSDate *lastUploadedTypingStartEvent;
 @property NSTimer *typingTimeoutTimer;
-@property NSDate *appMakerLastRead;
+@property NSDate *businessLastRead;
 @property NSMutableDictionary *pendingFileUploads;
 @property NSMutableDictionary *failedFileUploads;
 @property (nonatomic, weak) id<CLBConversationPersistence> persistence;
 @property NSString *appId;
 @property NSDate *lastUpdatedAt;
 @property NSString *displayName;
+@property NSString *conversationDescription;
+@property NSString *iconUrl;
 @property NSArray *participants;
 
 @end
@@ -89,7 +91,7 @@ static const int kTypingStopBufferSeconds = 1;
     return [[CLBConversation alloc] initWithAppId:appId user:user];
 }
 
-+ (NSString *)filePathForAppId:(NSString *)appId deviceId:(NSString *)deviceId userId:(NSString *)userId {
++ (NSString *)filePathForAppId:(NSString *)appId deviceId:(NSString *)deviceId externalId:(NSString *)externalId {
     if (!appId || !deviceId){
         return nil;
     }
@@ -106,8 +108,8 @@ static const int kTypingStopBufferSeconds = 1;
         [[NSFileManager defaultManager] createDirectoryAtPath:[folder path] withIntermediateDirectories:YES attributes:nil error:nil];
 
         NSString* filename;
-        if (userId) {
-            filename = [NSString stringWithFormat:@"%@:%@", deviceId, userId];
+        if (externalId) {
+            filename = [NSString stringWithFormat:@"%@:%@", deviceId, externalId];
         } else {
             filename = deviceId;
         }
@@ -141,13 +143,16 @@ static const int kTypingStopBufferSeconds = 1;
         _unreadCount = [decoder decodeIntegerForKey:@"unreadCount"];
         _metadata = [decoder decodeObjectOfClass:[NSDictionary class] forKey:@"metadata"];
         _hasPreviousMessages = [decoder decodeBoolForKey:@"hasPreviousMessages"];
-        _appMakerLastRead = [decoder decodeObjectOfClass:[NSDate class] forKey:@"appMakerLastRead"];
+        _businessLastRead = [decoder decodeObjectOfClass:[NSDate class] forKey:@"appMakerLastRead"];
         _displayName = [decoder decodeObjectOfClass:[NSString class] forKey:@"displayName"];
+        _conversationDescription = [decoder decodeObjectOfClass:[NSString class] forKey:@"description"];
+        _iconUrl = [decoder decodeObjectOfClass:[NSString class] forKey:@"iconUrl"];
+        _lastUpdatedAt = [decoder decodeObjectOfClass:[NSDate class] forKey:@"lastUpdatedAt"];
 
         NSSet *messagesSet = [NSSet setWithArray:@[[NSArray class], [CLBMessage class]]];
         _internalMessages = [decoder decodeObjectOfClasses:messagesSet forKey:@"messages"];
         NSSet *participantsSet = [NSSet setWithArray:@[[NSArray class], [CLBParticipant class]]];
-        _internalParticipants = [decoder decodeObjectOfClass:participantsSet forKey:@"participants"];
+        _internalParticipants = [decoder decodeObjectOfClasses:participantsSet forKey:@"participants"];
     }
     return self;
 }
@@ -164,16 +169,27 @@ static const int kTypingStopBufferSeconds = 1;
 
 - (void)removeFromDisk {
     if (self.persistence) {
-        [self.persistence removeConversation:self.conversationId];
+        [self.persistence removeConversation:self];
     }
 }
 
-- (void)handleConversationChanged:(NSDictionary *)object {
+- (instancetype)readOrCreateConversationForId:(NSString *)conversationId {
+    CLBConversation *conversation = [self.persistence readConversation:conversationId];
+
+    if (!conversation) {
+        conversation = [[CLBConversation alloc] initWithAppId:self.appId user:self.user];
+        conversation.conversationId = conversationId;
+    }
+
+    return conversation;
+}
+
+- (void)handleNewOrChangedConversation:(NSDictionary *)object {
     NSDictionary *conversation = object[@"conversation"];
 
     if (self.persistence) {
-        CLBConversation *changedConversation = [self.persistence readConversation:conversation[@"_id"]];
-        changedConversation.appMakerLastRead = [NSDate dateWithTimeIntervalSince1970:[conversation[@"appMakerLastRead"] doubleValue]];
+        CLBConversation *changedConversation = [self readOrCreateConversationForId:conversation[@"_id"]];
+        changedConversation.businessLastRead = [NSDate dateWithTimeIntervalSince1970:[conversation[@"appMakerLastRead"] doubleValue]];
         changedConversation.hasPreviousMessages = object[@"previous"] == nil ? [object[@"hasPrevious"] boolValue] : [object[@"previous"] boolValue];
         changedConversation.hasPagedBack = NO;
         changedConversation.pendingFileUploads = nil;
@@ -184,11 +200,14 @@ static const int kTypingStopBufferSeconds = 1;
         changedConversation.appId = self.appId;
         changedConversation.user = self.user;
         changedConversation.displayName = conversation[@"displayName"];
+        changedConversation.conversationDescription = conversation[@"description"];
+        changedConversation.iconUrl = conversation[@"iconUrl"];
+        [changedConversation updateLastUpdatedAt:conversation];
 
-        changedConversation.internalMessages = [[self createMessagesFromObject:object forConversation:changedConversation] mutableCopy];
-        changedConversation.internalParticipants = [[self createParticipantsFromObject:object] mutableCopy];
+        changedConversation.internalMessages = [self createMessagesFromObject:object forConversation:changedConversation];
+        changedConversation.internalParticipants = [self createParticipantsFromObject:object];
         changedConversation.unreadCount = [CLBParticipant getUnreadCountFromParticipants:changedConversation.internalParticipants
-                                                                        currentAppUserId:changedConversation.user.appUserId];
+                                                                        currentUserId:changedConversation.user.userId];
 
         [self.persistence storeConversation:changedConversation];
         [self.persistence conversationHasChanged:changedConversation];
@@ -199,7 +218,7 @@ static const int kTypingStopBufferSeconds = 1;
     NSMutableArray<CLBMessage *> *messages = [NSMutableArray array];
 
     for (NSDictionary *dictionary in object[@"messages"]){
-        BOOL isFromCurrentUser = [self.user.appUserId isEqualToString:dictionary[@"authorId"]];
+        BOOL isFromCurrentUser = [self.user.userId isEqualToString:dictionary[@"authorId"]];
         CLBMessage *incomingMessage = [[CLBMessage alloc] initWithDictionary:dictionary setIsFromCurrentUser:isFromCurrentUser];
         incomingMessage.conversation = conversation;
         [messages addObject:incomingMessage];
@@ -234,7 +253,7 @@ static const int kTypingStopBufferSeconds = 1;
     if (![self.conversationId isEqualToString:conversationId]) {
         if (self.conversationId && (conversationId && conversationId.length > 0)) {
             // We are loading a different conversation, reset all local state to the new information
-            [self handleConversationChanged:object];
+            [self handleNewOrChangedConversation:object];
             return;
         } else if (self.conversationId && (!conversationId || conversationId.length == 0)) {
             // This happens because the /messages endpoint no longer has conversation in its payload
@@ -247,13 +266,17 @@ static const int kTypingStopBufferSeconds = 1;
     }
 
     self.displayName = conversation[@"displayName"];
+    self.conversationDescription = conversation[@"description"];
+    self.iconUrl = conversation[@"iconUrl"];
     self.metadata = CLBSanitizeNSNull(conversation[@"metadata"]);
+
+    self.iconUrl = conversation[@"iconUrl"];
 
     if (object[@"participants"] != nil || object[@"conversation"][@"participants"] != nil) {
         [self setParticipants:[self createParticipantsFromObject:object]];
     }
 
-    self.appMakerLastRead = [NSDate dateWithTimeIntervalSince1970:[conversation[@"appMakerLastRead"] doubleValue]];
+    self.businessLastRead = [NSDate dateWithTimeIntervalSince1970:[conversation[@"appMakerLastRead"] doubleValue]];
     [self updateLastUpdatedAt: object];
 
     NSArray<NSDictionary*>* serverMessages = object[@"messages"];
@@ -271,7 +294,7 @@ static const int kTypingStopBufferSeconds = 1;
         NSMutableArray<CLBMessage *> *messages = [NSMutableArray array];
 
         for(NSDictionary *dictionary in serverMessages){
-            BOOL isFromCurrentUser = [self.user.appUserId isEqualToString:dictionary[@"authorId"]];
+            BOOL isFromCurrentUser = [self.user.userId isEqualToString:dictionary[@"authorId"]];
             CLBMessage *incomingMessage = [[CLBMessage alloc] initWithDictionary:dictionary setIsFromCurrentUser:isFromCurrentUser];
             incomingMessage.conversation = self;
             if(![messages containsObject:incomingMessage]) {
@@ -282,6 +305,13 @@ static const int kTypingStopBufferSeconds = 1;
         if (messages.count > 0) { //For a new user this means the response is from /appusers, so no messages will exist yet (UI issue)
             [self setMessages:messages];
         }
+
+        // If there are participants, determine the unread count of the current appUser.
+        if (self.participants && self.participants.count > 0) {
+            self.unreadCount = [CLBParticipant getUnreadCountFromParticipants:self.participants
+                                                             currentUserId:self.user.userId];
+        }
+
         [self saveToDisk];
 
         //This shouldn't go through the rest of the logic below
@@ -320,7 +350,7 @@ static const int kTypingStopBufferSeconds = 1;
         NSMutableArray<CLBMessage *> *messages = shouldClearCache ? [NSMutableArray array] : [self.internalMessages mutableCopy];
 
         for(NSDictionary* dictionary in serverMessages){
-            BOOL isFromCurrentUser = [self.user.appUserId isEqualToString:dictionary[@"authorId"]];
+            BOOL isFromCurrentUser = [self.user.userId isEqualToString:dictionary[@"authorId"]];
             CLBMessage* incomingMessage = [[CLBMessage alloc] initWithDictionary:dictionary setIsFromCurrentUser:isFromCurrentUser];
             incomingMessage.conversation = self;
             if(![messages containsObject:incomingMessage]) {
@@ -349,7 +379,7 @@ static const int kTypingStopBufferSeconds = 1;
             // Messages are the same, update the unread count and return
             NSUInteger previousUnreadCount = self.unreadCount;
             self.unreadCount = [CLBParticipant getUnreadCountFromParticipants:self.participants
-                                                             currentAppUserId:self.user.appUserId];
+                                                             currentUserId:self.user.userId];
 
             [self updatePendingMessages];
             if (shouldClearCache || previousUnreadCount != self.unreadCount) {
@@ -371,7 +401,7 @@ static const int kTypingStopBufferSeconds = 1;
 
         NSUInteger previousUnreadCount = self.unreadCount;
         self.unreadCount = [CLBParticipant getUnreadCountFromParticipants:self.participants
-                                                         currentAppUserId:self.user.appUserId];
+                                                         currentUserId:self.user.userId];
 
         [self setMessages:messages];
 
@@ -384,8 +414,8 @@ static const int kTypingStopBufferSeconds = 1;
                 numberToNotify = self.unreadCount - previousUnreadCount;
             }
 
-            NSArray* appMakerMessages = [messages filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"uploadStatus == %ld", CLBMessageUploadStatusNotUserMessage]];
-            messagesToNotify = [appMakerMessages subarrayWithRange:NSMakeRange(appMakerMessages.count - numberToNotify, numberToNotify)];
+            NSArray* businessMessages = [messages filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"uploadStatus == %ld", CLBMessageUploadStatusNotUserMessage]];
+            messagesToNotify = [businessMessages subarrayWithRange:NSMakeRange(businessMessages.count - numberToNotify, numberToNotify)];
         }
     }
     
@@ -900,18 +930,7 @@ static const int kTypingStopBufferSeconds = 1;
 
         message.conversation = self;
         [self insertObject:message inMessagesAtIndex:[self.messages count]];
-
-        if(!message.isFromCurrentUser){
-            self.unreadCount++;
-
-            for (CLBParticipant *participant in self.internalParticipants) {
-                if ([participant.appUserId isEqualToString:self.user.appUserId]) {
-                    participant.unreadCount = [NSNumber numberWithUnsignedLong:self.unreadCount];
-                }
-            }
-
-            [self notifyMessagesReceived:@[message]];
-        }
+        
         [self saveToDisk];
     }
 }
@@ -1000,7 +1019,7 @@ static const int kTypingStopBufferSeconds = 1;
 
 - (void)markAllAsRead {
     for (CLBParticipant *participant in self.internalParticipants) {
-        if ([participant.appUserId isEqualToString:self.user.appUserId]) {
+        if ([participant.userId isEqualToString:self.user.userId]) {
             if ([participant.unreadCount intValue] > 0) {
                 participant.unreadCount = [NSNumber numberWithInt:0];
                 self.unreadCount = 0;
@@ -1128,10 +1147,33 @@ static const int kTypingStopBufferSeconds = 1;
         [coder encodeObject:[NSMutableArray arrayWithArray:sentMessages] forKey:@"messages"];
 
         [coder encodeBool:self.hasPreviousMessages forKey:@"hasPreviousMessages"];
-        [coder encodeObject:self.appMakerLastRead forKey:@"appMakerLastRead"];
+        [coder encodeObject:self.businessLastRead forKey:@"appMakerLastRead"];
         [coder encodeObject:self.internalParticipants forKey:@"participants"];
         [coder encodeObject:self.displayName forKey:@"displayName"];
+        [coder encodeObject:self.conversationDescription forKey:@"description"];
+        [coder encodeObject:self.iconUrl forKey:@"iconUrl"];
+        [coder encodeObject:self.lastUpdatedAt forKey:@"lastUpdatedAt"];
     }
+}
+
+// MARK: NSCopying
+
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    CLBConversation *conversation = [[[self class] alloc] init];
+    if (conversation) {
+        conversation.conversationId = _conversationId.copy;
+        conversation.unreadCount = _unreadCount;
+        conversation.metadata = _metadata.copy;
+        conversation.internalMessages = _internalMessages.copy;
+        conversation.hasPreviousMessages = _hasPreviousMessages;
+        conversation.businessLastRead = _businessLastRead.copy;
+        conversation.internalParticipants = _internalParticipants.copy;
+        conversation.displayName = _displayName.copy;
+        conversation.conversationDescription = _conversationDescription.copy;
+        conversation.iconUrl = _iconUrl.copy;
+        conversation.lastUpdatedAt = _lastUpdatedAt.copy;
+    }
+    return conversation;
 }
 
 @end

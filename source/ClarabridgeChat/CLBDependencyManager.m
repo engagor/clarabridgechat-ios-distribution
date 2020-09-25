@@ -39,17 +39,18 @@
 #import "CLBDependencyManager+Private.h"
 #import "CLBConversationStorageManager.h"
 #import "CLBHeaderFactory.h"
-
+#import "CLBConversationListViewController+Private.h"
 
 @interface CLBDependencyManager ()
 
 @property CLBSettings *sdkSettings;
 @property CLBConfig *config;
 @property CLBUser* user;
-@property CLBConversationViewController *conversationViewController;
+@property (nonatomic, weak) CLBConversationViewController *conversationViewController;
 @property CLBConversationController *conversationController;
 @property CLBConversationStorage *conversationStorage;
 @property CLBConversationListStorage *conversationListStorage;
+@property (nonatomic, weak) CLBConversationListViewController *conversationListViewController;
 
 @end
 
@@ -149,7 +150,7 @@
 -(void)initUser {
     self.user = [[CLBUser alloc] init];
     self.user.appId = self.sdkSettings.appId;
-    [self.user readLocalProperties];
+    [self.user readLocalMetadata];
 }
 
 -(void)initConfig {
@@ -227,8 +228,8 @@
         [self.userSynchronizer logInWithCompletionHandler:^(NSError *error, NSDictionary *userInfo) {
             [self userUpdated:error withUserInfo:userInfo];
         }];
-    } else if (self.sdkSettings.appUserId && self.sdkSettings.sessionToken) {
-        self.userSynchronizer.user.appUserId = self.sdkSettings.appUserId;
+    } else if (self.sdkSettings.userId && self.sdkSettings.sessionToken) {
+        self.userSynchronizer.user.userId = self.sdkSettings.userId;
         // Anonymous user, fetch for updates
         [self.userSynchronizer fetchUserWithCompletionHandler:^(NSError *error, NSDictionary *userInfo) {
             [self handleFetchAnonymousUser:error userInfo:userInfo];
@@ -299,11 +300,11 @@
 
 - (void)forgetUser {
     // Session token invalid. Clear local credentials and allow usage as a new user
-    self.sdkSettings.appUserId = nil;
+    self.sdkSettings.userId = nil;
     self.sdkSettings.sessionToken = nil;
-    [CLBUserLifecycleManager clearAppUserIdForAppId:self.config.appId];
+    [CLBUserLifecycleManager clearUserIdForAppId:self.config.appId];
     [CLBUserLifecycleManager clearSessionTokenForAppId:self.config.appId];
-    [[ClarabridgeChat getUserLifecycleManager] rebuildDependenciesWithUserId:nil jwt:nil];
+    [[ClarabridgeChat getUserLifecycleManager] rebuildDependenciesWithExternalId:nil jwt:nil];
     [self.conversationStorageManager clearStorage];
 }
 
@@ -326,7 +327,8 @@
                                                                       user:self.user
                                                                   settings:self.sdkSettings];
 
-    self.conversationMonitor = [[CLBConversationMonitor alloc] initWithUser:self.user config:self.config];
+    self.conversationMonitor = [[CLBConversationMonitor alloc] initWithUser:self.user config:self.config
+                                                     authenticationDelegate:self.sdkSettings.authenticationDelegate];
     [self loadConversation:conversation];
 }
 
@@ -370,6 +372,17 @@
         self.conversationViewController.delegate = self.conversationController;
         [self.conversationViewController updateConversationId:conversation.conversationId];
     }
+
+    if (self.conversationListViewController) {
+        [self.conversationListViewController conversationDidLoad:conversation.conversationId conversationController:self.conversationController];
+    }
+}
+
+- (CLBConversationListViewController *)startConversationListViewControllerWithCreateConversationButton:(BOOL)showCreateConversationButton {
+    CLBConversationListViewController *conversationListViewController = [[CLBConversationListViewController alloc] initWithDeps:self
+                                                                                                                utilitySettings: CLBClarabridgeChatUtilitySettings.new showCreateConversationButton:showCreateConversationButton];
+    self.conversationListViewController = conversationListViewController;
+    return conversationListViewController;
 }
 
 - (CLBConversationViewController *)startConversationViewControllerWithStartingText:(NSString *)startingText {
@@ -393,6 +406,9 @@
         [self loadConversation:conversation];
     } else {
         [self loadConversation:conversation];
+        
+        // We need to update the conversation list when a conversation has been added/changed
+        [self.conversationController updateConversationList];
     }
 }
 

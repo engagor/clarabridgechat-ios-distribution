@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		fyOoqBH+yYDkBCnanESBjZspjV8=
+		ZuF0NdeTobo/qEfc5nY5Ocen5ag=
 		</data>
 		<key>Headers/CLBAuthenticationDelegate.h</key>
 		<data>
@@ -14,11 +14,15 @@
 		</data>
 		<key>Headers/CLBConversation.h</key>
 		<data>
-		xuLhhncegimxfvmEUCHBrkPVUx0=
+		hRJoK6Bv6dVHBLjo1W1RTpjuEbk=
 		</data>
 		<key>Headers/CLBConversationActivity.h</key>
 		<data>
-		RJw+a/lgSyU7/jqtptdwGyTVmp0=
+		Ivsu3sLCgVDiklFliSnapAsRMBI=
+		</data>
+		<key>Headers/CLBConversationListDelegate.h</key>
+		<data>
+		P3wlzFS1av7RzkiuohJKM1s1/GA=
 		</data>
 		<key>Headers/CLBCoordinates.h</key>
 		<data>
@@ -30,7 +34,7 @@
 		</data>
 		<key>Headers/CLBMessage.h</key>
 		<data>
-		AmrHD7P0ohR1JE14yLVP/hceplk=
+		FHtllbo+Nx13nlK7olmfki3o24A=
 		</data>
 		<key>Headers/CLBMessageAction.h</key>
 		<data>
@@ -42,23 +46,23 @@
 		</data>
 		<key>Headers/CLBParticipant.h</key>
 		<data>
-		OvfY+hmo4wuqBWHKEBKxE9v6iTc=
+		UOM0+7T3wHFIwoxPgdGJin53myI=
 		</data>
 		<key>Headers/CLBSettings.h</key>
 		<data>
-		MAjbyEfnPXDHjiKVFlmadugbo4I=
+		KI1Rwf1OoH2gaza+DTFI2lNAePQ=
 		</data>
 		<key>Headers/CLBUser.h</key>
 		<data>
-		TduFqHptDdFblIoUN0WOQxh+8R0=
+		/gj6Bmo2h4s3cNgbm0NkaIcnjnA=
 		</data>
 		<key>Headers/ClarabridgeChat.h</key>
 		<data>
-		YOrFAsXD2pvV0lBtgFJairHksBk=
+		OQ4/iUuKGJTbHEO5OH9MMEw5Vnk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		FwkGVezMj7qOgTXFnD4YVavAtY0=
+		ZEoJ6uomWZoGgVEAEieF7jTHWQI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -96,21 +100,21 @@
 		</dict>
 		<key>defaultAvatar.png</key>
 		<data>
-		KUlteWt3bD7FtW9e5UvGyNaGdiM=
+		OZrFqRvrN6tKT5LTwrfaSlOex8g=
 		</data>
 		<key>defaultAvatar@2x.png</key>
 		<data>
-		iCkT3JYa0ymYWLa34vbtlly3Ojs=
+		91Wh0HsQx2FIhmkMvubCeR87C2I=
 		</data>
 		<key>defaultAvatar@3x.png</key>
 		<data>
-		TZd5cyF3OEqqsb/57QV/ZoXvAT4=
+		pjvmRub+S81+lWD3rW9phEW3cKM=
 		</data>
 		<key>en.lproj/ClarabridgeChatLocalizable.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FRhNPQ3Dpb2UtP1is1wLmRhA4Xs=
+			1ndChTWcz8GC1g8g/ka3ZYUNrVo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -426,11 +430,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fyOoqBH+yYDkBCnanESBjZspjV8=
+			ZuF0NdeTobo/qEfc5nY5Ocen5ag=
 			</data>
 			<key>hash2</key>
 			<data>
-			OfYJzWbQ/UHSrmvHmNlAhdm6goBBs2lG9AP4wnK1Dms=
+			c9r3vy0TawBZz1Nq2g6t3tNq/e8i05TOQJJZIC5F1FI=
 			</data>
 		</dict>
 		<key>Headers/CLBAuthenticationDelegate.h</key>
@@ -448,22 +452,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xuLhhncegimxfvmEUCHBrkPVUx0=
+			hRJoK6Bv6dVHBLjo1W1RTpjuEbk=
 			</data>
 			<key>hash2</key>
 			<data>
-			IGBRXPTJkUVg2jg8w4Q1gQw6/JZAu+3CpPWAfQfbnKw=
+			b6UDhMC7OwD3jNPmY92qhpaedybHBpjRgxj6YRq7kG8=
 			</data>
 		</dict>
 		<key>Headers/CLBConversationActivity.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			RJw+a/lgSyU7/jqtptdwGyTVmp0=
+			Ivsu3sLCgVDiklFliSnapAsRMBI=
 			</data>
 			<key>hash2</key>
 			<data>
-			Qy3HHg/uxQ/YMy7dIejvKumOzO9qoevoq2sMVqfYPjc=
+			7QIbOA/+4YrUBxPynnd1sGfFAQOYaSQWI8QqzXYvhFg=
+			</data>
+		</dict>
+		<key>Headers/CLBConversationListDelegate.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			P3wlzFS1av7RzkiuohJKM1s1/GA=
+			</data>
+			<key>hash2</key>
+			<data>
+			pFENZfmKaFGf4tKVSYr0zPO6Xq9XqwbrgsmEN5iaTcs=
 			</data>
 		</dict>
 		<key>Headers/CLBCoordinates.h</key>
@@ -492,11 +507,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AmrHD7P0ohR1JE14yLVP/hceplk=
+			FHtllbo+Nx13nlK7olmfki3o24A=
 			</data>
 			<key>hash2</key>
 			<data>
-			bHhdUTm2FpiD+qzdDstczujVekANa1zgx0SxwlCn1Hg=
+			U2HxitPhzsKTOhfgtjc6VjDXdPITCr0bD1iI20BezR8=
 			</data>
 		</dict>
 		<key>Headers/CLBMessageAction.h</key>
@@ -525,44 +540,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OvfY+hmo4wuqBWHKEBKxE9v6iTc=
+			UOM0+7T3wHFIwoxPgdGJin53myI=
 			</data>
 			<key>hash2</key>
 			<data>
-			oJbxzBGiHfYMaxa2LoDAicusSeJYAJVC+veG1BjAa/I=
+			7JsBS7VuNnMOQ6B2Svz3qlxiHmlfHrg4Bm7gYu/o0g4=
 			</data>
 		</dict>
 		<key>Headers/CLBSettings.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MAjbyEfnPXDHjiKVFlmadugbo4I=
+			KI1Rwf1OoH2gaza+DTFI2lNAePQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			5vrr9KWbJW5UpE7LdnIQL4n/7F4DAQxLbGZBcoJudnc=
+			Ks53JjQo5dNkx7blDG80uApdjozQ1bkM1P085Dv9vmU=
 			</data>
 		</dict>
 		<key>Headers/CLBUser.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TduFqHptDdFblIoUN0WOQxh+8R0=
+			/gj6Bmo2h4s3cNgbm0NkaIcnjnA=
 			</data>
 			<key>hash2</key>
 			<data>
-			4BRw5JYdQb8cVjEtMZZzw4Ce2EQ7kxaQsuQeGBfXZvY=
+			eCWC0t5IPuVrCP9i29zQQWjv24CSJ3e4m5nqWI1J/IA=
 			</data>
 		</dict>
 		<key>Headers/ClarabridgeChat.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YOrFAsXD2pvV0lBtgFJairHksBk=
+			OQ4/iUuKGJTbHEO5OH9MMEw5Vnk=
 			</data>
 			<key>hash2</key>
 			<data>
-			KdG5rMBKOrKeFBdSt63Oy1QAsQX81869gIKZrA5EdRw=
+			RRLZBgndHmbkfqVt/PRGZvh8MN/7rpoaxjByTRADeE8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -639,44 +654,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KUlteWt3bD7FtW9e5UvGyNaGdiM=
+			OZrFqRvrN6tKT5LTwrfaSlOex8g=
 			</data>
 			<key>hash2</key>
 			<data>
-			36Dbw64VyPpO54vkxBdUk6e1G14adAUrbyJldNj+bNc=
+			vycLOiz8GUIWLTmAXuBUqM8XuxWbxkA2YnEUwDnfYIc=
 			</data>
 		</dict>
 		<key>defaultAvatar@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			iCkT3JYa0ymYWLa34vbtlly3Ojs=
+			91Wh0HsQx2FIhmkMvubCeR87C2I=
 			</data>
 			<key>hash2</key>
 			<data>
-			6+9k7uthCfG1+gXQDCImz57Y44J2M2d0kBZf1+9Z7bw=
+			wJzL52maBXDocB/a4+7MYu1BTCuWYvvYJnb45ZD5ojM=
 			</data>
 		</dict>
 		<key>defaultAvatar@3x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TZd5cyF3OEqqsb/57QV/ZoXvAT4=
+			pjvmRub+S81+lWD3rW9phEW3cKM=
 			</data>
 			<key>hash2</key>
 			<data>
-			bwLoRlYPt909pA5muZtF7nlG5+9gs8p6VuE6ikxsfNo=
+			7sJspuKkjgToxucLPxYzacL1PMDzQjHG70kKCLGXcDo=
 			</data>
 		</dict>
 		<key>en.lproj/ClarabridgeChatLocalizable.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FRhNPQ3Dpb2UtP1is1wLmRhA4Xs=
+			1ndChTWcz8GC1g8g/ka3ZYUNrVo=
 			</data>
 			<key>hash2</key>
 			<data>
-			iEY3aOd4lH8iC1GxcNmue722d1aCJg4kvihrE0Qmwfw=
+			5tPErebdQhiE1ZKz8lxUqJcOYgWXZV+V6vieLYizquM=
 			</data>
 			<key>optional</key>
 			<true/>

@@ -31,7 +31,11 @@
     }
 
     self.cache[@"conversations"] = conversationList;
-    [self.storage setObject:conversationList forKey:@"conversations"];
+
+    NSArray *firstTenConversations = [conversationList.conversations subarrayWithRange:NSMakeRange(0, MIN(10, conversationList.conversations.count))];
+    CLBConversationList *listForFileStorage = [conversationList copy];
+    listForFileStorage.conversations = firstTenConversations;
+    [self.storage setObject:listForFileStorage forKey:@"conversations"];
 }
 
 - (CLBConversationList *)getConversationList {

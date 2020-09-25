@@ -4,7 +4,7 @@
 @interface CLBRemotePushToken : NSObject < CLBRemoteObject >
 
 @property NSString *appId;
-@property NSString *appUserId;
+@property NSString *userId;
 @property NSString *clientId;
 @property NSString *pushToken;
 

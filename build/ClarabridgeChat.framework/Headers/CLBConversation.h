@@ -276,7 +276,7 @@ extern NSString * const CLBConversationActivityKey;
 /**
  *  @abstract Date when the business last read the user messages
  */
-@property(readonly, nullable) NSDate *appMakerLastRead;
+@property(readonly, nullable) NSDate *businessLastRead;
 
 /**
  *  @abstract Metadata associated with the conversation.
@@ -312,6 +312,20 @@ extern NSString * const CLBConversationActivityKey;
  *  @discussion This is set when a conversation is created. Can be nil.
  */
 @property(readonly, nullable) NSString *displayName;
+
+/**
+ *  @abstract A conversation description for the conversation.
+ *
+ *  @discussion This is set when a conversation is created. Can be nil.
+ */
+@property(readonly, nullable) NSString *conversationDescription;
+
+/**
+ *  @abstract A iconUrl for the conversation.
+ *
+ *  @discussion This is set when a conversation is created. Can be nil.
+ */
+@property(readonly, nullable) NSString *iconUrl;
 
 /**
  *  @abstract An array of CLBParticipant objects currently in the conversation.

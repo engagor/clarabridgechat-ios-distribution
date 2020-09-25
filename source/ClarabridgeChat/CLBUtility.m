@@ -414,6 +414,22 @@ UIColor* CLBNavBarItemTextColor(void) {
     return [UIColor blackColor];
 }
 
+UIColor* CLBLabelColor(void) {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor labelColor];
+    }
+
+    return [UIColor blackColor];
+}
+
+UIColor* CLBSecondaryLabelColor(void) {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor secondaryLabelColor];
+    }
+
+    return CLBColorFromHex(0x3c3c43);
+}
+
 UIColor* CLBWebviewBackgroundColor(void) {
     if (@available(iOS 11.0, *)) {
         return [UIColor colorNamed:@"CLBWebviewBackground" inBundle:[ClarabridgeChat getResourceBundle] compatibleWithTraitCollection:nil];
@@ -430,8 +446,8 @@ UIBlurEffectStyle CLBBlurEffectStyle(void) {
     return UIBlurEffectStyleExtraLight;
 }
 
-NSString* CLBEncodeSessionToken(NSString *appUserId, NSString *sessionToken) {
-    NSString *headerValue = [NSString stringWithFormat:@"%@:%@", appUserId, sessionToken];
+NSString* CLBEncodeSessionToken(NSString *userId, NSString *sessionToken) {
+    NSString *headerValue = [NSString stringWithFormat:@"%@:%@", userId, sessionToken];
     NSData *headerValueData = [headerValue dataUsingEncoding:NSUTF8StringEncoding];
 
     return [headerValueData base64EncodedStringWithOptions:kNilOptions];

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CLBDependencyManager.h"
 
-@class CLBConversationController, CLBConversationViewController, CLBMessage;
+@class CLBConversationController, CLBConversationViewController, CLBMessage, CLBConversationListViewController;
 
 @interface CLBDependencyManager(Private)
 

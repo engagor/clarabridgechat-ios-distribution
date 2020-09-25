@@ -42,4 +42,4 @@ You should now be able to import the framework (`#import <ClarabridgeChat/Clarab
 
 # Version
 
-This is version 1.0.0 of ClarabridgeChat. It corresponds to version [8.0.2](https://github.com/smooch/smooch-ios/releases/tag/8.0.2) of the Smooch iOS SDK.
+This is version 2.0.0 of ClarabridgeChat. It corresponds to version [9.0.0](https://github.com/smooch/smooch-ios/releases/tag/9.0.0) of the Smooch iOS SDK.

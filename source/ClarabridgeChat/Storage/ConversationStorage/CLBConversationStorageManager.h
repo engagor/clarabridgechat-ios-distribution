@@ -19,14 +19,21 @@ CLB_FINAL_CLASS
 
 - (instancetype)initWithStorage:(CLBConversationStorage *)storage listStorage:(CLBConversationListStorage *)listStorage;
 
-- (CLBConversation * _Nullable)readConversation:(NSString *)conversationId;
-- (void)removeConversation:(NSString *)conversationId;
-- (void)storeConversation:(CLBConversation *)conversation;
 - (void)clearStorage;
 
 - (CLBConversationList * _Nullable)getConversationList;
-- (void)storeConversationList:(CLBConversationList *)conversationList;
-- (BOOL)activeConversationIsUpToDate:(CLBConversationList *)conversationList;
+
+/// Stores the conversation list received.
+/// If any conversation list already exists, that will be overriden and data relating to that will be cleared.
+/// @param conversationList Conversation list to store.
+/// @param activeConversationId Id of the current active conversation. It should be `nil` if no active conversation is present.
+- (void)storeConversationList:(CLBConversationList *)conversationList activeConversationId:(NSString * _Nullable)activeConversationId;
+
+
+/// Merges the exitisting conversation list with the conversation list received.
+/// @param otherConversationList Conversation list to merge with the existing one.
+/// @param activeConversationId Id of the current active conversation. It should be `nil` if no active conversation is present.
+- (void)mergeConversationListWith:(CLBConversationList *)otherConversationList activeConversationId:(NSString * _Nullable)activeConversationId;
 
 - (BOOL)messagesAreInSyncInStorageForConversationId:(NSString *)conversationId;
 

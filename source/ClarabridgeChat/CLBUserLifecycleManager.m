@@ -20,8 +20,8 @@
 #import "CLBPersistence.h"
 #import "CLBConversationStorageManager.h"
 
+static NSString* const kExternalIdDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_EXTERNAL_ID";
 static NSString* const kUserIdDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_USER_ID";
-static NSString* const kAppUserIdDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_APP_USER_ID";
 static NSString* const kJwtDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_JWT";
 static NSString* const kSessionTokenDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_SESSION_TOKEN";
 
@@ -33,22 +33,22 @@ static NSString* const kSessionTokenDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_S
 
 @implementation CLBUserLifecycleManager
 
-# pragma mark - UserId Storage
+# pragma mark - externalId Storage
 
-+(NSString*)userIdKeyForAppId:(NSString*)appId {
-    return [NSString stringWithFormat:@"%@_%@", kUserIdDefaultsKey, appId];
++(NSString*)externalIdKeyForAppId:(NSString*)appId {
+    return [NSString stringWithFormat:@"%@_%@", kExternalIdDefaultsKey, appId];
 }
 
-+(NSString*)lastKnownUserIdForAppId:(NSString*)appId {
-    return [[CLBPersistence sharedPersistence] getValueFromUserDefaults:[self userIdKeyForAppId:appId]];
++(NSString*)lastKnownExternalIdForAppId:(NSString*)appId {
+    return [[CLBPersistence sharedPersistence] getValueFromUserDefaults:[self externalIdKeyForAppId:appId]];
 }
 
-+(void)setLastKnownUserId:(NSString*)userId forAppId:(NSString*)appId {
-    [[CLBPersistence sharedPersistence] persistValue:userId inUserDefaults:[self userIdKeyForAppId:appId]];
++(void)setLastKnownExternalId:(NSString*)externalId forAppId:(NSString*)appId {
+    [[CLBPersistence sharedPersistence] persistValue:externalId inUserDefaults:[self externalIdKeyForAppId:appId]];
 }
 
-+(void)clearUserIdForAppId:(NSString *)appId {
-    [[CLBPersistence sharedPersistence] removeValueFromUserDefaults:[self userIdKeyForAppId:appId]];
++(void)clearExternalIdForAppId:(NSString *)appId {
+    [[CLBPersistence sharedPersistence] removeValueFromUserDefaults:[self externalIdKeyForAppId:appId]];
 }
 
 # pragma mark - JWT Storage
@@ -87,22 +87,22 @@ static NSString* const kSessionTokenDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_S
     [[CLBPersistence sharedPersistence] removeValueFromUserDefaults:key];
 }
 
-# pragma mark - appUserId Storage
+# pragma mark - userId Storage
 
-+(NSString*)appUserIdKeyForAppId:(NSString*)appId {
-    return [NSString stringWithFormat:@"%@_%@", kAppUserIdDefaultsKey, appId];
++(NSString*)userIdKeyForAppId:(NSString*)appId {
+    return [NSString stringWithFormat:@"%@_%@", kUserIdDefaultsKey, appId];
 }
 
-+(NSString*)lastKnownAppUserIdForAppId:(NSString*)appId {
-    return [[CLBPersistence sharedPersistence] getValueFromUserDefaults:[self appUserIdKeyForAppId:appId]];
++(NSString*)lastKnownUserIdForAppId:(NSString*)appId {
+    return [[CLBPersistence sharedPersistence] getValueFromUserDefaults:[self userIdKeyForAppId:appId]];
 }
 
-+(void)setLastKnownAppUserId:(NSString*)appUserId forAppId:(NSString*)appId {
-    [[CLBPersistence sharedPersistence] persistValue:appUserId inUserDefaults:[self appUserIdKeyForAppId:appId]];
++(void)setLastKnownUserId:(NSString*)userId forAppId:(NSString*)appId {
+    [[CLBPersistence sharedPersistence] persistValue:userId inUserDefaults:[self userIdKeyForAppId:appId]];
 }
 
-+(void)clearAppUserIdForAppId:(NSString *)appId {
-    [[CLBPersistence sharedPersistence] removeValueFromUserDefaults:[self appUserIdKeyForAppId:appId]];
++(void)clearUserIdForAppId:(NSString *)appId {
+    [[CLBPersistence sharedPersistence] removeValueFromUserDefaults:[self userIdKeyForAppId:appId]];
 }
 
 # pragma mark - sessionToken Storage
@@ -152,16 +152,16 @@ static NSString* const kSessionTokenDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_S
 }
 
 -(BOOL)isLoggedIn {
-    return self.depManager.sdkSettings.userId.length > 0 && self.depManager.sdkSettings.jwt.length > 0;
+    return self.depManager.sdkSettings.externalId.length > 0 && self.depManager.sdkSettings.jwt.length > 0;
 }
 
 -(BOOL)appDidBecomeActiveOnce {
     return [ClarabridgeChat didBecomeActiveOnce];
 }
 
--(void)rebuildDependenciesWithUserId:(NSString *)userId jwt:(NSString *)jwt {
+-(void)rebuildDependenciesWithExternalId:(NSString *)externalId jwt:(NSString *)jwt {
     CLBSettings* settings = self.depManager.sdkSettings;
-    settings.userId = userId;
+    settings.externalId = externalId;
     settings.jwt = jwt;
 
     id<CLBConversationDelegate> convoDelegate = self.depManager.conversation.delegate;
@@ -175,12 +175,12 @@ static NSString* const kSessionTokenDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_S
     self.depManager.configFetchScheduler.isInitializationComplete = initializationComplete;
 }
 
--(void)login:(NSString*)userId jwt:(NSString*)jwt completionHandler:(void (^)(NSError *, NSDictionary *))handler {
+-(void)login:(NSString*)externalId jwt:(NSString*)jwt completionHandler:(void (^)(NSError *, NSDictionary *))handler {
     CLBConfigFetchScheduler* outgoingScheduler = self.depManager.configFetchScheduler;
     CLBRemoteObjectSynchronizer* outgoingSynchronizer = outgoingScheduler.synchronizer;
     CLBUser* outgoingUser = self.depManager.userSynchronizer.user;
 
-    [self rebuildDependenciesWithUserId:userId jwt:jwt];
+    [self rebuildDependenciesWithExternalId:externalId jwt:jwt];
     CLBUserSynchronizer *userSynchronizer = self.depManager.userSynchronizer;
 
     void (^loginCompletionHandler)(NSError *, NSDictionary *) = ^(NSError *error, NSDictionary *userInfo){
@@ -205,7 +205,7 @@ static NSString* const kSessionTokenDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_S
         }
     };
     
-    if(outgoingScheduler.config.validityStatus == CLBAppStatusValid && outgoingUser.appUserId && outgoingUser.isModified){
+    if(outgoingScheduler.config.validityStatus == CLBAppStatusValid && outgoingUser.userId && outgoingUser.isModified){
         // Flush user props to the server before switching users
         [outgoingSynchronizer synchronize:outgoingUser completion:^(CLBRemoteResponse *response) {
             [userSynchronizer logInWithCompletionHandler:loginCompletionHandler];
@@ -219,16 +219,16 @@ static NSString* const kSessionTokenDefaultsKey = @"CLARABRIDGECHAT_LAST_KNOWN_S
 
 -(void)logoutWithCompletionHandler:(void(^)(NSError *, NSDictionary *))handler {
     CLBUser *user = self.depManager.userSynchronizer.user;
-    BOOL userExists = user.appUserId != nil && user.appUserId.length > 0;
+    BOOL userExists = user.userId != nil && user.userId.length > 0;
     
     void(^logoutCompletionBlock)(NSError *, NSDictionary *) = ^(NSError *error, NSDictionary *userInfo) {
         if (!error) {
             [self.depManager.conversation removeFromDisk];
-            [[self class] clearAppUserIdForAppId:self.depManager.sdkSettings.appId];
-            [[self class] clearSessionTokenForAppId:self.depManager.sdkSettings.appId];
             [[self class] clearUserIdForAppId:self.depManager.sdkSettings.appId];
+            [[self class] clearSessionTokenForAppId:self.depManager.sdkSettings.appId];
+            [[self class] clearExternalIdForAppId:self.depManager.sdkSettings.appId];
             [[self class] clearJwtForAppId:self.depManager.sdkSettings.appId];
-            [self rebuildDependenciesWithUserId:nil jwt:nil];
+            [self rebuildDependenciesWithExternalId:nil jwt:nil];
             CLBEnsureMainThread(^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:CLBLogoutDidCompleteNotification object:nil];
             });

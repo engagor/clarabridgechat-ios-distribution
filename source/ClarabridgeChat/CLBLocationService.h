@@ -9,8 +9,6 @@
 
 @class CLBLocationService;
 
-FOUNDATION_EXPORT NSString * const CLBClarabridgeChatErrorDomain;
-
 extern NSInteger const CLBMissingLocationUsageDescriptionError;
 
 @protocol CLBLocationServiceDelegate <NSObject>

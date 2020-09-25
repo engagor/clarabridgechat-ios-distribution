@@ -65,7 +65,7 @@
 /* Status text for sent chat messages */
 "Delivered" = "Delivered";
 
-/* Status text for chat messages seen by the appMaker */
+/* Status text for chat messages seen by the business */
 "Seen" = "Seen";
 
 /* Timestamp text for recent messages */
@@ -197,3 +197,54 @@
 
 /* Error message when the content of a webview fails to load */
 "Failed to open the page" = "Failed to open the page";
+
+/* Timestamp text for messages received in the last minute on the conversation screen */
+"1 minute ago" = "1 minute ago";
+
+/* Timestamp text for messages received between 1 minute and 1 hour ago on the conversation screen */
+"%ld minutes ago" = "%ld minutes ago";
+
+/* Timestamp text for messages received between 1 and 2 hours ago on the conversation screen */
+"1 hour ago" = "1 hour ago";
+
+/* Timestamp text for messages received between 2 and 24 hours ago on the conversation screen */
+"%ld hours ago" = "%ld hours ago";
+
+/* Timestamp text for messages received between 24 and 48 hours ago on the conversation screen */
+"Yesterday" = "Yesterday";
+
+/* Conversation list title */
+"My Conversations" = "My Conversations";
+
+/* Conversation list empty view text */
+"No conversations" = "No conversations";
+
+/* Text used in the unread badge when there are more than 9 unread messages */
+"9+" = "9+";
+
+/* Text used as a preview when a file is sent */
+"%@ sent a file" = "%@ sent a file";
+
+/* Text used as a preview when a image is sent */
+"%@ sent an image" = "%@ sent an image";
+
+/* Text used as a preview when a form is sent */
+"%@ sent a form" = "%@ sent a form";
+
+/* Text used as a preview when some other message type that is not file, image, form or text is sent */
+"%@ sent a message" = "%@ sent a message";
+
+/* Text used as a preview when no message has been sent */
+"No Messages" = "No Messages";
+
+/* Text used as a prefix by messages sent by the current app user. */
+"You" = "You";
+
+/* Text used to notify user an error has occured loading a conversation from the conversation list screen. */
+"Failed to load conversation" = "Failed to load conversation";
+
+/* Create Conversation Button Title */
+"Create conversation" = "New conversation";
+
+/* Text used to notify user an error has occured creating a conversation from the conversation list screen. */
+"Failed to create conversation" = "Failed to create conversation";

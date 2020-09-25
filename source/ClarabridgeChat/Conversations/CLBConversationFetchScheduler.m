@@ -242,7 +242,7 @@ static NSString* const kMessagesKey = @"messages";
 }
 
 - (BOOL)canSendActivity {
-    return !self.conversation.conversationStarted || !self.conversation.user.appUserId || !self.conversation.conversationId;
+    return !self.conversation.conversationStarted || !self.conversation.user.userId || !self.conversation.conversationId;
 }
 
 - (NSDictionary *)parametersForType:(NSString *)type user: (CLBUser *)user {

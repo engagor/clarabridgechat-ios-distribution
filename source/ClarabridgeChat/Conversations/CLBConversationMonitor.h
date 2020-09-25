@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CLBMZFayeClient.h"
+#import "CLBAuthenticationDelegate.h"
 
 @class CLBConfig;
 @class CLBUser;
@@ -22,7 +23,8 @@ extern NSString* const CLBConversationMonitorDidChangeConnectionStatusNotificati
 
 @interface CLBConversationMonitor : NSObject < CLBMZFayeClientDelegate >
 
--(instancetype)initWithUser:(CLBUser *)user config:(CLBConfig *)config;
+-(instancetype)initWithUser:(CLBUser *)user config:(CLBConfig *)config
+     authenticationDelegate:(_Nullable id<CLBAuthenticationDelegate>)authenticationDelegate;
 
 -(void)connect;
 -(void)connectImmediately;
