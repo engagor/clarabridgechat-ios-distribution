@@ -15,6 +15,7 @@ NSInteger const CLBMissingLocationUsageDescriptionError = -5000;
 
 @property BOOL pendingAuthorizationForLocationRequest;
 @property NSMutableArray<CLBLocationRequest *> *pendingRequests;
+@property CLLocationManager *locationManager;
 
 @end
 
@@ -25,17 +26,36 @@ NSInteger const CLBMissingLocationUsageDescriptionError = -5000;
     
     if (self) {
         _pendingRequests = [[NSMutableArray alloc] init];
+        _locationManager = [CLLocationManager new];
+    }
+    
+    return self;
+}
+
+-(instancetype)initWithLocationManager:(CLLocationManager *)locationManager {
+    self = [self init];
+    
+    if (self) {
+        _locationManager = locationManager;
     }
     
     return self;
 }
 
 -(BOOL)hasRequestLocationPermission {
-    return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways;
+    if (@available(iOS 14.0, *)) {
+        return [self.locationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [self.locationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways;
+    } else {
+        return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways;
+    }
 }
 
 -(BOOL)canRequestLocationPermission {
-    return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined;
+    if (@available(iOS 14.0, *)) {
+        return [self.locationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined;
+    } else {
+        return [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined;
+    }
 }
 
 -(void)requestLocationPermissionForMessage:(CLBMessage *)message {

@@ -24,9 +24,9 @@ To test the pre-built framework in your own application, follow the steps below 
 
 These steps are provided for testing purposes only. Linking the framework in this way will result in errors when trying to submit your application to the App Store. For production distribution instructions, follow the instructions in the [how to distribute](./HOWTODISTRIBUTE.MD) guide.
 
-1. Copy the `ClarabridgeChat.framework` file from the `build` directory into your project directory.
-2. Add the framework to your Xcode project by selecting `File` > `Add Files to "My_Project"` and selecting `ClarabridgeChat.framework` in the file picker.
-3. In your project settings, add `ClarabridgeChat.framework` to the list of `Embedded Binaries` in the `General` tab for your application target.
+1. Copy the `ClarabridgeChat.xcframework` file from the `build` directory into your project directory.
+2. Add the framework to your Xcode project by selecting `File` > `Add Files to "My_Project"` and selecting `xcClarabridgeChat.framework` in the file picker.
+3. In your project settings, add `ClarabridgeChat.xcframework` to the list of `Embedded Binaries` in the `General` tab for your application target.
 
 You should now be able to import the framework (`#import <ClarabridgeChat/ClarabridgeChat.h>`) and start using it in your code.
 
@@ -42,4 +42,4 @@ You should now be able to import the framework (`#import <ClarabridgeChat/Clarab
 
 # Version
 
-This is version 2.0.0 of ClarabridgeChat. It corresponds to version [9.0.0](https://github.com/smooch/smooch-ios/releases/tag/9.0.0) of the Smooch iOS SDK.
+This is version 3.0.0 of ClarabridgeChat. It corresponds to version [10.0.0](https://github.com/smooch/smooch-ios/releases/tag/10.0.0) of the Smooch iOS SDK.

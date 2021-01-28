@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, CLBTableViewLoadStatus) {
 
 @interface CLBSOMessagingViewController : UIViewController <CLBSOMessagingDataSource, CLBSOMessagingDelegate, UITableViewDataSource, CLBSOMessageCellDelegate, CLBSOMessageInputViewDelegate>
 
--(instancetype)initWithAccentColor:(UIColor*)accentColor userMessageTextColor:(UIColor*)userMessageTextColor;
+-(instancetype)initWithAccentColor:(UIColor*)accentColor userMessageTextColor:(UIColor*)userMessageTextColor carouselTextColor:(UIColor*)carouselTextColor;
 
 +(void)setInputDisplayed:(BOOL)displayed;
 +(BOOL)isInputDisplayed;
@@ -64,6 +64,7 @@ typedef NS_ENUM(NSInteger, CLBTableViewLoadStatus) {
 
 @property UIColor* accentColor;
 @property UIColor* userMessageTextColor;
+@property UIColor* carouselTextColor;
 @property (strong, nonatomic) CLBSOImageBrowserView *imageBrowser;
 @property CLBTableViewLoadStatus loadStatus;
 @property CGFloat errorBannerHeight;

@@ -192,6 +192,7 @@ static NSString * _Nonnull const _cellIdentifier = @"CLBConversationListTableVie
         [paragraphStyle setLineSpacing:5];
         [attributedLastMessage addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [viewModel.lastMessage length])];
         self.lastMessageLabel.attributedText = attributedLastMessage;
+        self.lastMessageLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     }
 
     if (viewModel.unreadCount > 0) {

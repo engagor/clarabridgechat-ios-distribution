@@ -12,7 +12,8 @@
 
 -(id)serialize {
     return @{
-             @"pushNotificationToken" : self.pushToken
+             @"pushNotificationToken" : self.pushToken,
+             @"integrationId": self.integrationId
              };
 }
 

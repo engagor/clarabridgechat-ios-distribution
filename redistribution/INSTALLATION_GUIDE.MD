@@ -8,7 +8,7 @@ To add the ClarabridgeChat.framework library to your XCode project, follow the s
 gem install cocoapods
 ```
 
-2. Copy the `ClarabridgeChat.framework` and `ClarabridgeChat.podspec` files somewhere in your project directory, for example in `vendor/ClarabridgeChat`
+2. Copy the `ClarabridgeChat.xcframework` and `ClarabridgeChat.podspec` files somewhere in your project directory, for example in `vendor/ClarabridgeChat`
 3. Add the ClarabridgeChat dependency to your [Podfile](https://guides.cocoapods.org/using/the-podfile.html), using a local `path` that points to the directory in step 2
 
 ```ruby

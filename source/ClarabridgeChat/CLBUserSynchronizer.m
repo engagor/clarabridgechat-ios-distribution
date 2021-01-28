@@ -35,6 +35,7 @@ NSString *const kRequestIntent = @"intent";
 NSString *const kRequestDisplayName = @"displayName";
 NSString *const kRequestDescription = @"description";
 NSString *const kRequestIconUrl = @"iconUrl";
+NSString *const kRequestAvatarUrl = @"avatarUrl";
 NSString *const kRequestMetadata = @"metadata";
 NSString *const kRequestType = @"type";
 NSString *const kConversationTypePersonal = @"personal";
@@ -286,10 +287,10 @@ NSString *const kRequestMessages = @"messages";
         return;
     }
     
-    [self createConversationOrUserWithName:nil description:nil iconUrl:nil metadata:nil messages:nil intent:intent completionHandler:completionHandler];
+    [self createConversationOrUserWithName:nil description:nil iconUrl:nil avatarUrl:nil metadata:nil messages:nil intent:intent completionHandler:completionHandler];
 }
 
-- (void)createConversationOrUserWithName:(nullable NSString *)name description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl metadata:(nullable NSDictionary *)metadata messages:(nullable NSArray<CLBMessage *> *)messages intent:(nullable NSString *)intent completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
+- (void)createConversationOrUserWithName:(nullable NSString *)name description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl avatarUrl:(nullable NSString *)avatarUrl metadata:(nullable NSDictionary *)metadata messages:(nullable NSArray<CLBMessage *> *)messages intent:(nullable NSString *)intent completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
 
     @synchronized (self.userCreationCallbacks) {
         if (completionHandler) {
@@ -327,7 +328,7 @@ NSString *const kRequestMessages = @"messages";
             if(iconUrl) {
                 parameters[kRequestIconUrl] = iconUrl;
             }
-
+            
             if(metadata) {
                 parameters[kRequestMetadata] = metadata;
             }
@@ -346,7 +347,7 @@ NSString *const kRequestMessages = @"messages";
             if (userExists) {
                 [self createConversationWithParameters:parameters intent:intent completionHandler:self.creationCompletedBlock];
             } else {
-                [self createUserWithParameters:parameters intent:intent completionHandler:self.creationCompletedBlock];
+                [self createUserWithParameters:parameters avatarUrl:avatarUrl intent:intent completionHandler:self.creationCompletedBlock];
             }
         }
     }
@@ -383,12 +384,16 @@ NSString *const kRequestMessages = @"messages";
     }];
 }
 
-- (void)createUserWithParameters:(nullable NSDictionary *)parameters intent:(NSString *)intent completionHandler:(void (^)(NSError *, NSDictionary *))handler {
+- (void)createUserWithParameters:(nullable NSDictionary *)parameters avatarUrl:(nullable NSString *)avatarUrl intent:(NSString *)intent completionHandler:(void (^)(NSError *, NSDictionary *))handler {
     NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers", self.appId];
     NSMutableDictionary* serializedData = [[self.user serialize] mutableCopy];
     [serializedData setObject:intent forKey:@"intent"];
 
-
+    
+    if (avatarUrl && avatarUrl.length > 0) {
+        [serializedData setObject:avatarUrl forKey:kRequestAvatarUrl];
+    }
+    
     if (parameters != NULL) {
         NSDictionary *conversationParameters = @{kRequestConversation:parameters};
         [serializedData addEntriesFromDictionary:conversationParameters];

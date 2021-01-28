@@ -18,6 +18,7 @@
 static NSString* const CLARABRIDGECHAT_LEGACY_UUID_DEFAULTS_KEY = @"CLARABRIDGECHAT_UUID_DEFAULTS_KEY";
 static NSString* const CLARABRIDGECHAT_LEGACY_KEYCHAIN_ACCOUNT_NAME = @"CLARABRIDGECHAT_UUID_ACCOUNT";
 static NSString* const CLARABRIDGECHAT_PUSH_NOTIFICATION_DEVICE_TOKEN_KEY = @"CLARABRIDGECHAT_PUSH_NOTIFICATION_DEVICE_TOKEN_KEY";
+static NSString* const CLARABRIDGECHAT_MOST_RECENT_INTEGRATION_ID_KEY = @"CLARABRIDGECHAT_MOST_RECENT_INTEGRATION_ID_KEY";
 
 static NSString* const CLARABRIDGECHAT_KEYCHAIN_SERVICE_NAME = @"com.clarabridge";
 static NSString* const CLB_UNIQUE_DEVICE_IDENTIFIER_KEY = @"CLB_UNIQUE_DEVICE_IDENTIFIER_KEY";
@@ -200,6 +201,14 @@ NSString* CLBGetPushNotificationDeviceToken() {
 
 void CLBSetPushNotificationDeviceToken(NSString* deviceToken) {
     [[CLBPersistence sharedPersistence] persistValue:deviceToken inUserDefaults:CLARABRIDGECHAT_PUSH_NOTIFICATION_DEVICE_TOKEN_KEY];
+}
+
+NSString* CLBGetMostRecentIntegrationID() {
+    return [[CLBPersistence sharedPersistence] getValueFromKeychain:CLARABRIDGECHAT_MOST_RECENT_INTEGRATION_ID_KEY];
+}
+
+void CLBSetMostRecentIntegrationID(NSString* integrationId) {
+    [[CLBPersistence sharedPersistence] persistValue:integrationId inKeychain:CLARABRIDGECHAT_MOST_RECENT_INTEGRATION_ID_KEY];
 }
 
 CGFloat CLBStatusBarHeight() {

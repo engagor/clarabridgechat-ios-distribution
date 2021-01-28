@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLBConversation (Mapper)
 
-- (CLBConversationViewModel *)conversationViewModelWithAppAvatarURLString:(NSString *)appAvatarUrlString appName:(NSString *)appName users:(NSArray<CLBUser *> *)users;
-- (NSString *)buildLastMessageWithMessage:(CLBMessage *)message andDefaultName:(NSString *)defaultName andUsers:(NSArray<CLBUser *> *)users;
+- (CLBConversationViewModel *)conversationViewModelWithAppAvatarURLString:(NSString *)appAvatarUrlString appName:(nullable NSString *)appName users:(NSArray<CLBUser *> *)users;
+- (NSString *)buildLastMessageWithMessage:(CLBMessage *)message andDefaultName:(nullable NSString *)defaultName andUsers:(NSArray<CLBUser *> *)users;
 
 @end
 

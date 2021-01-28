@@ -772,9 +772,18 @@ __weak static CLBConversationListViewController *conversationListVC;
 
     NSString *newToken = [hexString copy];
     NSString *savedDeviceToken = CLBGetPushNotificationDeviceToken();
-
-    if (newToken && ![newToken isEqualToString:savedDeviceToken]) {
+    NSString *newIntegrationId = depManager.config.integrationId;
+    NSString *savedIntegrationId = CLBGetMostRecentIntegrationID();
+    
+    BOOL tokenHasChanged = newToken && ![newToken isEqualToString:savedDeviceToken];
+    BOOL integrationIdHasChanged = newIntegrationId && ![newIntegrationId isEqual:savedIntegrationId];
+    
+    if (tokenHasChanged || integrationIdHasChanged) {
         CLBSetPushNotificationDeviceToken(newToken);
+        
+        if (newIntegrationId) {
+            CLBSetMostRecentIntegrationID(newIntegrationId);
+        }
 
         BOOL userExists = depManager.userSynchronizer.user.userId != nil;
 
@@ -788,6 +797,7 @@ __weak static CLBConversationListViewController *conversationListVC;
     CLBRemotePushToken *pushToken = [[CLBRemotePushToken alloc] init];
 
     pushToken.appId = depManager.config.appId;
+    pushToken.integrationId = depManager.config.integrationId;
     pushToken.pushToken = newToken;
     pushToken.clientId = CLBGetUniqueDeviceIdentifier();
     pushToken.userId = depManager.userSynchronizer.user.userId;
@@ -945,7 +955,7 @@ __weak static CLBConversationListViewController *conversationListVC;
     [depManager.userSynchronizer startConversationOrCreateUserWithIntent:intent completionHandler:completionHandler];
 }
 
-+ (void)createConversationWithName:(nullable NSString *)displayName description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl metadata:(nullable NSDictionary *)metadata message:(nullable NSArray<CLBMessage *> *)message completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
++ (void)createConversationWithName:(nullable NSString *)displayName description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl avatarUrl:(nullable NSString *)avatarUrl metadata:(nullable NSDictionary *)metadata message:(nullable NSArray<CLBMessage *> *)message completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler {
 
     if (message && ![self messagesAreTextOnly:message]) {
         if (completionHandler) {
@@ -958,7 +968,7 @@ __weak static CLBConversationListViewController *conversationListVC;
         return;
     }
 
-    [depManager.userSynchronizer createConversationOrUserWithName:displayName description:description iconUrl:iconUrl metadata:metadata messages:message intent:CLBIntentConversationStart completionHandler:completionHandler];
+    [depManager.userSynchronizer createConversationOrUserWithName:displayName description:description iconUrl:iconUrl avatarUrl:avatarUrl metadata:metadata messages:message intent:CLBIntentConversationStart completionHandler:completionHandler];
 }
 
 +(BOOL)messagesAreTextOnly:(NSArray<CLBMessage *> *)messages {

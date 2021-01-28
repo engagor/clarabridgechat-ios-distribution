@@ -24,7 +24,12 @@
         lastMessage = [CLBLocalization localizedStringForKey:@"No Messages"];
     }
 
-    NSString *displayName = (self.displayName && self.displayName.length > 0) ? self.displayName : appName;
+    NSString *displayName = [CLBLocalization localizedStringForKey:@"Messages"];
+    if (self.displayName && self.displayName.length > 0) {
+        displayName = self.displayName;
+    } else if (appName && appName.length > 0) {
+        displayName = appName;
+    }
 
     NSString *avatarUrl = appAvatarUrlString;
 
@@ -58,7 +63,11 @@
     }
 
     if ([message.type isEqual: @"text"]) {
-        return [NSString stringWithFormat:@"%@: %@", messageCreator, message.text];
+        if (messageCreator && messageCreator.length > 0) {
+            return [NSString stringWithFormat:@"%@: %@", messageCreator, message.text];
+        } else {
+            return [NSString stringWithFormat:@"%@", message.text];
+        }
     }
     else if ([message.type isEqual: @"image"]) {
         return [NSString stringWithFormat:[CLBLocalization localizedStringForKey:@"%@ sent an image"], messageCreator];

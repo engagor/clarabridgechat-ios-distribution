@@ -82,7 +82,7 @@ static NSDateFormatter* dateFormatter;
     return isInputDisplayed;
 }
 
--(instancetype)initWithAccentColor:(UIColor*)accentColor userMessageTextColor:(UIColor*)userMessageTextColor {
+-(instancetype)initWithAccentColor:(UIColor*)accentColor userMessageTextColor:(UIColor*)userMessageTextColor carouselTextColor:(UIColor*)carouselTextColor {
     self = [super init];
     if(self){
         _errorBannerHeight = 0;
@@ -92,6 +92,7 @@ static NSDateFormatter* dateFormatter;
         _loadStatus = CLBTableViewLoadStatusDelayed;
         _carouselSizeCache = [[NSMutableDictionary alloc] init];
         _carouselScrollCache = [[NSMutableDictionary alloc] init];
+        _carouselTextColor = carouselTextColor;
     }
     return self;
 }
@@ -136,17 +137,16 @@ static NSDateFormatter* dateFormatter;
     [self.view addSubview:self.loadingSpinner];
 }
 
--(void)inputDisplayedDidChange {
-    self.chatInputView.displayed = isInputDisplayed;
-}
-
 #pragma mark - View lifecicle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setup];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputDisplayedDidChange) name:kInputDisplayedDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserverForName:kInputDisplayedDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        __weak CLBSOMessagingViewController *weakSelf = self;
+        weakSelf.chatInputView.displayed = isInputDisplayed;
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -370,6 +370,7 @@ static NSDateFormatter* dateFormatter;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accentColor = self.accentColor;
         cell.userMessageTextColor = self.userMessageTextColor;
+        cell.carouselTextColor = self.carouselTextColor;
     }
     
     cell.mediaImageViewSize = [self mediaThumbnailSizeForMessage:message];

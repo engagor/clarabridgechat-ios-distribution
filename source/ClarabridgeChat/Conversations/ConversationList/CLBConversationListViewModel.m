@@ -304,7 +304,7 @@
     self.error = NO;
 
     __weak CLBConversationListViewModel *weakSelf = self;
-    [self.userSynchronizer createConversationOrUserWithName:nil description:nil iconUrl:nil metadata:nil messages:nil intent:@"conversation:start" completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+    [self.userSynchronizer createConversationOrUserWithName:nil description:nil iconUrl:nil avatarUrl:nil metadata:nil messages:nil intent:@"conversation:start" completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
             if (error) {
                 NSLog(@"<CLARABRIDGECHAT::ERROR> failed to create conversation");
                 weakSelf.errorMessage = [CLBLocalization localizedStringForKey:@"Failed to create conversation"];

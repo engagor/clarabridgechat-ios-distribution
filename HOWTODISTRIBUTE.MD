@@ -18,14 +18,14 @@ We recommend hosting the podspec on CocoaPods for ease of installation for your 
 1. If the ClarabridgeChat pod is already published, get an invite from the person who originally published it. see [Adding other people as contributors](https://guides.cocoapods.org/making/getting-setup-with-trunk#adding-other-people-as-contributors).
 
 ### Publication
-1. Host the ClarabridgeChat.framework binary on a server publicly available on the internet. This could be a git repo, svn repo, https url, etc. See the [podspec reference](https://guides.cocoapods.org/syntax/podspec.html#source) for the list of supported types.
+1. Host the ClarabridgeChat.xcframework binary on a server publicly available on the internet. This could be a git repo, svn repo, https url, etc. See the [podspec reference](https://guides.cocoapods.org/syntax/podspec.html#source) for the list of supported types.
 2. Create a podspec file based on the [provided example for hosting](./ClarabridgeChat.podspec.example) and fill in these fields :
     - version
     - summary
     - homepage
     - license
     - author
-    - source (point to the hosted framework mentioned above. Ex: `:http => "https://company.com/ClarabridgeChat.framework"`)
+    - source (point to the hosted framework mentioned above. Ex: `:http => "https://company.com/ClarabridgeChat.xcframework"`)
 
 For more details on each field, see the [official podspec documentation](https://guides.cocoapods.org/syntax/podspec.html).
 For reference, you can refer to the [complete podspec](https://github.com/CocoaPods/Specs/blob/master/Specs/2/4/5/Smooch/5.8.2/Smooch.podspec.json) used for Smooch.

@@ -76,7 +76,6 @@ static NSString* const kCameraIcon = @"";
     self.textView = [[CLBSOPlaceholderedTextView alloc] init];
     self.textView.textColor = CLBExtraDarkGrayColor(YES);
     self.textView.delegate = self;
-    [self.textView setTextContainerInset:UIEdgeInsetsMake(4, 4, 4, 4)];
     self.textView.textContainer.lineFragmentPadding = 0;
     self.textView.backgroundColor = [UIColor clearColor];
     self.textView.font = [UIFont systemFontOfSize:16];

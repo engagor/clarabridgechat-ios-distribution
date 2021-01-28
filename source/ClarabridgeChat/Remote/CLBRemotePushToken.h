@@ -6,6 +6,7 @@
 @property NSString *appId;
 @property NSString *userId;
 @property NSString *clientId;
+@property NSString *integrationId;
 @property NSString *pushToken;
 
 @end

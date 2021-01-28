@@ -89,6 +89,7 @@ static const int kUserImageViewRightMargin = 5;
 
 @property UIColor* accentColor;
 @property UIColor* userMessageTextColor;
+@property UIColor* carouselTextColor;
 
 - (void)adjustCell;
 - (void)layoutContent;

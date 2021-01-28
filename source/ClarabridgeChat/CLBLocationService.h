@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 #import "CLBCoordinates.h"
 #import "CLBMessage+Private.h"
 
@@ -25,6 +26,8 @@ extern NSInteger const CLBMissingLocationUsageDescriptionError;
 @interface CLBLocationService : NSObject
 
 @property(weak) id<CLBLocationServiceDelegate> delegate;
+
+-(instancetype)initWithLocationManager:(CLLocationManager *)locationManager;
 
 -(BOOL)canRequestCurrentLocation;
 -(BOOL)isLocationUsageDescriptionProvided;

@@ -170,6 +170,13 @@ static BOOL _isConversationListShown = NO;
 
 - (void)initNavBarWithTitle:(NSString *)title closeButtonTitle:(NSString *)closeButtonTitle {
     self.navigationItem.title = title;
+    
+    // workaround to remove dropshadow under navBar
+    self.navigationController.navigationBar.backgroundColor = CLBSystemBackgroundColor();
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.tintColor = CLBNavBarItemTextColor();
+    
     if(self.isBeingPresented || self.navigationController.isBeingPresented) {
         if (@available(iOS 13.0, *)) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemClose target:self action:@selector(close)];

@@ -136,6 +136,10 @@ static const CGFloat kBorderArea = kBorderWidth * 2;
         viewModel.flatCorners = CLBCornerBottomLeft | CLBCornerBottomRight | CLBCornerTopRight | CLBCornerTopLeft;
     }
     
+    if (self.carouselTextColor) {
+       viewModel.descriptionTextColor = self.carouselTextColor;
+    }
+    
     viewModel.text = messageItem.title;
     viewModel.itemDescription = messageItem.itemDescription;
     viewModel.actions = messageItem.actions;

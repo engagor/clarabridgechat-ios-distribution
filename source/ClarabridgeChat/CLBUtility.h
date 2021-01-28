@@ -37,6 +37,8 @@ NSString* CLBGetAppDisplayName(void);
 NSString* CLBGetAppVersion(void);
 NSString* CLBGetPushNotificationDeviceToken(void);
 void CLBSetPushNotificationDeviceToken(NSString* deviceToken);
+NSString* CLBGetMostRecentIntegrationID(void);
+void CLBSetMostRecentIntegrationID(NSString* integrationId);
 BOOL CLBIsSimulator(void);
 void CLBEnsureMainThread(void (^block)(void));
 

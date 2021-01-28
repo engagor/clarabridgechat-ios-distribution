@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     CLBBounceTypeFromRight
 };
 
-@interface CLBConversationViewController() < UIActionSheetDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, CLBBuyViewControllerDelegate, CLBRepliesViewDelegate, CLBLocationServiceDelegate, CLBPhotoConfirmationDelegate >
+@interface CLBConversationViewController() < UIActionSheetDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate, CLBBuyViewControllerDelegate, CLBRepliesViewDelegate, CLBLocationServiceDelegate, CLBPhotoConfirmationDelegate >
 
 @property UINavigationBar* navBar;
 @property CLBConversationNavigationItemTitleView *conversationNavigationItemTitleView;
@@ -103,7 +103,8 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 }
 
 -(instancetype)initWithDeps:(CLBDependencyManager *)deps {
-    self = [super initWithAccentColor:deps.sdkSettings.conversationAccentColor userMessageTextColor:deps.sdkSettings.userMessageTextColor];
+    self = [super initWithAccentColor:deps.sdkSettings.conversationAccentColor userMessageTextColor:deps.sdkSettings.userMessageTextColor
+        carouselTextColor:deps.sdkSettings.carouselTextColor];
     if(self){
         _pendingMessages = [[NSMutableArray alloc] init];
         _statusBarStyle = deps.sdkSettings.conversationStatusBarStyle;
@@ -526,7 +527,11 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     // Create navigation bar if needed
     if(!self.navigationController) {
         self.navBar = [[CLBNavigationBar alloc] init];
-        self.navBar.translucent = YES;
+        
+        // workaround to remove dropshadow under navBar
+        self.navBar.backgroundColor = CLBSystemBackgroundColor();
+        self.navBar.shadowImage = [[UIImage alloc] init];
+        [self.navBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
         
         if([UINavigationBar appearance].tintColor == nil){
             self.navBar.tintColor = CLBNavBarItemTextColor();
@@ -1718,48 +1723,25 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 
 -(void)showErrorWithTitle:(NSString*)title description:(NSString*)description linkToSettings:(BOOL)linkToSettings {
     CLBEnsureMainThread(^{
-        UIAlertView* av = [[UIAlertView alloc] initWithTitle:[CLBLocalization localizedStringForKey:title]
-                                                     message:[CLBLocalization localizedStringForKey:description]
-                                                    delegate:self
-                                           cancelButtonTitle:[CLBLocalization localizedStringForKey:@"Dismiss"]
-                                           otherButtonTitles:linkToSettings ? [CLBLocalization localizedStringForKey:@"Settings"] : nil, nil];
-        [av show];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[CLBLocalization localizedStringForKey:title]
+                                                                                 message:[CLBLocalization localizedStringForKey:description]
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *firstAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Settings"]
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction * _Nonnull action) {
+            CLBOpenExternalURL([NSURL URLWithString:UIApplicationOpenSettingsURLString]);
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Dismiss"]
+                                                               style:UIAlertActionStyleCancel handler:nil];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:firstAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
     });
-}
-
--(void)sendLatestPictureWithConfirmation:(BOOL)showConfirmation {
-    [self requestPhotoPermission:^{
-        PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
-        fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-        PHFetchResult *fetchResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:fetchOptions];
-
-        if(fetchResult.count == 0){
-            [self showNoPhotosError];
-            return;
-        }
-
-        PHAsset *lastAsset = [fetchResult lastObject];
-
-        PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
-        options.synchronous = false;
-        options.version  = PHImageRequestOptionsVersionCurrent;
-
-        CLBEnsureMainThread(^{
-            [[PHImageManager defaultManager] requestImageForAsset:lastAsset
-                                                       targetSize:self.view.bounds.size
-                                                      contentMode:PHImageContentModeAspectFill
-                                                          options:options
-                                                    resultHandler:^(UIImage *result, NSDictionary *info) {
-                if([info[PHImageResultIsDegradedKey] integerValue] == 0){
-                    if (showConfirmation) {
-                        [self showConfirmationAlertForImage:result];
-                    } else {
-                        [self sendImage:result];
-                    }
-                }
-            }];
-        });
-    }];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -1768,15 +1750,10 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage* image = info[UIImagePickerControllerOriginalImage];
         
-        if(picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-        }else{
-            [self dismissViewControllerAnimated:YES completion:^{
-                [self showConfirmationAlertForImage:image];
-            }];
-        }
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self showConfirmationAlertForImage:image];
+        }];
+        
     } else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         NSURL *fileLocation = info[UIImagePickerControllerMediaURL];
         
@@ -1830,22 +1807,6 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)image:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo {
-    if(error){
-        [self checkPhotoPermissionAndShowError];
-    }else{
-        [self sendLatestPictureWithConfirmation:NO];
-    }
-}
-
-#pragma mark - UIAlertViewDelegate
-
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if(buttonIndex != alertView.cancelButtonIndex){
-        CLBOpenExternalURL([NSURL URLWithString:UIApplicationOpenSettingsURLString]);
-    }
 }
 
 -(void)hideErrorBar {
