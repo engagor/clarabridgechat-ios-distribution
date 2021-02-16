@@ -45,8 +45,6 @@
 static BOOL didRegisterForRemoteNotifications = NO;
 static BOOL conversationShown = NO;
 
-static const int kSelectImageActionSheetTag = 1;
-static const int kFailedImageActionSheetTag = 2;
 static const int kTypingActivityTimeLimit = 10;
 static const float kMessageBounceAnimationDelay = .15;
 static const float kRepliesBounceAnimationDelay = .3;
@@ -57,7 +55,7 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     CLBBounceTypeFromRight
 };
 
-@interface CLBConversationViewController() < UIActionSheetDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate, CLBBuyViewControllerDelegate, CLBRepliesViewDelegate, CLBLocationServiceDelegate, CLBPhotoConfirmationDelegate >
+@interface CLBConversationViewController() <UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate, CLBBuyViewControllerDelegate, CLBRepliesViewDelegate, CLBLocationServiceDelegate, CLBPhotoConfirmationDelegate >
 
 @property UINavigationBar* navBar;
 @property CLBConversationNavigationItemTitleView *conversationNavigationItemTitleView;
@@ -84,7 +82,6 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 @property NSMutableArray *conversationMessages;
 @property CLBLocationService *locationService;
 
-@property NSArray<NSString *> *actionSheetButtons;
 @property NSArray<NSString *> *allowedMenuItems;
 
 @property BOOL newConversationLoading;
@@ -103,11 +100,11 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 }
 
 -(instancetype)initWithDeps:(CLBDependencyManager *)deps {
-    self = [super initWithAccentColor:deps.sdkSettings.conversationAccentColor userMessageTextColor:deps.sdkSettings.userMessageTextColor
+    self = [super initWithAccentColor:CLBConversationAccentColor() userMessageTextColor:CLBUserMessageTextColor()
         carouselTextColor:deps.sdkSettings.carouselTextColor];
     if(self){
         _pendingMessages = [[NSMutableArray alloc] init];
-        _statusBarStyle = deps.sdkSettings.conversationStatusBarStyle;
+        _statusBarStyle = CLBConversationStatusBarStyle();
         _dependencies = deps;
         _defaultAvatar = [ClarabridgeChat getImageFromResourceBundle:@"defaultAvatar"];
         _locationService = deps.locationService;
@@ -1063,36 +1060,79 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     }
 
     [self.chatInputView.textView resignFirstResponder];
-
-    UIActionSheet* actionSheet = [[UIActionSheet alloc] init];
-    actionSheet.delegate = self;
-    actionSheet.tag = kSelectImageActionSheetTag;
-
-    NSMutableArray<NSString *> *actions = [NSMutableArray new];
+    
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
     
     if([self canShowCameraOption]){
-        [actionSheet addButtonWithTitle:[CLBLocalization localizedStringForKey:@"Take Photo"]];
-        [actions addObject:CLBMenuItemCamera];
+        UIAlertAction *photoAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Take Photo"]
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+            __weak CLBConversationViewController *weakSelf = self;
+            [weakSelf requestCameraPermission:^{
+                CLBEnsureMainThread(^{
+                    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
+                    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                    imagePicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+                    imagePicker.delegate = weakSelf;
+                    
+                    [weakSelf presentViewController:imagePicker animated:YES completion:nil];
+                });
+            }];
+        }];
+        [alertController addAction:photoAction];
     }
+    
     if([self canShowGalleryOption]) {
-        [actionSheet addButtonWithTitle:[CLBLocalization localizedStringForKey:@"Photo & Video Library"]];
-        [actions addObject:CLBMenuItemGallery];
+        
+        UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Photo & Video Library"]
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+            __weak CLBConversationViewController *weakSelf = self;
+            [self requestPhotoPermission:^{
+                CLBEnsureMainThread(^{
+                    UIImagePickerController* imagePicker = [[CLBImagePickerController alloc] init];
+                    imagePicker.delegate = weakSelf;
+                    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    imagePicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie];
+                    [weakSelf presentViewController:imagePicker animated:YES completion:nil];
+                });
+            }];
+        }];
+        
+        [alertController addAction:libraryAction];
     }
     
     if ([self canShowDocumentsOption]) {
-        [actionSheet addButtonWithTitle:[CLBLocalization localizedStringForKey:@"Upload Document"]];
-        [actions addObject:CLBMenuItemDocument];
+        UIAlertAction *uploadAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Upload Document"]
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+            __weak CLBConversationViewController *weakSelf = self;
+            UIDocumentPickerViewController *documentPickerViewController = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeData]
+                                                                                                                                  inMode:UIDocumentPickerModeImport];
+            documentPickerViewController.delegate = weakSelf;
+            [weakSelf presentViewController:documentPickerViewController animated:YES completion:nil];
+        }];
+        [alertController addAction:uploadAction];
     }
     
     if([self canShowLocationOption]) {
-        [actionSheet addButtonWithTitle:[CLBLocalization localizedStringForKey:@"Share Location"]];
-        [actions addObject:CLBMenuItemLocation];
+        UIAlertAction *locationAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Share Location"]
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+            __weak CLBConversationViewController *weakSelf = self;
+            [weakSelf requestLocation:nil];
+        }];
+        [alertController addAction:locationAction];
     }
-    actionSheet.cancelButtonIndex = [actionSheet addButtonWithTitle:[CLBLocalization localizedStringForKey:@"Cancel"]];
     
-    self.actionSheetButtons = actions;
-
-    [actionSheet showInView:self.view];
+    [alertController addAction:[UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Cancel"]
+                                                        style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController resignFirstResponder];
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(void)didReachTopOfMessages {
@@ -1295,7 +1335,7 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     CLBOpenExternalURL(link);
 }
 
--(void)messageCell:(CLBSOMessageCell *)cell didSelectMediaUrl:(NSString *)mediaUrl {   
+-(void)messageCell:(CLBSOMessageCell *)cell didSelectMediaUrl:(NSString *)mediaUrl {
     NSURL* url = [NSURL URLWithString:mediaUrl];
     
     if (!url) {
@@ -1388,18 +1428,45 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
 }
 
 - (void)messageCellDidTapMedia:(CLBSOPhotoMessageCell *)cell {
+    
     if(cell.message.failed){
-        UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                 delegate:self
-                                                        cancelButtonTitle:[CLBLocalization localizedStringForKey:@"Cancel"]
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:[CLBLocalization localizedStringForKey:@"Resend"],
-                                      [CLBLocalization localizedStringForKey:@"View Image"], nil];
-        actionSheet.tag = kFailedImageActionSheetTag;
+        
         self.tappedCell = cell;
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *resendAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"Resend"]
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+            [self retryMessage:cell.message forCell:cell];
+        }];
+        
+        UIAlertAction *viewAction = [UIAlertAction actionWithTitle:[CLBLocalization localizedStringForKey:@"View Image"]
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+            [self showPreviewForImage:cell.message.image fromView:((CLBSOPhotoMessageCell *)cell).mediaImageView inView:cell];
+        }];
+        
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle: [CLBLocalization localizedStringForKey:@"Cancel"]
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+            [alertController resignFirstResponder];
+        }];
+        
+        
+        [alertController addAction:resendAction];
+        [alertController addAction:viewAction];
+        [alertController addAction:cancelAction];
 
         [self.chatInputView.textView resignFirstResponder];
-        [actionSheet showInView:self.view];
+        
+        [self presentViewController:alertController animated:YES completion:^{
+            __weak CLBConversationViewController *weakSelf = self;
+            weakSelf.tappedCell = nil;
+        }];
     }else{
         UIImage* image = cell.message.image ?: [[ClarabridgeChat avatarImageLoader] cachedImageForUrl:cell.message.mediaUrl];
         if(image) {
@@ -1517,56 +1584,6 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     }
 }
 
-#pragma mark - UIActionSheetDelegate
-
--(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if(actionSheet.tag == kFailedImageActionSheetTag){
-        if(buttonIndex == 0){
-            [self retryMessage:self.tappedCell.message forCell:self.tappedCell];
-        }else if(buttonIndex == 1){
-            [self showPreviewForImage:self.tappedCell.message.image fromView:((CLBSOPhotoMessageCell *)self.tappedCell).mediaImageView inView:self.tappedCell];
-        }
-        self.tappedCell = nil;
-    }else{
-        if(buttonIndex == actionSheet.cancelButtonIndex){
-            self.tappedCell = nil;
-            return;
-        }
-        
-        NSString *action = self.actionSheetButtons[buttonIndex];
-
-        if ([action isEqualToString:CLBMenuItemCamera]) {
-            [self requestCameraPermission:^{
-                CLBEnsureMainThread(^{
-                    UIImagePickerController* imagePicker = [[UIImagePickerController alloc] init];
-                    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                    imagePicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-                    imagePicker.delegate = self;
-                    
-                    [self presentViewController:imagePicker animated:YES completion:nil];
-                });
-            }];
-        } else if ([action isEqualToString:CLBMenuItemGallery]) {
-            [self requestPhotoPermission:^{
-                CLBEnsureMainThread(^{
-                    UIImagePickerController* imagePicker = [[CLBImagePickerController alloc] init];
-                    imagePicker.delegate = self;
-                    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                    imagePicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie];
-                    [self presentViewController:imagePicker animated:YES completion:nil];
-                });
-            }];
-        } else if ([action isEqualToString:CLBMenuItemDocument]) {
-            UIDocumentPickerViewController *documentPickerViewController = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeData] inMode:UIDocumentPickerModeImport];
-            documentPickerViewController.delegate = self;
-            [self presentViewController:documentPickerViewController animated:YES completion:nil];
-        } else if ([action isEqualToString:CLBMenuItemLocation]) {
-            [self requestLocation:nil];
-        }
-        
-    }
-}
-
 -(void)conversationDidStartImageUpload:(NSNotification*)notification {
     UIImage* image = notification.userInfo[CLBConversationImageKey];
 
@@ -1664,7 +1681,7 @@ typedef NS_ENUM(NSInteger, CLBBounceType) {
     [self refreshMessagesWithBounce:CLBBounceTypeNone];
 }
 
--(void)handleFileUploadError:(NSError *)error forUploadMessage:(CLBFileUploadMessage *)uploadMessage {    
+-(void)handleFileUploadError:(NSError *)error forUploadMessage:(CLBFileUploadMessage *)uploadMessage {
     if ([CLBFailedUpload isRetryableUploadError:error]) {
         uploadMessage.failed = YES;
     } else {

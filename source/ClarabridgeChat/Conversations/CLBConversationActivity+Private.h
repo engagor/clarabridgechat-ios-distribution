@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(readwrite, nullable) NSDate *businessLastRead;
 @property(readwrite, nullable) NSString *conversationId;
 @property(readwrite, nullable) NSString *userId;
-@property(readwrite) NSString *type;
+@property(readwrite, nonatomic) NSString *type;
 
 -(instancetype)initWithRole:(NSString *)role
                        type:(NSString *)type

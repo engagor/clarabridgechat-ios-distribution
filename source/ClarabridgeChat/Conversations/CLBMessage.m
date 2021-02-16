@@ -174,9 +174,14 @@ static NSString* const kBusinessRole = @"appMaker";
 }
 
 - (BOOL)isRead {
-    return (self.isFromCurrentUser &&
-            (self.date && self.conversation.businessLastRead) &&
-            [[self lastRead] timeIntervalSinceDate:self.date] >= 0);
+    
+    if (!self.date) {
+        return NO;
+    }
+    
+    BOOL readByBusiness = self.conversation.businessLastRead && [self.conversation.businessLastRead timeIntervalSinceDate:self.date] >= 0;
+    BOOL readByParticipant =  [[self lastRead] timeIntervalSinceDate:self.date] >= 0;
+    return self.isFromCurrentUser && (readByBusiness || readByParticipant);
 }
 
 - (NSDate *)lastRead {

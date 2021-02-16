@@ -33,6 +33,7 @@ static const CGFloat kSendButtonRightPadding = 18;
 static const CGFloat kTableViewBottomPadding = 8;
 static const int kMaxMessageLength = 10000;
 static NSString* const kCameraIcon = @"";
+static const CGFloat kTextMessageInputHeightAlignment = 16;
 
 @interface CLBSOMessageInputView() <UITextViewDelegate> {
     UITapGestureRecognizer *tapGesture;
@@ -79,6 +80,7 @@ static NSString* const kCameraIcon = @"";
     self.textView.textContainer.lineFragmentPadding = 0;
     self.textView.backgroundColor = [UIColor clearColor];
     self.textView.font = [UIFont systemFontOfSize:16];
+    [self.textView setTextContainerInset:UIEdgeInsetsMake(4, 4, 4, 4)];
     self.textView.tintColor = color;
     
     [self addSubview:self.textView];
@@ -94,7 +96,7 @@ static NSString* const kCameraIcon = @"";
     self.sendButton.frame = CGRectMake(self.bounds.size.width - self.sendButton.frame.size.width - kSendButtonRightPadding,
                       self.bounds.size.height - self.textInitialHeight - 1,
                       self.sendButton.frame.size.width + kSendButtonRightPadding,
-                      self.textInitialHeight);
+                      self.textInitialHeight - kTextMessageInputHeightAlignment);
     self.sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
     [self addSubview:self.sendButton];
     BOOL shouldDisplayMediaOptions = YES;
@@ -132,7 +134,7 @@ static NSString* const kCameraIcon = @"";
     
     if(shouldDisplayMediaOptions){
         [self.mediaButton setImage:[ClarabridgeChat getImageFromResourceBundle:@"mediaButton"] forState:UIControlStateNormal];
-        self.mediaButton.frame = CGRectMake(0, 0, 40, self.bounds.size.height);
+        self.mediaButton.frame = CGRectMake(0, 0, 40, self.bounds.size.height - kTextMessageInputHeightAlignment);
     }
     
     tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
@@ -231,7 +233,7 @@ static NSString* const kCameraIcon = @"";
                                                        attributes:@{ NSFontAttributeName:self.textView.font }
                                                           context:nil].size;
 
-    textViewSize = CGSizeMake(ceilf(textViewSize.width), ceilf(textViewSize.height));
+    textViewSize = CGSizeMake(ceilf(textViewSize.width), ceilf(textViewSize.height + kTextMessageInputHeightAlignment));
     
     if(textViewSize.height < textViewMinHeight){
         textViewSize.height = textViewMinHeight;
@@ -314,7 +316,7 @@ static NSString* const kCameraIcon = @"";
     }
     
     UIEdgeInsets contentInsets;
-    if (CLBIsIOS11OrLater()) {        
+    if (CLBIsIOS11OrLater()) {
         CGFloat bottomInset = keyboardHeight + self.frame.size.height + kTableViewBottomPadding + offsetForTabBar;
         if (keyboardHeight > 0) {
             bottomInset -= CLBSafeAreaInsetsForView(self.viewController.view).bottom;

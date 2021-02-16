@@ -16,10 +16,12 @@
 @class CLBConversationStorageManager;
 @class CLBConversationList;
 
-extern NSString *const CLBCreateUserCompletedNotification;
-extern NSString *const CLBCreateUserFailedNotification;
-extern NSString *const CLBConversationLoadDidStartNotification;
-extern NSString *const CLBConversationLoadDidFinishNotification;
+NS_ASSUME_NONNULL_BEGIN
+
+extern  NSString * _Nonnull const CLBCreateUserCompletedNotification;
+extern  NSString * _Nonnull const CLBCreateUserFailedNotification;
+extern  NSString * _Nonnull const CLBConversationLoadDidStartNotification;
+extern  NSString * _Nonnull const CLBConversationLoadDidFinishNotification;
 
 typedef NS_ENUM(NSUInteger, CLBLastLoginResult) {
     CLBLastLoginResultSuccess,
@@ -29,25 +31,25 @@ typedef NS_ENUM(NSUInteger, CLBLastLoginResult) {
 
 @interface CLBUserSynchronizer : CLBRemoteOperationScheduler <CLBUserSynchronizerProtocol>
 
-- (instancetype)initWithUser:(CLBUser *)user
-                synchronizer:(CLBRemoteObjectSynchronizer*)synchronizer
-                       appId:(NSString *)appId
-          retryConfiguration:(CLBRetryConfiguration *)retryConfiguration
-                    settings:(CLBSettings *)settings
-                conversation:(CLBConversation *)conversation
-  conversationStorageManager:(CLBConversationStorageManager *)conversationStorageManager;
+- (instancetype _Nullable)initWithUser:( CLBUser * _Nonnull)user
+                synchronizer:(CLBRemoteObjectSynchronizer * _Nonnull)synchronizer
+                       appId:(NSString * _Nonnull)appId
+          retryConfiguration:(CLBRetryConfiguration * _Nonnull)retryConfiguration
+                    settings:(CLBSettings * _Nonnull)settings
+                conversation:(CLBConversation * _Nonnull)conversation
+  conversationStorageManager:(CLBConversationStorageManager * _Nonnull)conversationStorageManager;
 
-- (void)logInWithCompletionHandler:(void(^)(NSError *error, NSDictionary *userInfo))handler;
-- (void)logOutWithCompletionHandler:(void(^)(NSError *error, NSDictionary *userInfo))handler;
-- (void)startConversationOrCreateUserWithIntent:(NSString *)intent completionHandler:(void (^)(NSError *error, NSDictionary *userInfo))completionHandler;
+- (void)logInWithCompletionHandler:(void(^_Nullable)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))handler;
+- (void)logOutWithCompletionHandler:(void(^_Nullable)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))handler;
+- (void)startConversationOrCreateUserWithIntent:(NSString * _Nonnull)intent completionHandler:(void (^_Nullable)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler;
 - (void)createConversationOrUserWithName:(nullable NSString *)name description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl avatarUrl:(nullable NSString *)avatarUrl metadata:(nullable NSDictionary *)metadata messages:(nullable NSArray<CLBMessage *> *)messages intent:(nullable NSString *)intent completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler;
 - (void)updateConversationById:(NSString *)conversationId withName:(nullable NSString *)name description:(nullable NSString *)description iconUrl:(nullable NSString *)iconUrl metadata:(nullable NSDictionary *)metadata completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))completionHandler;
 - (void)fetchUserWithCompletionHandler:(void(^)(NSError *error, NSDictionary *userInfo))completionHandler;
 - (void)consumeAuthCode:(NSString *)authCode completionHandler:(void(^)(NSError *error, NSDictionary *userInfo))completionHandler;
 - (void)upgradeUserWithClientId:(NSString *)clientId completionHandler:(void(^)(void))completionHandler;
-- (void)loadConversations:(void (^)(NSError *, NSArray *)) handler;
+- (void)loadConversations:(void (^_Nullable)(NSError *, NSArray *)) handler;
 - (void)loadConversationListWithCompletionHandler: (void (^_Nullable)(NSError * _Nullable, CLBConversationList * _Nullable)) handler;
-- (void)loadConversation:(NSString *)conversationId completionHandler:(void (^)(NSError *, NSDictionary *))handler;
+- (void)loadConversation:(NSString *)conversationId completionHandler:(void (^_Nullable)(NSError *, NSDictionary *))handler;
 
 @property(readonly) CLBUser *user;
 @property CLBConversationMonitor *conversationMonitor;
@@ -55,3 +57,4 @@ typedef NS_ENUM(NSUInteger, CLBLastLoginResult) {
 @property(nonatomic) CLBConversation *conversation;
 
 @end
+NS_ASSUME_NONNULL_END

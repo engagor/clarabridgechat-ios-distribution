@@ -12,18 +12,18 @@
 @class CLBConfig;
 @class CLBUser;
 
-extern NSString* const CLBConversationMonitorDidChangeConnectionStatusNotification;
+extern NSString* _Nonnull const CLBConversationMonitorDidChangeConnectionStatusNotification;
 
 @protocol CLBConversationMonitorListener <NSObject>
 
-- (void)onMessageReceived:(NSDictionary *)messageData fromChannel:(NSString *)channel;
+- (void)onMessageReceived:(NSDictionary * _Nullable)messageData fromChannel:(NSString *_Nullable)channel;
 - (void)onConnectionRefresh;
 
 @end
 
 @interface CLBConversationMonitor : NSObject < CLBMZFayeClientDelegate >
 
--(instancetype)initWithUser:(CLBUser *)user config:(CLBConfig *)config
+-(instancetype _Nullable)initWithUser:(CLBUser * _Nonnull)user config:(CLBConfig * _Nonnull)config
      authenticationDelegate:(_Nullable id<CLBAuthenticationDelegate>)authenticationDelegate;
 
 -(void)connect;
@@ -37,7 +37,7 @@ extern NSString* const CLBConversationMonitorDidChangeConnectionStatusNotificati
 @property BOOL isConnecting;
 @property BOOL didConnectOnce;
 
-@property (weak) id<CLBConversationMonitorListener>listener;
-@property (nonatomic, strong) CLBMZFayeClient *fayeClient;
+@property (weak, nullable) id<CLBConversationMonitorListener>listener;
+@property (nonatomic, strong, nonnull) CLBMZFayeClient *fayeClient;
 
 @end

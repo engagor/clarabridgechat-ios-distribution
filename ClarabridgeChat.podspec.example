@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 #  s.summary               = "YOUR_SUMMARY"
 #  s.homepage              = "YOUR_HOMEPAGE"
 #  s.author                = { "YOU" => "YOUR_EMAIL" }
-#  s.source 	              = { :git => "YOUR_FRAMEWORK_GIT_SOURCE, :tag =>"3.0.0" }
+#  s.source 	              = { :git => "YOUR_FRAMEWORK_GIT_SOURCE, :tag =>"3.1.0" }
   s.license               = { :type => "Commercial", :text => "https://app.engagor.com/privacy-policy" }
   s.preserve_paths        = "ClarabridgeChat.xcframework/*"
   s.frameworks            = "ClarabridgeChat", "CoreText", "SystemConfiguration", "CoreTelephony", "Foundation", "CoreGraphics", "UIKit", "QuartzCore", "AssetsLibrary", "Photos", "AVFoundation", "CFNetwork"

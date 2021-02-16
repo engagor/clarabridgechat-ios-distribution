@@ -70,7 +70,7 @@ static NSString * _Nonnull const _cellIdentifier = @"CLBConversationListTableVie
 
     // Unread Badge View
     _badgeView = [[UIView alloc] init];
-    _badgeView.backgroundColor = UIColor.systemBlueColor;
+    _badgeView.backgroundColor = CLBConversationAccentColor();
     _badgeView.layer.cornerRadius = 8;
     _badgeView.layer.masksToBounds = YES;
     [_badgeView setHidden:true];
@@ -79,7 +79,7 @@ static NSString * _Nonnull const _cellIdentifier = @"CLBConversationListTableVie
     // Unread Badge Label
     _badgeLabel = [[UILabel alloc] init];
     _badgeLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightSemibold];
-    _badgeLabel.textColor = UIColor.whiteColor;
+    _badgeLabel.textColor = CLBUserMessageTextColor();
     _badgeLabel.textAlignment = NSTextAlignmentCenter;
     _badgeLabel.numberOfLines = 1;
     [_badgeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -211,7 +211,7 @@ static NSString * _Nonnull const _cellIdentifier = @"CLBConversationListTableVie
     [super setSelected:selected animated:animated];
 
     // Retain blue background color of the badge on select. (Required in iOS 12 and below).
-    self.badgeView.backgroundColor = UIColor.systemBlueColor;
+    self.badgeView.backgroundColor = CLBConversationAccentColor();
 }
 
 - (void)loadAvatar {

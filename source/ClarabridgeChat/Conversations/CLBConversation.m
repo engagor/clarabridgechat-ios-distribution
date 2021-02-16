@@ -23,6 +23,7 @@
 #import "CLBParticipant+Private.h"
 
 NSString *const CLBConversationDidMarkAllAsReadNotification = @"CLBConversationDidMarkAllAsReadNotification";
+NSString *const CLBConversationDidMarkMessageDelivered = @"CLBConversationDidMarkMessageDelivered";
 NSString *const CLBConversationDidRequestPreviousMessagesNotification = @"CLBConversationDidRequestPreviousMessagesNotification";
 NSString *const CLBConversationDidReceivePreviousMessagesNotification = @"CLBConversationDidReceivePreviousMessagesNotification";
 NSString *const CLBConversationUnreadCountDidChangeNotification = @"CLBConversationUnreadCountDidChangeNotification";
@@ -491,6 +492,14 @@ static const int kTypingStopBufferSeconds = 1;
                                                             object:self
                                                           userInfo:@{ CLBConversationNewMessagesKey : messages }];
     });
+}
+
+- (void)markMessageDelivered:(NSString *)messageId {
+    if (messageId) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CLBConversationDidMarkMessageDelivered
+                                                            object:self
+                                                          userInfo:@{ CLBConversationDidMarkMessageDelivered : messageId }];
+    }
 }
 
 - (void)notifyPreviousMessagesReceived:(NSArray *)messages {

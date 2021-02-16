@@ -31,7 +31,7 @@ static const CGFloat kPaymentTextFieldHeight = 45;
 @property UIBarButtonItem* cancelButton;
 @property CLBProgressButton* buyButton;
 @property CGFloat keyboardHeight;
-@property BOOL isRotating;
+@property BOOL isTransitioningSize;
 @property BOOL isSavedCreditCardMode;
 @property UIButton* changeCardButton;
 @property UIView* darkenView;
@@ -296,7 +296,7 @@ static const CGFloat kPaymentTextFieldHeight = 45;
         self.navBar.frame = CGRectMake(0, yOrigin - CLBStatusBarHeight(), self.view.bounds.size.width, CLBNavBarHeight());
         self.backgroundView.frame = CGRectMake(0, yOrigin, self.view.bounds.size.width, self.view.bounds.size.height - yOrigin);
 
-        if(self.isRotating){
+        if(self.isTransitioningSize){
             self.darkenView.frame = CGRectMake(0, 0, self.view.bounds.size.width, yOrigin);
         }
     }else{
@@ -310,20 +310,18 @@ static const CGFloat kPaymentTextFieldHeight = 45;
     [self layoutHeader];
     [self layoutPaymentTextField];
     [self layoutChangeCardButton];
-    if(self.isRotating){
+    if(self.isTransitioningSize){
         [self layoutButton];
     }
     [self layoutInstructionLabel];
 }
 
--(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    self.isRotating = YES;
-}
-
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    self.isRotating = NO;
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    self.isTransitioningSize = YES;
+    [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        self.isTransitioningSize = NO;
+    }];
 }
 
 -(CGFloat)ccFieldWidth {

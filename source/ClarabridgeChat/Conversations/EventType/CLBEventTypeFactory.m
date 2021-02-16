@@ -162,7 +162,12 @@ NSString *const CLBEventUserId = @"authorId";
     NSString *userId = messagePayload[CLBEventUserId];
     BOOL isFromCurrentUser = [self.conversation.user.userId isEqualToString:userId];
     CLBMessage *message = [[CLBMessage alloc] initWithDictionary:messagePayload setIsFromCurrentUser:isFromCurrentUser];
-
+    
+    BOOL isEventForMessageDelivery = (![self isEventFromCurrentDevice:event] && !message.isFromCurrentUser);
+    if (isEventForMessageDelivery) {
+        [self.conversation markMessageDelivered:message.messageId];
+    }
+    
     if (isEventForCurrentConversation) {
         if ([self isEventFromCurrentDevice:event]) {
             if ([self isMessageMediaType:message]) {

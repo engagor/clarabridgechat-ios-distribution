@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const CLBClarabridgeChatErrorDomain;
-extern NSString *const CLBClarabridgeChatErrorCreateConversationMultipartDescription;
+extern NSString * _Nonnull const CLBClarabridgeChatErrorDomain;
+extern NSString * _Nonnull const CLBClarabridgeChatErrorCreateConversationMultipartDescription;
 
 NS_ASSUME_NONNULL_BEGIN
 

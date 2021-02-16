@@ -48,13 +48,16 @@ NSString *const CLBMenuItemLocation = @"shareLocation";
     if (self) {
         _integrationId = [integrationId copy];
         _conversationAccentColor = CLBDefaultAccentColor();
+        _conversationAccentColorDarkMode = CLBDefaultAccentColor();
         _conversationListAccentColor = CLBDefaultAccentColor();
         _conversationStatusBarStyle = UIStatusBarStyleDefault;
+        _conversationStatusBarStyleDarkMode = UIStatusBarStyleDefault;
         _notificationDisplayTime = kDefaultNotificationTimeout;
         _enableAppDelegateSwizzling = YES;
         _enableUserNotificationCenterDelegateOverride = YES;
         _requestPushPermissionOnFirstMessage = YES;
         _userMessageTextColor = CLBDefaultUserMessageTextColor();
+        _userMessageTextColorDarkMode = CLBDefaultUserMessageTextColor();
         _externalId = kValuePlaceholderReadFromPersistence;
         _jwt = kValuePlaceholderReadFromPersistence;
         _userId = kValuePlaceholderReadFromPersistence;

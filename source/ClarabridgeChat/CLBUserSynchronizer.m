@@ -137,6 +137,10 @@ NSString *const kRequestMessages = @"messages";
         return;
     }
 
+    // message delivery event
+    CLBMessage *latestMessage = latestConversation.messages.firstObject;
+    [latestConversation markMessageDelivered:latestMessage.messageId];
+    
     BOOL isActiveConversationUpToDate = NO;
     BOOL isActiveConversationLoaded = self.conversation.conversationId != nil;
     if (isActiveConversationLoaded) {

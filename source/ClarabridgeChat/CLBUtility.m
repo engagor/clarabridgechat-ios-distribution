@@ -547,3 +547,57 @@ UIActivityIndicatorViewStyle CLBActivityIndicatorViewStyleGray() {
     
     return UIActivityIndicatorViewStyleGray;
 }
+
+#pragma mark - Dark Mode
+
+UIColor* CLBConversationAccentColor() {
+    CLBSettings* settings = [ClarabridgeChat settings];
+    
+    if (@available(iOS 13.0, *)) {
+        return [[UIColor alloc]initWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+            
+            if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+                return settings.conversationAccentColorDarkMode ? settings.conversationAccentColorDarkMode : UIColor.systemBlueColor;
+            } else {
+                return settings.conversationAccentColor ? settings.conversationAccentColor : UIColor.systemBlueColor;
+            }
+        }];
+    }
+    
+    return settings.conversationAccentColor ? settings.conversationAccentColor : UIColor.systemBlueColor;
+}
+
+UIColor* CLBUserMessageTextColor() {
+    CLBSettings* settings = [ClarabridgeChat settings];
+    
+    if (@available(iOS 13.0, *)) {
+        return [[UIColor alloc]initWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+            
+            if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+                return settings.userMessageTextColorDarkMode ? settings.userMessageTextColorDarkMode : CLBDefaultUserMessageTextColor();
+            } else {
+                return settings.userMessageTextColor ? settings.userMessageTextColor : CLBDefaultUserMessageTextColor();
+            }
+        }];
+    }
+    
+    return settings.userMessageTextColor ? settings.userMessageTextColor : CLBDefaultUserMessageTextColor();
+}
+
+UIStatusBarStyle CLBConversationStatusBarStyle() {
+    CLBSettings* settings = [ClarabridgeChat settings];
+    if (@available(iOS 13.0, *)) {
+        
+        switch(UITraitCollection.currentTraitCollection.userInterfaceStyle) {
+            case UIUserInterfaceStyleDark :
+            return settings.conversationStatusBarStyleDarkMode ? settings.conversationStatusBarStyleDarkMode : UIStatusBarStyleDefault;
+                break;
+            default :
+                return settings.conversationStatusBarStyle ? settings.conversationStatusBarStyle : UIStatusBarStyleDefault;
+        }
+    }
+    
+    return settings.conversationStatusBarStyle ? settings.conversationStatusBarStyle : UIStatusBarStyleDefault;
+}
+
+

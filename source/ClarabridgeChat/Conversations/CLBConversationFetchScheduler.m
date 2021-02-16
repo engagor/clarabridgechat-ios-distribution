@@ -50,6 +50,7 @@ static NSString* const kMessagesKey = @"messages";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(typingStarted:) name:CLBConversationTypingDidStartNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(typingStopped:) name:CLBConversationTypingDidStopNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(markAsReadOnServer:) name:CLBConversationDidMarkAllAsReadNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(markMessageDeliveredOnServer:) name:CLBConversationDidMarkMessageDelivered object:nil];
     }
     return self;
 }
@@ -80,6 +81,14 @@ static NSString* const kMessagesKey = @"messages";
     }
 }
 
+- (void)markMessageDeliveredOnServer:(NSNotification *)notification {
+    CLBConversation *conversation = (CLBConversation *)notification.object;
+    NSString *messageId = (NSString *)notification.userInfo.allValues[0];
+    if(conversation) {
+        [self sendActivityRequest:@"message:delivery" toConversation:conversation messageId:messageId];
+    }
+}
+
 - (void)sendConversationActivity:(NSString*)type toConversation:(CLBConversation *)conversation {
     if ([self canSendActivity]){
         return;
@@ -88,14 +97,9 @@ static NSString* const kMessagesKey = @"messages";
     if (!self.conversation.user.settings.typingEnabled && [self activityTypeIsTyping:type]) {
         return;
     }
-
-    NSString* url = [NSString stringWithFormat:@"/v2/apps/%@/conversations/%@/activity", conversation.appId, conversation.conversationId];
-    [self.synchronizer.apiClient requestWithMethod:@"POST"
-                                               url:url
-                                        parameters:[self parametersForType:type user:conversation.user]
-                                        completion:nil];
+    
+    [self sendActivityRequest:type toConversation:conversation messageId:nil];
 }
-
 
 - (void)loadPreviousMessages:(NSNotification *)notification {
     if (!self.conversation.conversationStarted || !self.conversation.hasPreviousMessages || self.fetchingPreviousMessages) {
@@ -245,11 +249,19 @@ static NSString* const kMessagesKey = @"messages";
     return !self.conversation.conversationStarted || !self.conversation.user.userId || !self.conversation.conversationId;
 }
 
-- (NSDictionary *)parametersForType:(NSString *)type user: (CLBUser *)user {
-    NSDictionary *parameters = @{ @"activity": @{ @"type": type },
-                                  @"author": [CLBAuthorInfo authorFieldForUser:user]
-    };
-    return parameters;
+- (void)sendActivityRequest:(NSString*)type toConversation:(CLBConversation *)conversation messageId:(NSString *)messageId {
+    NSString *conversationUrl = [NSString stringWithFormat:@"/v2/apps/%@/conversations/%@/activity", conversation.appId, conversation.conversationId];
+    [self.synchronizer.apiClient requestWithMethod:@"POST"
+                                               url:conversationUrl
+                                        parameters:[self parametersForType:type messageId:messageId user:conversation.user]
+                                        completion:nil];
+}
+
+- (NSDictionary *)parametersForType:(NSString *)type messageId:(nullable NSString *)messageId user:(CLBUser *)user {
+    NSDictionary *activityParameters = messageId != nil ? @{@"type": type , @"messageId": messageId } : @{ @"type": type };
+
+    return @{@"activity": activityParameters,
+             @"author": [CLBAuthorInfo authorFieldForUser:user]};
 }
 
 @end

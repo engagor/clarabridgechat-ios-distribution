@@ -18,6 +18,7 @@
 @protocol CLBConversationPersistence;
 
 extern NSString * const CLBConversationDidMarkAllAsReadNotification;
+extern NSString * const CLBConversationDidMarkMessageDelivered;
 extern NSString * const CLBConversationDidRequestPreviousMessagesNotification;
 extern NSString * const CLBConversationTypingDidStartNotification;
 extern NSString * const CLBConversationTypingDidStopNotification;
@@ -38,6 +39,7 @@ extern NSString * const CLBConversationTypingDidStopNotification;
 - (void)handleFailedUpload:(CLBFailedUpload *)failedUpload;
 - (void)notifyActivity:(CLBConversationActivity *)activity;
 - (void)notifyMessagesReceived:(NSArray*)messages;
+- (void)markMessageDelivered:(NSString *)messageId;
 
 - (NSString *)messagesRemotePath;
 

@@ -46,11 +46,11 @@
 		</data>
 		<key>Headers/CLBParticipant.h</key>
 		<data>
-		UOM0+7T3wHFIwoxPgdGJin53myI=
+		18o3lpgYF4ZN97BKJVPMmZkRaG8=
 		</data>
 		<key>Headers/CLBSettings.h</key>
 		<data>
-		a/BqofCTpc9f+NfR8+43HcVkTas=
+		1QwcSSwDIkGvJYOZ3/EQGUdlB3I=
 		</data>
 		<key>Headers/CLBUser.h</key>
 		<data>
@@ -58,11 +58,11 @@
 		</data>
 		<key>Headers/ClarabridgeChat.h</key>
 		<data>
-		crYwOyOr55vbkX8gzuvHz31SC+4=
+		5s1W21Gftm0WdcGqJppeInSBCUo=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		0ToGphBih9t90K5JXtmAFpVuDhk=
+		R0kfNaoBYSVzY+4qD21FZURxIxM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -540,22 +540,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UOM0+7T3wHFIwoxPgdGJin53myI=
+			18o3lpgYF4ZN97BKJVPMmZkRaG8=
 			</data>
 			<key>hash2</key>
 			<data>
-			7JsBS7VuNnMOQ6B2Svz3qlxiHmlfHrg4Bm7gYu/o0g4=
+			R2gnzk5donUTSAxlfSxCqouZHDn+3Sx0q3hnSW9Ho0k=
 			</data>
 		</dict>
 		<key>Headers/CLBSettings.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			a/BqofCTpc9f+NfR8+43HcVkTas=
+			1QwcSSwDIkGvJYOZ3/EQGUdlB3I=
 			</data>
 			<key>hash2</key>
 			<data>
-			6EYlUmtPS2Xj2M1ik8WAPpBl5VJxkqyn3iuUxUpKF90=
+			m/VYPD9Zb4AxwM79374VdUHkMxXmCMfUrm/JpN2Bgec=
 			</data>
 		</dict>
 		<key>Headers/CLBUser.h</key>
@@ -573,11 +573,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			crYwOyOr55vbkX8gzuvHz31SC+4=
+			5s1W21Gftm0WdcGqJppeInSBCUo=
 			</data>
 			<key>hash2</key>
 			<data>
-			+2n5bd9ziXjGc6VxDdYd6Itk4nJLi5+zzC8h8uDVEaU=
+			dFq5+YB9YP02xiGWU5eVZbNNfVUHL1wrJHcdeLkIJqc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

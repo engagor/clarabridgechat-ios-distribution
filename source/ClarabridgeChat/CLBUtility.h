@@ -85,3 +85,7 @@ id CLBSanitizeNSNull(id value);
 
 UIActivityIndicatorViewStyle CLBActivityIndicatorViewStyleWhite(void);
 UIActivityIndicatorViewStyle CLBActivityIndicatorViewStyleGray(void);
+
+UIColor* CLBConversationAccentColor(void);
+UIColor* CLBUserMessageTextColor(void);
+UIStatusBarStyle CLBConversationStatusBarStyle(void);

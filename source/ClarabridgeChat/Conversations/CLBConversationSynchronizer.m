@@ -65,7 +65,7 @@ NSString *const CLBDataClientString = @"client";
 - (void)getConversationListWithOffset:(NSUInteger)offset completionHandler:(void (^)(NSError * _Nullable, NSDictionary * _Nullable))handler {
     NSString *url = [NSString stringWithFormat:@"/v2/apps/%@/appusers/%@/conversations", self.settings.appId, self.user.userId];
 
-    NSString *offsetString = [NSString stringWithFormat:@"%lu", offset];
+    NSString *offsetString = [NSString stringWithFormat:@"%lu", (unsigned long)offset];
 
     [self.synchronizer.apiClient GET:url
                           parameters:@{@"offset": offsetString}

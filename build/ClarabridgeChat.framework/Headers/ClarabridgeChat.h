@@ -2,7 +2,7 @@
 //  ClarabridgeChat.h
 //  ClarabridgeChat
 //
-//  version : 3.0.0
+//  version : 3.1.0
 
 #import <Foundation/Foundation.h>
 #import "CLBConversation.h"
@@ -14,7 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol UNUserNotificationCenterDelegate;
 
-#define CLARABRIDGECHAT_VERSION @"3.0.0"
+#define CLARABRIDGECHAT_VERSION @"3.1.0"
 #define VENDOR_ID @"clarabridgeChat"
 
 FOUNDATION_EXPORT double ClarabridgeChatVersionNumber;

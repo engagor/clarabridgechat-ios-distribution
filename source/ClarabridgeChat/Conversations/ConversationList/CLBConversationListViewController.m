@@ -58,7 +58,7 @@ static BOOL _isConversationListShown = NO;
                                               showCreateConversationButton:showCreateConversationButton
                                             canUserCreateMoreConversations:deps.config.canUserCreateMoreConversations
                                                                accentColor:deps.sdkSettings.conversationListAccentColor];
-        _statusBarStyle = deps.sdkSettings.conversationStatusBarStyle;
+        _statusBarStyle = CLBConversationStatusBarStyle();
         _appStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
     }
     return self;

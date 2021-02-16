@@ -18,7 +18,7 @@ xcodebuild archive \
     -destination "generic/platform=iOS" \
     -archivePath ./${TMPDIR}/build/ClarabridgeChat-iOS \
     SKIP_INSTALL=NO \
-    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES | xcpretty
 
 echo "Building Xcode Archive for Simulator..."
 xcodebuild archive \
@@ -27,13 +27,13 @@ xcodebuild archive \
     -destination "generic/platform=iOS Simulator" \
     -archivePath ./${TMPDIR}/build/ClarabridgeChat-simulator \
     SKIP_INSTALL=NO \
-    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES | xcpretty
 
 # Build the XCFramework
 echo "Building XCFramework..."
 xcodebuild -create-xcframework \
     -framework ./${TMPDIR}/build/ClarabridgeChat-iOS.xcarchive/Products/Library/Frameworks/ClarabridgeChat.framework \
     -framework ./${TMPDIR}/build/ClarabridgeChat-simulator.xcarchive/Products/Library/Frameworks/ClarabridgeChat.framework \
-    -output ./build/ClarabridgeChat.xcframework
+    -output ./build/ClarabridgeChat.xcframework | xcpretty
 
 echo "✅ XCFramework built successfully."
