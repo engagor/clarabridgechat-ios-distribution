@@ -70,9 +70,13 @@
 		
 		<option value="//api/name/conversationAccentColor">conversationAccentColor</option>
 		
+		<option value="//api/name/conversationAccentColorDarkMode">conversationAccentColorDarkMode</option>
+		
 		<option value="//api/name/conversationListAccentColor">conversationListAccentColor</option>
 		
 		<option value="//api/name/conversationStatusBarStyle">conversationStatusBarStyle</option>
+		
+		<option value="//api/name/conversationStatusBarStyleDarkMode">conversationStatusBarStyleDarkMode</option>
 		
 		<option value="//api/name/enableAppDelegateSwizzling">enableAppDelegateSwizzling</option>
 		
@@ -87,6 +91,8 @@
 		<option value="//api/name/requestPushPermissionOnFirstMessage">requestPushPermissionOnFirstMessage</option>
 		
 		<option value="//api/name/userMessageTextColor">userMessageTextColor</option>
+		
+		<option value="//api/name/userMessageTextColorDarkMode">userMessageTextColorDarkMode</option>
 		
 	</optgroup>
 	
@@ -493,6 +499,54 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/conversationAccentColorDarkMode" title="conversationAccentColorDarkMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversationAccentColorDarkMode">&nbsp;&nbsp;conversationAccentColorDarkMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The accent color for the conversation screen in Dark Mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) UIColor *conversationAccentColorDarkMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Used as the color of user message bubbles, as well as the color of the send button and text input caret.</p>
+
+<p>The default value is #00B0FF.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLBSettings.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/conversationListAccentColor" title="conversationListAccentColor"></a>
 	<h3 class="method-title"><code><a href="#//api/name/conversationListAccentColor">&nbsp;&nbsp;conversationListAccentColor</a></code>
 </h3>
@@ -635,6 +689,54 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/userMessageTextColorDarkMode" title="userMessageTextColorDarkMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userMessageTextColorDarkMode">&nbsp;&nbsp;userMessageTextColorDarkMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The text color for user messages in Dark Mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) UIColor *userMessageTextColorDarkMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Used as the text color of user message bubbles.</p>
+
+<p>The default value is #FFFFFF.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLBSettings.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/conversationStatusBarStyle" title="conversationStatusBarStyle"></a>
 	<h3 class="method-title"><code><a href="#//api/name/conversationStatusBarStyle">&nbsp;&nbsp;conversationStatusBarStyle</a></code>
 </h3>
@@ -652,6 +754,54 @@
 		    
 
 			<div class="method-subsection method-declaration"><code>@property UIStatusBarStyle conversationStatusBarStyle</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You should use this property if your app uses UIAppearance to style UINavigationBar, and your styling requires a specific status bar color.</p>
+
+<p>The default value is UIStatusBarStyleDefault.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CLBSettings.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/conversationStatusBarStyleDarkMode" title="conversationStatusBarStyleDarkMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/conversationStatusBarStyleDarkMode">&nbsp;&nbsp;conversationStatusBarStyleDarkMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The status bar style to use on the conversation screen in Dark Mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property UIStatusBarStyle conversationStatusBarStyleDarkMode</code></div>
 
 		    
 			
@@ -1036,7 +1186,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nullable) id&lt;CLBAuthenticationDelegate&gt; authenticationDelegate</code></div>
+			<div class="method-subsection method-declaration"><code>@property (weak, nonatomic, nullable) id&lt;CLBAuthenticationDelegate&gt; authenticationDelegate</code></div>
 
 		    
 			
@@ -1091,7 +1241,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 ClarabridgeChat. All rights reserved. Updated: 2021-01-28</p>
+						<p class="copyright">Copyright &copy; 2021 ClarabridgeChat. All rights reserved. Updated: 2021-02-16</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
