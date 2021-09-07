@@ -49,7 +49,7 @@ For reference, you can refer to the [complete podspec](https://github.com/CocoaP
 
 ## Publish the API reference
 
-To distribute the documentation, host the files located at `build/docs/ClarabridgeChat.ClarabridgeChat.docset/Contents/Resources`.
+To distribute the documentation, host the files located at `build/docs/ClarabridgeChat.ClarabridgeChat.docset/Contents/Resources/Documents`.
 
 - Add the public repository as an origin. Github pages in configured to host the documentation.
 ```
@@ -57,7 +57,7 @@ git remote add distribution git@github.com:engagor/clarabridgechat-ios-distribut
 ```
 - Update the documentation
 ```
-git push distribution `git subtree split --prefix build/docs/ClarabridgeChat.ClarabridgeChat.docset/Contents/Resources master`:gh-pages --force
+git push distribution `git subtree split --prefix build/docs/ClarabridgeChat.ClarabridgeChat.docset/Contents/Resources/Documents master`:gh-pages --force
 ```
 
 ## Updating the Public Repository
