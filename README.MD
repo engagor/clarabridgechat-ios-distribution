@@ -9,14 +9,25 @@ The structure for the repository is as follows:
 | source          | Contains the source for the SDK                           |
 | build           | Contains the ready to distribute binaries                 |
 | build/doc       | API reference documentation in appledocs format           |
-| HOWTODISTRIBUTE | Guide which explains how to distribute the SDK to your customers |
 | README          | This guide                                                |
 
 # Distribution
 
 For instructions on how to distribute, follow the [how to distribute](./HOWTODISTRIBUTE.MD) guide.
 
-# Development / Testing
+# Development
+
+## Cocoapods
+
+1. [Install the CocoaPods dependency manager](https://cocoapods.org/)
+2. Declare the dependency in your project's `Podfile`.
+    ```Podfile
+    pod "ClarabridgeChat"
+    ```
+3. Install the dependency
+    ```sh
+    pod install
+    ```
 
 ## Using the pre-built framework
 
@@ -39,6 +50,17 @@ To test using the provided Xcode project and source code, follow the steps below
 3. Select the `ClarabridgeChat` framework to add it as a target dependency of your project
 
 You should now be able to import the framework (`#import <ClarabridgeChat/ClarabridgeChat.h>`) and start using it in your code.
+
+# Getting Started
+
+1. Find your integration id in the Clarabridge Engage application.
+1. Initialize the Chat in your application as follows:
+```swift
+    ClarabridgeChat.initWith(CLBSettings(integrationId: "YOUR_INTEGRATION_ID")) { (error: Error?, userInfo: [AnyHashable : Any]?) in
+                // Your code after init is complete
+            }
+    ClarabridgeChat.show()
+```
 
 # Version
 
