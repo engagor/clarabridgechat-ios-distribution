@@ -9,7 +9,6 @@ The structure for the repository is as follows:
 | source          | Contains the source for the SDK                           |
 | build           | Contains the ready to distribute binaries                 |
 | build/doc       | API reference documentation in appledocs format           |
-| HOWTODISTRIBUTE | Guide which explains how to distribute the SDK to your customers |
 | README          | This guide                                                |
 
 # Distribution
