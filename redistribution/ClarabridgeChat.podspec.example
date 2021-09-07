@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name                  = "ClarabridgeChat"
-#  s.version               = "YOUR_VERSION"
-#  s.summary               = "YOUR_SUMMARY"
-#  s.homepage              = "YOUR_HOMEPAGE"
-#  s.author                = { "YOU" => "YOUR_EMAIL" }
+#  s.version               = "3.1.0"
+#  s.summary               = "Clarabridge iOS Chat SDK"
+#  s.homepage              = "https://www.clarabridge.com"
+#  s.author                = { "YOU" => "anthony.meirlaen@clarabridge.com" }
   s.license               = { :type => "Commercial", :text => "https://app.engagor.com/privacy-policy" }
   s.source                = { :path => '.' }
   s.frameworks            = "ClarabridgeChat", "CoreText", "SystemConfiguration", "CoreTelephony", "Foundation", "CoreGraphics", "UIKit", "QuartzCore", "AssetsLibrary", "Photos", "AVFoundation", "CFNetwork"

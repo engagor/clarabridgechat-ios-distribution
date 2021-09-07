@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version               = "3.1.0"
   s.summary               = "Clarabridge iOS Chat SDK"
   s.homepage              = "https://www.clarabridge.com/"
-  s.author                = { "YOU" => "YOUR_EMAIL" }
+  s.author                = { "YOU" => "anthony.meirlaen@clarabrige.com" }
   s.source 	              = { :git => 'https://github.com/engagor/clarabridgechat-ios-distribution.git', :tag =>"v3.1.0" }
   s.license               = { :type => "Commercial", :text => "https://app.engagor.com/privacy-policy" }
   s.preserve_paths        = "build/ClarabridgeChat.xcframework/*"
