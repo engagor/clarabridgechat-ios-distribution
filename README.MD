@@ -62,6 +62,8 @@ You should now be able to import the framework (`#import <ClarabridgeChat/Clarab
     ClarabridgeChat.show()
 ```
 
+See the documentation for additional functionality https://engagor.github.io/clarabridgechat-ios-distribution/index.html.
+
 # Version
 
 This is version 3.1.0 of ClarabridgeChat. It corresponds to version [10.1.0](https://github.com/smooch/smooch-ios/releases/tag/10.1.0) of the Smooch iOS SDK.
